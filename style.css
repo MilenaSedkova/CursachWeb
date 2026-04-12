@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 1919.79px;
+}
+
+.header {
+  width: 100%;
+  background: #fff;
+  /* Те самые отступы со скриншота: 69px top/bottom */
+  padding: 69px 0; 
+}
+
+.container {
+  /* Отступы по бокам 162px */
+  padding: 0 162px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Логотип */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/*.dropdown::after {
+  content: '⌄';
+  margin-left: 5px;
+}*/
+
+/* Блок действий */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid #f1f1f1;
+  background: #FAFAFA;
+  width: 250px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 5px;
+  background: var(--accent-color);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #E0E0E0;
+  border-radius: 30px;
+  padding: 5px 15px 5px 5px;
+}
+
+.cart-icon {
+  background: var(--primary-color);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart span {
+  font-weight: 600;
+  color: var(--primary-color);
+}
