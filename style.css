@@ -15,11 +15,11 @@ body {
 .header {
     width: 1920px;
     height: 204px;
-    margin-top: 69px;
-    margin-bottom: 69px;
+    margin-top: 0; 
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 162px;
+    padding: 0 120px;
 }
 
 .container {
@@ -38,24 +38,26 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     text-decoration: none;
     color: #1F263E;
-    font-size: 24px;
+    font-size: 38px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: -1.9px;
+    margin-left: 40px;
 }
 
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 32px; 
+    gap: 42px; 
+    letter-spacing: -0.2px;
 }
 
 .nav-menu a {
     text-decoration: none;
     color: #1F263E;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -67,7 +69,8 @@ body {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 7px;
+    margin-right: -25px;
 }
 
 .search-bar {
@@ -93,21 +96,19 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-.search-bar input::placeholder {
-    color: #B3B3B3;
-}
-
 .search-btn {
     background-color: #669C61;
     border: none;
     width: 40px;
-    height: 40px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background 0.3s;
+    margin-left: auto; 
+    padding: 8px 24px 8px 8px; 
 }
 
 .search-btn:hover {
@@ -119,8 +120,8 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    height: 66px; /* Высота как у поиска */
-    padding-right: 24px; /* Визуальный отступ справа */
+    height: 66px; 
+    padding-right: 24px; 
     cursor: pointer;
 }
 
@@ -135,7 +136,126 @@ body {
 }
 
 .cart-btn span {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     color: #1F263E;
+}
+
+/* hero section*/
+
+.main-banner {
+    position: relative; 
+    width: 100%;
+    min-height: 894px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; 
+    overflow: hidden; 
+}
+
+/* Стили для фоновой картинки из HTML */
+.banner-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Растягивает картинку, сохраняя пропорции */
+    object-position: right center; 
+    z-index: 0;
+    object-position: 50% center; 
+}
+
+.banner-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 247px; 
+}
+
+.banner-text {
+    max-width: 580px;
+    transform: translate(12px, 8px); 
+}
+
+
+.banner-subtitle {
+    display: block;
+    font-family: 'Yellowtail', cursive;
+    font-size: 36px;
+    color: #669C61;
+    font-weight: 500;
+    transform: translate(5px, 10px);
+}
+
+.banner-heading {
+    font-size: 68px;
+    line-height: 1.21;
+    font-weight: 700;
+    color: #1F263E;
+    margin-bottom: 52px; 
+    margin-top: 15px;
+    letter-spacing: -1.99px;
+}
+
+.heading-line-1 {
+    display: inline-block; 
+    transform: translate(-1px, 2px); 
+    /* Меняйте значения, чтобы подвинуть только эту строку */
+}
+
+.heading-last-line {
+    /* display: inline-block нужен, чтобы работали отступы margin и transform */
+    display: inline-block; 
+    letter-spacing: -1px;
+}
+
+/* Кнопка действия */
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between; /* Текст слева, кружок справа */
+    gap: 3px; 
+    
+    background-color: #EFD372;
+    color: #1F263E;
+
+    padding: 13px 40px 16px 32px; 
+    width: 222px;
+    height: 76px; 
+    border-radius: 12px; /* Прямоугольные углы */
+    
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transform: translateY(-22px); 
+    transition: all 0.3s ease;
+}
+
+.word-explore {
+    display: inline-block;
+    transform: translateX(6px); 
+}
+
+.action-button:hover {
+    background-color: #e5a53e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(251, 185, 71, 0.35);
+}
+
+.btn-icon-wrapper {
+   width: 26px;  
+    height: 26px;
+    background-color: #1F263E;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Запрещаем кружку сжиматься */
 }
