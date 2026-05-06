@@ -280,19 +280,30 @@ body {
 .prod-header {
     margin-bottom: 60px;
     text-align: center;
+
 }
+
 
 .prod-subtitle {
     display: block;
     font-family: 'Yellowtail', cursive;
-    font-size: 24px;
+    font-size: 36px;
     color: #669C61;
-    margin-bottom: 8px;
+    margin-bottom: -7px;
+}
+
+.prod-subtitle--settings{
+    transform: translateY(130px) translateX(35px); 
+}
+
+.prod-title--settings{
+    transform: translateY(148px) translateX(41px); 
+
 }
 
 .prod-title {
     font-family: 'Inter', sans-serif;
-    font-size: 42px;
+    font-size: 50px;
     font-weight: 700;
     color: #1F263E;
     margin: 0;
@@ -305,7 +316,7 @@ body {
     grid-template-columns: repeat(4, 1fr); /* 4 колонки */
     gap: 20px; /* Отступы между карточками */
     margin-bottom: 60px;
-    margin-top: 210px;
+    margin-top: 200px;
 }
 
 /* --- Карточка товара --- */
@@ -421,23 +432,43 @@ body {
 }
 
 /* --- Кнопка Load More --- */
-.prod-load-more-wrapper {
+.prod-button-wrapper {
     display: flex;
     justify-content: center;
 }
 
-.prod-load-btn {
+.prod-btn-text {
+    display: inline-block;
+    transform: translateY(2px) translateX(5px); 
+}
+
+.prod-btn-arrow {
+    width: 18px;              /* Подберите размер под макет (16-20px) */
+    height: auto;
+    object-fit: contain;
+    /* Если стрелка тёмная, а фон кнопки тёмный, сделайте её белой: */
+    /* filter: brightness(0) invert(1); */
+}
+
+.prod-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     background-color: #1F263E;
     color: #ffffff;
     padding: 16px 40px;
-    border-radius: 30px;
+    border-radius: 16px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     transition: all 0.3s ease;
+    width: 220px;
+    height: 79px;
+    gap: 19px;
+}
+
+.prod-loadbutton-settings{
+    transform: translateY(161px) translateX(530px);
 }
 
 .prod-load-btn:hover {
