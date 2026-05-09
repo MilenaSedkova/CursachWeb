@@ -489,3 +489,157 @@ body {
         grid-template-columns: 1fr; /* 1 колонка на телефоне */
     }
 }
+
+/* ============================================
+   ABOUT SECTION (Уникальные классы)
+   ============================================ */
+
+.about-section {
+    margin-top: 135px;
+    padding: 245px 0;
+    background-color: #F9F8F8;;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Отступ между картинкой и текстом */
+}
+
+.about-image-col {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    transform: translateX(-155px);
+}
+
+.about-main-img {
+    width: 100%;
+    max-width: 824px;
+    height: auto;
+    object-fit: contain;
+}
+
+.about-content-col {
+    flex: 1;
+    max-width: 520px;
+}
+
+/* --- Типографика --- */
+.about-subtitle {
+    font-family: 'Yellowtail', cursive;
+    font-size: 26px;
+    color: #669C61;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.about-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1F263E;
+    line-height: 1.15;
+    margin: 0 0 20px 0;
+    letter-spacing: -1px;
+}
+
+.about-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #7B8794;
+    line-height: 1.65;
+    margin: 0 0 35px 0;
+}
+
+/* --- Блок с фичами --- */
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+.about-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.about-feature-icon {
+    width: 44px;
+    height: 44px;
+    background-color: #F4F7F9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.about-feature-icon svg {
+    width: 22px;
+    height: 22px;
+    color: #669C61;
+}
+
+.about-feature-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F263E;
+    margin: 0 0 6px 0;
+}
+
+.about-feature-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7B8794;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- Кнопка (идентична прошлой секции) --- */
+.about-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    
+    background-color: #2C4A5C;
+    color: #ffffff;
+    padding: 0 32px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    
+    width: 220px;
+    height: 79px;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+}
+
+.about-shop-btn:hover {
+    background-color: #1F263E;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(44, 74, 92, 0.25);
+}
+
+.about-shop-btn-text {
+    display: inline-block;
+    /* transform: translateY(1px); */ /* Раскомментируйте для оптической центровки */
+}
+
+.about-shop-btn-arrow {
+    width: 18px;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Делает тёмную стрелку белой */
+}
