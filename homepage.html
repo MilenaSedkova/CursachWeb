@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organick Header</title>
-    <!-- Подключаем шрифт Inter для максимального сходства -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Шрифты -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/Homepage.css">
+
+    <!-- CSS: СНАЧАЛА базовые стили, ПОТОМ позиционирование -->
+    <link rel="stylesheet" href="css/HomepageBase.css">
+    <link rel="stylesheet" href="css/HomepageLayout.css">
 </head>
 <body>
 
+    <!-- ========== HEADER ========== -->
     <header class="header">
         <div class="container">
             
-            <!-- Левая часть: Лого и Меню -->
             <div class="header-left">
                 <a href="#" class="logo">
                    <img src="pictures/HomepageImages/Logo.svg" alt="Logo picture">
@@ -33,284 +37,136 @@
                 </nav>
             </div>
 
-            <!-- Правая часть: Поиск и Корзина -->
             <div class="header-right">
-                <!-- Блок поиска (Rectangle 4 из макета) -->
                 <div class="search-bar">
-                    <button class="search-btn">
-                        <img src="pictures/HomepageImages/Search-Icon.svg" alt="Serach icon">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button class="search-btn" id="searchBtn">
+                        <img src="pictures/HomepageImages/Search-Icon.svg" alt="Search icon">
                     </button>
                 </div>
 
-                <div class="cart-btn">
+                <div class="cart-btn" id="cartBtn">
                     <div class="cart-icon">
                         <img src="pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
                     </div>
-                    <span>Cart(0)</span>
+                    <span id="cartCount">Cart(0)</span>
                 </div>
             </div>
 
         </div>
     </header>
 
+    <!-- ========== HERO BANNER ========== -->
     <section class="main-banner">
-
         <img src="pictures/HomepageImages/background.jpg" alt="Background" class="banner-bg-image">
     
-    <div class="banner-wrapper">
-        <div class="banner-text">
-            <span class="banner-subtitle">100% Natural Food</span>
-            <h1 class="banner-heading">
-                <span class="heading-line-1">Choose the best</span> <br>
-                <span class="heading-line-2">healthier way</span> <br>
-                <span class="heading-last-line">of life</span>
-            </h1>
+        <div class="banner-wrapper">
+            <div class="banner-text">
+                <span class="banner-subtitle">100% Natural Food</span>
+                <h1 class="banner-heading">
+                    <span class="heading-line-1">Choose the best</span> <br>
+                    <span class="heading-line-2">healthier way</span> <br>
+                    <span class="heading-last-line">of life</span>
+                </h1>
+                
+                <a href="#" class="action-button">
+                    <span class="word-explore">Explore</span>
+                    <span class="word-now">Now</span>
+                    <img src="pictures/HomepageImages/ArrowForButton.svg" alt="arrow">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUCTS SECTION ========== -->
+    <section class="prod-section">
+        <div class="prod-container">
             
-            <a href="#" class="action-button">
-                <span class="word-explore">Explore</span>
-                <span class="word-now">Now</span>
-                <img src="pictures/HomepageImages/ArrowForButton.svg" alt="arrow">
-            </a>
-        </div>
+            <!-- Заголовки с переиспользуемыми классами + позиционирование -->
+            <div class="prod-header pos-center">
+                <span class="subtitle pos-products-subtitle">Categories</span>
+                <h2 class="section-title pos-products-title">Our Products</h2>
+            </div>
+
+            <!-- Сетка товаров (загружается из JSON) -->
+            <div class="prod-grid" id="productsGrid">
+                <!-- Товары будут добавлены через JS -->
+            </div>
+
+            <!-- Кнопка с переиспользуемыми классами -->
+           <div class="prod-button-wrapper">
+    <div class="prod-load-more-button-settings">
+        <a href="#" class="btn-primary" id="loadMoreBtn">
+            <span class="btn-text-offset">Load More</span>
+            <img src="pictures/HomepageImages/ArrowForButton.svg" alt="arrow" class="btn-arrow">
+        </a>
     </div>
-</section>
-
-<section class="prod-section">
-    <div class="prod-container">
-        
-        <!-- Заголовок секции -->
-        <div class="prod-header">
-            <span class="prod-subtitle prod-subtitle--settings">Categories</span>
-            <h2 class="prod-title prod-title--settings">Our Products</h2>
+</div>
         </div>
+    </section>
 
-        <!-- Сетка товаров -->
-        <div class="prod-grid">
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="about-section">
+        <div class="about-container">
             
-            <!-- Товар 1 -->
-            <div class="prod-card">
-                <span class="prod-tag">Vegetable</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/BroccoliPhoto.png" alt="Broccoli">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Calabrese Broccoli</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$13.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
+            <!-- Левая колонка: Картинка -->
+            <div class="about-image-col">
+                <img src="pictures/HomepageImages/FruitsPhoto.png" alt="Citrus fruits in heart shape" class="about-main-img">
+            </div>
 
+            <!-- Правая колонка: Текст и кнопка -->
+            <div class="about-content-col">
+                <!-- Заголовки с переиспользуемыми классами (без смещения) -->
+                <span class="subtitle">About Us</span>
+                <h2 class="section-title">We Believe in Working <br> Accredited Farmers</h2>
+                
+                <p class="about-description">
+                    Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
+                </p>
+
+                <!-- Фичи -->
+                <div class="about-features">
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4 class="about-feature-title">Organic Foods Only</h4>
+                            <p class="about-feature-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </div>
+
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                <path d="M12 11h4"/>
+                                <path d="M12 16h4"/>
+                                <path d="M8 11h.01"/>
+                                <path d="M8 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4 class="about-feature-title">Quality Standards</h4>
+                            <p class="about-feature-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Кнопка с переиспользуемыми классами + белая стрелка -->
+                <a href="#" class="btn-primary">
+                    <span class="btn-text-offset">Shop Now</span>
+                    <img src="pictures/HomepageImages/arrow-right.svg" alt="arrow" class="btn-arrow btn-arrow--white">
+                </a>
             </div>
 
-             <div class="prod-card">
-                <span class="prod-tag">Fresh</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/banana.png" alt="Banana">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Fresh Banana Fruites</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$14.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-             <div class="prod-card">
-                <span class="prod-tag">Millets</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/nuts.png" alt="Nuts">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">White Nuts</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$15.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Товар 4 -->
-            <div class="prod-card">
-                <span class="prod-tag">Vegetable</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/tomato.png" alt="Tomato">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Vegan Red Tomato</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$17.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Товар 5 -->
-            <div class="prod-card">
-                <span class="prod-tag">Health</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/bean.png" alt="Bean">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Mung Bean</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$11.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Товар 6 -->
-            <div class="prod-card">
-                <span class="prod-tag">Nuts</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/hazelnut.png" alt="Nuts">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Brown Hazelnut</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$12.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Товар 7 -->
-            <div class="prod-card">
-                <span class="prod-tag">Fresh</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/eggs.png" alt="Eggs">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Eggs</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$17.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Товар 8 -->
-            <div class="prod-card">
-                <span class="prod-tag">Fresh</span>
-                <div class="prod-image-wrapper">
-                    <img src="pictures/HomepageImages/bread.png" alt="Bread">
-                </div>
-                <div class="prod-info">
-                    <h3 class="prod-name">Zelco Suji Elaichi Rusk</h3>
-                    <div class="prod-price-row">
-                        <span class="prod-price-old">$20.00</span>
-                        <span class="prod-price-new">$15.00</span>
-                        <div class="prod-stars">
-                            <img src="pictures/HomepageImages/star.svg" alt="star">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <!-- Кнопка "Load More" -->
-        <div class="prod-button-wrapper">
-            <a href="#" class="prod-btn prod-loadbutton-settings">
-            <span class="prod-btn-text">Load More</span>
-            <img src="pictures/HomepageImages/ArrowForButton.svg" alt="arrow" class="prod-btn-arrow">
-            </a>
         </div>
+    </section>
 
-    </div>
-</section>
-
-
-
-<section class="about-section">
-    <div class="about-container">
-        
-        <!-- Левая колонка: Картинка -->
-        <div class="about-image-col">
-            <img src="pictures/HomepageImages/FruitsPhoto.png" alt="Citrus fruits in heart shape" class="about-main-img">
-        </div>
-
-        <!-- Правая колонка: Текст и кнопка -->
-        <div class="about-content-col">
-            <span class="about-subtitle">About Us</span>
-            <h2 class="about-heading">We Believe in Working <br> Accredited Farmers</h2>
-            
-            <p class="about-description">
-                Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
-            </p>
-
-            <div class="about-features">
-                <!-- Фича 1 -->
-                <div class="about-feature-item">
-                    <div class="about-feature-icon">
-                        <!-- Иконка листа -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/>
-                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                        </svg>
-                    </div>
-                    <div class="about-feature-text">
-                        <h4 class="about-feature-title">Organic Foods Only</h4>
-                        <p class="about-feature-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                    </div>
-                </div>
-
-                <!-- Фича 2 -->
-                <div class="about-feature-item">
-                    <div class="about-feature-icon">
-                        <!-- Иконка чеклиста -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                            <path d="M12 11h4"/>
-                            <path d="M12 16h4"/>
-                            <path d="M8 11h.01"/>
-                            <path d="M8 16h.01"/>
-                        </svg>
-                    </div>
-                    <div class="about-feature-text">
-                        <h4 class="about-feature-title">Quality Standards</h4>
-                        <p class="about-feature-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Кнопка (стили 1 в 1 как в прошлой секции) -->
-            <a href="#" class="about-shop-btn">
-                <span class="about-shop-btn-text">Shop Now</span>
-                <img src="pictures/HomepageImages/arrow-right.svg" alt="arrow" class="about-shop-btn-arrow">
-            </a>
-        </div>
-
-    </div>
-</section>
-
+    <!-- JavaScript для функционала -->
+    <script src="js/app.js"></script>
 </body>
 </html>
