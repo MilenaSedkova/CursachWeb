@@ -451,3 +451,115 @@
         font-size: 28px;
     }
 }
+
+
+/* ============================================
+   TESTIMONIAL SECTION - LAYOUT
+   ============================================ */
+
+.testimonial-section {
+    padding: 120px 0;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+}
+
+/* Декоративные элементы по бокам */
+.testimonial-decor-left,
+.testimonial-decor-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    pointer-events: none;
+}
+
+.testimonial-decor-left {
+    left: 0;
+}
+
+.testimonial-decor-right {
+    right: 0;
+}
+
+.testimonial-decor-left img,
+.testimonial-decor-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.testimonial-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Слайдер */
+.testimonial-slider {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Позиционирование заголовков */
+.pos-testimonial-subtitle {
+    transform: translate(0px, 0px);
+}
+
+.pos-testimonial-title {
+    transform: translate(0px, 0px);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .testimonial-decor-left,
+    .testimonial-decor-right {
+        width: 120px;
+    }
+    
+    .testimonial-stats {
+        gap: 20px;
+    }
+    
+    .stat-circle {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-decor-left,
+    .testimonial-decor-right {
+        display: none; /* Скрываем декор на мобильных */
+    }
+    
+    .testimonial-title {
+        font-size: 32px;
+    }
+    
+    .testimonial-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-circle {
+        width: 140px;
+        height: 140px;
+    }
+}

@@ -242,3 +242,132 @@ document.addEventListener('DOMContentLoaded', () => {
     loadOfferVegetables(); // Загружаем Offer секцию
     loadCartFromServer();
 });
+
+// Переменная для текущего слайда
+let currentTestimonialIndex = 0;
+let testimonialCount = 0;
+
+// Создание карточки отзыва
+function createTestimonialCard(testimonial) {
+    return `
+        <div class="testimonial-card">
+            <div class="testimonial-avatar">
+                <img src="${testimonial.avatar}" alt="${testimonial.name}">
+            </div>
+            <div class="testimonial-stars">
+                <img src="${testimonial.starsImage}" alt="5 stars">
+                <img src="${testimonial.starsImage}" alt="5 stars">
+                <img src="${testimonial.starsImage}" alt="5 stars">
+                <img src="${testimonial.starsImage}" alt="5 stars">
+                <img src="${testimonial.starsImage}" alt="5 stars">
+            </div>
+            <p class="testimonial-text">${testimonial.text}</p>
+            <h4 class="testimonial-author-name">${testimonial.name}</h4>
+            <p class="testimonial-author-role">${testimonial.role}</p>
+        </div>
+    `;
+}
+
+// Создание кружка статистики
+function createStatCircle(stat) {
+    return `
+        <div class="stat-circle">
+            <h3 class="stat-value">${stat.value}</h3>
+            <p class="stat-label">${stat.label}</p>
+        </div>
+    `;
+}
+
+// Создание точек навигации
+function createDots(count) {
+    const dotsContainer = document.getElementById('testimonialDots');
+    dotsContainer.innerHTML = '';
+    
+    for (let i = 0; i < count; i++) {
+        const dot = document.createElement('button');
+        dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Переключение на конкретный слайд
+function goToSlide(index) {
+    currentTestimonialIndex = index;
+    const track = document.getElementById('testimonialTrack');
+    track.style.transform = `translateX(-${index * 100}%)`;
+    
+    // Обновляем активную точку
+    document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+// Автопрокрутка
+let autoSlideInterval;
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        let nextIndex = (currentTestimonialIndex + 1) % testimonialCount;
+        goToSlide(nextIndex);
+    }, 5000); // Каждые 5 секунд
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+// Загрузка отзывов
+async function loadTestimonials() {
+    try {
+        const response = await fetch(`${API_URL}/testimonials`);
+        const testimonials = await response.json();
+        
+        testimonialCount = testimonials.length;
+        
+        const track = document.getElementById('testimonialTrack');
+        track.innerHTML = testimonials.map(createTestimonialCard).join('');
+        
+        // Создаём точки навигации
+        createDots(testimonialCount);
+        
+        // Запускаем автопрокрутку
+        startAutoSlide();
+        
+    } catch (error) {
+        console.error('Ошибка загрузки отзывов:', error);
+    }
+}
+
+// Загрузка статистики
+async function loadStats() {
+    try {
+        const response = await fetch(`${API_URL}/stats`);
+        const stats = await response.json();
+        
+        const statsContainer = document.getElementById('testimonialStats');
+        statsContainer.innerHTML = stats.map(createStatCircle).join('');
+        
+    } catch (error) {
+        console.error('Ошибка загрузки статистики:', error);
+    }
+}
+
+// Пауза автопрокрутки при наведении
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.testimonial-slider');
+    if (slider) {
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+    }
+});
+
+// Инициализация (обнови существующий DOMContentLoaded)
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts();
+    loadOfferVegetables();
+    loadTestimonials();
+    loadStats();
+    loadCartFromServer();
+});

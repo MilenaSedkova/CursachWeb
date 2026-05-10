@@ -111,6 +111,58 @@
       "rating": 5
     }
   ],
+  "testimonials": [
+    {
+      "id": 1,
+      "avatar": "pictures/HomepageImages/avatar-1.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+      "name": "Sara Taylor",
+      "role": "Consumer"
+    },
+    {
+      "id": 2,
+      "avatar": "pictures/HomepageImages/avatar-2.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "name": "John Anderson",
+      "role": "Food Blogger"
+    },
+    {
+      "id": 3,
+      "avatar": "pictures/HomepageImages/avatar-3.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.",
+      "name": "Emily Carter",
+      "role": "Consumer"
+    }
+  ],
+  "stats": [
+    {
+      "id": 1,
+      "value": "100%",
+      "label": "Organic",
+      "circleImage": "pictures/HomepageImages/circle-bg.png"
+    },
+    {
+      "id": 2,
+      "value": "285",
+      "label": "Active Product",
+      "circleImage": "pictures/HomepageImages/circle-bg.png"
+    },
+    {
+      "id": 3,
+      "value": "350+",
+      "label": "Organic Orchards",
+      "circleImage": "pictures/HomepageImages/circle-bg.png"
+    },
+    {
+      "id": 4,
+      "value": "25+",
+      "label": "Years of Farming",
+      "circleImage": "pictures/HomepageImages/circle-bg.png"
+    }
+  ],
   "cart": [],
   "searchQuery": ""
 }
