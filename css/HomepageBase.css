@@ -64,7 +64,7 @@ body {
 
 .btn-text-offset {
     display: inline-block;
-    transform: translateY(2px) translateX(5px);
+    letter-spacing: -1.8px;
 }
 
 
@@ -186,10 +186,9 @@ body {
 /* --- About Section (базовые стили) --- */
 .about-description {
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     color: #7B8794;
     line-height: 1.65;
-    margin: 0 0 35px 0;
 }
 
 .about-features {
@@ -205,35 +204,26 @@ body {
     gap: 16px;
 }
 
-.about-feature-icon {
-    width: 44px;
-    height: 44px;
-    background-color: #F4F7F9;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+.about-feature-icon img {
+    width: 46px;
+    height: 46px;
 }
 
-.about-feature-icon svg {
-    width: 22px;
-    height: 22px;
-    color: #669C61;
-}
 
 .about-feature-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
     font-weight: 600;
     color: #1F263E;
     margin: 0 0 6px 0;
+    letter-spacing: -0.8px;
 }
 
 .about-feature-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
     color: #7B8794;
-    line-height: 1.5;
+    line-height: 1.7;
     margin: 0;
+    letter-spacing: 0.55px;
 }

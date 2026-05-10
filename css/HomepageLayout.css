@@ -60,7 +60,7 @@
 /* --- About Section Layout --- */
 .about-section {
     margin-top: 135px;
-    padding: 245px 0;
+    padding: 245px 0 40px 0;
     background-color: #F9F8F8;
 }
 
@@ -323,13 +323,13 @@
 
 .pos-about-subtitle {
     display: inline-block;
-    transform: translate(85px, -80px); /* X: вправо/влево, Y: вверх/вниз */
+    transform: translate(85px, -50px); /* X: вправо/влево, Y: вверх/вниз */
     margin-bottom: 8px;
 }
 
 .pos-about-title {
     display: block;
-    transform: translate(80px, -85px); /* Начальные значения */
+    transform: translate(85px, -50px); 
     max-width: 100%; /* Ограничиваем ширину */
     line-height: 1.15;
     letter-spacing:  -1.5px;
@@ -339,4 +339,31 @@
 .title-line-2 {
     display: inline-block;
     white-space: nowrap;
+}
+
+.ab-description-settings{
+    transform: translateX(88px) translateY(-35px);
+}
+
+.ab-featureVeganPh-settings{
+    transform: translateX(100px) translateY(5px);
+}
+
+.ab-featureVegan-settings{
+    transform: translateX(100px) translateY(-17px);
+    
+}
+
+
+.ab-featureMailingPh-settings{
+    transform: translateX(100px) translateY(5px);
+}
+
+.ab-featureMailing-settings{
+    transform: translateX(100px) translateY(-10px);
+    
+}
+
+.btn-shop-settings{
+    transform: translateX(92px);
 }
