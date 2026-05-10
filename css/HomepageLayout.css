@@ -367,3 +367,87 @@
 .btn-shop-settings{
     transform: translateX(92px);
 }
+
+
+/* ============================================
+   OFFER SECTION - LAYOUT & POSITIONING
+   ============================================ */
+
+/* --- Секция Offer --- */
+
+
+/* --- Заголовок секции --- */
+.offer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.offer-title-wrapper {
+    flex: 1;
+    transform: translateX(-41px) translateY(-232px);
+}
+
+/* Позиционирование заголовков */
+.pos-offer-subtitle {
+    /* Добавьте если нужно сместить подзаголовок */
+    transform: translate(0px, 135px);
+}
+
+.pos-offer-heading {
+    /* Добавьте если нужно сместить заголовок */
+    transform: translate(0px, 145px);
+    color: #FFF;
+    letter-spacing: -1.5px;
+}
+
+/* --- Сетка овощей --- */
+.offer-vegetables-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    transform: translateY(-228px) translateX(-35px);
+}
+
+/* --- Кнопка View All --- */
+.pos-view-all-btn {
+    /* Позиционирование кнопки */
+    transform: translate(42px, -60px);
+
+}
+
+.btn-view-settings{
+    letter-spacing: -1px;
+    transform: translateX(1px);
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 1024px) {
+    .offer-vegetables-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .offer-heading {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .offer-header {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .offer-vegetables-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .offer-heading {
+        font-size: 32px;
+    }
+    
+    .offer-subtitle {
+        font-size: 28px;
+    }
+}

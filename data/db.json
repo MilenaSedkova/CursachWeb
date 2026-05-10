@@ -73,6 +73,44 @@
       "rating": 5
     }
   ],
+  "offerVegetables": [
+    {
+      "id": 1,
+      "name": "Mung Bean",
+      "category": "Vegetable",
+      "price": 11.00,
+      "oldPrice": 20.00,
+      "image": "pictures/HomepageImages/MungBean.png",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Brown Hazelnut",
+      "category": "Vegetable",
+      "price": 12.00,
+      "oldPrice": 20.00,
+      "image": "pictures/HomepageImages/BrownHazelnur.png",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Onion",
+      "category": "Vegetable",
+      "price": 17.00,
+      "oldPrice": 20.00,
+      "image": "pictures/HomepageImages/Onion.png",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Cabbage",
+      "category": "Vegetable",
+      "price": 17.00,
+      "oldPrice": 20.00,
+      "image": "pictures/HomepageImages/Cabbage.png",
+      "rating": 5
+    }
+  ],
   "cart": [],
   "searchQuery": ""
 }

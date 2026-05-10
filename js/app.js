@@ -157,3 +157,88 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     loadCartFromServer();
 });
+
+
+
+// Создание карточки для Offer секции (ИДЕНТИЧНАЯ структура)
+function createOfferVegetableCard(vegetable) {
+    return `
+        <div class="prod-card" data-id="${vegetable.id}">
+            <span class="prod-tag">${vegetable.category}</span>
+            <div class="prod-image-wrapper">
+                <img src="${vegetable.image}" alt="${vegetable.name}">
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">${vegetable.name}</h3>
+                <div class="prod-price-row">
+                    <span class="prod-price-old">$${vegetable.oldPrice.toFixed(2)}</span>
+                    <span class="prod-price-new">$${vegetable.price.toFixed(2)}</span>
+                    <div class="prod-stars">
+                        ${generateStars(vegetable.rating)}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Загрузка овощей из Offer секции
+async function loadOfferVegetables() {
+    try {
+        const response = await fetch(`${API_URL}/offerVegetables`);
+        const vegetables = await response.json();
+        
+        const grid = document.getElementById('offerVegetablesGrid');
+        if (grid) {
+            grid.innerHTML = vegetables.map(createOfferVegetableCard).join('');
+            
+            // Добавляем обработчики кликов (как в основных товарах)
+            document.querySelectorAll('.offer-vegetables-grid .prod-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = parseInt(card.dataset.id);
+                    addToCartFromOffer(id);
+                });
+                card.style.cursor = 'pointer';
+            });
+        }
+        
+    } catch (error) {
+        console.error('Ошибка загрузки овощей:', error);
+    }
+}
+
+// Добавление в корзину из Offer секции
+async function addToCartFromOffer(productId) {
+    // Ищем в offerVegetables
+    try {
+        const response = await fetch(`${API_URL}/offerVegetables`);
+        const offerVegetables = await response.json();
+        const product = offerVegetables.find(v => v.id === productId);
+        
+        if (!product) return;
+        
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+        
+        updateCartCount();
+        await saveCartToServer();
+        
+        // Визуальная обратная связь
+        alert(`${product.name} добавлен в корзину!`);
+        
+    } catch (error) {
+        console.error('Ошибка добавления товара:', error);
+    }
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts();
+    loadOfferVegetables(); // Загружаем Offer секцию
+    loadCartFromServer();
+});
