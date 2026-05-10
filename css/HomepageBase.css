@@ -23,6 +23,7 @@ body {
     margin-bottom: -7px;
 }
 
+
 .section-title {
     font-family: 'Inter', sans-serif;
     font-size: 50px;
@@ -64,6 +65,13 @@ body {
 .btn-text-offset {
     display: inline-block;
     transform: translateY(2px) translateX(5px);
+}
+
+
+.about-content-col {
+    flex: 1;
+    max-width: 1920px;
+    transform: translateX(-518px) translateY(-72px);
 }
 
 .btn-arrow {

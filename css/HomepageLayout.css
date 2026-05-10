@@ -65,19 +65,19 @@
 }
 
 .about-container {
-    max-width: 1200px;
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px 0px 280px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 180px;
 }
 
 .about-image-col {
     flex: 3.5;
     display: flex;
     justify-content: center;
-    transform: translateX(-285px) translateY(-120px);
+    transform: translateX(-245px) translateY(-120px);
 }
 
 .about-main-img {
@@ -85,12 +85,6 @@
     max-width: 825px;
     height: auto;
     object-fit: contain;
-}
-
-.about-content-col {
-    flex: 1;
-    max-width: 520px;
-    transform: translateX(-310px) translateY(-30px);
 }
 
 /* --- Header Layout --- */
@@ -325,4 +319,24 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+
+.pos-about-subtitle {
+    display: inline-block;
+    transform: translate(85px, -80px); /* X: вправо/влево, Y: вверх/вниз */
+    margin-bottom: 8px;
+}
+
+.pos-about-title {
+    display: block;
+    transform: translate(80px, -85px); /* Начальные значения */
+    max-width: 100%; /* Ограничиваем ширину */
+    line-height: 1.15;
+    letter-spacing:  -1.5px;
+}
+
+.title-line-1,
+.title-line-2 {
+    display: inline-block;
+    white-space: nowrap;
 }
