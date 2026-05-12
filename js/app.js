@@ -243,97 +243,95 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCartFromServer();
 });
 
-// Переменная для текущего слайда
-let currentTestimonialIndex = 0;
-let testimonialCount = 0;
+// ========== TESTIMONIAL SECTION JS ==========
+const TESTI_API = 'http://localhost:3000';
+let testiCurrentIndex = 0;
+let testiTotalSlides = 0;
+let testiAutoPlay;
 
-// Создание карточки отзыва
-function createTestimonialCard(testimonial) {
+// Создание карточки отзыва (под новые классы)
+function createTestiCard(item) {
     return `
-        <div class="testimonial-card">
-            <div class="testimonial-avatar">
-                <img src="${testimonial.avatar}" alt="${testimonial.name}">
+        <div class="testi-slide">
+            <div class="testi-avatar">
+                <img src="${item.avatar}" alt="${item.name}">
             </div>
-            <div class="testimonial-stars">
-                <img src="${testimonial.starsImage}" alt="5 stars">
-                <img src="${testimonial.starsImage}" alt="5 stars">
-                <img src="${testimonial.starsImage}" alt="5 stars">
-                <img src="${testimonial.starsImage}" alt="5 stars">
-                <img src="${testimonial.starsImage}" alt="5 stars">
+            <div class="testi-stars">
+                <img src="${item.starsImage}" alt="5 stars">
             </div>
-            <p class="testimonial-text">${testimonial.text}</p>
-            <h4 class="testimonial-author-name">${testimonial.name}</h4>
-            <p class="testimonial-author-role">${testimonial.role}</p>
+            <p class="testi-text">${item.text}</p>
+            <h4 class="testi-name">${item.name}</h4>
+            <p class="testi-role">${item.role}</p>
         </div>
     `;
 }
 
 // Создание кружка статистики
-function createStatCircle(stat) {
+function createTestiStat(stat) {
     return `
-        <div class="stat-circle">
-            <h3 class="stat-value">${stat.value}</h3>
-            <p class="stat-label">${stat.label}</p>
+        <div class="testi-stat-circle">
+            <span class="testi-stat-value">${stat.value}</span>
+            <span class="testi-stat-label">${stat.label}</span>
         </div>
     `;
 }
 
 // Создание точек навигации
-function createDots(count) {
-    const dotsContainer = document.getElementById('testimonialDots');
-    dotsContainer.innerHTML = '';
+function createTestiDots(count) {
+    const container = document.getElementById('testiDots');
+    if (!container) return;
     
+    container.innerHTML = '';
     for (let i = 0; i < count; i++) {
         const dot = document.createElement('button');
-        dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
-        dot.dataset.index = i;
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
+        dot.className = `testi-dot ${i === 0 ? 'is-active' : ''}`;
+        dot.addEventListener('click', () => goToTestiSlide(i));
+        container.appendChild(dot);
     }
 }
 
-// Переключение на конкретный слайд
-function goToSlide(index) {
-    currentTestimonialIndex = index;
-    const track = document.getElementById('testimonialTrack');
-    track.style.transform = `translateX(-${index * 100}%)`;
+// Переключение слайда
+function goToTestiSlide(index) {
+    testiCurrentIndex = index;
+    const track = document.getElementById('testiSliderTrack');
+    if (track) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
     
-    // Обновляем активную точку
-    document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+    document.querySelectorAll('.testi-dot').forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === index);
     });
 }
 
 // Автопрокрутка
-let autoSlideInterval;
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        let nextIndex = (currentTestimonialIndex + 1) % testimonialCount;
-        goToSlide(nextIndex);
-    }, 5000); // Каждые 5 секунд
+function startTestiAutoPlay() {
+    clearInterval(testiAutoPlay);
+    testiAutoPlay = setInterval(() => {
+        if (testiTotalSlides > 0) {
+            const next = (testiCurrentIndex + 1) % testiTotalSlides;
+            goToTestiSlide(next);
+        }
+    }, 5000);
 }
 
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
+function stopTestiAutoPlay() {
+    clearInterval(testiAutoPlay);
 }
 
 // Загрузка отзывов
 async function loadTestimonials() {
     try {
-        const response = await fetch(`${API_URL}/testimonials`);
-        const testimonials = await response.json();
+        const res = await fetch(`${TESTI_API}/testimonials`);
+        const data = await res.json();
+        testiTotalSlides = data.length;
         
-        testimonialCount = testimonials.length;
+        const track = document.getElementById('testiSliderTrack');
+        if (track) {
+            track.innerHTML = data.map(createTestiCard).join('');
+        }
         
-        const track = document.getElementById('testimonialTrack');
-        track.innerHTML = testimonials.map(createTestimonialCard).join('');
-        
-        // Создаём точки навигации
-        createDots(testimonialCount);
-        
-        // Запускаем автопрокрутку
-        startAutoSlide();
+        createTestiDots(testiTotalSlides);
+        startTestiAutoPlay();
         
     } catch (error) {
         console.error('Ошибка загрузки отзывов:', error);
@@ -341,33 +339,31 @@ async function loadTestimonials() {
 }
 
 // Загрузка статистики
-async function loadStats() {
+async function loadTestiStats() {
     try {
-        const response = await fetch(`${API_URL}/stats`);
-        const stats = await response.json();
+        const res = await fetch(`${TESTI_API}/stats`);
+        const data = await res.json();
         
-        const statsContainer = document.getElementById('testimonialStats');
-        statsContainer.innerHTML = stats.map(createStatCircle).join('');
-        
+        const container = document.getElementById('testiStatsRow');
+        if (container) {
+            container.innerHTML = data.map(createTestiStat).join('');
+        }
     } catch (error) {
         console.error('Ошибка загрузки статистики:', error);
     }
 }
 
-// Пауза автопрокрутки при наведении
+// Пауза при наведении
 document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.testimonial-slider');
+    const slider = document.querySelector('.testi-slider-viewport');
     if (slider) {
-        slider.addEventListener('mouseenter', stopAutoSlide);
-        slider.addEventListener('mouseleave', startAutoSlide);
+        slider.addEventListener('mouseenter', stopTestiAutoPlay);
+        slider.addEventListener('mouseleave', startTestiAutoPlay);
     }
 });
 
-// Инициализация (обнови существующий DOMContentLoaded)
+// Инициализация (добавьте к существующему DOMContentLoaded)
 document.addEventListener('DOMContentLoaded', () => {
-    loadProducts();
-    loadOfferVegetables();
     loadTestimonials();
-    loadStats();
-    loadCartFromServer();
+    loadTestiStats();
 });

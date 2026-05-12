@@ -114,7 +114,7 @@
   "testimonials": [
     {
       "id": 1,
-      "avatar": "pictures/HomepageImages/avatar-1.png",
+      "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
       "name": "Sara Taylor",
@@ -122,7 +122,7 @@
     },
     {
       "id": 2,
-      "avatar": "pictures/HomepageImages/avatar-2.png",
+      "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
       "name": "John Anderson",
@@ -130,7 +130,7 @@
     },
     {
       "id": 3,
-      "avatar": "pictures/HomepageImages/avatar-3.png",
+      "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.",
       "name": "Emily Carter",
@@ -142,25 +142,25 @@
       "id": 1,
       "value": "100%",
       "label": "Organic",
-      "circleImage": "pictures/HomepageImages/circle-bg.png"
+      "circleImage": "pictures/HomepageImages/circleBackground.svg"
     },
     {
       "id": 2,
       "value": "285",
       "label": "Active Product",
-      "circleImage": "pictures/HomepageImages/circle-bg.png"
+      "circleImage": "pictures/HomepageImages/circleBackground.svg"
     },
     {
       "id": 3,
       "value": "350+",
       "label": "Organic Orchards",
-      "circleImage": "pictures/HomepageImages/circle-bg.png"
+      "circleImage": "pictures/HomepageImages/circleBackground.svg"
     },
     {
       "id": 4,
       "value": "25+",
       "label": "Years of Farming",
-      "circleImage": "pictures/HomepageImages/circle-bg.png"
+      "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
   "cart": [],
