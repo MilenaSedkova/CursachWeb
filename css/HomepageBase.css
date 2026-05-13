@@ -583,9 +583,10 @@ body {
 /* Левая колонка: Изображение */
 .eco-image-col {
     width: 100%;
-    height: 950px;
+    height: 935px;
     overflow: hidden; /* Обрезает всё, что вылезает за скругления */
     /*border-radius: 24px; */
+    transform: translateY(-120px) translateX(-300px);
 }
 
 .eco-main-image {
