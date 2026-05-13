@@ -557,3 +557,131 @@ body {
     color: #5A6670;
     transform: translateY(-5px);
 }
+
+/* ============================================
+   ECO FRIENDLY SECTION
+   ============================================ */
+
+.eco-section {
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+.eco-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.eco-content-row {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;  /* Делит пополам 50/50 */
+    gap: 60px;                       /* Уменьши gap, если нужно шире */
+    align-items: stretch; 
+}
+
+/* Левая колонка: Изображение */
+.eco-image-col {
+    width: 100%;
+    height: 950px;
+    overflow: hidden; /* Обрезает всё, что вылезает за скругления */
+    /*border-radius: 24px; */
+}
+
+.eco-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🔑 КЛЮЧЕВОЕ: заполняет блок, обрезая лишнее по краям */
+    display: block;
+}
+
+/* Правая колонка: Текст */
+.eco-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.eco-subtitle {
+    display: block;
+    font-family: 'Yellowtail', cursive;
+    font-size: 32px;
+    color: #669C61;
+    margin-bottom: 8px;
+}
+
+.eco-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #2C4A5C;
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.eco-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.eco-feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eco-feature-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2C4A5C;
+    margin: 0;
+}
+
+.eco-feature-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #5A6670;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .eco-content-row {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .eco-main-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .eco-section {
+        padding: 80px 0;
+    }
+    
+    .eco-title {
+        font-size: 32px;
+    }
+    
+    .eco-subtitle {
+        font-size: 24px;
+    }
+    
+    .eco-main-image {
+        height: 300px;
+    }
+    
+    .eco-feature-heading {
+        font-size: 18px;
+    }
+    
+    .eco-feature-text {
+        font-size: 14px;
+    }
+}

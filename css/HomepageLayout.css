@@ -470,3 +470,7 @@
 .testi-subtitle-settings{
     transform: translateY(115px);
 }
+
+.eco-img-settings{
+    transform: translateY(-100px) translateX(-50px);
+}
