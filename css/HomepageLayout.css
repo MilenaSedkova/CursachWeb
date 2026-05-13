@@ -474,3 +474,8 @@
 .eco-img-settings{
     transform: translateY(-100px) translateX(-50px);
 }
+
+.eco-title-settings{    
+    /*  Ограничиваем ширину, чтобы строка ломалась ровно после "Friendly" */
+    max-width: 620px;
+}
