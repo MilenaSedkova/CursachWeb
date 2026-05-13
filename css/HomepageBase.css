@@ -593,7 +593,7 @@ body {
     height: auto; 
     max-height: 520px; /* Максимальная высота */
     object-fit: cover; /* Обрезает лишнее, сохраняя пропорции */
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     display: block; /* Убирает лишний отступ снизу у inline-картинок */
     margin-right: 180px;
@@ -688,5 +688,114 @@ body {
     
     .eco-feature-text {
         font-size: 14px;
+    }
+}
+
+
+/* ============================================
+   CATEGORIES SECTION
+   ============================================ */
+
+.categories-section {
+    padding: 278px 0; /* Отступы сверху и снизу как на макете */
+    background-color: #F1F8F4;
+    margin-top: 90px;
+}
+
+.categories-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px; /* Расстояние между карточками */
+}
+
+.category-card {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Высота карточки */
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2); /* Лёгкое затемнение */
+    transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+    background: rgba(0, 0, 0, 0.3); /* Темнее при наведении */
+}
+
+.category-label {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #2C4A5C;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-label {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories-section {
+        padding: 100px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+        height: 300px;
+    }
+    
+    .categories-section {
+        padding: 60px 0;
+    }
+    
+    .category-label {
+        font-size: 16px;
+        padding: 14px 28px;
     }
 }

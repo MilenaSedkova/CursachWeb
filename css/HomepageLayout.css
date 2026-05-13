@@ -479,3 +479,7 @@
     /*  Ограничиваем ширину, чтобы строка ломалась ровно после "Friendly" */
     max-width: 620px;
 }
+
+.eco-subtitle-settings{
+    transform: translateY(20px);
+}
