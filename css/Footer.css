@@ -128,6 +128,7 @@
 .footer-column-center {
     align-items: center;
     text-align: center;
+    margin-right: 50px;
 }
 
 .footer-column-title {
@@ -135,7 +136,7 @@
     font-size: 30px;
     font-weight: 600;
     color: #2C4A5C;
-    margin: 0 0 24px 0;
+    margin: 0 0 24px 40px;
 }
 
 /* Contact List */
@@ -146,12 +147,25 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    max-width: 500px;
+}
+
+/* Левая колонка - выравнивание всего вправо */
+.footer-column-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Выравнивание вправо */
+    text-align: right;
+    transform: translateX(-95px);
 }
 
 .contact-item {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: column; /* 👈 МЕНЯЕМ: значение слева, метка справа */
+    justify-content: flex-end; /* Выравнивание вправо */
+    gap: 12px; /* Расстояние между значением и меткой */
+    margin-bottom: 42px; /* Отступ между элементами */
+    width: 100%;
 }
 
 .contact-label {
@@ -159,12 +173,23 @@
     font-size: 18px;
     font-weight: 600;
     color: #2C4A5C;
+    white-space: nowrap; /* Чтобы метка не переносилась */
 }
 
 .contact-value {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     color: #5A6670;
+    text-align: right; /* Выравнивание текста вправо */
+}
+
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Убираем gap, так как есть margin-bottom у contact-item */
 }
 
 /* Footer Logo */
@@ -179,11 +204,11 @@
 
 .footer-description {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     color: #5A6670;
     line-height: 1.7;
-    margin: 0 0 24px 0;
-    max-width: 300px;
+    margin: 15px 0 24px 20px;
+    max-width: 750px;
 }
 
 /* Social Links 
@@ -217,7 +242,7 @@
 
 .social-link:hover .social-icon {
     filter: grayscale(0%);
-}
+}*/
 
 /* Footer Links */
 .footer-links {
@@ -281,6 +306,17 @@
 }
 .newsletter-status.success { color: #4CAF50; }
 .newsletter-status.error { color: #E53935; }
+
+.footer-column-right{
+    transform: translateX(50px);
+    font-size: 18px;
+}
+
+.footer-title-right{
+    padding-left: 35px; /* 👈 Подбирай: 20px, 40px, 60px... */
+    display: block;
+    padding-top: 10px;
+}
 
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {

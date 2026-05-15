@@ -224,6 +224,10 @@
     overflow: hidden;
 }
 
+.banner-wrapper {
+    padding: 0 40px !important; /* Для теста */
+}
+
 .banner-bg-image {
     position: absolute;
     top: 0;
