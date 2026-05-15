@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Organick</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/Header.css">
+    <link rel="stylesheet" href="../css/Homepage/HomepageBase.css">
+    <link rel="stylesheet" href="../css/Homepage/HomepageLayout.css">
+    <link rel="stylesheet" href="../css/Footer.css">
+    <link rel="stylesheet" href="../css/AboutUs/AboutUsBase.css">
+    <link rel="stylesheet" href="../css/Homepage/adaptiveHomepage.css">
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            
+            <div class="header-left">
+                <a href="#" class="logo">
+                   <img src="/pictures/HomepageImages/Logo.svg" alt="Logo picture">
+                    <span>Organick</span>
+                </a>
+
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="html/AboutUs.html">About</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Log in</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button class="search-btn" id="searchBtn">
+                        <img src="/pictures/HomepageImages/Search-Icon.svg" alt="Search icon">
+                    </button>
+                </div>
+
+                <div class="cart-btn" id="cartBtn">
+                    <div class="cart-icon">
+                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
+                    </div>
+                    <span id="cartCount">Cart(0)</span>
+                </div>
+
+                    <div class="header-controls">
+                        <button class="control-btn">li</button>
+                        <button class="control-btn">en</button>
+                        <button class="control-btn">A+</button>
+                    </div>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    
+    <!-- ========== ABOUT US HERO SECTION ========== -->
+    <section class="about-hero">
+        <!-- Фоновое изображение с овощами/фруктами -->
+        <div class="about-hero-bg">
+            <img src="/pictures/AboutUsImages/AboutUsBackground.jpg" alt="About Us Background" class="about-bg-image">
+        </div>
+        
+        <!-- Затемнение фона (опционально) -->
+        <div class="about-hero-overlay"></div>
+        
+        <!-- Контент -->
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">About Us</h1>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="footer-newsletter">
+            <div class="newsletter-container">
+                <h3 class="newsletter-title">Subscribe to<br>our Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" class="newsletter-input">
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+            <img src="/pictures/HomepageImages/ContactFooter.jpg" alt="Newsletter Background" class="newsletter-bg-image">
+        </div>
+
+        <div class="footer-main">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-column footer-column-left">
+                        <h4 class="footer-column-title">Contact Us</h4>
+                        <ul class="footer-contact-list">
+                            <li class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">needhelp@Organick.com</span>
+                            </li>
+                            <li class="contact-item">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">666 888 888</span>
+                            </li>
+                            <li class="contact-item">
+                                <span class="contact-label">Address</span>
+                                <span class="contact-value">88 road, brooklyn street, USA</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column footer-column-center">
+                        <div class="footer-logo-wrapper">
+                            <a href="index.html" class="logo">
+                                <img src="/pictures/HomepageImages/Logo.svg" alt="Logo">
+                                <span>Organick</span>
+                            </a>
+                        </div>
+                        <p class="footer-description">
+                            Simply dummy text of the printing and typesetting industry.<br>
+                            Lorem Ipsum simply dummy text of the printing.
+                        </p>
+                    </div>
+
+                    <div class="footer-column footer-column-right">
+                        <h4 class="footer-column-title">Utility Pages</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">404 Not Found</a></li>
+                            <li><a href="AboutUs.html" class="footer-link">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p class="footer-copyright">© 2024 Organick. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
