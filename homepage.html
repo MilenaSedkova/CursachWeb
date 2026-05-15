@@ -12,6 +12,7 @@
     <!-- CSS: СНАЧАЛА базовые стили, ПОТОМ позиционирование -->
     <link rel="stylesheet" href="css/HomepageBase.css">
     <link rel="stylesheet" href="css/HomepageLayout.css">
+    <link rel="stylesheet" href="css/Footer.css">
 </head>
 <body>
 
@@ -292,6 +293,82 @@
         </div>
     </div>
 </section>
+
+<!-- ========== FOOTER SECTION ========== -->
+<footer class="footer">
+    <!-- Newsletter Banner -->
+<div class="footer-newsletter">
+    <!-- Контент (текст и форма) -->
+    <div class="newsletter-container">
+        <h3 class="newsletter-title">
+            Subscribe to<br>
+            our Newsletter
+        </h3>
+
+            <!-- 👇 БЛОК ДЛЯ СТАТУСА (ошибка/успех) 👇 -->
+            <div id="newsletterStatus" class="newsletter-status"></div>
+
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your Email Address" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+    </div>
+
+    <img src="pictures/HomepageImages/ContactFooter.jpg" alt="Newsletter Background" class="newsletter-bg-image">
+</div>
+
+    <!-- Footer Main Content -->
+<div class="footer-main">
+    <div class="footer-container">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Contact Us -->
+            <div class="footer-column footer-column-left">
+                <h4 class="footer-column-title">Contact Us</h4>
+                <ul class="footer-contact-list">
+                    <li class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">needhelp@Organick.com</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">666 888 888</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">88 road, brooklyn street, USA</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Organick (Logo + Description) -->
+            <div class="footer-column footer-column-center">
+                <div class="footer-logo-wrapper">
+                    <img src="pictures/HomepageImages/logo.svg" alt="Organick" class="footer-logo-image">
+                    <span class="footer-logo-text">Organick</span>
+                </div>
+                <p class="footer-description">
+                    Simply dummy text of the printing and typesetting industry.<br>
+                    Lorem Ipsum simply dummy text of the printing.
+                </p>
+        
+            </div>
+
+            <!-- Column 3: Utility Pages -->
+            <div class="footer-column footer-column-right">
+                <h4 class="footer-column-title">Utility Pages</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">404 Not Found</a></li>
+                    <li><a href="#" class="footer-link">About Us</a></li>
+                    <li><a href="#" class="footer-link">Shop</a></li>
+                    <li><a href="#" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</footer>
 
     <!-- JavaScript для функционала -->
     <script src="js/app.js"></script>

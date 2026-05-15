@@ -367,3 +367,64 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTestimonials();
     loadTestiStats();
 });
+
+// ========== NEWSLETTER FORM HANDLER ==========
+document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+    e.preventDefault(); // Отменяем стандартную отправку формы
+    
+    const emailInput = this.querySelector('input[name="email"]');
+    const email = emailInput.value.trim();
+    const btn = this.querySelector('.newsletter-btn');
+    const status = document.getElementById('newsletterStatus');
+
+    // Простая валидация
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showStatus('Please enter a valid email address.', 'error');
+        return;
+    }
+
+    // Состояние загрузки
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+
+    try {
+        // 🔹 ВАРИАНТ 1: Отправка на json-server (для демо)
+        await fetch('http://localhost:3000/subscribers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                email: email, 
+                subscribedAt: new Date().toISOString() 
+            })
+        });
+
+        // 🔹 ВАРИАНТ 2: Раскомментируй для реальной отправки (см. ниже)
+        // await sendToRealService(email);
+
+        // Успех
+        showStatus('✅ Thanks! You\'re successfully subscribed.', 'success');
+        emailInput.value = ''; // Очистить поле
+        
+    } catch (error) {
+        showStatus('❌ Something went wrong. Please try again.', 'error');
+        console.error('Newsletter error:', error);
+    } finally {
+        // Вернуть кнопку в исходное состояние
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+    }
+});
+
+// Вспомогательная функция для показа статуса
+function showStatus(message, type) {
+    const status = document.getElementById('newsletterStatus');
+    status.textContent = message;
+    status.className = `newsletter-status ${type}`;
+    
+    // Автоматически скрыть через 4 секунды
+    setTimeout(() => {
+        status.textContent = '';
+        status.className = 'newsletter-status';
+    }, 4000);
+}
