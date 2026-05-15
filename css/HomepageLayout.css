@@ -148,8 +148,8 @@
 
 /* --- Search & Cart Layout --- */
 .search-bar {
-    width: 376px;
-    height: 66px;
+    width: 356px;
+    height: 166px;
     border-radius: 36px;
     background-color: #FAFAFA;
     display: flex;
@@ -181,7 +181,89 @@
     cursor: pointer;
     transition: background 0.3s;
     margin-left: auto;
-    padding: 8px 24px 8px 8px;
+    padding: 8px 4px 8px 8px;
+}
+
+/* Header Right - выровнять всё в линию */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Расстояние между элементами */
+    margin-right: auto;
+    margin-left: 30px;
+}
+
+/* Search Bar - уменьшить и подвинуть левее */
+.search-bar {
+    width: 376px;
+    height: 66px;
+    border-radius: 36px;
+    background-color: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-right: auto;
+}
+
+
+
+/* Language/Size Buttons - НОВЫЕ СТИЛИ */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #8FB996; /* Зелёный как на макете */
+    border: none;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background-color: #669C61;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .header-right {
+        gap: 15px;
+    }
+    
+    .search-bar {
+        width: 200px;
+    }
+    
+    .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        display: none; /* Скрыть поиск на мобильных */
+    }
+    
+    .control-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+    }
 }
 
 .search-btn:hover {
@@ -224,9 +306,9 @@
     overflow: hidden;
 }
 
-.banner-wrapper {
-    padding: 0 40px !important; /* Для теста */
-}
+/*.banner-wrapper {
+    padding: 0 40px !important; /* Для теста 
+}*/
 
 .banner-bg-image {
     position: absolute;

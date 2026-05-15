@@ -5,12 +5,12 @@
 /* ========== TABLET (768px) ========== */
 @media (max-width: 768px) {
     
-    /* --- Header --- */
+    /* --- Header --- 
     .header {
         width: 100%;
         height: auto;
-        padding: 20px;
-    }
+        padding: 0px;
+    }*/
     
     .container {
         flex-direction: column;
