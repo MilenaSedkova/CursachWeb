@@ -267,7 +267,7 @@
    ============================================ */
 
 .offer-vegetables-section {
-    padding: 265px 0 20px 0;
+    padding: 265px 0 0px 0;
     background-color: #2C4A5C; /* Тёмно-синий фон как на макете */
 }
 
@@ -394,9 +394,14 @@
     margin: 0;
 }
 
-.pos-about-subtitle{
-
+.footer-description,
+.contact-value,
+.contact-label{
+    transform: translateY(12px);
 }
+
+
+
 /* Адаптивность */
 @media (max-width: 1024px) {
     .offer-vegetables-grid {

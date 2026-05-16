@@ -154,17 +154,17 @@
 .footer-column-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Выравнивание вправо */
+    align-items: flex-end; 
     text-align: right;
     transform: translateX(-95px);
 }
 
 .contact-item {
     display: flex;
-    flex-direction: column; /* 👈 МЕНЯЕМ: значение слева, метка справа */
-    justify-content: flex-end; /* Выравнивание вправо */
-    gap: 12px; /* Расстояние между значением и меткой */
-    margin-bottom: 42px; /* Отступ между элементами */
+    flex-direction: column; 
+    justify-content: flex-end; 
+    gap: 12px; 
+    margin-bottom: 42px; 
     width: 100%;
 }
 
@@ -211,38 +211,6 @@
     max-width: 750px;
 }
 
-/* Social Links 
-.footer-social {
-    display: flex;
-    gap: 12px;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #F1F8F4;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background-color: #669C61;
-    transform: translateY(-3px);
-}
-
-.social-icon {
-    width: 18px;
-    height: 18px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.social-link:hover .social-icon {
-    filter: grayscale(0%);
-}*/
 
 /* Footer Links */
 .footer-links {
@@ -313,9 +281,10 @@
 }
 
 .footer-title-right{
-    padding-left: 35px; /* 👈 Подбирай: 20px, 40px, 60px... */
+    padding-left: 35px; 
     display: block;
     padding-top: 10px;
+    font-size: 18px;
 }
 
 /* --- Responsive Design --- */
