@@ -179,3 +179,174 @@ padding-bottom: 220px;
         font-size: 28px;
     }
 }
+
+
+/* ============================================
+   WHY CHOOSE US SECTION
+   ============================================ */
+
+.about-choice-section {
+    padding: 125px 0 80px;
+    background-color: #F9F8F8; /* Светло-серый фон всей секции */
+}
+
+.about-choice-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ВЕРХНЯЯ ЧАСТЬ (Grid: Текст + Картинка) --- */
+.choice-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    gap: 60px;
+    align-items: start; /* Выравнивание по верху */
+    margin-bottom: 80px; /* Отступ до нижних карточек */
+}
+
+.choice-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Переопределяем цвета заголовков для этой секции */
+.choice-subtitle {
+    color: #669C61; /* Зеленый */
+    margin-bottom: 5px;
+}
+
+.choice-title {
+    color: #1F263E; /* Темно-синий */
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.choice-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #5A6670;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* --- ОВАЛЫ (Серые блоки) --- */
+.choice-oval-item {
+    background-color: #F1F5F4; /* Светло-серый/зеленоватый фон овала */
+    border-radius: 36px; /* Сильное скругление (овал) */
+    padding: 20px 30px;
+    margin-bottom: 15px;
+}
+
+.oval-header h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F263E;
+    margin: 0 0 8px 0;
+}
+
+.oval-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5A6670;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- КАРТИНКА СПРАВА --- */
+.choice-big-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px; /* Скругленные углы картинки */
+    display: block;
+    object-fit: cover;
+    /* Опционально: тень для объема */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+}
+
+/* --- НИЖНЯЯ ЧАСТЬ (Сетка 4-х карточек) --- */
+.choice-cards-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    gap: 30px;
+}
+
+.choice-card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Легкая тень */
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choice-card:hover {
+    transform: translateY(-5px); /* Эффект при наведении */
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #F1F5F4; /* Фон под иконкой */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1F263E;
+    margin: 0 0 12px 0;
+}
+
+.card-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5A6670;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 1024px) {
+    .choice-top-row {
+        grid-template-columns: 1fr; /* Одна колонка на планшете */
+        text-align: center;
+    }
+    
+    .choice-left-col {
+        order: 2; /* Текст под картинкой */
+        align-items: center;
+    }
+    
+    .choice-right-col {
+        order: 1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .choice-cards-row {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки карточек */
+    }
+}
+
+@media (max-width: 600px) {
+    .choice-cards-row {
+        grid-template-columns: 1fr; /* 1 колонка на мобильном */
+    }
+}
