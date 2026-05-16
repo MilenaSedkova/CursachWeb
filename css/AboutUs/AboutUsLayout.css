@@ -1,0 +1,56 @@
+.about-container {
+    gap: 30px !important; /* 👈 Было 180px или больше, делаем 30px */
+    padding-top: 100px;
+}
+
+/* 2. Убираем отступ справа у картинки (тот самый 250px с твоего скрина) */
+.about-image-col {
+    margin-right: 0 !important; /* 👈 Обнуляем отступ */
+    padding-right: 0 !important;
+    max-width: 500px; /* 👈 Ограничиваем ширину картинки */
+}
+
+/* 3. Сбрасываем сдвиги (transform), если на главной они есть */
+.about-image-col, 
+.about-content-col {
+    transform: none !important; /* 👈 Убирает сдвиги типа translateX */
+    margin-left: 0 !important;
+}
+
+/* 4. Прижимаем текст к картинке */
+.about-content-col {
+    padding-left: 20px; /* 👈 Небольшой отступ для красоты */
+    text-align: left;   /* 👈 Выравнивание текста влево */
+}
+
+.pos-about-subtitle{
+    margin-left: 50px;
+    padding-top: 140px;
+}
+
+.desktop-break {
+    display: inline;
+}
+
+.pos-about-title{
+    margin-left: 50px;
+}
+
+.about-description {
+    max-width: 680px !important; /* 👈 Подбери ширину (450px, 500px, 550px) */
+    width: 100%;
+    margin-left: 50px;
+}
+
+/* Скрываем на планшетах и мобильных */
+@media (max-width: 1024px) {
+    .desktop-break {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-break {
+        display: none !important;
+    }
+}

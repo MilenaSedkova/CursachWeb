@@ -2,6 +2,13 @@
    ABOUT US PAGE STYLES
    ============================================ */
 
+
+.about-section{
+padding-top: 20px !important; /* 👈 Было 100px или 250px, ставим 20px */
+padding-bottom: 220px;
+ margin-top: 0 !important;
+ }
+
 /* --- Hero Section --- */
 .about-hero {
     position: relative;
@@ -57,6 +64,67 @@
     margin: 0;
     letter-spacing: -1px;
     line-height: 1.2;
+}
+
+.ab-section-pro{
+    padding-top: 150px;
+    background: #FFF;
+}
+
+.ab-img-pro{
+    margin-right: 250px;
+    margin-bottom: 180px;
+}
+.about-image-col {
+    max-width: 700px !important; /* 👈 Увеличь это число (было меньше) */
+    width: 100% !important;
+    margin-right: 0px !important;  /* Убираем лишние отступы */
+}
+
+.about-main-img {
+    width: 100% !important;      /* Картинка займет всю доступную ширину */
+    height: auto !important;     /* Высота подстроится автоматически */
+    max-height: none !important; /* Снимаем ограничение по высоте, если оно было */
+    object-fit: contain;         /* Чтобы картинка не искажалась */
+}
+
+.about-container {
+    padding-left: 100px !important; /* Уменьши или поставь 0 */
+    justify-content: flex-start !important; /* Для flex-родителя */
+}
+
+
+/* ============================================
+   ИСПРАВЛЕНИЕ ШИРИНЫ HERO-СЕКЦИИ (About Us)
+   ============================================ */
+
+.about-hero {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: hidden; /* Убирает горизонтальный скролл, если картинка чуть вылезает */
+}
+
+/* Если внутри есть контейнер, ограничивающий ширину */
+.about-hero .container,
+.about-hero .about-hero-content,
+.about-hero .about-hero-bg {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Заставляем фоновую картинку тянуться на всю ширину */
+.about-bg-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block;
 }
 
 /* --- Responsive Design --- */
