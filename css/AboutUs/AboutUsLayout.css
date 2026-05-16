@@ -25,7 +25,6 @@
 
 .pos-about-subtitle{
     margin-left: 50px;
-    padding-top: 140px;
 }
 
 .desktop-break {
@@ -40,6 +39,32 @@
     max-width: 680px !important; /* 👈 Подбери ширину (450px, 500px, 550px) */
     width: 100%;
     margin-left: 50px;
+}
+
+.title-ab-pro{
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    max-width: 230px;
+    transform: translateY(10px);
+}
+
+.about-features-row-setings{
+    margin-left: 140px;
+}
+
+.about-content-col{
+    margin-top:0px;
+}
+
+/* Опускаем только иконку */
+.about-feature-item img {
+    margin-top: 12px; /* 👈 Подбери значение: 5px, 10px, 15px... */
+}
+
+.btn-shop-settings {
+    transform: translateY(70px);
+    position: relative; /* Нужно для корректной работы transform */
+    margin-left: 140px;
 }
 
 /* Скрываем на планшетах и мобильных */

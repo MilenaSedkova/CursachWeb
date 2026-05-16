@@ -7,6 +7,7 @@
 padding-top: 20px !important; /* 👈 Было 100px или 250px, ставим 20px */
 padding-bottom: 220px;
  margin-top: 0 !important;
+ background-color:#FFF;
  }
 
 /* --- Hero Section --- */
@@ -76,9 +77,10 @@ padding-bottom: 220px;
     margin-bottom: 180px;
 }
 .about-image-col {
-    max-width: 700px !important; /* 👈 Увеличь это число (было меньше) */
+    max-width: 700px !important;
     width: 100% !important;
     margin-right: 0px !important;  /* Убираем лишние отступы */
+    margin-top: 40px;
 }
 
 .about-main-img {
@@ -91,6 +93,25 @@ padding-bottom: 220px;
 .about-container {
     padding-left: 100px !important; /* Уменьши или поставь 0 */
     justify-content: flex-start !important; /* Для flex-родителя */
+}
+
+/* Контейнер с фичами */
+.about-features-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 65px; /* 👈 Теперь это сработает! */
+    width: auto; /* 👈 Не растягивать на всю ширину */
+    justify-content: flex-start; /* 👈 Прижать к левому краю */
+}
+
+/* Каждый блок "иконка + текст" */
+.about-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto !important; /* 👈 ЗАМЕНИ flex: 1 1 250px на это */
+    width: auto; /* 👈 Не растягиваться */
 }
 
 
@@ -126,6 +147,7 @@ padding-bottom: 220px;
     object-position: center !important;
     display: block;
 }
+
 
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
