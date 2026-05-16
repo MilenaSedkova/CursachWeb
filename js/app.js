@@ -50,7 +50,9 @@ async function loadProducts(searchTerm = '') {
         const products = await response.json();
         allProducts = products;
         
-        productsGrid.innerHTML = products.map(createProductCard).join('');
+        if (productsGrid) {
+            productsGrid.innerHTML = products.map(createProductCard).join('');
+        }
         
         // Добавляем обработчики на кнопки "Добавить в корзину"
         document.querySelectorAll('.prod-card').forEach(card => {
@@ -147,10 +149,12 @@ cartBtn.addEventListener('click', () => {
     }
 });
 
-loadMoreBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('Загрузка дополнительных товаров...');
-});
+if (loadMoreBtn) {  // 👈 Добавь проверку!
+    loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Загрузка дополнительных товаров...');
+    });
+}
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
@@ -160,8 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Создание карточки для Offer секции (ИДЕНТИЧНАЯ структура)
 function createOfferVegetableCard(vegetable) {
+    // 1. Если цены НЕТ (товары 5-8) -> рисуем простую карточку для секции "What We Offer"
+    if (!vegetable.price) {
+        return `
+            <div class="offer-card-simple">
+                <div class="offer-img-box">
+                    <img src="${vegetable.image}" alt="${vegetable.name}">
+                </div>
+                <h3 class="offer-card-name">${vegetable.name}</h3>
+                <p class="offer-card-cat">${vegetable.category}</p>
+            </div>
+        `;
+    }
+
+    // 2. Если цена ЕСТЬ (товары 1-4) -> рисуем полную карточку с ценой
     return `
         <div class="prod-card" data-id="${vegetable.id}">
             <span class="prod-tag">${vegetable.category}</span>
@@ -181,6 +198,7 @@ function createOfferVegetableCard(vegetable) {
         </div>
     `;
 }
+// Загрузка из JSON файла
 
 // Загрузка овощей из Offer секции
 async function loadOfferVegetables() {
@@ -204,6 +222,32 @@ async function loadOfferVegetables() {
         
     } catch (error) {
         console.error('Ошибка загрузки овощей:', error);
+    }
+}
+
+// Загрузка offerProducts (БЕЗ цен) - для секции "What We Offer for You"
+async function loadOfferProducts() {
+    try {
+        const response = await fetch(`${API_URL}/offerProducts`);
+        const products = await response.json();
+        
+        const grid = document.getElementById('offerProductsGrid'); // 👈 НОВЫЙ ID в HTML
+        if (grid) {
+           grid.innerHTML = products.map(product => `
+    <div class="offer-wrapper">
+        <div class="offer-card-simple">
+            <div class="offer-img-box">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+        </div>
+        <h3 class="offer-card-name">${product.name}</h3>
+        <p class="offer-card-cat">${product.category}</p>
+    </div>
+`).join('');
+        }
+        
+    } catch (error) {
+        console.error('Ошибка загрузки товаров:', error);
     }
 }
 
@@ -238,8 +282,9 @@ async function addToCartFromOffer(productId) {
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
-    loadProducts();
-    loadOfferVegetables(); // Загружаем Offer секцию
+    loadProducts();              // Основные товары
+    loadOfferVegetables();       // Товары С ценами (в другой секции)
+    loadOfferProducts();         // Товары БЕЗ цен (What We Offer)
     loadCartFromServer();
 });
 
@@ -403,11 +448,11 @@ document.getElementById('newsletterForm').addEventListener('submit', async funct
         // await sendToRealService(email);
 
         // Успех
-        showStatus('✅ Thanks! You\'re successfully subscribed.', 'success');
+        showStatus('Thanks! You\'re successfully subscribed.', 'success');
         emailInput.value = ''; // Очистить поле
         
     } catch (error) {
-        showStatus('❌ Something went wrong. Please try again.', 'error');
+        showStatus('Something went wrong. Please try again.', 'error');
         console.error('Newsletter error:', error);
     } finally {
         // Вернуть кнопку в исходное состояние

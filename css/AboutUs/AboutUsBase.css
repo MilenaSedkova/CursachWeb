@@ -262,6 +262,169 @@
     margin: 0;
 }
 
+/* ============================================
+   OFFER VEGETABLES SECTION
+   ============================================ */
+
+.offer-vegetables-section {
+    padding: 265px 0 20px 0;
+    background-color: #2C4A5C; /* Тёмно-синий фон как на макете */
+}
+
+.offer-vegetables-container {
+    max-width: 1550px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Заголовок секции */
+.offer-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.offer-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    margin-left: 85px;
+}
+
+
+.pos-offer-heading {
+    color: #FFFFFF !important; /* Белый текст */
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Сетка товаров */
+.offer-vegetables-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+    padding-left: 70px;
+    padding-top: 125px;
+
+}
+
+/* Карточка товара (используем существующие классы) */
+.offer-card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Карточка товара - КВАДРАТНАЯ */
+.offer-card-simple {
+    background-color: #FFFFFF;
+    border-radius: 20px; /* Скругленные углы */
+    padding: 0; /* Убираем внутренние отступы */
+    text-align: center;
+    overflow: hidden; /* Чтобы картинка не вылезала */
+    aspect-ratio: auto; /* Делаем карточку квадратной */
+    height: 300px;
+    width: 100%;
+}
+
+/* Контейнер для картинки */
+.offer-img-box {
+        width: 90%;    /* Картинка занимает почти всю ширину карточки */
+    height: 90%;   /* Картинка занимает почти всю высоту */
+    padding: 0;
+}
+
+/* Картинка внутри карточки */
+.offer-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.offer-card-name {
+    display: none; /* Скрываем название товара */
+}
+
+/* Категория под карточкой */
+.offer-card-cat {
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #FFFFFF; /* Белый текст */
+    margin: 45px 0 0 0;
+    text-align: center;
+    display: block;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+}
+
+.offer-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.offer-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F263E;
+    margin: 0 0 8px 0;
+    display: block;
+    margin-left: 20px;
+}
+
+.offer-card-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5A6670;
+    margin: 0;
+}
+
+.pos-about-subtitle{
+
+}
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .offer-vegetables-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .offer-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .pos-offer-heading {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .offer-vegetables-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pos-offer-heading {
+        font-size: 28px;
+    }
+}
+
+
 /* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 1024px) {
     .choice-top-row {
