@@ -110,6 +110,188 @@
 
 
 
+
+
+/* ============================================
+   WHY CHOOSE US SECTION
+   ============================================ */
+
+.about-choice-section {
+    padding: 80px 0 240px 0;
+    background-color: #F9F8F8; /* Светло-серый фон всей секции */
+}
+
+.about-choice-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ВЕРХНЯЯ ЧАСТЬ (Grid: Текст + Картинка) --- */
+.choice-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    gap: 60px;
+    align-items: start; /* Выравнивание по верху */
+    margin-bottom: 80px; /* Отступ до нижних карточек */
+}
+
+.choice-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-left: 225px;
+    margin-top: 120px;
+}
+
+/* Переопределяем цвета заголовков для этой секции */
+.choice-subtitle {
+    color: #669C61; /* Зеленый */
+}
+
+.choice-title {
+    color: #1F263E; /* Темно-синий */
+    line-height: 1.2;
+    transform: translateY(-10px) translateX(-12px);
+}
+
+.choice-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #5A6670;
+    line-height: 1.6;
+    transform: translateY(-10px) translateX(-5px);
+}
+
+/* --- ОВАЛЫ (Серые блоки) --- */
+.choice-oval-item {
+    background-color: #ECECEC; /* Светло-серый/зеленоватый фон овала */
+    border-radius: 36px; /* Сильное скругление (овал) */
+    padding: 25px 30px;
+    margin-top: 4px;
+    max-width: 300px
+}
+
+.oval-header h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1F263E;
+    margin: 0 0 8px 0;
+}
+
+.oval-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5A6670;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- КАРТИНКА СПРАВА --- */
+.choice-big-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px; 
+    display: block;
+    object-fit: cover;
+    max-width: 680px;
+    margin-top: 90px;
+}
+
+/* --- НИЖНЯЯ ЧАСТЬ (Сетка 4-х карточек) --- */
+.choice-cards-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    
+    /* 👇 ДОБАВЬ ЭТИ СВОЙСТВА: */
+    max-width: 1100px; /* 👈 Ограничиваем общую ширину (подбери: 800px, 900px, 1000px) */
+    margin: 0 auto;   /* 👈 Центрируем контейнер */
+}
+
+.choice-card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 335px;
+}
+
+.choice-card:hover {
+    transform: translateY(-5px); /* Эффект при наведении */
+}
+
+.card-icon {
+    width: 95px;
+    height: 95px;
+    background-color: #F9F8F8;; /* Фон под иконкой */
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.card-icon img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1F263E;
+    transform: translateY(-12px) translateX(-2px);
+}
+
+.card-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #5A6670;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 1024px) {
+    .choice-top-row {
+        grid-template-columns: 1fr; /* Одна колонка на планшете */
+        text-align: center;
+    }
+    
+    .choice-left-col {
+        order: 2; /* Текст под картинкой */
+        align-items: center;
+    }
+    
+    .choice-right-col {
+        order: 1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .choice-cards-row {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки карточек */
+    }
+}
+
+@media (max-width: 600px) {
+    .choice-cards-row {
+        grid-template-columns: 1fr; /* 1 колонка на мобильном */
+    }
+}
+
+
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
     .about-hero {

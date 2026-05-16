@@ -109,6 +109,30 @@
       "oldPrice": 20.00,
       "image": "pictures/HomepageImages/Cabbage.png",
       "rating": 5
+    },
+    {
+        "id": 5,
+        "name": "Turmeric Powder",
+        "category": "Spicy",
+        "image": "/pictures/AboutUsImages/turmeric.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Mixed Seeds",
+        "category": "Nuts & Feeds",
+        "image": "/pictures/AboutUsImages/seeds.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Fresh Pomegranate",
+        "category": "Fruits",
+        "image": "/pictures/AboutUsImages/pomegranate.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Organic Ginger",
+        "category": "Vegetable",
+        "image": "/pictures/AboutUsImages/ginger.jpg"
     }
   ],
   "testimonials": [
