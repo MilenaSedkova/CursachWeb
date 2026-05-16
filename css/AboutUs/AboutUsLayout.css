@@ -1,26 +1,30 @@
+html, body {
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
 .about-container {
-    gap: 30px !important; /* 👈 Было 180px или больше, делаем 30px */
+    gap: 30px !important; 
     padding-top: 100px;
 }
 
-/* 2. Убираем отступ справа у картинки (тот самый 250px с твоего скрина) */
 .about-image-col {
-    margin-right: 0 !important; /* 👈 Обнуляем отступ */
+    margin-right: 0 !important; 
     padding-right: 0 !important;
-    max-width: 500px; /* 👈 Ограничиваем ширину картинки */
+    max-width: 500px; 
 }
 
-/* 3. Сбрасываем сдвиги (transform), если на главной они есть */
 .about-image-col, 
 .about-content-col {
-    transform: none !important; /* 👈 Убирает сдвиги типа translateX */
+    transform: none !important; 
     margin-left: 0 !important;
 }
 
-/* 4. Прижимаем текст к картинке */
 .about-content-col {
-    padding-left: 20px; /* 👈 Небольшой отступ для красоты */
-    text-align: left;   /* 👈 Выравнивание текста влево */
+    padding-left: 20px; 
+    text-align: left;
 }
 
 .pos-about-subtitle{
@@ -36,7 +40,7 @@
 }
 
 .about-description {
-    max-width: 680px !important; /* 👈 Подбери ширину (450px, 500px, 550px) */
+    max-width: 680px !important; 
     width: 100%;
     margin-left: 50px;
 }
@@ -56,18 +60,42 @@
     margin-top:0px;
 }
 
-/* Опускаем только иконку */
 .about-feature-item img {
-    margin-top: 12px; /* 👈 Подбери значение: 5px, 10px, 15px... */
+    margin-top: 12px; 
 }
 
 .btn-shop-settings {
     transform: translateY(70px);
-    position: relative; /* Нужно для корректной работы transform */
+    position: relative; 
     margin-left: 140px;
 }
 
-/* Скрываем на планшетах и мобильных */
+.about-hero,
+.about-section,
+.about-choice-section {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+.about-hero .container,
+.about-container,
+.about-choice-container,
+.footer-container {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;  
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+
 @media (max-width: 1024px) {
     .desktop-break {
         display: none !important;
