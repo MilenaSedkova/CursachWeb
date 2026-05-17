@@ -1,6 +1,5 @@
-/* ============================================
-   LAYOUT & POSITIONING
-   ============================================ */
+/*  LAYOUT & POSITIONING */
+
 
 /* --- Products Section Layout --- */
 .prod-section {
@@ -43,7 +42,6 @@
     transform: translateY(120px) translateX(35px);
 }
 
-/* --- Позиционирование заголовков Products --- */
 .pos-products-subtitle {
     transform: translateY(130px) translateX(35px);
 }
@@ -57,7 +55,6 @@
     margin-bottom: 60px;
 }
 
-/* --- About Section Layout --- */
 .about-section {
     margin-top: 135px;
     padding: 245px 0 40px 0;
@@ -236,34 +233,6 @@
 .control-btn:hover {
     background-color: #669C61;
     transform: translateY(-2px);
-}
-
-@media (max-width: 1024px) {
-    .header-right {
-        gap: 15px;
-    }
-    
-    .search-bar {
-        width: 200px;
-    }
-    
-    .control-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .search-bar {
-        display: none; /* Скрыть поиск на мобильных */
-    }
-    
-    .control-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 11px;
-    }
 }
 
 .search-btn:hover {
@@ -508,35 +477,7 @@
     transform: translateX(1px);
 }
 
-/* --- Адаптивность --- */
-@media (max-width: 1024px) {
-    .offer-vegetables-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .offer-heading {
-        font-size: 36px;
-    }
-}
 
-@media (max-width: 768px) {
-    .offer-header {
-        flex-direction: column;
-        gap: 24px;
-    }
-    
-    .offer-vegetables-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .offer-heading {
-        font-size: 32px;
-    }
-    
-    .offer-subtitle {
-        font-size: 28px;
-    }
-}
 
 
 /* ============================================

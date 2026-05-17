@@ -1,6 +1,4 @@
-/* ============================================
-   BASE STYLES (Reusable Components)
-   ============================================ */
+/* Base Style */
 
 * {
     margin: 0;
@@ -11,10 +9,9 @@
 body {
     background-color: #ffffff;
     color: #1F263E;
-    font-family: 'Inter', sans-serif; /* ← ЭТО ВАЖНО! */
+    font-family: 'Inter', sans-serif; 
 }
 
-/* --- Типографика --- */
 .subtitle {
     display: block;
     font-family: 'Yellowtail', cursive;
@@ -34,7 +31,6 @@ body {
     line-height: 1.2;
 }
 
-/* --- Кнопки --- */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -89,7 +85,6 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* --- Карточки товаров (базовые стили) --- */
 .prod-card {
     display: flex;
     flex-direction: column;
@@ -188,7 +183,6 @@ body {
     height: auto;
 }
 
-/* --- About Section (базовые стили) --- */
 .about-description {
     font-family: 'Inter', sans-serif;
     font-size: 18px;
@@ -234,9 +228,7 @@ body {
 }
 
 
-/* ============================================
-   OFFER SECTION - BASE STYLES
-   ============================================ */
+/* OFFER SECTION - BASE STYLES*/
 
 .offer-vegetables-section {
     padding: 300px 0 0px 0;
@@ -259,7 +251,6 @@ body {
     line-height: 1.2;
 }
 
-/* --- Кнопка View All --- */
 .btn-view-all {
     display: inline-flex;
     align-items: center;
@@ -288,7 +279,6 @@ body {
     height: auto;
 }
 
-/* --- Карточка овоща (базовые стили) --- */
 .offer-vegetable-card {
     background-color: #ffffff;
     border-radius: 20px;
