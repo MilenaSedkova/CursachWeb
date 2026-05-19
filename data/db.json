@@ -71,6 +71,38 @@
       "oldPrice": 20.00,
       "image": "pictures/HomepageImages/bread.png",
       "rating": 5
+    },
+    {
+      "id": 9,
+      "name": "Mung Bean",
+      "category": "Health",
+      "oldPrice": 20.00,
+      "price": 11.00,
+      "image": "/pictures/ShopImages/MungBeanBig.png"
+    },
+    {
+      "id": 10,
+      "name": "White Hazelnut",
+      "category": "Nuts",
+      "oldPrice": 20.00,
+      "price": 12.00,
+      "image": "/pictures/ShopImages/WhiteHuzelnut.png"
+    },
+    {
+      "id": 11,
+      "name": "Fresh Corn",
+      "category": "Fresh",
+      "oldPrice": 20.00,
+      "price": 17.00,
+      "image": "/pictures/ShopImages/FreshCorn.png"
+    },
+    {
+      "id": 12,
+      "name": "Organic Almonds",
+      "category": "Fresh",
+      "oldPrice": 20.00,
+      "price": 15.00,
+      "image": "/pictures/ShopImages/OrhanickAlmonds.png"
     }
   ],
   "offerVegetables": [

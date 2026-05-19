@@ -473,3 +473,189 @@ function showStatus(message, type) {
         status.className = 'newsletter-status';
     }, 4000);
 }
+
+
+// ============================================
+// SHOP API - Методы для работы с товарами
+// ============================================
+
+class ShopAPI {
+    constructor(dbPath) {
+        this.dbPath = dbPath;
+        this.products = [];
+        this.currentPage = 1;
+        this.itemsPerPage = 8;
+        this.sortAscending = true;
+    }
+
+    // Загрузка данных из JSON
+    async fetchProducts() {
+        try {
+            const response = await fetch(this.dbPath);
+            const data = await response.json();
+            this.products = data.products;
+            return this.products;
+        } catch (error) {
+            console.error('Ошибка загрузки товаров:', error);
+            return [];
+        }
+    }
+
+    // Сортировка товаров по цене
+    sortProducts() {
+        return [...this.products].sort((a, b) => {
+            return this.sortAscending ? a.price - b.price : b.price - a.price;
+        });
+    }
+
+    // Переключение порядка сортировки
+    toggleSortOrder() {
+        this.sortAscending = !this.sortAscending;
+        return this.sortAscending;
+    }
+
+    // Получение товаров для текущей страницы
+    getPaginatedProducts() {
+        const sorted = this.sortProducts();
+        const start = (this.currentPage - 1) * this.itemsPerPage;
+        const end = start + this.itemsPerPage;
+        return sorted.slice(start, end);
+    }
+
+    // Переход на следующую страницу
+    nextPage() {
+        const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+        if (this.currentPage < totalPages) {
+            this.currentPage++;
+            return true;
+        }
+        return false;
+    }
+
+    // Переход на предыдущую страницу
+    prevPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            return true;
+        }
+        return false;
+    }
+
+    // Проверка, есть ли следующая страница
+    hasNextPage() {
+        const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+        return this.currentPage < totalPages;
+    }
+
+    // Проверка, есть ли предыдущая страница
+    hasPrevPage() {
+        return this.currentPage > 1;
+    }
+
+    // Сброс на первую страницу
+    resetPage() {
+        this.currentPage = 1;
+    }
+}
+
+// ============================================
+// ОТРИСОВКА ТОВАРОВ
+// ============================================
+
+class ShopRenderer {
+    constructor(api, gridElement, prevBtn, nextBtn, sortBtn) {
+        this.api = api;
+        this.gridElement = gridElement;
+        this.prevBtn = prevBtn;
+        this.nextBtn = nextBtn;
+        this.sortBtn = sortBtn;
+    }
+
+    // Генерация HTML звезд рейтинга
+    getStarsHTML() {
+        return `<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>`;
+    }
+
+    // Создание HTML карточки товара
+    createCardHTML(product) {
+        return `
+            <div class="product-card">
+                <div class="card-top">
+                    <span class="card-tag">${product.category}</span>
+                    <div class="cart-icon-small">
+                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
+                    </div>
+                </div>
+                <div class="card-image-box">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">${product.name}</h3>
+                    <div class="card-price">
+                        <span class="price-old">$${product.oldPrice.toFixed(2)}</span>
+                        <span class="price-new">$${product.price.toFixed(2)}</span>
+                    </div>
+                    <div class="card-stars">${this.getStarsHTML()}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Отрисовка товаров на странице
+    render() {
+        const products = this.api.getPaginatedProducts();
+        this.gridElement.innerHTML = products.map(product => this.createCardHTML(product)).join('');
+        
+        // Обновление состояния кнопок
+        this.prevBtn.disabled = !this.api.hasPrevPage();
+        this.nextBtn.disabled = !this.api.hasNextPage();
+        
+        // Обновление текста кнопки сортировки
+        this.sortBtn.textContent = this.api.sortAscending 
+            ? "Sort by price (Low-High)" 
+            : "Sort by price (High-Low)";
+    }
+}
+
+// ============================================
+// ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ
+// ============================================
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Элементы DOM
+    const gridElement = document.getElementById('productsGrid');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const sortBtn = document.getElementById('sortBtn');
+
+    // Создание экземпляра API
+    const shopAPI = new ShopAPI('/data/db.json'); // Путь к твоему db.json
+    
+    // Загрузка товаров
+    await shopAPI.fetchProducts();
+
+    // Создание рендерера
+    const renderer = new ShopRenderer(shopAPI, gridElement, prevBtn, nextBtn, sortBtn);
+
+    // Первая отрисовка
+    renderer.render();
+
+    // Обработчики событий
+    prevBtn.addEventListener('click', () => {
+        if (shopAPI.prevPage()) {
+            renderer.render();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (shopAPI.nextPage()) {
+            renderer.render();
+        }
+    });
+
+    sortBtn.addEventListener('click', () => {
+        shopAPI.toggleSortOrder();
+        shopAPI.resetPage(); // Сброс на первую страницу при сортировке
+        renderer.render();
+    });
+});

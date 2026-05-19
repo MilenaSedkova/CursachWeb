@@ -61,14 +61,41 @@
         </div>
     </header>
 
-<section class="hero">
-    <div class="hero-inner">
-        <img src="/pictures/ShopImages/ShopBackgroundImage.png" alt="Shop" class="hero-image">
-        <h1 class="hero-title">Shop</h1>
+    <section class="hero">
+        <div class="hero-inner">
+            <img src="/pictures/ShopImages/ShopBackgroundImage.png" alt="Shop" class="hero-image">
+            <h1 class="hero-title">Shop</h1>
+        </div>
+    </section>
+
+    <section class="shop-products-section">
+        <div class="prod-container">
+        
+        <!-- Заголовки (тут используем твои классы для единообразия) -->
+        <div class="prod-header pos-center">
+            <span class="subtitle pos-products-subtitle">Categories</span>
+            <h2 class="section-title pos-products-title">Our Products</h2>
+        </div>
+
+        <!-- Сетка товаров (сюда JS добавит карточки) -->
+        <div class="prod-grid" id="productsGrid">
+            <!-- Товары загрузятся через JS -->
+        </div>
+
+        <!-- Управление: Стрелки + Сортировка -->
+        <div class="shop-controls">
+            <!-- Пагинация -->
+            <div class="pagination-wrapper">
+                <button id="prevBtn" class="arrow-btn" disabled>&lt;</button>
+                <button id="nextBtn" class="arrow-btn">&gt;</button>
+            </div>
+            
+            <!-- Кнопка сортировки -->
+            <button id="sortBtn" class="sort-btn">Sort by price</button>
+        </div>
+
     </div>
 </section>
-
-
 
     <!-- Здесь будут товары (можно добавить позже) -->
     <section class="shop-products">
