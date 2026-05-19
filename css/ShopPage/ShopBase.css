@@ -1,0 +1,64 @@
+/* Убираем ВСЕ отступы у body и html */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Секция на ВЕСЬ экран */
+/* ============================================
+   HERO SECTION (Только для баннера)
+   ============================================ */
+
+.hero {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 450px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.hero-image {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+}
+
+.hero-title {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    z-index: 10;
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #2C4A5C;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Адаптив для баннера */
+@media (max-width: 768px) {
+    .hero { height: 350px; }
+    .hero-title { font-size: 36px; }
+}

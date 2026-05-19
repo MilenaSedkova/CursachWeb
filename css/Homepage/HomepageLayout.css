@@ -1,5 +1,6 @@
-/*  LAYOUT & POSITIONING */
-
+/* ============================================
+   LAYOUT & POSITIONING
+   ============================================ */
 
 /* --- Products Section Layout --- */
 .prod-section {
@@ -85,11 +86,10 @@
 }
 
 /* --- Header Layout --- */
+
 .header {
-    width: 1920px;
-    height: 204px;
-    margin: 0 auto;
-    padding: 0 120px;
+    width: 100%;
+    max-width: 1920px;
 }
 
 .container {
