@@ -17,18 +17,27 @@ function generateStars(rating) {
 }
 
 // Создание карточки товара (ТОЧНО ТАКАЯ ЖЕ СТРУКТУРА как в вашем HTML)
-function createProductCard(product) {
+function createProductCard(product, showCart = false) {
+    const extraClass = product.customClass ? ` ${product.customClass}` : '';
+
+    // 🔑 Условная отрисовка кнопки корзины
+    const cartHTML = showCart ? `
+        <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}">
+            <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
+        </button>` : '';
+
     return `
-        <div class="prod-card" data-id="${product.id}">
+        <div class="prod-card${extraClass}" data-id="${product.id}">
             <span class="prod-tag">${product.category}</span>
+            ${cartHTML}
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${product.name}">
             </div>
             <div class="prod-info">
                 <h3 class="prod-name">${product.name}</h3>
                 <div class="prod-price-row">
-                    <span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>
-                    <span class="prod-price-new">$${product.price.toFixed(2)}</span>
+                    <span class="prod-price-old">$${product.oldPrice?.toFixed(2)}</span>
+                    <span class="prod-price-new">$${product.price?.toFixed(2)}</span>
                     <div class="prod-stars">
                         ${generateStars(product.rating)}
                     </div>
@@ -572,9 +581,7 @@ class ShopRenderer {
     }
 
     // Генерация HTML звезд рейтинга
-    getStarsHTML() {
-        return `<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>`;
-    }
+  
 
     // Создание HTML карточки товара
     createCardHTML(product) {
@@ -617,9 +624,7 @@ class ShopRenderer {
     }
 }
 
-// ============================================
 // ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ
-// ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Элементы DOM

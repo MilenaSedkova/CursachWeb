@@ -1,33 +1,26 @@
 .arrow-btn {
-    /* Размеры как в макете */
     width: 57px;
     height: 57px;
     
-    /* Фон */
-    background-color: #274C5B; /* Тёмно-синий */
+    background-color: #274C5B; 
     
-    /* Скругление углов */
     border-radius: 16px;
     
-    /* Убираем стандартные стили кнопки */
     border: none;
     cursor: pointer;
     padding: 0;
     
-    /* Центрируем стрелку */
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* Анимация */
     transition: all 0.3s ease;
 }
 
-/* Стрелки внутри кнопок */
 .arrow-btn svg {
     width: 24px;
     height: 24px;
-    stroke: #ffffff; /* Белые стрелки */
+    stroke: #ffffff; 
     stroke-width: 2;
     fill: none;
     stroke-linecap: round;
@@ -35,19 +28,15 @@
     font-size: 32px;
 }
 
-/* Состояние при наведении 
-.arrow-btn:hover:not(:disabled) {
-    background-color: #2C4A5C; /* Чуть светлее 
-    transform: translateY(-2px);
-}*/
+
 
 .pagination-wrapper{
     display: flex;
-    flex-direction: row;        /* 🔑 Горизонтальное расположение (в ряд) */
-    justify-content: center;    /* 🔑 Центрирование по горизонтали */
-    align-items: center;        /*  Центрирование по вертикали */
-    gap: 12px;                  /* Расстояние между кнопками */
-    width: 100%;                /* Занимает всю ширину родителя */
+    flex-direction: row;      
+    justify-content: center;   
+    align-items: center;        
+    gap: 12px;                 
+    width: 100%;             
     padding-top: 55px;
     padding-left: 70px;
 

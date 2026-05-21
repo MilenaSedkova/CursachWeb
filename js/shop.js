@@ -2,60 +2,82 @@ document.addEventListener('DOMContentLoaded', async () => {
     const gridElement = document.getElementById('productsGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const sortBtn = document.getElementById('sortPriceBtn'); // Твоя новая кнопка
+    const sortBtn = document.getElementById('sortPriceBtn');
+    const resetBtn = document.getElementById('resetSortBtn');
     
-    const response = await fetch('/data/db.json');
-    const data = await response.json();
-    const allProducts = data.products;
-    
-    let currentPage = 1;
     const itemsPerPage = 12;
-    let sortDirection = 'asc'; // 'asc' или 'desc'
+    let currentPage = 1;
+    let sortDirection = 'asc';
+    
+    let originalProducts = [];
+    let currentProducts = [];
+    
+    try {
+        const response = await fetch('/data/db.json');
+        const data = await response.json();
+        originalProducts = data.products;
+        currentProducts = [...originalProducts];
+    } catch (error) {
+        console.error('Ошибка загрузки:', error);
+        return;
+    }
     
     function renderPage() {
-        // 1. Сортируем массив перед отрисовкой
-        let sortedProducts = [...allProducts].sort((a, b) => {
-            return sortDirection === 'asc' ? a.price - b.price : b.price - a.price;
-        });
-        
-        // 2. Пагинация
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        const productsToShow = sortedProducts.slice(start, end);
+        const productsToShow = currentProducts.slice(start, end);
         
-        // 3. Рендер карточек
-        gridElement.innerHTML = productsToShow.map(product => createProductCard(product)).join('');
+gridElement.innerHTML = productsToShow.map(product => createProductCard(product, true)).join('');
         
-        // 4. Состояние кнопок пагинации
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = end >= sortedProducts.length;
+        if (prevBtn) prevBtn.disabled = currentPage === 1;
+        if (nextBtn) nextBtn.disabled = end >= currentProducts.length;
         
-        // 5. Обновляем текст кнопки сортировки
+        // Обновляем стрелку
         if (sortBtn) {
-            const textSpan = sortBtn.querySelector('.btn-text-offset');
-            textSpan.textContent = sortDirection === 'asc' ? 'Sort by price ↑' : 'Sort by price ↓';
+            const arrow = sortBtn.querySelector('.sort-arrow');
+            if (arrow) {
+                arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
+            }
         }
     }
     
-    // Обработчик сортировки
+    // Сортировка
     if (sortBtn) {
-        sortBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Чтобы ссылка не прыгала вверх
+        sortBtn.addEventListener('click', () => {
             sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-            currentPage = 1; // Сброс на первую страницу при смене сортировки
+            
+            currentProducts.sort((a, b) => {
+                return sortDirection === 'asc' ? a.price - b.price : b.price - a.price;
+            });
+            
+            currentPage = 1;
             renderPage();
         });
     }
     
-    // Обработчики пагинации
-    prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) { currentPage--; renderPage(); }
-    });
+    // Сброс
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            currentProducts = [...originalProducts];
+            sortDirection = 'asc'; 
+            currentPage = 1;
+            renderPage();
+        });
+    }
     
-    nextBtn.addEventListener('click', () => {
-        currentPage++; renderPage();
-    });
+    // Пагинация
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) { currentPage--; renderPage(); }
+        });
+    }
     
-    // Первичная отрисовка
-    renderPage();
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentPage++;
+            renderPage();
+        });
+    }
+    
+    renderPage(); 
 });

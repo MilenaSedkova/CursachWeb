@@ -1,4 +1,3 @@
-/* Убираем ВСЕ отступы у body и html */
 html, body {
     margin: 0 !important;
     padding: 0 !important;
@@ -6,10 +5,6 @@ html, body {
     overflow-x: hidden !important;
 }
 
-/* Секция на ВЕСЬ экран */
-/* ============================================
-   HERO SECTION (Только для баннера)
-   ============================================ */
 
 .hero {
     position: relative;
@@ -63,12 +58,12 @@ html, body {
 }
 
 .prod-grid .prod-card:nth-child(-n+4) {
-    margin-bottom: 20px; /* 👈 Увеличь/уменьши это значение */
+    margin-bottom: 20px; 
 }
 
 
 .prod-grid .prod-card:nth-child(n+9):nth-child(-n+12) {
-    margin-top: 60px; /* 👈 Меняй это число, чтобы опустить строку выше/ниже */
+    margin-top: 60px;
 }
 
 .btn-shop-settings{
@@ -77,17 +72,71 @@ html, body {
 }
 
 .btn-primary:hover .btn-arrow {
-    transform: translateX(4px); /* Стрелка сдвигается вправо при наведении */
+    transform: translateX(4px); 
 }
 
 .shop-controls-buttons {
     display: flex;
-    gap: 15px;          /* Отступ между кнопками */
+    gap: 15px;          
     justify-content: center;
     margin-top: 20px;
     margin-left: 70px;
 }
 
+.small-image .prod-image-wrapper {
+    height: 250px !important; 
+}
+
+.small-image .prod-image-wrapper img {
+    max-height: 90% !important;
+    object-fit: contain;
+}
+
+.small-corn .prod-image-wrapper {
+    height: 280px !important; 
+}
+
+.small-corn .prod-image-wrapper img {
+    max-height: 90% !important;
+    object-fit: contain;
+}
+
+.prod-card {
+    position: relative; 
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    top: 10px;
+    right: 28px;
+    width: 32px;
+    height: 32px;
+    background-color: #1F263E;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    padding: 6px;
+}
+
+.add-to-cart-btn img {
+    width: 40px;
+    height: 40px;
+    
+    display: block; 
+}
+
+.add-to-cart-btn {
+    background-color: #ffffff; 
+}
+
+.add-to-cart-btn:hover {
+    background-color: #f0f0f0; 
+}
 /* Адаптив для баннера */
 @media (max-width: 768px) {
     .hero { height: 350px; }

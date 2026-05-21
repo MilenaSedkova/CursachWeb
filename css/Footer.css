@@ -287,6 +287,18 @@
     font-size: 18px;
 }
 
+.footer-column-title .footer-link {
+    color: inherit; /* Наследует цвет заголовка */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 30px;
+}
+
+.footer-column-title .footer-link:hover {
+    color: #669C61; /* Зелёный при наведении */
+    text-decoration: underline;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
     .footer-grid {

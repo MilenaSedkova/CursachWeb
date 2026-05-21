@@ -94,7 +94,8 @@
       "category": "Fresh",
       "oldPrice": 20.00,
       "price": 17.00,
-      "image": "/pictures/ShopImages/FreshCorn.png"
+      "image": "/pictures/ShopImages/FreshCorn.png",
+      "customClass": "small-corn" 
     },
     {
       "id": 12,
@@ -122,7 +123,7 @@
     },
     {
       "id": 15,
-      "name": "Apple",
+      "name": "Promegranate",
       "category": "Fruits",
       "oldPrice": 14.00,
       "price": 9.00,
@@ -142,11 +143,9 @@
       "category": "Vegetables",
       "oldPrice": 18.00,
       "price": 13.00,
-      "image": "/pictures/AboutUsImages/Vegetable.png"
+      "image": "/pictures/AboutUsImages/Vegetable.png",
+      "customClass": "small-image" 
     }
-
-
-
   ],
   "offerVegetables": [
     {
