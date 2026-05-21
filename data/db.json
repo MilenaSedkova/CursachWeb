@@ -6,7 +6,7 @@
       "category": "Vegetable",
       "price": 13.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/BroccoliPhoto.png",
+      "image": "/pictures/HomepageImages/BroccoliPhoto.png",
       "rating": 5
     },
     {
@@ -15,7 +15,7 @@
       "category": "Fresh",
       "price": 14.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/banana.png",
+      "image": "/pictures/HomepageImages/banana.png",
       "rating": 5
     },
     {
@@ -24,7 +24,7 @@
       "category": "Millets",
       "price": 15.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/nuts.png",
+      "image": "/pictures/HomepageImages/nuts.png",
       "rating": 5
     },
     {
@@ -33,7 +33,7 @@
       "category": "Vegetable",
       "price": 17.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/tomato.png",
+      "image": "/pictures/HomepageImages/tomato.png",
       "rating": 5
     },
     {
@@ -42,7 +42,7 @@
       "category": "Health",
       "price": 11.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/bean.png",
+      "image": "/pictures/HomepageImages/bean.png",
       "rating": 5
     },
     {
@@ -51,7 +51,7 @@
       "category": "Nuts",
       "price": 12.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/hazelnut.png",
+      "image": "/pictures/HomepageImages/hazelnut.png",
       "rating": 5
     },
     {
@@ -60,7 +60,7 @@
       "category": "Fresh",
       "price": 17.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/eggs.png",
+      "image": "/pictures/HomepageImages/eggs.png",
       "rating": 5
     },
     {
@@ -69,7 +69,7 @@
       "category": "Fresh",
       "price": 15.00,
       "oldPrice": 20.00,
-      "image": "pictures/HomepageImages/bread.png",
+      "image": "/pictures/HomepageImages/bread.png",
       "rating": 5
     },
     {
@@ -102,7 +102,7 @@
       "category": "Fresh",
       "oldPrice": 20.00,
       "price": 15.00,
-      "image": "/pictures/ShopImages/OrhanickAlmonds.png"
+      "image": "/pictures/ShopImages/OrganickAlmonds.png"
     }
   ],
   "offerVegetables": [

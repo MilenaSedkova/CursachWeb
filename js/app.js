@@ -13,7 +13,7 @@ const loadMoreBtn = document.getElementById('loadMoreBtn');
 
 // Генерация звёзд рейтинга
 function generateStars(rating) {
-        return '<img src="pictures/HomepageImages/Star.svg" alt="5 stars" class="stars-image">'
+        return '<img src="/pictures/HomepageImages/Star.svg" alt="5 stars" class="stars-image">'
 }
 
 // Создание карточки товара (ТОЧНО ТАКАЯ ЖЕ СТРУКТУРА как в вашем HTML)

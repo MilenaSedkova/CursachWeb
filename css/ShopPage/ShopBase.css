@@ -57,6 +57,20 @@ html, body {
     height: 100%;
 }
 
+.prod-container{
+    margin-top: -160px;
+    transform: translateX(-30px);
+}
+
+.prod-grid .prod-card:nth-child(-n+4) {
+    margin-bottom: 20px; /* 👈 Увеличь/уменьши это значение */
+}
+
+
+.prod-grid .prod-card:nth-child(n+9):nth-child(-n+12) {
+    margin-top: 60px; /* 👈 Меняй это число, чтобы опустить строку выше/ниже */
+}
+
 /* Адаптив для баннера */
 @media (max-width: 768px) {
     .hero { height: 350px; }
