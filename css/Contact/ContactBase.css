@@ -1,0 +1,28 @@
+/* 1. Безопасная ширина + отключаем дефолтные отступы */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;      /* 🔑 Не 100vw! */
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* 2. Разрешаем ВСЕМ блокам сжиматься (ломает "упрямство" flex) */
+* {
+  box-sizing: border-box !important;
+  min-width: 0 !important;     /* 🔑 Критично для адаптива */
+  max-width: 100% !important;
+}
+
+/* 3. Фикс для хедера и сеток, которые отказываются сжиматься */
+.header, nav, .prod-grid, .footer, .shop-controls {
+  flex-wrap: wrap !important;
+  min-width: 0 !important;
+}
+
+/* 4. Запрещаем картинкам и медиа создавать скролл */
+img, svg, video, iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
