@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/Header.css">
     <link rel="stylesheet" href="../css/Pagination.css">
     <link rel="stylesheet" href="../css/Footer.css">
+    <link rel="stylesheet" href="../css/AboutUs/AboutUsBase.css">
     <link rel="stylesheet" href="../css/ShopPage/ShopBase.css">
     <link rel="stylesheet" href="../css/Contact/ContactBase.css">
 
@@ -113,3 +114,147 @@
         </div>
     </div>
 </section>
+
+
+<section class="farms-section">
+    <img src="/pictures/ContactImages/LocationPhoto.png" alt="Leaf texture background" class="farms-bg-img">
+    <div class="prod-container farms-container">
+        <div class="farms-card">
+            <span class="subtitle pos-contact-subtitle">Location</span>
+            <h2 class="section-title pos-products-title">Our Farms</h2>
+            <p class="farms-subtitle">We have 2 offices with comfortable location</p>
+            <div class="farms-list">
+                <div class="farms-item">
+                    <div class="farms-icon">
+                        <img src="/pictures/ContactImages/LocationFrame.png" alt="location pin">
+                    </div>
+                    <div class="farms-info">
+                        <h4 class="farms-city">Minsk, Belarus</h4>
+                        <p class="farms-address">Grushinskaya, 100</p>
+                    </div>
+                </div>
+                <div class="farms-item">
+                    <div class="farms-icon">
+                        <img src="/pictures/ContactImages/LocationFrame.png" alt="location pin">
+                    </div>
+                    <div class="farms-info">
+                        <h4 class="farms-city">Mogilev, Belarus</h4>
+                        <p class="farms-address">Buinichi, 25A</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-form-section">
+    <div class="prod-container">
+        <form class="contact-form" id="contactForm">
+            
+            <div class="form-group">
+                <label class="form-label">Full Name*</label>
+                <input type="text" class="form-input" placeholder="Your Email Address" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Your Email*</label>
+                <input type="email" class="form-input" placeholder="example@yourmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Company*</label>
+                <input type="text" class="form-input" placeholder="yourcompany name here" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Subject*</label>
+                <input type="text" class="form-input" placeholder="how can we help" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label class="form-label">Message*</label>
+                <textarea class="form-textarea" placeholder="hello there,i would like to talk about how to..." required></textarea>
+            </div>
+
+            <div class="btn-text-offset">
+                <button type="submit" class="btn-send">Send Review</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div id="successToast" class="success-toast">
+    <span class="toast-text"> Review sent successfully!</span>
+</div>
+
+<script src="/js/contact.js"></script>
+
+</body>
+
+<footer class="footer">
+<div class="footer-newsletter pro-newsletter">
+
+    <div class="newsletter-container pro-newsletter">
+        <h3 class="newsletter-title pro-container">
+            Subscribe to<br>
+            our Newsletter
+        </h3>
+
+            <div id="newsletterStatus" class="newsletter-status"></div>
+
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your Email Address" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+    </div>
+
+    <img src="/pictures/HomepageImages/ContactFooter.jpg" alt="Newsletter Background" class="newsletter-bg-image">
+</div>
+
+<div class="footer-main">
+    <div class="footer-container">
+        <div class="footer-grid">
+            
+            <div class="footer-column footer-column-left">
+                <h4 class="footer-column-title ">Contact Us</h4>
+                <ul class="footer-contact-list">
+                    <li class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">needhelp@Organick.com</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">666 888 888</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">88 road, brooklyn street, USA</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-column-center">
+                <div class="footer-logo-wrapper">
+                <a href="#" class="logo">
+                   <img src="/pictures/HomepageImages/Logo.svg" alt="Logo picture">
+                    <span>Organick</span>
+                </a>                </div>
+                <p class="footer-description">
+                    Simply dummy text of the printing and typesetting industry.<br>
+                    Lorem Ipsum simply dummy text of the printing.
+                </p>
+        
+            </div>
+
+            <div class="footer-column footer-column-right">
+                <h4 class="footer-column-title ">Utility Pages</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link footer-title-right">404 Not Found</a></li>
+                    <li><a href="/html/AboutUs.html" class="footer-link footer-title-right">About Us</a></li>   
+                 </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</footer>
+
+</html>

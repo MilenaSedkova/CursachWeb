@@ -177,3 +177,376 @@
         font-size: 28px;
     }
 }
+
+
+
+.farms-section {
+    position: relative;
+    width: 100%;
+    min-height: 758px; /* Высота из Figma */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Карточка прижата вправо */
+    overflow: hidden;
+    margin-top: 100px;
+    max-width: 1400px;
+    border-radius: 25px;
+    margin-left: 300px;
+}
+
+.farms-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.farms-container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 120px);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.farms-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 515px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 394px;
+    margin-bottom: 120px;
+    margin-right: -60px;
+}
+
+.farms-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #669C61;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.section-title.farms-title {
+    margin-bottom: 12px !important;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.farms-subtitle {
+    font-size: 15px;
+    color: #717171;
+    line-height: 1.5;
+    margin-top: 150px;
+}
+
+.farms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.farms-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.farms-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.farms-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.farms-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 15px;
+}
+
+.farms-city {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F263E;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.farms-address {
+    font-size: 18px;
+    color: #717171;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.pos-contact-subtitle{
+    justify-items: flex-start;
+}
+
+
+.pos-products-title{
+     margin-top: -150px !important;
+     margin-right: 100px;
+     max-width: 405px;
+
+}
+/* Адаптив: на планшетах/телефонах карточка по центру */
+@media (max-width: 992px) {
+    .farms-section {
+        justify-content: center;
+        min-height: auto;
+        padding: 80px 0;
+    }
+    .farms-container {
+        justify-content: center;
+    }
+    .farms-card {
+        max-width: 100%;
+    }
+}
+
+
+.contact-form-section {
+    margin-top: 180px;
+    padding: 60px 0 100px;
+    background-color: #ffffff;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 42px 10px;                 
+    margin-left: 100px;
+}
+
+/* Группа поля (Label + Input) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+        max-width: 569px;
+
+}
+
+/* Поле на всю ширину (для Message) */
+.full-width {
+    grid-column: 1 / -1; 
+    padding: 40px 0px;
+    margin-top: -35px;
+    max-width: 1190px !important;
+}
+
+/* Заголовок поля */
+.form-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F263E;
+    text-align: left;  /* 🔑 Выравнивание по левому краю */
+    margin-top: 5px;
+
+}
+
+/* Стили полей ввода */
+.form-input, 
+.form-textarea {
+    width: 100%;
+    border: 1px solid #7EB693;
+    border-radius: 16px;
+    padding: 32px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #1F263E;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 12px;
+
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #A8B2A9; /* Серый текст плейсхолдера */
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #669C61; /* Зеленый при клике */
+}
+
+/* Текстовое поле */
+.form-textarea {
+    height: 180px;
+    resize: none; /* Запрет растягивания мышкой */
+}
+
+/* Кнопка отправки */
+.form-actions {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+}
+
+.btn-send {
+    background-color: #2C4A5C; /* Темно-синий как у остальных кнопок */
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 28px 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 380px;
+    margin-top: 40px;
+    transform: translateY(-80px);
+}
+
+.btn-send:hover {
+    background-color: #1F263E;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .contact-form {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 24px;
+    }
+}
+
+/* ============================================
+   FORM NOTIFICATION (Toast)
+   ============================================ */
+.form-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #669C61;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(102, 156, 97, 0.4);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.notification-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+}
+
+
+/* Анимация появления */
+@keyframes notificationSlideIn {
+    from {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes notificationFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.form-notification.show {
+    animation: notificationSlideIn 0.4s ease forwards;
+}
+
+.form-notification.hide {
+    animation: notificationFadeOut 0.3s ease forwards;
+}
+
+/* ============================================
+   SUCCESS TOAST NOTIFICATION
+   ============================================ */
+.success-toast {
+    position: fixed !important;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #669C61;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(102, 156, 97, 0.4);
+    z-index: 10000;
+    
+    /* Скрыто по умолчанию */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* Показываем уведомление */
+.success-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Анимация появления */
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+.success-toast.show {
+    animation: slideUp 0.4s ease forwards;
+}
