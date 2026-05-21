@@ -71,6 +71,23 @@ html, body {
     margin-top: 60px; /* 👈 Меняй это число, чтобы опустить строку выше/ниже */
 }
 
+.btn-shop-settings{
+    margin-top: 35px;
+    margin-right: 125px;
+}
+
+.btn-primary:hover .btn-arrow {
+    transform: translateX(4px); /* Стрелка сдвигается вправо при наведении */
+}
+
+.shop-controls-buttons {
+    display: flex;
+    gap: 15px;          /* Отступ между кнопками */
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
 /* Адаптив для баннера */
 @media (max-width: 768px) {
     .hero { height: 350px; }

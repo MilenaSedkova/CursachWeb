@@ -103,7 +103,50 @@
       "oldPrice": 20.00,
       "price": 15.00,
       "image": "/pictures/ShopImages/OrganickAlmonds.png"
+    },
+    {
+      "id": 13,
+      "name": "Chilly",
+      "category": "Spicy",
+      "oldPrice": 18.00,
+      "price": 10.00,
+      "image": "/pictures/AboutUsImages/Spicy.png"
+    },
+    {
+      "id": 14,
+      "name": "Exotic Nuts",
+      "category": "Nuts",
+      "oldPrice": 25.00,
+      "price": 20.00,
+      "image": "/pictures/AboutUsImages/NutsAndFeesd.png"
+    },
+    {
+      "id": 15,
+      "name": "Apple",
+      "category": "Fruits",
+      "oldPrice": 14.00,
+      "price": 9.00,
+      "image": "/pictures/AboutUsImages/Fruits.png"
+    },
+    {
+      "id": 16,
+      "name": "Salad",
+      "category": "Mixed",
+      "oldPrice": 22.00,
+      "price": 17.00,
+      "image": "/pictures/AboutUsImages/TomatoImage.png"
+    },
+    {
+      "id": 17,
+      "name": "Ginger",
+      "category": "Vegetables",
+      "oldPrice": 18.00,
+      "price": 13.00,
+      "image": "/pictures/AboutUsImages/Vegetable.png"
     }
+
+
+
   ],
   "offerVegetables": [
     {

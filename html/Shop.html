@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../css/Homepage/HomepageBase.css">
     <link rel="stylesheet" href="../css/Homepage/HomepageLayout.css">
     <link rel="stylesheet" href="../css/ShopPage/ShopBase.css">
-        <link rel="stylesheet" href="../css/Header.css">
+    <link rel="stylesheet" href="../css/Header.css">
+    <link rel="stylesheet" href="../css/Pagination.css">
 
 </head>
 <body>
@@ -78,26 +79,35 @@
         </div>
 
         <!-- Управление: Стрелки + Сортировка -->
-        <div class="shop-controls">
-            <!-- Пагинация -->
-            <div class="pagination-wrapper">
-                <button id="prevBtn" class="arrow-btn" disabled>&lt;</button>
-                <button id="nextBtn" class="arrow-btn">&gt;</button>
-            </div>
-            
-            <!-- Кнопка сортировки -->
-            <button id="sortBtn" class="sort-btn">Sort by price</button>
-        </div>
+        <div class="pagination-wrapper">
+    <!-- Кнопка влево -->
+    <button id="prevBtn" class="arrow-btn">
+        <svg viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    
+    <!-- Кнопка вправо -->
+    <button id="nextBtn" class="arrow-btn">
+        <svg viewBox="0 0 24 24">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+</div>
+    
+<div class="shop-controls-buttons">
+    
+    <button id="sortPriceBtn" class="btn-primary">
+        Sort By Price
+    </button>
+
+    <button id="resetSortBtn" class="btn-primary">
+        Reset Sort
+    </button>
+</div>
 
     </div>
 </section>
-
-    <!-- Здесь будут товары (можно добавить позже) -->
-    <section class="shop-products">
-        <div class="shop-products-container">
-            <!-- Товары загрузятся через JS -->
-        </div>
-    </section>
 
     <script src="/js/app.js"></script>
     <script src="/js/shop.js"></script>
