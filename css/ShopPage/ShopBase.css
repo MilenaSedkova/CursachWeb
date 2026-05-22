@@ -58,7 +58,7 @@ html, body {
 }
 
 .prod-grid .prod-card:nth-child(-n+4) {
-    margin-bottom: 20px; 
+    margin-bottom: 4px; 
 }
 
 
@@ -103,6 +103,7 @@ html, body {
 
 .prod-card {
     position: relative; 
+    padding: 24px 5px 22px;
 }
 
 .add-to-cart-btn {
