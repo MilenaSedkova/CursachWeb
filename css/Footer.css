@@ -9,7 +9,7 @@
     margin: 270px auto 0;    /* 👈 Центрирует блок */
     height: 323px;
     
-    background-image: url('pictures/HomepageImages/ContactFooter.jpg');
+    background-image: url('/pictures/HomepageImages/ContactFooter.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -52,14 +52,6 @@
     min-width: 470px;
     transform: translateX(-80px);
 }
-
-/*.newsletter-form {
-    display: flex;
-    gap: 20px;
-    flex: 2;
-    min-width: 300px;
-    max-width: 600px;
-}*/
 
 .newsletter-input {
     flex: 1;

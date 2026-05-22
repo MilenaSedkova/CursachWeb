@@ -47,12 +47,13 @@
                     </button>
                 </div>
 
-                <div class="cart-btn" id="cartBtn">
-                    <div class="cart-icon">
-                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
-                    </div>
-                    <span id="cartCount">Cart(0)</span>
-                </div>
+<!-- Заменяем <div> на <a> и добавляем href -->
+<a href="/html/Card.html" class="cart-btn" id="cartBtn">
+    <div class="cart-icon">
+        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
+    </div>
+    <span id="cartCount">Cart(0)</span>
+</a>
 
                 <div class="header-controls">
                     <button class="control-btn">li</button>
@@ -185,7 +186,9 @@
     <span class="toast-text"> Review sent successfully!</span>
 </div>
 
-<script src="/js/contact.js"></script>
+<script src="../js/contact.js"></script>
+<script src="/js/updateCart.js"></script>
+
 
 </body>
 

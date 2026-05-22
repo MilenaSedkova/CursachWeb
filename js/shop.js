@@ -1,12 +1,9 @@
-function createProductCard(product, withCartBtn = false) {
+function createProductCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice 
         ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` 
         : '';
     
-    const starsHtml = product.rating 
-        ? `<div class="prod-stars">${'★'.repeat(product.rating)}</div>` 
-        : '';
-    
+    const starsHtml = `<div class="prod-stars"><img src="/pictures/HomepageImages/Star.svg" alt="rating"></div>`;
     const extraClass = product.customClass ? product.customClass : '';
     
     return `
@@ -23,10 +20,13 @@ function createProductCard(product, withCartBtn = false) {
                 <span class="prod-price-new">$${product.price.toFixed(2)}</span>
                 ${starsHtml}
             </div>
+            ${withCartBtn ? `
+            <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
+                <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
+            </button>` : ''}
         </div>
     `;
 }
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     const gridElement = document.getElementById('productsGrid');
@@ -38,12 +38,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const itemsPerPage = 12;
     let currentPage = 1;
     let sortDirection = 'asc';
-    
     let originalProducts = [];
     let currentProducts = [];
     
     try {
-        // Загружаем товары из локального файла (как у тебя)
         const response = await fetch('/data/db.json');
         const data = await response.json();
         originalProducts = data.products;
@@ -71,7 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
     
-    // Сортировка
     if (sortBtn) {
         sortBtn.addEventListener('click', () => {
             sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
@@ -83,7 +80,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
-    // Сброс
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             currentProducts = [...originalProducts];
@@ -93,7 +89,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
-    // Пагинация
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) { currentPage--; renderPage(); }
@@ -108,23 +103,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     renderPage();
-    
-    // 🔽 Обновляем счётчик корзины при загрузке
     updateHeaderCartCount();
 });
 
 // ============================================
-// 🔽 КОРЗИНА (добавление товаров)
+// 🔽 КОРЗИНА С localStorage (РАБОТАЕТ БЕЗ JSON SERVER)
 // ============================================
-const API_URL = 'http://localhost:3000';
 
 async function addToCart(productId) {
     try {
-        const cartRes = await fetch(`${API_URL}/cart`);
-        let cart = await cartRes.json();
+        // Берём корзину из localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         const card = document.querySelector(`.prod-card[data-id="${productId}"]`);
-        if (!card) return;
+        if (!card) {
+            console.error('Карточка не найдена!');
+            return;
+        }
 
         const productData = {
             id: parseInt(productId),
@@ -142,16 +137,18 @@ async function addToCart(productId) {
             cart.push(productData);
         }
 
-        await fetch(`${API_URL}/cart`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cart)
-        });
-
+        // Сохраняем ТОЛЬКО в localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        console.log(`${productData.name} добавлен! В корзине: ${cart.length} товаров`);
+        
         updateHeaderCartCount();
         
+        // 🔽 Показываем уведомление
+        showNotification(`${productData.name} добавлен в корзину`);
+        
     } catch (error) {
-        console.error('Ошибка корзины:', error);
+        console.error(' Ошибка корзины:', error);
     }
 }
 
@@ -159,26 +156,45 @@ function updateHeaderCartCount() {
     const cartCountEl = document.getElementById('cartCount');
     if (!cartCountEl) return;
     
-    fetch(`${API_URL}/cart`)
-        .then(res => res.json())
-        .then(cart => {
-            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            cartCountEl.textContent = `Cart(${total})`;
-        })
-        .catch(error => console.error('Ошибка обновления счётчика:', error));
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    cartCountEl.textContent = `Cart(${total})`;
 }
 
-// Обработчик кликов по кнопкам корзины (делегирование)
+// Обработчик кликов
 document.addEventListener('click', async (e) => {
     const cartBtn = e.target.closest('.add-to-cart-btn');
     if (cartBtn && cartBtn.dataset.id) {
         e.preventDefault();
         e.stopPropagation();
         
+        console.log(' Клик по корзине, ID:', cartBtn.dataset.id);
         await addToCart(cartBtn.dataset.id);
         
-        // Анимация
         cartBtn.style.transform = 'scale(0.9)';
         setTimeout(() => cartBtn.style.transform = 'scale(1)', 150);
     }
 });
+
+function showNotification(text) {
+    const notif = document.createElement('div');
+    notif.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #669C61;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 10px;
+        font-family: 'Inter', sans-serif;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    notif.textContent = text;
+    document.body.appendChild(notif);
+    
+    setTimeout(() => {
+        notif.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notif.remove(), 300);
+    }, 2000);
+}

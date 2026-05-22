@@ -177,3 +177,17 @@
     font-weight: 500;
     color: #1F263E;
 }
+
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none; /* Убирает подчеркивание ссылки */
+    color: inherit; /* Наследует цвет текста */
+}
+
+.cart-btn:hover {
+    opacity: 0.8; /* Легкий эффект при наведении */
+}

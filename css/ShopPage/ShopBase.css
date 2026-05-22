@@ -138,6 +138,43 @@ html, body {
 .add-to-cart-btn:hover {
     background-color: #f0f0f0; 
 }
+
+/* УБРАТЬ дублирование звёзд через CSS */
+.prod-stars,
+.prod-stars::before,
+.prod-stars::after,
+.prod-price-row::before,
+.prod-price-row::after {
+    background-image: none !important;
+    content: none !important;
+}
+
+/* Контейнер звёзд */
+.prod-stars {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Каждая звёздочка-картинка */
+.prod-stars .star-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Убедиться, что звёзды не наследуют лишние стили */
+.prod-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    gap: 12px;
+}
+
 /* Адаптив для баннера */
 @media (max-width: 768px) {
     .hero { height: 350px; }

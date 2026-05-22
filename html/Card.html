@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card-Organick</title>
+    <title>Cart - Organick</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
     
+    <!-- Твои стили -->
     <link rel="stylesheet" href="../css/Homepage/HomepageBase.css">
     <link rel="stylesheet" href="../css/Homepage/HomepageLayout.css">
     <link rel="stylesheet" href="../css/Header.css">
-    <link rel="stylesheet" href="../css/NotFound/NotFound.css"> 
-    <link rel="stylesheet" href="../css/Footer.css">
-    <link rel="stylesheet" href ="../css/Card/CardBase.css">
+    <link rel="stylesheet" href="../css/Footer.css"> 
+    <link rel="stylesheet" href="../css/Card/CardBase.css">
 </head>
 <body>
     
+    <!-- 1. ХЕДЕР -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -42,12 +43,13 @@
                     </button>
                 </div>
 
-                <div class="cart-btn" id="cartBtn">
+                <!-- ✅ Кнопка корзины (Ссылка на саму эту страницу) -->
+                <a href="/html/Cart.html" class="cart-btn" id="cartBtn">
                     <div class="cart-icon">
                         <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
                     </div>
                     <span id="cartCount">Cart(0)</span>
-                </div>
+                </a>
 
                 <div class="header-controls">
                     <button class="control-btn">li</button>
@@ -58,32 +60,38 @@
         </div>
     </header>
 
+    <!-- 2. БАННЕР (Hero Section) -->
     <section class="hero">
         <div class="hero-inner">
-            <img src="/pictures/CardImages/CardBanner.jpg" alt="Card" class="hero-image">
+            <!-- ✅ Убедись, что путь к картинке верный! -->
+            <img src="/pictures/CardImages/CardBanner.jpg" alt="Cart Banner" class="hero-image">
         </div>
     </section>
 
-<section class="cart-section">
-    <div class="prod-container">
-        
-        <!-- Пустая корзина -->
-        <div id="emptyCart" class="empty-cart">
-            <h2>Your cart is empty</h2>
-            <p>Add some products to see them here</p>
-           <a href="/html/Shop.html" class="btn-primary btn-shop-settings">
+    <!-- 3. СЕКЦИЯ КОРЗИНЫ -->
+    <section class="cart-section">
+        <div class="prod-container">
+            
+            <!-- Пустая корзина -->
+            <div id="emptyCart" class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Add some products to see them here</p>
+                <a href="/html/Shop.html" class="btn-primary btn-shop-settings">
                     <span class="btn-text-offset">Continue Shopping</span>
-            <img src="/pictures/HomepageImages/ArrowForButton.svg" alt="arrow" class="btn-arrow">
-            </a>
-        </div>
+                    <img src="/pictures/HomepageImages/ArrowForButton.svg" alt="arrow" class="btn-arrow">
+                </a>
+            </div>
 
-        <!-- Заполненная корзина -->
-        <div id="cartItems" class="cart-items" style="display: none;">
-            <!-- Товары будут здесь -->
+            <!-- Заполненная корзина -->
+            <div id="cartItems" class="cart-items" style="display: none;">
+                <!-- Товары будут здесь -->
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script src="/js/card.js"></script>
+
+    <script src="../js/card.js"></script>
+    <script src="/js/updateCart.js"></script>
+
 </body>
 </html>

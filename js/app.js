@@ -158,7 +158,7 @@ cartBtn.addEventListener('click', () => {
     }
 });
 
-if (loadMoreBtn) {  // 👈 Добавь проверку!
+if (loadMoreBtn) {  // Добавь проверку!
     loadMoreBtn.addEventListener('click', (e) => {
         e.preventDefault();
         alert('Загрузка дополнительных товаров...');
