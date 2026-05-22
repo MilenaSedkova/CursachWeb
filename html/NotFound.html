@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found - Organick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/Homepage/HomepageBase.css">
+    <link rel="stylesheet" href="../css/Homepage/HomepageLayout.css">
+    <link rel="stylesheet" href="../css/Header.css">
+    <link rel="stylesheet" href="../css/NotFound/NotFound.css"> 
+    <link rel="stylesheet" href="../css/Footer.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <a href="#" class="logo">
+                   <img src="/pictures/HomepageImages/Logo.svg" alt="Logo picture">
+                    <span>Organick</span>
+                </a>
+
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="/homepage.html">Home</a></li>
+                        <li><a href="/html/AboutUs.html">About</a></li>
+                        <li><a href="/html/Shop.html">Shop</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Log in</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button class="search-btn" id="searchBtn">
+                        <img src="/pictures/HomepageImages/Search-Icon.svg" alt="Search icon">
+                    </button>
+                </div>
+
+                <div class="cart-btn" id="cartBtn">
+                    <div class="cart-icon">
+                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart-icon">
+                    </div>
+                    <span id="cartCount">Cart(0)</span>
+                </div>
+
+                <div class="header-controls">
+                    <button class="control-btn">li</button>
+                    <button class="control-btn">en</button>
+                    <button class="control-btn">A+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+<section class="error-section">
+
+    <img src="/pictures/NotFoundImages/BannerNotFoundPhoto.png" alt="404 Background" class="error-bg-img">
+    
+    <div class="error-content-wrapper">
+
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Page not found</h2>
+            <p class="error-text">The page you are looking for doesn't exist or has been moved</p>
+             <a href="/homepage.html" class="btn-primary btn-shop-settings">
+                    <span class="btn-text-offset">Go to Homepage</span>
+            <img src="/pictures/HomepageImages/ArrowForButton.svg" alt="arrow" class="btn-arrow">
+            </a>
+        </div>
+    </div>
+</section>
+
+    <script src="/js/contact.js"></script>
+</body>
+
+<footer class="footer">
+
+    <div class="footer-main">
+    <div class="footer-container">
+        <div class="footer-grid">
+            
+            <div class="footer-column footer-column-left">
+                <h4 class="footer-column-title ">Contact Us</h4>
+                <ul class="footer-contact-list">
+                    <li class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">needhelp@Organick.com</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">666 888 888</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">88 road, brooklyn street, USA</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-column-center">
+                <div class="footer-logo-wrapper">
+                <a href="#" class="logo">
+                   <img src="/pictures/HomepageImages/Logo.svg" alt="Logo picture">
+                    <span>Organick</span>
+                </a>                </div>
+                <p class="footer-description">
+                    Simply dummy text of the printing and typesetting industry.<br>
+                    Lorem Ipsum simply dummy text of the printing.
+                </p>
+        
+            </div>
+
+            <div class="footer-column footer-column-right">
+                <h4 class="footer-column-title ">Utility Pages</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link footer-title-right">404 Not Found</a></li>
+                    <li><a href="/html/AboutUs.html" class="footer-link footer-title-right">About Us</a></li>   
+                 </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</footer>
+</html>
