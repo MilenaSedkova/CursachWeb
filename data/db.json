@@ -275,13 +275,22 @@
       "id": "M5Zp4znK_Gg"
     },
     {
-      "productId": 2,
-      "name": "Fresh Banana Fruites",
-      "price": 14,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "productId": 8,
+      "name": "Zelco Suji Elaichi Rusk",
+      "price": 15,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/bread.png",
       "category": "Fresh",
       "quantity": 1,
-      "id": "nZJ__wiwyaQ"
+      "id": "Tk3LI4co84s"
+    },
+    {
+      "productId": 13,
+      "name": "Chilly",
+      "price": 10,
+      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Spicy.png",
+      "category": "Spicy",
+      "quantity": 1,
+      "id": "VtRXHkUOjsA"
     }
   ],
   "searchQuery": "",

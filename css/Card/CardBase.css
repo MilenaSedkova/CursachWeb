@@ -4,7 +4,6 @@
 
 /* Основная секция корзины */
 .cart-section {
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,26 +63,20 @@
     gap: 24px;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0;
+    padding: 30px 0;
+    margin-top: 58px;
+    margin-left: -18px;
 }
 
-/* Карточка товара в корзине */
 .prod-card.in-cart {
-        
-    /* Скругление углов */
+
     border-radius: 22px;
 
     padding: 15px;
     
-    /* Отступы */
-    
-    /* Плавный переход */
     transition: all 0.3s ease;
     
     margin-top: -60px;
-    transform: translateX(-120px);
-
 }
 .prod-card.in-cart:hover {
     transform: translateY(-4px);
@@ -122,62 +115,72 @@
 .cart-qty-group {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
 }
 
-/* Число количества */
+/* Счётчик количества */
 .cart-qty-value {
     font-weight: 600;
     font-size: 14px;
     color: #2C4A5C;
-    background: rgba(44, 74, 92, 0.08);
-    padding: 4px 8px;
+    background: rgba(44, 74, 92, 0.1);
+    padding: 4px 10px;
     border-radius: 6px;
     min-width: 45px;
     text-align: center;
 }
 
-/* Кнопки − и + (стиль тега категории) */
-.cart-qty-dec,
-.cart-qty-inc {
-    width: 32px;
-    height: 32px;
+
+.cart-qty-group button:nth-child(2),
+.cart-qty-group button:nth-child(3) {
+    width: 28px;
+    height: 28px;
     border: none;
     border-radius: 6px;
-    background-color: #2C4A5C; /* Тёмно-синий, как тег */
+    background-color: #2C4A5C;  /* Тёмно-синий как тег */
     color: #ffffff;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    padding: 0;
 }
-.cart-qty-dec:hover,
-.cart-qty-inc:hover {
+
+.cart-qty-group button:nth-child(2):hover,
+.cart-qty-group button:nth-child(3):hover {
     background-color: #1F263E;
     transform: translateY(-1px);
 }
 
-/* Кнопка удаления */
-.cart-qty-del {
-    width: 32px;
-    height: 32px;
+
+.cart-qty-group button:nth-child(4) {
+    width: 28px;
+    height: 28px;
     border: none;
     border-radius: 6px;
     background-color: #E74C3C;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    padding: 0;
 }
-.cart-qty-del:hover {
+
+.cart-qty-group button:nth-child(4):hover {
     background-color: #C0392B;
+}
+
+.btn-order-settings{
+    margin-top:40px;
+    border-radius: 16px;
+    max-width: 179px;
 }
 /* ============================================
    АДАПТИВНОСТЬ СЕТКИ
