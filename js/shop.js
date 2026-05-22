@@ -107,18 +107,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // ============================================
-// 🔽 КОРЗИНА С localStorage (РАБОТАЕТ БЕЗ JSON SERVER)
+// 🔽 ДОБАВЬ ЭТОТ БЛОК В КОНЕЦ ФАЙЛА:
 // ============================================
 
+// Глобальный обработчик кликов по кнопкам корзины
+document.addEventListener('click', async (e) => {
+    const cartBtn = e.target.closest('.add-to-cart-btn');
+    
+    if (cartBtn && cartBtn.dataset.id) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const productId = parseInt(cartBtn.dataset.id);
+        console.log('🖱️ Клик по корзине, ID:', productId);
+        
+        // Визуальный эффект
+        cartBtn.style.transform = 'scale(0.9)';
+        setTimeout(() => cartBtn.style.transform = 'scale(1)', 150);
+        
+        // Вызов функции добавления
+        await addToCart(productId);
+    }
+});
+
 async function addToCart(productId) {
-    console.log('🛒 [1] addToCart вызван, ID:', productId);
+    console.log('🛒 Добавляем товар:', productId);
     
     const card = document.querySelector(`.prod-card[data-id="${productId}"]`);
     if (!card) {
-        console.error('❌ [2] Карточка не найдена!');
+        console.error('❌ Карточка не найдена!');
         return;
     }
-    console.log('✅ [2] Карточка найдена');
     
     const productData = {
         productId: parseInt(productId),
@@ -129,27 +148,20 @@ async function addToCart(productId) {
         quantity: 1
     };
     
-    console.log('📦 [3] Данные товара:', productData);
-    
     try {
-        console.log('🌐 [4] Запрашиваю сервер...');
         const res = await fetch('http://localhost:3000/cartItems');
         let cartItems = await res.json();
-        console.log('✅ [4] На сервере сейчас:', cartItems.length, 'товаров');
-        
         if (!Array.isArray(cartItems)) cartItems = [];
         
         const existing = cartItems.find(item => item.productId === productData.productId);
         
         if (existing) {
-            console.log('🔄 [5] Товар уже есть, увеличиваю количество');
             await fetch(`http://localhost:3000/cartItems/${existing.id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ quantity: existing.quantity + 1 })
             });
         } else {
-            console.log('➕ [5] Добавляю новый товар');
             await fetch('http://localhost:3000/cartItems', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -157,18 +169,16 @@ async function addToCart(productId) {
             });
         }
         
-        console.log('✅ [6] Товар сохранён на сервере');
-        
         if (typeof window.updateHeaderCartCount === 'function') {
             await window.updateHeaderCartCount();
-            console.log('✅ [7] Счётчик обновлён');
         }
         
-        alert('✅ Товар добавлен!');
+        if (typeof showNotification === 'function') {
+            showNotification(`${productData.name} добавлен в корзину`);
+        }
         
     } catch (error) {
-        console.error('❌ ОШИБКА:', error);
-        alert('❌ Ошибка: ' + error.message);
+        console.error('❌ Ошибка:', error);
     }
 }
 
@@ -182,15 +192,9 @@ function showNotification(text) {
         color: white;
         padding: 16px 24px;
         border-radius: 10px;
-        font-family: 'Inter', sans-serif;
         z-index: 10000;
-        animation: slideIn 0.3s ease;
     `;
     notif.textContent = text;
     document.body.appendChild(notif);
-    
-    setTimeout(() => {
-        notif.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => notif.remove(), 300);
-    }, 2000);
+    setTimeout(() => notif.remove(), 2000);
 }

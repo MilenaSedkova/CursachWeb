@@ -273,6 +273,15 @@
       "category": "Vegetable",
       "quantity": 2,
       "id": "M5Zp4znK_Gg"
+    },
+    {
+      "productId": 2,
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "nZJ__wiwyaQ"
     }
   ],
   "searchQuery": "",

@@ -29,12 +29,12 @@ function createCartItemHTML(item) {
         <div class="prod-card in-cart" data-id="${id}">
             <div class="prod-card-top">
                 <div class="prod-tags"><span class="prod-tag">${item.category || 'Product'}</span></div>
-                <div class="cart-controls">
-                    <span class="cart-qty">${item.quantity || 1} шт</span>
-                    <button class="cart-btn minus" data-id="${id}">−</button>
-                    <button class="cart-btn plus" data-id="${id}">+</button>
-                    <button class="cart-btn delete" data-id="${id}">🗑️</button>
-                </div>
+                <div class="cart-qty-group">
+    <span class="cart-qty-value">${item.quantity || 1} шт</span>
+    <button class="cart-qty-dec" data-id="${item.id || item.productId || ''}">−</button>
+    <button class="cart-qty-inc" data-id="${item.id || item.productId || ''}">+</button>
+    <button class="cart-qty-del" data-id="${item.id || item.productId || ''}">🗑️</button>
+</div>
             </div>
             <div class="prod-image-wrapper"><img src="${img}" alt="${item.name || 'Product'}" loading="lazy"></div>
             <h3 class="prod-name">${item.name || 'Unknown'}</h3>
