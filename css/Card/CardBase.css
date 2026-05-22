@@ -82,3 +82,45 @@
     width: 16px;
     height: 16px;
 }
+
+/* Карточка в корзине */
+.prod-card.in-cart {
+    position: relative;
+}
+
+.prod-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-qty {
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+}
+
+
+
+.cart-btn:hover {
+    background: #669C61;
+    color: white;
+    border-color: #669C61;
+}
+
+.cart-btn-delete {
+    background: #ffebee;
+    border-color: #ef9a9a;
+}
+
+.cart-btn-delete:hover {
+    background: #ef9a9a;
+    color: white;
+}

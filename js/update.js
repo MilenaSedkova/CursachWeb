@@ -1,23 +1,23 @@
-// Функция обновления счётчика
-function updateCartCountOnAllPages() {
-    const cartCountEl = document.getElementById('cartCount');
-    if (!cartCountEl) {
-        console.log('Элемент #cartCount не найден');
-        return;
-    }
+// 🔄 update.js - Обновление счётчика корзины в хедере
+const API_URL = 'http://localhost:3000';
+
+window.updateHeaderCartCount = async function() {
+    const el = document.getElementById('cartCount');
+    if (!el) return;
     
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    cartCountEl.textContent = `Cart(${total})`;
-    console.log('Счётчик обновлён:', total);
-}
-
-// Запускаем при загрузке страницы
-document.addEventListener('DOMContentLoaded', updateCartCountOnAllPages);
-
-// Обновляем при изменении localStorage
-window.addEventListener('storage', (e) => {
-    if (e.key === 'cart') {
-        updateCartCountOnAllPages();
+    try {
+        const res = await fetch(`${API_URL}/cartItems`);
+        const items = await res.json();
+        const total = Array.isArray(items) ? items.reduce((s, it) => s + (it.quantity || 1), 0) : 0;
+        el.textContent = `Cart(${total})`;
+        localStorage.setItem('cart', JSON.stringify(items)); // кэш
+    } catch {
+        const items = JSON.parse(localStorage.getItem('cart')) || [];
+        const total = items.reduce((s, it) => s + (it.quantity || 1), 0);
+        el.textContent = `Cart(${total})`;
     }
-});
+};
+
+// Автозапуск + синхронизация вкладок
+document.addEventListener('DOMContentLoaded', () => window.updateHeaderCartCount?.());
+window.addEventListener('storage', e => { if (e.key === 'cart') window.updateHeaderCartCount?.(); });

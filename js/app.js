@@ -1,5 +1,4 @@
 // Конфигурация
-const API_URL = 'http://localhost:3000';
 let cart = [];
 let allProducts = [];
 
@@ -106,7 +105,7 @@ function updateCartCount() {
 // Сохранение корзины на сервер
 async function saveCartToServer() {
     try {
-        await fetch(`${API_URL}/cart`, {
+        await fetch(`${API_URL}/cartItems`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -121,7 +120,7 @@ async function saveCartToServer() {
 // Загрузка корзины с сервера
 async function loadCartFromServer() {
     try {
-        const response = await fetch(`${API_URL}/cart`);
+        const response = await fetch(`${API_URL}/cartItems`);
         const data = await response.json();
         if (data && data.length > 0) {
             cart = data;
@@ -146,17 +145,7 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
-cartBtn.addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert('Корзина пуста');
-    } else {
-        const cartItems = cart.map(item => 
-            `${item.name} - $${item.price} x ${item.quantity}`
-        ).join('\n');
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        alert(`Корзина:\n\n${cartItems}\n\nИтого: $${total.toFixed(2)}`);
-    }
-});
+
 
 if (loadMoreBtn) {  // Добавь проверку!
     loadMoreBtn.addEventListener('click', (e) => {
@@ -423,52 +412,72 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========== NEWSLETTER FORM HANDLER ==========
-document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
-    e.preventDefault(); // Отменяем стандартную отправку формы
+// 🔽 1. Сначала получаем элемент и ПРОВЕРЯЕМ его
+const newsletterForm = document.getElementById('newsletterForm');
+
+// 🔽 2. Если формы нет на странице — выходим, не выполняем код ниже
+if (newsletterForm) {
     
-    const emailInput = this.querySelector('input[name="email"]');
-    const email = emailInput.value.trim();
-    const btn = this.querySelector('.newsletter-btn');
-    const status = document.getElementById('newsletterStatus');
-
-    // Простая валидация
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showStatus('Please enter a valid email address.', 'error');
-        return;
-    }
-
-    // Состояние загрузки
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    status.textContent = '';
-
-    try {
-        // 🔹 ВАРИАНТ 1: Отправка на json-server (для демо)
-        await fetch('http://localhost:3000/subscribers', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                email: email, 
-                subscribedAt: new Date().toISOString() 
-            })
-        });
-
-        // 🔹 ВАРИАНТ 2: Раскомментируй для реальной отправки (см. ниже)
-        // await sendToRealService(email);
-
-        // Успех
-        showStatus('Thanks! You\'re successfully subscribed.', 'success');
-        emailInput.value = ''; // Очистить поле
+    newsletterForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
         
-    } catch (error) {
-        showStatus('Something went wrong. Please try again.', 'error');
-        console.error('Newsletter error:', error);
-    } finally {
-        // Вернуть кнопку в исходное состояние
-        btn.disabled = false;
-        btn.textContent = 'Subscribe';
-    }
-});
+        const emailInput = this.querySelector('input[name="email"]');
+        const btn = this.querySelector('.newsletter-btn');
+        const status = document.getElementById('newsletterStatus');
+
+        // Простая валидация
+        if (!emailInput || !emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+            if (status) showStatus('Please enter a valid email address.', 'error');
+            else alert('Please enter a valid email address.');
+            return;
+        }
+
+        const email = emailInput.value.trim();
+
+        // Состояние загрузки
+        if (btn) {
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+        }
+        if (status) status.textContent = '';
+
+        try {
+            await fetch('http://localhost:3000/subscribers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: email, 
+                    subscribedAt: new Date().toISOString() 
+                })
+            });
+
+            if (status) {
+                showStatus('Thanks! You\'re successfully subscribed.', 'success');
+            } else {
+                alert('Thanks! You\'re successfully subscribed.');
+            }
+            if (emailInput) emailInput.value = '';
+            
+        } catch (error) {
+            if (status) {
+                showStatus('Something went wrong. Please try again.', 'error');
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+            console.error('Newsletter error:', error);
+        } finally {
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+    });
+    
+} else {
+    // 🔽 Форма не найдена — это нормально, просто выходим
+    console.log('Форма newsletter не найдена на этой странице (это нормально)');
+}
 
 // Вспомогательная функция для показа статуса
 function showStatus(message, type) {
@@ -602,25 +611,35 @@ class ShopRenderer {
                         <span class="price-old">$${product.oldPrice.toFixed(2)}</span>
                         <span class="price-new">$${product.price.toFixed(2)}</span>
                     </div>
-                    <div class="card-stars">${this.getStarsHTML()}</div>
+                   <div class="card-stars">
+                           <img src="/pictures/HomepageImages/Star.svg" alt="5 stars">
+                    </div>
                 </div>
             </div>
         `;
     }
 
-    // Отрисовка товаров на странице
     render() {
+        if (!this.gridElement) {
+            console.log('⚠️ gridElement не найден, пропускаем отрисовку');
+            return;
+        }
+
         const products = this.api.getPaginatedProducts();
         this.gridElement.innerHTML = products.map(product => this.createCardHTML(product)).join('');
         
         // Обновление состояния кнопок
-        this.prevBtn.disabled = !this.api.hasPrevPage();
-        this.nextBtn.disabled = !this.api.hasNextPage();
+        if (this.prevBtn) this.prevBtn.disabled = !this.api.hasPrevPage();
+        if (this.nextBtn) this.nextBtn.disabled = !this.api.hasNextPage();
         
-        // Обновление текста кнопки сортировки
-        this.sortBtn.textContent = this.api.sortAscending 
-            ? "Sort by price (Low-High)" 
-            : "Sort by price (High-Low)";
+        if (this.sortBtn) {
+            const arrow = this.sortBtn.querySelector('.sort-arrow');
+            if (arrow) {
+                arrow.textContent = this.api.sortAscending 
+                    ? "Sort by price (Low-High)" 
+                    : "Sort by price (High-Low)";
+            }
+        }
     }
 }
 
@@ -646,21 +665,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderer.render();
 
     // Обработчики событий
+    if (prevBtn) {
     prevBtn.addEventListener('click', () => {
         if (shopAPI.prevPage()) {
             renderer.render();
         }
     });
-
+}
+    if (nextBtn) {
     nextBtn.addEventListener('click', () => {
         if (shopAPI.nextPage()) {
             renderer.render();
         }
     });
-
+    }   
+if (sortBtn) {
     sortBtn.addEventListener('click', () => {
         shopAPI.toggleSortOrder();
         shopAPI.resetPage(); // Сброс на первую страницу при сортировке
         renderer.render();
     });
+    }
 });
