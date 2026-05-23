@@ -1,0 +1,500 @@
+.btn-shop-settings {
+    /* 1. Вытаскиваем кнопку на самый передний план */
+    position: relative !important;
+    z-index: 10 !important; /* 👈 Теперь никто не сможет перекрыть её при скролле */
+    
+    /* 2. Вместо опасного transform используем безопасный margin для отступа сверху */
+    transform: none !important; /* Отменяем сдвиг, который ломал слои */
+    margin-top: 40px !important; /* Делаем аккуратный отступ от блока с иконками */
+}
+
+
+/* --- 1. ШИРОКИЕ ЭКРАНЫ И НОУТБУКИ (ДО 1305px) --- */
+@media(max-width: 1305px) {
+    /* Секция About (помидоры) */
+    .about-container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        justify-content: center !important;
+    }
+    
+    .about-image-col {
+        max-width: 45% !important;
+    }
+    
+    .about-content-col {
+        max-width: 50% !important;
+        padding-left: 0 !important;
+    }
+    
+    /* Сбрасываем жесткие отступы */
+    .pos-about-subtitle,
+    .pos-about-title,
+    .about-description,
+    .about-features-row-setings,
+    .btn-shop-settings {
+        margin-left: 0 !important;
+    }
+    
+    /* Секция Why Choose Us */
+    .choice-left-col {
+        margin-left: 0 !important; /* Убираем гигантский сдвиг 225px */
+        margin-top: 0 !important;
+    }
+    .choice-big-img {
+        margin-top: 0 !important;
+    }
+    
+    /* Секция Offer */
+    .offer-title-wrapper {
+        margin-left: 0 !important;
+        align-items: center !important;
+    }
+    .offer-vegetables-grid {
+        padding-left: 0 !important;
+    }
+
+    .btn-shop-settings {
+        align-self: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* --- 2. ПЛАНШЕТЫ (ДО 1024px) --- */
+@media(max-width: 1024px) {
+    /* Баннер */
+    .about-hero { height: 350px !important; }
+    .about-hero-title { font-size: 48px !important; }
+
+    /* Секция About (перестраиваем в 1 колонку) */
+    .about-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-top: 50px !important;
+    }
+    
+    .about-image-col,
+    .about-content-col {
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .about-features-row {
+        justify-content: center !important;
+    }
+    
+    .about-feature-item {
+        text-align: left !important;
+    }
+    
+    .btn-shop-settings {
+        transform: none !important;
+        margin: 30px auto 0 !important; /* Центрируем кнопку */
+    }
+
+    /* Секция Why Choose Us (перестраиваем верх в 1 колонку, низ в 2) */
+    .choice-top-row {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    .choice-left-col {
+        order: 2 !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .choice-right-col {
+        order: 1 !important;
+        max-width: 100% !important;
+    }
+    .choice-oval-item {
+        text-align: center !important;
+    }
+    .choice-cards-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Секция Offer (перестраиваем в 2 колонки) */
+    .offer-vegetables-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding-top: 50px !important;
+    }
+    .offer-header {
+        flex-direction: column !important;
+    }
+
+    .btn-shop-settings {
+        align-self: center !important;
+        margin: 30px auto 0 auto !important; 
+    }
+
+    .about-container {
+        display: flex !important;
+        flex-direction: column !important; /* Выстраиваем колонки вертикально */
+        align-items: center !important;    /* Центрируем блоки на экране */
+        gap: 40px !important;              /* Отступ между картинкой и текстом */
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Картинка центрируется и занимает адекватный размер */
+    .about-image-col {
+        width: 100% !important;
+        max-width: 450px !important; /* Ограничиваем салат, чтобы он не был гигантским */
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    .about-main-img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 3. Текстовая колонка растягивается во всю ширину */
+    .about-content-col {
+        width: 100% !important;
+        max-width: 680px !important; /* Удобная ширина для чтения текста */
+        margin: 0 auto !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important; /* Выравнивание текста по левому краю внутри колонки */
+        text-align: left !important;
+    }
+
+    /* 4. Железобетонно разрешаем тексту переноситься */
+    .pos-about-title,
+    .about-description {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        white-space: normal !important;
+    }
+
+.about-features-row,
+.about-features-row-setings {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    justify-content: flex-start !important; /* Прижимает элементы к левому краю */
+    width: 100% !important;
+}
+
+/* На всякий случай проверяем, чтобы у первого элемента внутри тоже не было маржинов */
+.about-feature-item:first-child {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+}
+
+/* --- 3. СМАРТФОНЫ (ДО 768px) --- */
+@media(max-width: 768px) {
+    /* Баннер */
+    .about-hero { height: 280px !important; }
+    .about-hero-title { font-size: 36px !important; }
+
+    /* Секция About */
+    .about-section { padding-bottom: 80px !important; }
+    .title-ab-pro { font-size: 20px !important; }
+    .about-features-row { flex-direction: column !important; gap: 20px !important; align-items: center !important; }
+
+    /* Секция Why Choose Us */
+    .about-choice-section { padding: 40px 0 80px 0 !important; }
+    .choice-title { font-size: 32px !important; transform: none !important; }
+    .choice-desc { transform: none !important; }
+    .choice-cards-row {
+        grid-template-columns: 1fr !important; /* На мобилке 1 карточка в ряд */
+    }
+
+    /* Секция Offer */
+    .offer-vegetables-section { padding-top: 80px !important; }
+    .pos-offer-heading { font-size: 32px !important; }
+
+.about-content-col {
+        padding-left: 10px !important;  /* Уменьшаем отступ слева, чтобы прижать блок к левому краю */
+        padding-right: 30px !important; /* Увеличиваем отступ справа — он создаст "буфер" и отодвинет текст влево */
+        box-sizing: border-box !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Оставляем элементы центрированными внутри колонки */
+    }
+
+    .pos-about-title {
+        width: 100% !important;
+        max-width: 98% !important; /* Увеличиваем лимит: теперь в строке поместится гораздо больше слов */
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .pos-about-subtitle,
+    .pos-about-title,
+    .about-description {
+        margin-left: 0 !important;   /* Отменяем auto, чтобы текст прилип влево */
+        margin-right: auto !important;
+        text-align: left !important; /* Жестко задаем левое выравнивание строкам */
+        width: 100% !important;
+    }
+    
+    /* 3. Кнопку тоже аккуратно возвращаем под текст влево */
+    .btn-shop-settings {
+        align-self: flex-start !important;
+        margin-left: 0 !important;
+    }
+
+    .pos-about-title {
+        text-align: center !important;      /* Центрируем строки текста */
+        align-self: center !important;      /* Сдвигаем сам блок на центральную ось */
+        margin-left: auto !important;       /* Равномерные автоматические отступы */
+        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 90% !important;          /* Небольшой зазор по бокам, чтобы не липло к экрану */
+    }
+
+    /* Принудительно выравниваем серое описание по центру */
+  .about-content-col {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Центрируем всё содержимое по оси */
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Лечим заголовок: убираем всё, что заставляло элементы снизу налезать на него */
+    h2.section-title.pos-about-title {
+        margin-bottom: 25px !important; /* 👈 Создаем жесткий безопасный отступ СНИЗУ до описания */
+        margin-top: 0 !important;
+        transform: none !important;      /* Убиваем любые десктопные translateY */
+        height: auto !important;         /* Разрешаем заголовку занимать столько места, сколько ему нужно */
+        
+        text-align: center !important;
+        align-self: center !important;
+        width: 100% !important;
+    }
+
+    /* 3. Лечим описание: опускаем и жестко центрируем */
+    .about-description {
+        margin-top: 0 !important;         /* Обнуляем старые маржины */
+        margin-left: auto !important;     /* Идеальное центрирование по бокам */
+        margin-right: auto !important;
+        transform: none !important;       /* Убиваем любые translateY, которые затаскивали его вверх */
+        
+        text-align: center !important;    /* Текст строго по центру */
+        align-self: center !important;    /* Сам блок строго по центру */
+        
+        width: 100% !important;
+        max-width: 95% !important;       /* Даем немного места по бокам */
+        display: block !important;
+    }
+}
+
+/* --- 4. МЕЛКИЕ СМАРТФОНЫ (ДО 480px) --- */
+@media(max-width: 480px) {
+    .about-hero { height: 220px !important; }
+    .about-hero-title { font-size: 28px !important; }
+
+    .offer-vegetables-grid {
+        grid-template-columns: 1fr !important; /* На узких экранах 1 овощ в ряд */
+    }
+}
+
+/* --- 5. МИКРО-ЭКРАНЫ (ДО 320px) --- */
+@media(max-width: 320px) {
+    .about-hero { height: 180px !important; }
+    .about-hero-title { font-size: 24px !important; }
+    .choice-title, .pos-offer-heading { font-size: 26px !important; }
+    .title-ab-pro { font-size: 18px !important; }
+}
+
+/* ============================================
+   ОКОНЧАТЕЛЬНЫЙ ФИКС ОБРЕЗКИ ABOUT US (ДО 1700px)
+   ============================================ */
+@media screen and (max-width: 1700px) {
+    
+    .about-container {
+        display: flex !important;
+        justify-content: flex-start !important; /* 👈 Насильно двигаем всё влево */
+        padding-left: 20px !important; /* Оставляем минимальный отступ слева */
+        padding-right: 20px !important;
+        gap: 30px !important; /* Уменьшаем гигантскую дыру между картинкой и текстом */
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Усмиряем картинку (чтобы она не распирала левую часть) */
+    .about-image-col {
+        flex: 0 0 auto !important;
+        width: 450px !important; /* Жестко ограничиваем ширину колонки с салатом */
+        max-width: 40% !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Даем тексту максимум свободы */
+    .about-content-col {
+        flex: 1 1 auto !important; /* 👈 МАГИЯ: Текст заберет ВСЁ свободное пространство справа */
+        max-width: 800px !important; /* Даем тексту достаточно ширины, чтобы он не обрезался */
+        margin: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    /* 4. Отвязываем все внутренние отступы у текстов */
+    .about-description,
+    .pos-about-title,
+    .pos-about-subtitle,
+    .about-features-row-setings,
+    .btn-shop-settings {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .btn-shop-settings {
+        align-self: center !important;
+        margin: 30px auto 0 auto !important; 
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    
+    /* 1. Настраиваем обертку: даем безопасные отступы по бокам */
+    .about-container {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important; /* 👈 Защитный барьер справа */
+        gap: 40px !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;  /* Скрываем любой горизонтальный скролл */
+    }
+
+    /* 2. Картинка занимает строго 40% экрана */
+    .about-image-col {
+        width: 40% !important;
+        max-width: 40% !important;
+        flex: 0 0 40% !important;
+        min-width: 0 !important; /* Разрешаем сжиматься */
+        margin: 0 !important;
+    }
+
+    /* 3. Текст занимает оставшиеся 55% экрана */
+    .about-content-col {
+        width: 55% !important;
+        max-width: 55% !important;
+        flex: 0 0 55% !important;
+        min-width: 0 !important; /* 👈 МАГИЯ: заставляет текст сжаться, а не вылезать за экран */
+        margin: 0 !important;
+        padding-right: 15px !important; 
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Снимаем жесткие лимиты с самого текста, чтобы он переносился */
+    .pos-about-subtitle,
+    .pos-about-title,
+    .about-description,
+    .about-features-row,
+    .about-features-row-setings,
+    .btn-shop-settings {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        white-space: normal !important; /* Разрешаем перенос слов на новую строку */
+    }
+}
+
+/* ============================================
+   ИДЕАЛЬНОЕ ВЫРАВНИВАНИЕ ИКОНОК ПО ЛИНИИ ТЕКСТА
+   ============================================ */
+@media screen and (max-width: 1100px) {
+    
+    /* 1. Обнуляем паддинг у самой колонки, чтобы контролировать линию */
+    .about-content-col {
+        padding-left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    /* 2. Задаем одинаковый, синхронный отступ для ВСЕХ элементов контента */
+    .pos-about-subtitle,
+    .pos-about-title,
+    .about-description,
+    .about-features-row,
+    .about-features-row-setings,
+    .btn-shop-settings {
+        margin-left: 30px !important; /* 👈 Этот отступ сделает левую линию идеально ровной */
+        width: calc(100% - 30px) !important; /* Корректируем ширину с учетом отступа */
+        box-sizing: border-box !important;
+    }
+}
+
+
+/* ============================================
+   ФИКС И ЦЕНТРОВАНИЕ ДЛЯ ПЛАНШЕТОВ (ОТ 768px ДО 1044px)
+   ============================================ */
+@media screen and (max-width: 1044px) and (min-width: 768px) {
+
+    /* 1. Центрируем общую текстовую колонку на экране */
+    .about-content-col {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Центрируем все внутренние блоки */
+        text-align: center !important;  /* Центрируем сам текст */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Лечим заголовок: отталкиваем описание вниз и центрируем */
+    h2.section-title.pos-about-title {
+        margin-top: 0 !important;
+        margin-bottom: 25px !important; /* Жесткий отступ СНИЗУ, чтобы тексты не слипались */
+        transform: none !important;      /* Убиваем десктопные translateY */
+        height: auto !important;         /* Разрешаем заголовку занимать свою высоту */
+        
+        text-align: center !important;
+        align-self: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 90% !important;       /* Ограничение, чтобы строки красиво переносились */
+    }
+
+    /* 3. Лечим описание: опускаем под заголовок и жестко центрируем */
+    .about-description {
+        margin-top: 0 !important;
+        margin-left: auto !important;     /* Центровка самого блока */
+        margin-right: auto !important;
+        transform: none !important;       /* Убиваем любые десктопные сдвиги вверх */
+        
+        text-align: center !important;    /* Текст внутри по центру */
+        align-self: center !important;
+        
+        width: 100% !important;
+        max-width: 85% !important;       /* Чуть сужаем текстовый блок для удобства чтения */
+        display: block !important;
+    }
+
+.pos-about-subtitle {
+        display: block !important;
+        text-align: center !important;   /* Центрируем текст внутри */
+        
+        /* Обнуляем старый левый маржин и жестко центрируем сам блок */
+        margin-left: auto !important;   
+        margin-right: auto !important;
+        
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        transform: none !important;      /* Убираем любые десктопные сдвиги */
+        
+        width: max-content !important;  /* Сжимаем контейнер под размер букв для точного центра */
+    }
+}
