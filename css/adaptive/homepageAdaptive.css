@@ -1,860 +1,623 @@
-@media (max-width: 768px) {
-  /* --- Header --- */
-  .header {
-    padding: 16px 20px;
-  }
-  
-  .header-left {
-    gap: 40px;
-  }
-  
-  .logo {
-    font-size: 28px;
-    margin-left: 0;
-  }
-  
-  .logo img {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .nav-menu {
-    display: none; /* Скрываем на планшете, показываем бургер */
-  }
-  
-  .burger-btn {
-    display: flex;
-  }
-  
-  .header-right {
-    gap: 8px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  
-  .search-bar {
-    width: 200px;
-    height: 48px;
-    padding: 0 12px;
-  }
-  
-  .search-bar input {
-    font-size: 14px;
-  }
-  
-  .search-btn {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .cart-icon {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .cart-btn span {
-    font-size: 14px;
-  }
-  
-  .control-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 12px;
-  }
-  
-  /* --- Banner --- */
-  .main-banner {
-    min-height: 500px;
-  }
-  
-  .banner-bg-image {
-    object-position: 30% center;
-  }
-  
-  .banner-wrapper {
-    padding: 0 20px;
-  }
-  
-  .banner-subtitle {
-    font-size: 24px;
-    transform: translate(0, 0);
-  }
-  
-  .banner-heading {
-    font-size: 36px;
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-  
-  .action-button {
-    width: 180px;
-    height: 60px;
-    padding: 10px 24px 12px 20px;
-    font-size: 16px;
-    transform: translateY(0);
-  }
-  
-  /* --- Products Section --- */
-  .prod-section {
-    padding: 40px 0 60px;
-  }
-  
-  .prod-container {
-    padding: 0 20px;
-  }
-  
-  .pos-products-subtitle,
-  .pos-products-title {
-    transform: translate(0, 0);
-  }
-  
-  .subtitle {
-    font-size: 28px;
-  }
-  
-  .section-title {
-    font-size: 32px;
-  }
-  
-  .prod-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-  
-  .prod-card {
-    width: 100%;
-  }
-  
-  .prod-card:nth-child(n+5) {
-    transform: translateY(0);
-  }
-  
-  .prod-load-more-button-settings {
-    transform: translate(0, 0);
-  }
-  
-  .prod-button-wrapper {
-    margin-top: 40px;
-  }
-  
-  .btn-primary {
-    width: 200px;
-    height: 60px;
-    font-size: 18px;
-    padding: 0 24px;
-  }
-  
-  /* --- About Section --- */
-  .about-section {
-    margin-top: 60px;
-    padding: 60px 0 40px;
-    background-color: #F9F8F8;
-  }
-  
-  .about-container {
-    flex-direction: column;
-    padding: 0 20px;
-    gap: 40px;
-    max-width: 100%;
-  }
-  
-  .about-image-col,
-  .about-content-col {
-    transform: translate(0, 0);
-    max-width: 100%;
-  }
-  
-  .about-main-img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .pos-about-subtitle,
-  .pos-about-title,
-  .ab-description-settings,
-  .ab-featureVeganPh-settings,
-  .ab-featureVegan-settings,
-  .ab-featureMailingPh-settings,
-  .ab-featureMailing-settings,
-  .btn-shop-settings {
-    transform: translate(0, 0);
-  }
-  
-  .about-description {
-    font-size: 16px;
-    margin: 20px 0;
-  }
-  
-  .about-features {
-    margin: 20px 0;
-  }
-  
-  .about-feature-title {
-    font-size: 20px;
-  }
-  
-  .about-feature-desc {
-    font-size: 15px;
-  }
-  
-  /* --- Offer Section --- */
-  .offer-vegetables-section {
-    padding: 60px 0 0;
-  }
-  
-  .offer-vegetables-container {
-    padding: 0 20px;
-  }
-  
-  .offer-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-  }
-  
-  .offer-title-wrapper,
-  .pos-offer-subtitle,
-  .pos-offer-heading,
-  .pos-view-all-btn,
-  .offer-vegetables-grid {
-    transform: translate(0, 0);
-  }
-  
-  .pos-offer-heading {
-    font-size: 32px;
-    color: #FFF;
-  }
-  
-  .offer-vegetables-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-  
-  .btn-view-all {
-    padding: 20px 32px;
-    font-size: 18px;
-  }
-  
-  /* --- Testimonial Section --- */
-  .testi-section {
-    min-height: auto;
-    padding: 60px 0;
-    margin-top: 0;
-  }
-  
-  .testi-content,
-  .testi-title-settings,
-  .testi-subtitle-settings {
-    transform: translate(0, 0);
-  }
-  
-  .testi-wrapper {
-    padding: 0 20px;
-  }
-  
-  .testi-title {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
-  
-  .testi-subtitle {
-    font-size: 24px;
-  }
-  
-  .testi-avatar,
-  .testi-stars,
-  .testi-text,
-  .testi-name,
-  .testi-role {
-    transform: translate(0, 0);
-  }
-  
-  .testi-avatar {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-  }
-  
-  .testi-stars img {
-    width: 80px;
-  }
-  
-  .testi-text {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-  
-  .testi-name {
-    font-size: 20px;
-  }
-  
-  .testi-role {
-    font-size: 13px;
-  }
-  
-  .testi-stats-row {
-    flex-direction: column;
-    gap: 20px;
-    transform: translate(0, 0);
-  }
-  
-  .testi-stat-circle {
-    width: 160px;
-    height: 160px;
-  }
-  
-  .testi-stat-value {
-    font-size: 36px;
-  }
-  
-  .testi-stat-label {
-    font-size: 15px;
-    transform: translate(0, 0);
-  }
-  
-  /* --- Eco Section --- */
-  .eco-section {
-    padding: 60px 0;
-  }
-  
-  .eco-container {
-    padding: 0 20px;
-  }
-  
-  .eco-content-row {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .eco-image-col,
-  .eco-main-image {
-    transform: translate(0, 0);
-    max-width: 100%;
-    margin-right: 0;
-    max-height: 400px;
-  }
-  
-  .eco-text-col {
-    transform: translate(0, 0);
-  }
-  
-  .eco-subtitle,
-  .eco-subtitle-settings {
-    font-size: 24px;
-    transform: translate(0, 0);
-  }
-  
-  .eco-title,
-  .eco-title-settings {
-    font-size: 32px;
-    max-width: 100%;
-  }
-  
-  .eco-features-list {
-    gap: 24px;
-  }
-  
-  .about-feature-title {
-    font-size: 20px;
-  }
-  
-  .about-feature-desc {
-    font-size: 15px;
-  }
-  
-  /* --- Categories Section --- */
-  .categories-section {
-    padding: 60px 0;
-    margin-top: 60px;
-  }
-  
-  .categories-container {
-    padding: 0 20px;
-    transform: translate(0, 0);
-    margin-left: 0;
-  }
-  
-  .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .category-card {
-    height: 400px;
-  }
-  
-  .category-label {
-    font-size: 20px;
-    padding: 24px 48px;
-  }
+@media(max-width: 1700px) {
+    /* Header */
+    .header { padding: 0 60px; }
+    .header-left { gap: 80px; }
+    .logo { margin-left: 0; }
+    
+
+    .about-container {
+        gap: 80px; padding-left: 100px;
+        padding: 0 40px 0 120px; /* Уменьшаем левый отступ с 280px до 120px */
+        gap: 80px; /* Сближаем картинку и текст */
+    }
+
+    .about-image-col {
+        transform: translateX(-100px) translateY(-60px); /* Смягчаем вылет картинки влево */
+    }
+
+    .about-content-col {
+        transform: translateX(-150px) translateY(-35px); /* Смягчаем сдвиг текста */
+    }
 }
 
-@media (max-width: 320px) {
-  /* --- Header --- */
-  .header {
-    padding: 12px 16px;
-  }
-  
-  .logo {
-    font-size: 22px;
-  }
-  
-  .logo img {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .search-bar {
-    width: 100%;
-    order: -1;
-    margin-bottom: 12px;
-  }
-  
-  .header-right {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .cart-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .header-controls {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .control-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 11px;
-  }
-  
-  /* --- Banner --- */
-  .main-banner {
-    min-height: 400px;
-  }
-  
-  .banner-subtitle {
-    font-size: 20px;
-  }
-  
-  .banner-heading {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .action-button {
-    width: 160px;
-    height: 52px;
-    font-size: 14px;
-    padding: 8px 16px 10px 14px;
-  }
-  
-  /* --- Products --- */
-  .prod-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .subtitle {
-    font-size: 22px;
-  }
-  
-  .section-title {
-    font-size: 26px;
-  }
-  
-  .btn-primary {
-    width: 180px;
-    height: 52px;
-    font-size: 16px;
-  }
-  
-  /* --- About --- */
-  .about-section {
-    padding: 40px 0 30px;
-  }
-  
-  .about-description {
-    font-size: 14px;
-  }
-  
-  .about-feature-title {
-    font-size: 18px;
-  }
-  
-  .about-feature-desc {
-    font-size: 13px;
-  }
-  
-  .about-feature-icon img {
-    width: 36px;
-    height: 36px;
-  }
-  
-  /* --- Offer --- */
-  .offer-vegetables-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .pos-offer-heading {
-    font-size: 26px;
-  }
-  
-  .btn-view-all {
-    padding: 16px 24px;
-    font-size: 16px;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  /* --- Testimonial --- */
-  .testi-title {
-    font-size: 26px;
-  }
-  
-  .testi-subtitle {
-    font-size: 20px;
-  }
-  
-  .testi-avatar {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .testi-stars img {
-    width: 60px;
-  }
-  
-  .testi-text {
-    font-size: 14px;
-  }
-  
-  .testi-name {
-    font-size: 18px;
-  }
-  
-  .testi-stat-circle {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .testi-stat-value {
-    font-size: 28px;
-  }
-  
-  .testi-stat-label {
-    font-size: 12px;
-  }
-  
-  /* --- Eco --- */
-  .eco-title {
-    font-size: 26px;
-  }
-  
-  .eco-subtitle {
-    font-size: 20px;
-  }
-  
-  .eco-main-image {
-    max-height: 250px;
-  }
-  
-  /* --- Categories --- */
-  .category-card {
-    height: 300px;
-  }
-  
-  .category-label {
-    font-size: 16px;
-    padding: 16px 32px;
-  }
+@media(max-width: 1534px) {
+    /* Header */
+    .header { padding: 0 40px; }
+    .header-left { gap: 40px; }
+    .nav-menu ul { gap: 25px; }
+    .search-bar { width: 260px; }
+    .header-right { margin-left: 15px; }
+    
+    /* Banner */
+    .banner-wrapper { padding: 0 100px; }
+
+    .prod-stars {
+        right: 0; 
+    }
+
+    .offer-vegetables-container {
+        padding: 0 60px; /* Добавляем по 60px свободного места по бокам */
+        box-sizing: border-box;
+    }
+
+    /* Отменяем сдвиг сетки карточек влево, чтобы они центрировались ровно */
+    .offer-vegetables-grid {
+        transform: translateY(-228px) translateX(0); 
+    }
 }
 
-/* ============================================
-   📱 INTERMEDIATE BREAKPOINTS
-   ============================================ */
+@media(max-width: 1305px) {
+    /* Header */
+    .header { padding: 0 30px; }
+    .header-left { gap: 25px; }
+    .nav-menu ul { gap: 15px; }
+    .nav-menu a { font-size: 18px; }
+    .search-bar { width: 220px; }
+    .header-right { gap: 8px; }
+    .control-btn { width: 50px; height: 50px; }
+    
+    /* Products & Offer (Переход на 3 колонки) */
+    .prod-grid,
+    .offer-vegetables-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+    }
 
-/* Large Tablet: 1200px */
-@media (max-width: 1200px) {
-  /* Header */
-  .header {
-    padding: 0 60px;
-  }
-  
-  .header-left {
-    gap: 80px;
-  }
-  
-  .nav-menu ul {
-    gap: 24px;
-  }
-  
-  /* Banner */
-  .banner-wrapper {
-    padding: 0 120px;
-  }
-  
-  .banner-heading {
-    font-size: 48px;
-  }
-  
-  /* Products */
-  .prod-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 вместо 4 */
-    gap: 16px;
-  }
-  
-  .prod-container {
-    padding: 0 30px;
-  }
-  
-  /* Offer */
-  .offer-vegetables-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 вместо 4 */
-  }
-  
-  /* About */
-  .about-container {
-    padding: 0 120px;
-    gap: 80px;
-  }
-  
-  /* Eco */
-  .eco-container {
-    padding: 0 30px;
-  }
-  
-  .eco-content-row {
-    gap: 40px;
-  }
-  
-  /* Categories */
-  .categories-container {
-    padding: 0 30px;
-  }
-  
-  .category-card {
-    height: 450px;
-  }
+    .prod-card:nth-child(n+5) {
+        transform: none;
+    }
+
+    .prod-stars {
+        right: 0; 
+    }
+
+    .offer-title-wrapper {
+        transform: translateX(0) translateY(-232px);
+    }
+
+    /* Убираем сдвиг кнопки вправо */
+    .pos-view-all-btn {
+        transform: translate(0, -60px);
+    }
+    
+    /* Делаем отступы контейнера чуть меньше, чтобы оставить больше места карточкам */
+    .offer-vegetables-container {
+        padding: 0 40px;
+    }
 }
 
-/* Medium Tablet: 992px */
-@media (max-width: 992px) {
-  /* Header */
-  .header {
-    padding: 0 40px;
-  }
-  
-  .header-left {
-    gap: 60px;
-  }
-  
-  .search-bar {
-    width: 280px;
-  }
-  
-  /* Banner */
-  .banner-wrapper {
-    padding: 0 80px;
-  }
-  
-  .banner-heading {
-    font-size: 42px;
-  }
-  
-  .action-button {
-    width: 200px;
-  }
-  
-  /* Products */
-  .prod-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
-  }
-  
-  /* Offer */
-  .offer-vegetables-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
-  }
-  
-  /* About */
-  .about-container {
-    padding: 0 80px;
-    gap: 60px;
-  }
-  
-  .about-image-col {
-    transform: translateX(-120px) translateY(-60px);
-  }
-  
-  /* Eco */
-  .eco-content-row {
-    gap: 30px;
-  }
-  
-  .eco-image-col {
-    transform: translateX(-50px);
-  }
-  
-  .eco-main-image {
-    margin-right: 80px;
-    max-height: 400px;
-  }
-  
-  /* Categories */
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
-    gap: 24px;
-  }
-  
-  .category-card {
-    height: 400px;
-  }
+
+@media(max-width: 1125px) {
+    /* --- МАССОВОЕ ОБНУЛЕНИЕ ТРАНСФОРМАЦИЙ --- */
+    /* Возвращаем все элементы в естественный поток документа */
+    .about-content-col, .about-image-col, .pos-about-subtitle, .pos-about-title, 
+    .ab-description-settings, .ab-featureVeganPh-settings, 
+    .ab-featureVegan-settings, .ab-featureMailingPh-settings, 
+    .ab-featureMailing-settings, .btn-shop-settings,
+    .offer-title-wrapper, .pos-offer-subtitle, .pos-offer-heading,
+    .pos-view-all-btn, .offer-vegetables-grid, .action-button, .banner-text,
+    .testi-content, .testi-title-settings, .testi-subtitle-settings,
+    .testi-avatar, .testi-stars, .testi-text, .testi-name, .testi-role, .testi-stats-row,
+    .eco-image-col, .eco-img-settings, .eco-subtitle-settings,
+    .categories-container, .prod-load-more-button-settings,
+    .pos-products-subtitle, .pos-products-title, .prod-card:nth-child(n+5) {
+        transform: none !important;
+    }
+
+    /* Header (Burger Menu) */
+    .header { height: 100px; padding: 0 40px; }
+    .nav-menu, .header-right { display: none; }
+    .header-left { width: 100%; justify-content: space-between; gap: 0; }
+    .logo { font-size: 32px; margin-left: 0; }
+    .burger-btn {
+        display: flex; flex-direction: column; justify-content: space-between;
+        width: 35px; height: 25px; background: transparent; border: none; padding: 0; z-index: 100;
+    }
+    .burger-line { width: 100%; height: 4px; background-color: #1F263E; border-radius: 4px; }
+
+    /* Banner */
+    .banner-heading { font-size: 52px; margin-bottom: 30px; }
+    .banner-wrapper { padding: 0 40px; }
+    .main-banner { min-height: 600px; }
+
+    /* Products */
+    .prod-grid { grid-template-columns: repeat(2, 1fr); margin-top: 60px; }
+    .prod-section { padding: 60px 0; }
+    .prod-card { margin: 0 auto; } /* Центрируем карточки */
+
+    /* About Us */
+    .about-container { flex-direction: column; padding: 0 40px; gap: 40px; }
+    .about-section { margin-top: 60px; padding: 60px 0; }
+    .about-main-img { margin: 0 auto; }
+    
+    /* Offer Vegetables */
+    .offer-vegetables-section { padding: 60px 0; }
+    .offer-header { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .offer-vegetables-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    /* Testimonial */
+    .testi-section { min-height: auto; padding: 80px 0; margin-top: 0; }
+    .testi-stats-row { gap: 30px; margin-top: 40px; }
+    .testi-stat-circle { width: 180px; height: 180px; }
+    .testi-text { font-size: 16px; padding: 0 20px; }
+
+    /* Eco Friendly */
+    .eco-content-row { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .eco-main-image { margin: 0 auto; max-height: 400px; }
+    .eco-features-list { text-align: left; }
+    
+    /* Categories */
+    .categories-section { padding: 80px 0; margin-top: 40px; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    
+    /* Footer */
+    .footer-grid { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        gap: 50px; 
+    }
+    .footer-column-center { order: -1; } /* Ставим логотип наверх */
+    .footer-contact-list { align-items: center; }
+
+    .categories-container {
+        transform: none !important; /* Сбрасываем десктопные смещения влево */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 24px !important; /* Одинаковые защитные отступы по бокам */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        justify-content: center !important; /* Центрирует сетку внутри контейнера */
+    }
+
+    /* 2. Настраиваем саму грид-сетку на симметричное распределение */
+    .categories-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Строго две равные колонки */
+        justify-content: center !important; /* Центрирует сетку по горизонтали */
+        justify-items: center !important; /* Центрирует карточки внутри их ячеек */
+        gap: 20px !important; /* Зазор между карточками */
+        width: 100% !important;
+        max-width: 680px !important; /* Ограничиваем максимальную ширину сетки под планшет */
+        margin: 0 auto !important; /* Центрирует сам блок сетки на странице */
+        transform: none !important;
+    }
+
+    /* 3. Делаем карточки адаптивными и сбрасываем их индивидуальные сдвиги */
+    .category-card {
+        width: 100% !important;
+        max-width: 320px !important; /* Комфортный размер карточек, чтобы они не были слишком огромными */
+        height: 320px !important; /* Делаем их аккуратными квадратами */
+        margin: 0 auto !important; /* Центрируем внутри ячеек грида */
+        transform: none !important;
+        box-sizing: border-box !important;
+    }
+
 }
 
-/* Small Tablet: 576px */
-@media (max-width: 576px) {
-  /* Header */
-  .header {
-    padding: 0 20px;
-  }
-  
-  .logo {
-    font-size: 24px;
-  }
-  
-  .search-bar {
-    width: 100%;
-    order: -1;
-    margin-bottom: 12px;
-  }
-  
-  .header-right {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-  
-  .cart-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .header-controls {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  /* Banner */
-  .banner-wrapper {
-    padding: 0 20px;
-  }
-  
-  .banner-heading {
-    font-size: 32px;
-  }
-  
-  .banner-subtitle {
-    font-size: 22px;
-  }
-  
-  .action-button {
-    width: 180px;
-    height: 56px;
-    font-size: 16px;
-  }
-  
-  /* Products */
-  .prod-container {
-    padding: 0 20px;
-  }
-  
-  .prod-grid {
-    gap: 12px;
-  }
-  
-  /* About */
-  .about-container {
-    padding: 0 20px;
-    gap: 30px;
-  }
-  
-  .about-image-col,
-  .about-content-col,
-  .pos-about-subtitle,
-  .pos-about-title,
-  .ab-description-settings,
-  .ab-featureVeganPh-settings,
-  .ab-featureVegan-settings,
-  .ab-featureMailingPh-settings,
-  .ab-featureMailing-settings,
-  .btn-shop-settings {
-    transform: translate(0, 0); /* Сброс всех transform */
-  }
-  
-  .about-main-img {
-    max-width: 100%;
-  }
-  
-  /* Offer */
-  .offer-vegetables-container {
-    padding: 0 20px;
-  }
-  
-  .offer-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .offer-title-wrapper,
-  .pos-offer-subtitle,
-  .pos-offer-heading,
-  .pos-view-all-btn {
-    transform: translate(0, 0);
-  }
-  
-  .offer-vegetables-grid {
-    grid-template-columns: 1fr; /* 1 колонка */
-  }
-  
-  /* Eco */
-  .eco-container {
-    padding: 0 20px;
-  }
-  
-  .eco-content-row {
-    grid-template-columns: 1fr;
-  }
-  
-  .eco-image-col,
-  .eco-main-image {
-    transform: translate(0, 0);
-    margin-right: 0;
-  }
-  
-  .eco-text-col {
-    transform: translate(0, 0);
-  }
-  
-  /* Categories */
-  .categories-container {
-    padding: 0 20px;
-    margin-left: 0;
-    transform: translate(0, 0);
-  }
-  
-  .categories-grid {
-    grid-template-columns: 1fr; /* 1 колонка */
-  }
-  
-  .category-card {
-    height: 350px;
-  }
+    @media screen and (max-width: 1125px) and (min-width: 768px) {
+    /* Центрируем подзаголовок и делаем его черным, как ты просил */
+    .eco-subtitle,
+    .eco-subtitle-settings {
+        display: block !important;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+    }
+
+    /* Центрируем основной заголовок "Econis is a Friendly Organic Store" */
+    .eco-title,
+    .eco-title-settings {
+        text-align: center !important;
+        max-width: 100% !important; /* Разрешаем тексту занимать всю ширину для правильной центровки */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+    }
+
+    /* Выравниваем саму текстовую колонку по центру страницы */
+    .eco-text-col {
+        align-items: center !important; /* Центрирует внутренние элементы flex-контейнера */
+        text-align: center !important;
+        transform: none !important;
+    }
+
+    /* Чтобы описание фич ниже не съезжало, возвращаем им выравнивание по левому краю */
+    .eco-features-list {
+        text-align: center !important;
+        margin: 0 auto !important;
+        max-width: 600px; /* Ограничиваем ширину списка фич, чтобы он аккуратно смотрелся по центру */
+    }
+
+    .categories-grid .category-card:nth-child(3) {
+        display: none !important;
+    }
+
+    /* Перестраиваем сетку на 2 одинаковые колонки для оставшихся карточек */
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important; /* Немного уменьшаем зазор для планшетов */
+    }
+
+    .about-content-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Центрирует кнопку и блоки фич по горизонтали */
+        text-align: center !important; /* Центрирует сами тексты и заголовки */
+        transform: none !important; /* Сбрасываем десктопные сдвиги translateX */
+        width: 100% !important;
+        max-width: 650px !important; /* Ограничиваем ширину текста, чтобы он не растягивался во весь экран */
+        margin: 0 auto !important; /* Центрируем сам текстовый блок на странице */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Центрируем кнопку "Learn More" */
+    .btn-shop-settings {
+        display: inline-flex !important;
+        margin: 30px auto 0 !important; /* Авто-маржины выравнивают кнопку строго по центру */
+        transform: none !important; /* Сбрасываем десктопный translate */
+    }
+
+    /* 3. Центрируем блок с фичами (иконка + текст) */
+    .about-feature-item {
+        display: flex !important;
+        flex-direction: column !important; /* Иконка встанет НАД текстом для мобильного баланса */
+        align-items: center !important; /* Центрирует иконку относительно текста */
+        text-align: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* 4. Сбрасываем индивидуальные десктопные сдвиги у подзаголовков и иконок */
+    .ab-featureVeganPh-settings,
+    .ab-featureVegan-settings,
+    .ab-featureMailingPh-settings,
+    .ab-featureMailing-settings,
+    .about-feature-title,
+    .about-feature-desc {
+        transform: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+}
+
+
+@media(max-width: 768px) {
+    /* Header */
+    .header { height: 80px; padding: 0 20px; }
+    .logo { font-size: 28px; }
+    .logo img { height: 32px; width: auto; }
+    .burger-btn { width: 30px; height: 20px; }
+    .burger-line { height: 3px; }
+
+    /* Typography Global */
+    .section-title, .testi-title, .eco-title, .banner-heading { font-size: 36px; }
+    .subtitle, .testi-subtitle, .eco-subtitle { font-size: 28px; }
+
+    /* Banner */
+    .main-banner { min-height: 500px; }
+    .banner-wrapper { padding: 0 20px; text-align: center; }
+    .action-button { margin: 0 auto; }
+
+    /* Testimonial Stats */
+    .testi-stats-row { grid-template-columns: repeat(2, 1fr); display: grid; justify-items: center; }
+    .testi-stat-circle { width: 140px; height: 140px; }
+    .testi-stat-value { font-size: 32px; }
+
+    /* Categories */
+    .categories-grid { grid-template-columns: 1fr; }
+    .category-card { height: 350px; }
+
+    /* Newsletter */
+    .newsletter-container { padding: 40px 20px; text-align: center; }
+    .newsletter-form { flex-direction: column; gap: 15px; }
+    .newsletter-btn { width: 100%; justify-content: center; }
+
+    .banner-wrapper {
+        padding: 0 20px !important; /* Безопасный отступ от левого края экрана */
+        display: flex !important;
+        justify-content: flex-start !important; /* Сдвигаем всё содержимое влево */
+        text-align: left !important;
+    }
+
+    .banner-text {
+        max-width: 280px !important; /* Сужаем блок текста, чтобы он гарантированно не залезал на тарелки справа */
+        transform: none !important; /* Убираем десктопные сдвиги */
+        margin-left: 0 !important; /* Отменяем центровку, если она была */
+    }
+
+    /* 2. Выравниваем заголовки по левому краю */
+    .banner-subtitle,
+    .banner-heading {
+        text-align: left !important;
+        transform: none !important;
+    }
+
+    .action-button {
+        margin-left: 0 !important; /* Отменяем маржин-авто, который центрировал её */
+        display: inline-flex !important; /* Возвращаем стандартное поведение */
+        transform: none !important;
+    }
+
+    
+    .categories-container {
+        transform: none !important; /* Убираем десктопные смещения */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 20px !important; /* Безопасные отступы по бокам */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        justify-content: center !important; /* Центрирует всё, что внутри flex */
+    }
+
+    .categories-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Четко 2 колонки */
+        justify-content: center !important; /* Центрирует сетку по горизонтали */
+        justify-items: center !important; /* Центрирует сами карточки внутри их ячеек */
+        gap: 20px !important; /* Расстояние между картинками */
+        width: 100% !important;
+        max-width: 728px !important; /* Ограничиваем максимальную ширину сетки под планшет */
+        margin: 0 auto !important; 
+        transform: none !important;
+    }
+
+    .category-card {
+        width: 100% !important;
+        max-width: 340px !important;
+        height: 340px !important; 
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .prod-grid, .offer-vegetables-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .prod-card { width: 100%; max-width: 335px; }
+    
+    .testi-stats-row { grid-template-columns: 1fr; }
+
+    .categories-container {
+        transform: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 16px !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .categories-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; 
+        justify-items: center !important; 
+        align-items: center !important;
+        gap: 24px !important; 
+        width: 100% !important;
+        transform: none !important;
+        margin: 0 auto !important;
+    }
+
+    .category-card {
+        width: 100% !important;
+        max-width: 340px !important; 
+        height: 320px !important; 
+        margin: 0 auto !important; 
+        transform: none !important;
+        box-sizing: border-box !important;
+    }
+
+    .about-content-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important; 
+        transform: none !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .btn-shop-settings {
+        display: inline-flex !important;
+        margin: 24px auto 0 !important; 
+        transform: none !important; 
+    }
+
+    .about-feature-item {
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: center !important; 
+        text-align: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .ab-featureVeganPh-settings,
+    .ab-featureVegan-settings,
+    .ab-featureMailingPh-settings,
+    .ab-featureMailing-settings,
+    .about-feature-title,
+    .about-feature-desc {
+        transform: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .eco-text-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important; 
+        width: 100% !important;
+        transform: none !important; 
+        padding: 0 15px !important; 
+        box-sizing: border-box !important;
+    }
+
+    .eco-subtitle,
+    .eco-subtitle-settings,
+    .eco-title,
+    .eco-title-settings {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    .eco-features-list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .eco-feature-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-bottom: 20px !important; 
+    }
+
+    .eco-feature-item h3,
+    .eco-feature-item p,
+    .eco-features-list .about-feature-title,
+    .eco-features-list .about-feature-desc {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 320px) {
+    .header { height: 60px; padding: 0 10px; }
+    .logo { font-size: 22px; }
+    .logo img { height: 24px; }
+    
+    .banner-heading { font-size: 32px; }
+    .section-title { font-size: 28px; }
+    .banner-wrapper, .about-container, .prod-container { padding: 0 10px; }
+
+    .btn-shop-settings {
+        display: inline-flex !important;
+        margin: 30px auto 0 !important; 
+        transform: none !important; 
+    }
+
+    .about-feature-item {
+        flex-direction: column !important; 
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px !important;
+    }
+
+    .ab-featureVeganPh-settings,
+    .ab-featureVegan-settings,
+    .ab-featureMailingPh-settings,
+    .ab-featureMailing-settings {
+        transform: none !important;
+    }
+
+
+    .about-content-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    .categories-container {
+        transform: none !important;
+        margin-left: 0 !important;
+        padding: 0 20px !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr !important; 
+        justify-items: center !important; 
+        gap: 30px !important; 
+        width: 100% !important;
+    }
+
+    .category-card {
+        width: 100% !important;
+        max-width: 400px !important; 
+        height: 350px !important; 
+        margin: 0 auto !important; 
+    }
+
+    .eco-text-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important; 
+        width: 100% !important;
+        transform: none !important;
+    }
+
+    .eco-subtitle,
+    .eco-subtitle-settings,
+    .eco-title,
+    .eco-title-settings {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+    }
+
+    .eco-features-list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .eco-feature-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .eco-feature-item h3,
+    .eco-feature-item p,
+    .about-feature-title,
+    .about-feature-desc {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+
+@media screen and (max-width: 1302px) and (min-width: 1124px) {
+    .offer-vegetables-grid .prod-card:nth-child(4),
+    .offer-vegetables-grid .offer-vegetable-card:nth-child(4) {
+        display: none !important;
+    }
+
+    .offer-vegetables-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        transform: translateY(-228px) translateX(0) !important;
+    }
 }
