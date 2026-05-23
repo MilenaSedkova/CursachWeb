@@ -1,0 +1,109 @@
+/* ============================================
+   📱 АДАПТИВНОСТЬ (добавь в конец CSS файла)
+   ============================================ */
+
+/* Планшет: ≤ 768px */
+@media (max-width: 768px) {
+  .header {
+    width: 100%;
+    padding: 20px 40px;
+  }
+  
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .logo {
+    margin-left: 0;
+  }
+  
+  .nav-menu ul {
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  .header-right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 56px;
+    order: -1; /* Поиск переносится вверх */
+  }
+  
+  .cart-btn {
+    height: auto;
+  }
+  
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 13px;
+  }
+}
+
+/* Мобильный: ≤ 320px */
+@media (max-width: 320px) {
+  .header {
+    padding: 16px;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  .nav-menu ul {
+    gap: 16px;
+  }
+  
+  .nav-menu a {
+    font-size: 16px;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+  }
+  
+  .search-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cart-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .cart-btn span {
+    font-size: 14px;
+  }
+  
+  .control-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+  }
+}
