@@ -1,10 +1,14 @@
 /* --- Header Layout --- */
 .header {
-    width: 1920px;
+
+    max-width: 1920px; /* Заменили жесткий width на max-width */
+    width: 100%;
     height: 204px;
     margin: 0 auto;
-    padding: 0 120px;
+    padding: 0 120px; /* Оставляем твои 120px */
+    box-sizing: border-box; /* Важно: чтобы padding не выталкивал контент за пределы экрана */
 }
+
 
 .container {
     display: flex;
@@ -190,4 +194,172 @@
 
 .cart-btn:hover {
     opacity: 0.8; /* Легкий эффект при наведении */
+}
+
+.burger-btn,
+.mobile-menu {
+    display: none;
+}
+
+
+/* Изначальное состояние: меню спрятано за правым краем */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Убираем за пределы экрана */
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    transition: right 0.4s ease-in-out; /* Плавная анимация выезда */
+    display: block;
+}
+
+/* Состояние при клике (JS добавляет этот класс) */
+.mobile-menu.active {
+    right: 0; /* Меню выезжает на экран */
+}
+
+/* Темный полупрозрачный фон */
+.mobile-menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Белая панель самого меню */
+.mobile-menu-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%; /* Занимает 80% экрана телефона */
+    max-width: 350px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 10000;
+    overflow-y: auto; /* Добавляем скролл, если меню не влезет по высоте */
+}
+
+/* Кнопка-крестик */
+.mobile-menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1F263E;
+    padding: 10px;
+}
+
+/* Списки и ссылки внутри мобильного меню */
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-link {
+    text-decoration: none;
+    font-size: 22px;
+    color: #1F263E;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.mobile-link:hover {
+    color: #669C61;
+}
+
+/* Внешний контейнер */
+.mobile-cart {
+    margin-top: 20px;
+}
+
+/* Обращаемся ИМЕННО к тегу <a> */
+.mobile-cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none; /* Убиваем подчеркивание именно у ссылки */
+    color: #1F263E; /* Жестко задаем нужный темный цвет */
+}
+
+
+.mobile-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Прижимает кнопки языков к самому низу */
+}
+
+/* =========================================
+   СТИЛИ ДЛЯ ПОИСКА В МОБИЛЬНОМ МЕНЮ
+   ========================================= */
+
+/* 1. Основной контейнер поиска (овальная серая панель) */
+.mobile-search {
+    display: flex; /* Выравниваем инпут и кнопку в линию */
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: space-between;
+    width: 100%; /* Растягиваем на всю ширину мобильного меню */
+    height: 56px; /* Высота как у десктопного поиска (или чуть меньше) */
+    border-radius: 28px; /* Создаем овальную форму */
+    background-color: #FAFAFA; /* Тот же светло-серый фон */
+    padding: 0 15px 0 20px; /* Отступы: слева больше для текста, справа для кнопки */
+    margin-bottom: 20px; /* Отступ до следующего элемента меню */
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+}
+
+/* 2. Поле ввода (инпут) внутри мобильного поиска */
+.mobile-search input {
+    background: transparent; /* Убираем фон инпута */
+    border: none; /* Убираем границы */
+    outline: none; /* Убираем обводку при клике */
+    width: 100%; /* Занимает всё доступное место */
+    height: 100%;
+    font-size: 15px; /* Размер шрифта */
+    color: #989898; /* Тот же серый цвет текста */
+    font-family: 'Inter', sans-serif; /* Тот же шрифт */
+    padding-left: 0; /* Убираем стандартные отступы */
+}
+
+/* 3. Стилизация текста плейсхолдера "Search..." */
+.mobile-search input::placeholder {
+    color: #989898; /* Тот же серый цвет */
+}
+
+/* 4. Круглая зеленая кнопка поиска */
+.mobile-search-btn {
+    border: none; /* Убираем границы */
+    width:40px; /* Идеально круглая */
+    height: 40px;
+    border-radius: 50%; /* Делаем круглой */
+    display: flex; /* Центрируем иконку внутри */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s; /* Плавный эффект при наведении */
+    padding: 8px; /* Внутренний отступ для иконки */
+    flex-shrink: 0; /* Чтобы кнопка не сплющивалась */
+}
+
+/* 5. Эффект наведения на кнопку поиска */
+.mobile-search-btn:hover {
+    background-color: #568352; /* Более темный зеленый при наведении */
+}
+
+/* 6. Иконка лупы внутри кнопки */
+.mobile-search-btn img {
+    width: 40px; /* Растягиваем иконку */
+    height: 40px;
+    object-fit: contain; /* Сохраняем пропорции иконки */
+
 }

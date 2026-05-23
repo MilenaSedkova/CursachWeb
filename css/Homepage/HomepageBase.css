@@ -6,10 +6,35 @@
     box-sizing: border-box;
 }
 
+/* Предотвращаем горизонтальный скролл */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Все изображения адаптивные 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Контейнеры не выходят за пределы */
+.container,
+.prod-container,
+.about-container,
+.offer-vegetables-container,
+.eco-container,
+.categories-container {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .html{
     overflow-x: hidden !important;
     width: 100%;
 }
+
 body {
  overflow-x: hidden !important;
     margin: 0 !important;

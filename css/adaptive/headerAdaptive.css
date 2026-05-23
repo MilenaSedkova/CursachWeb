@@ -1,337 +1,160 @@
-
-/* BURGER MENU*/
-
-/* Кнопка бургера (скрыта на десктопе) */
-.burger-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 32px;
-    height: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-    position: relative;
-}
-
-.burger-line {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #1F263E;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-/* Мобильное меню */
-.mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1000;
-}
-
-.mobile-menu-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.mobile-menu-content {
-    position: absolute;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 400px;
-    height: 100%;
-    background: #ffffff;
-    padding: 80px 32px 32px;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-menu-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    color: #1F263E;
-}
-
-/* Навигация в мобильном меню */
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 32px 0;
-}
-
-.mobile-nav li {
-    margin-bottom: 16px;
-}
-
-.mobile-link {
-    display: block;
-    text-decoration: none;
-    color: #1F263E;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-    transition: color 0.3s;
-}
-
-.mobile-link:hover {
-    color: #669C61;
-}
-
-/* Корзина в мобильном меню */
-.mobile-cart {
-    margin-bottom: 32px;
-    padding: 24px 0;
-    border-top: 2px solid #f0f0f0;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-.mobile-cart-btn {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
-    color: #1F263E;
-    padding: 16px;
-    background: #f8f8f8;
-    border-radius: 12px;
-    transition: background 0.3s;
-}
-
-.mobile-cart-btn:hover {
-    background: #f0f0f0;
-}
-
-.mobile-cart-icon {
-    width: 48px;
-    height: 48px;
-    background: #1D2939;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mobile-cart-icon img {
-    width: 28px;
-    height: 28px;
-}
-
-#mobileCartCount {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* Кнопки управления */
-.mobile-controls {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-}
-
-/* Анимация бургера при открытии */
-.burger-btn.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.burger-btn.active .burger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.burger-btn.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Активное состояние меню */
-.mobile-menu.active {
-    display: block;
-}
-
-.mobile-menu.active .mobile-menu-overlay {
-    opacity: 1;
-}
-
-.mobile-menu.active .mobile-menu-content {
-    right: 0;
-}
-
-/* ============================================
-   📱 MEDIA QUERIES (адаптация)
-   ============================================ */
-
-@media (max-width: 768px) {
-    /* Показываем бургер, скрываем обычное меню */
-    .burger-btn {
-        display: flex;
+/* Экраны меньше 1700px */
+@media(max-width: 1700px) {
+    .header {
+        padding: 0 60px; /* Уменьшаем боковые отступы в два раза */
     }
-    
-    .nav-menu {
-        display: none;
+    .header-left {
+        gap: 80px; /* Уменьшаем гигантское расстояние между лого и меню */
+    }
+    .logo {
+        margin-left: 0; /* Убираем лишний отступ слева, который съедал место */
+    }
+}
+
+@media(max-width: 1534px) {
+    .header {
+        padding: 0 40px;
+    }
+    .header-left {
+        gap: 40px;
+    }
+    .nav-menu ul {
+        gap: 25px; /* Сближаем пункты меню */
+    }
+    .search-bar {
+        width: 260px; /* Укорачиваем строку поиска */
+    }
+    .header-right {
+        margin-left: 15px; /* Уменьшаем отступ перед правой панелью */
+    }
+}
+
+/* Экраны до 1305px (Дополнительная корректировка) */
+@media screen and (max-width: 1305px) {
+    .header {
+        padding: 0 30px; /* Немного уменьшаем боковые отступы */
     }
     
     .header-left {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+        gap: 25px; /* Сближаем логотип и навигацию */
+    }
+    
+    .nav-menu ul {
+        gap: 15px; /* Сближаем пункты меню */
+    }
+    
+    .nav-menu a {
+        font-size: 18px; /* Слегка уменьшаем шрифт меню (был 20px) */
+    }
+    
+    .search-bar {
+        width: 220px; /* Еще немного укорачиваем строку поиска */
     }
     
     .header-right {
-        display: none; /* Скрываем десктопную правую часть */
+        gap: 8px; /* Уменьшаем расстояние между поиском, корзиной и кнопками */
     }
-    
-    /* Поиск на всю ширину */
-    .search-bar {
-        width: 100%;
-        max-width: 100%;
+
+    .control-btn {
+        width: 50px; /* Немного уменьшаем круглые кнопки языков */
+        height: 50px;
     }
 }
 
-@media (max-width: 320px) {
-    .mobile-menu-content {
+/* =========================================
+   ПЕРЕХОД НА БУРГЕР МЕНЮ (Планшеты, 1125px и ниже)
+   ========================================= */
+@media(max-width: 1125px) {
+    .header {
+        height: 100px; /* Уменьшаем высоту шапки для планшетов */
+        padding: 0 40px; /* Комфортные отступы */
+    }
+
+    /* 1. ПРЯЧЕМ ВСЮ ДЕСКТОПНУЮ НАВИГАЦИЮ И ПРАВУЮ ЧАСТЬ */
+    .nav-menu,
+    .header-right {
+        display: none;
+    }
+
+    /* 2. РАСТЯГИВАЕМ КОНТЕЙНЕР ДЛЯ ЛОГОТИПА И БУРГЕРА */
+    .header-left {
         width: 100%;
-        padding: 70px 20px 20px;
+        justify-content: space-between; /* Раскидываем по краям */
+        gap: 0;
     }
-    
-    .mobile-link {
-        font-size: 18px;
+
+    /* Немного уменьшаем логотип */
+    .logo {
+        font-size: 32px;
+        margin-left: 0;
     }
-    
-    .mobile-cart-btn {
+
+    /* 3. ПОКАЗЫВАЕМ БУРГЕР */
+    .burger-btn {
+        display: flex;
         flex-direction: column;
-        text-align: center;
+        justify-content: space-between;
+        width: 35px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 100;
     }
-}
-/* Планшет: ≤ 768px */
-@media (max-width: 768px) {
-  .header {
-    width: 100%;
-    padding: 20px 40px;
-  }
-  
-  .container {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .header-left {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-  }
-  
-  .logo {
-    margin-left: 0;
-  }
-  
-  .nav-menu ul {
-    gap: 24px;
-    justify-content: center;
-  }
-  
-  .header-right {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-right: 0;
-    margin-left: 0;
-  }
-  
-  .search-bar {
-    width: 100%;
-    max-width: 400px;
-    height: 56px;
-    order: -1; /* Поиск переносится вверх */
-  }
-  
-  .cart-btn {
-    height: auto;
-  }
-  
-  .control-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 13px;
-  }
+
+    .burger-line {
+        width: 100%;
+        height: 4px;
+        background-color: #1F263E;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
 }
 
-/* Мобильный: ≤ 320px */
-@media (max-width: 320px) {
-  .header {
-    padding: 16px;
-  }
-  
-  .logo {
-    font-size: 28px;
-  }
-  
-  .nav-menu ul {
-    gap: 16px;
-  }
-  
-  .nav-menu a {
-    font-size: 16px;
-  }
-  
-  .header-right {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .search-bar {
-    width: 100%;
-    height: 48px;
-    padding: 0 16px;
-  }
-  
-  .search-btn {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .cart-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .cart-btn span {
-    font-size: 14px;
-  }
-  
-  .control-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 12px;
-  }
-}
 
-/* Скрываем бургер-кнопку когда меню открыто */
-@media (max-width: 768px) {
-    .burger-btn.active {
-        opacity: 0;
-        pointer-events: none;
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 80px; 
+        padding: 0 20px; /* Уменьшаем боковые отступы для мобилок */
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+    
+    .logo img {
+        height: 32px;
+        width: auto;
+    }
+
+    .burger-btn {
+        width: 30px;
+        height: 20px;
+    }
+    
+    .burger-line {
+        height: 3px;
     }
 }
+
+
+
+@media(max-width: 320px) {
+    .header {
+        height: 60px;
+        padding: 0 10px; 
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .logo img {
+        height: 24px;
+    }
+}
+
+

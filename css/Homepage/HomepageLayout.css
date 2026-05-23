@@ -145,7 +145,7 @@
 
 /* --- Search & Cart Layout --- */
 .search-bar {
-    width: 356px;
+    max-width: 356px;
     height: 166px;
     border-radius: 36px;
     background-color: #FAFAFA;

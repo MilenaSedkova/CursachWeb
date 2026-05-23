@@ -1,0 +1,860 @@
+@media (max-width: 768px) {
+  /* --- Header --- */
+  .header {
+    padding: 16px 20px;
+  }
+  
+  .header-left {
+    gap: 40px;
+  }
+  
+  .logo {
+    font-size: 28px;
+    margin-left: 0;
+  }
+  
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nav-menu {
+    display: none; /* Скрываем на планшете, показываем бургер */
+  }
+  
+  .burger-btn {
+    display: flex;
+  }
+  
+  .header-right {
+    gap: 8px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .search-bar {
+    width: 200px;
+    height: 48px;
+    padding: 0 12px;
+  }
+  
+  .search-bar input {
+    font-size: 14px;
+  }
+  
+  .search-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cart-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cart-btn span {
+    font-size: 14px;
+  }
+  
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+  
+  /* --- Banner --- */
+  .main-banner {
+    min-height: 500px;
+  }
+  
+  .banner-bg-image {
+    object-position: 30% center;
+  }
+  
+  .banner-wrapper {
+    padding: 0 20px;
+  }
+  
+  .banner-subtitle {
+    font-size: 24px;
+    transform: translate(0, 0);
+  }
+  
+  .banner-heading {
+    font-size: 36px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+  
+  .action-button {
+    width: 180px;
+    height: 60px;
+    padding: 10px 24px 12px 20px;
+    font-size: 16px;
+    transform: translateY(0);
+  }
+  
+  /* --- Products Section --- */
+  .prod-section {
+    padding: 40px 0 60px;
+  }
+  
+  .prod-container {
+    padding: 0 20px;
+  }
+  
+  .pos-products-subtitle,
+  .pos-products-title {
+    transform: translate(0, 0);
+  }
+  
+  .subtitle {
+    font-size: 28px;
+  }
+  
+  .section-title {
+    font-size: 32px;
+  }
+  
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .prod-card {
+    width: 100%;
+  }
+  
+  .prod-card:nth-child(n+5) {
+    transform: translateY(0);
+  }
+  
+  .prod-load-more-button-settings {
+    transform: translate(0, 0);
+  }
+  
+  .prod-button-wrapper {
+    margin-top: 40px;
+  }
+  
+  .btn-primary {
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    padding: 0 24px;
+  }
+  
+  /* --- About Section --- */
+  .about-section {
+    margin-top: 60px;
+    padding: 60px 0 40px;
+    background-color: #F9F8F8;
+  }
+  
+  .about-container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 40px;
+    max-width: 100%;
+  }
+  
+  .about-image-col,
+  .about-content-col {
+    transform: translate(0, 0);
+    max-width: 100%;
+  }
+  
+  .about-main-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .pos-about-subtitle,
+  .pos-about-title,
+  .ab-description-settings,
+  .ab-featureVeganPh-settings,
+  .ab-featureVegan-settings,
+  .ab-featureMailingPh-settings,
+  .ab-featureMailing-settings,
+  .btn-shop-settings {
+    transform: translate(0, 0);
+  }
+  
+  .about-description {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+  
+  .about-features {
+    margin: 20px 0;
+  }
+  
+  .about-feature-title {
+    font-size: 20px;
+  }
+  
+  .about-feature-desc {
+    font-size: 15px;
+  }
+  
+  /* --- Offer Section --- */
+  .offer-vegetables-section {
+    padding: 60px 0 0;
+  }
+  
+  .offer-vegetables-container {
+    padding: 0 20px;
+  }
+  
+  .offer-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .offer-title-wrapper,
+  .pos-offer-subtitle,
+  .pos-offer-heading,
+  .pos-view-all-btn,
+  .offer-vegetables-grid {
+    transform: translate(0, 0);
+  }
+  
+  .pos-offer-heading {
+    font-size: 32px;
+    color: #FFF;
+  }
+  
+  .offer-vegetables-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  
+  .btn-view-all {
+    padding: 20px 32px;
+    font-size: 18px;
+  }
+  
+  /* --- Testimonial Section --- */
+  .testi-section {
+    min-height: auto;
+    padding: 60px 0;
+    margin-top: 0;
+  }
+  
+  .testi-content,
+  .testi-title-settings,
+  .testi-subtitle-settings {
+    transform: translate(0, 0);
+  }
+  
+  .testi-wrapper {
+    padding: 0 20px;
+  }
+  
+  .testi-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .testi-subtitle {
+    font-size: 24px;
+  }
+  
+  .testi-avatar,
+  .testi-stars,
+  .testi-text,
+  .testi-name,
+  .testi-role {
+    transform: translate(0, 0);
+  }
+  
+  .testi-avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .testi-stars img {
+    width: 80px;
+  }
+  
+  .testi-text {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .testi-name {
+    font-size: 20px;
+  }
+  
+  .testi-role {
+    font-size: 13px;
+  }
+  
+  .testi-stats-row {
+    flex-direction: column;
+    gap: 20px;
+    transform: translate(0, 0);
+  }
+  
+  .testi-stat-circle {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .testi-stat-value {
+    font-size: 36px;
+  }
+  
+  .testi-stat-label {
+    font-size: 15px;
+    transform: translate(0, 0);
+  }
+  
+  /* --- Eco Section --- */
+  .eco-section {
+    padding: 60px 0;
+  }
+  
+  .eco-container {
+    padding: 0 20px;
+  }
+  
+  .eco-content-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .eco-image-col,
+  .eco-main-image {
+    transform: translate(0, 0);
+    max-width: 100%;
+    margin-right: 0;
+    max-height: 400px;
+  }
+  
+  .eco-text-col {
+    transform: translate(0, 0);
+  }
+  
+  .eco-subtitle,
+  .eco-subtitle-settings {
+    font-size: 24px;
+    transform: translate(0, 0);
+  }
+  
+  .eco-title,
+  .eco-title-settings {
+    font-size: 32px;
+    max-width: 100%;
+  }
+  
+  .eco-features-list {
+    gap: 24px;
+  }
+  
+  .about-feature-title {
+    font-size: 20px;
+  }
+  
+  .about-feature-desc {
+    font-size: 15px;
+  }
+  
+  /* --- Categories Section --- */
+  .categories-section {
+    padding: 60px 0;
+    margin-top: 60px;
+  }
+  
+  .categories-container {
+    padding: 0 20px;
+    transform: translate(0, 0);
+    margin-left: 0;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .category-card {
+    height: 400px;
+  }
+  
+  .category-label {
+    font-size: 20px;
+    padding: 24px 48px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* --- Header --- */
+  .header {
+    padding: 12px 16px;
+  }
+  
+  .logo {
+    font-size: 22px;
+  }
+  
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    order: -1;
+    margin-bottom: 12px;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cart-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .header-controls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .control-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 11px;
+  }
+  
+  /* --- Banner --- */
+  .main-banner {
+    min-height: 400px;
+  }
+  
+  .banner-subtitle {
+    font-size: 20px;
+  }
+  
+  .banner-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .action-button {
+    width: 160px;
+    height: 52px;
+    font-size: 14px;
+    padding: 8px 16px 10px 14px;
+  }
+  
+  /* --- Products --- */
+  .prod-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .subtitle {
+    font-size: 22px;
+  }
+  
+  .section-title {
+    font-size: 26px;
+  }
+  
+  .btn-primary {
+    width: 180px;
+    height: 52px;
+    font-size: 16px;
+  }
+  
+  /* --- About --- */
+  .about-section {
+    padding: 40px 0 30px;
+  }
+  
+  .about-description {
+    font-size: 14px;
+  }
+  
+  .about-feature-title {
+    font-size: 18px;
+  }
+  
+  .about-feature-desc {
+    font-size: 13px;
+  }
+  
+  .about-feature-icon img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* --- Offer --- */
+  .offer-vegetables-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pos-offer-heading {
+    font-size: 26px;
+  }
+  
+  .btn-view-all {
+    padding: 16px 24px;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* --- Testimonial --- */
+  .testi-title {
+    font-size: 26px;
+  }
+  
+  .testi-subtitle {
+    font-size: 20px;
+  }
+  
+  .testi-avatar {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .testi-stars img {
+    width: 60px;
+  }
+  
+  .testi-text {
+    font-size: 14px;
+  }
+  
+  .testi-name {
+    font-size: 18px;
+  }
+  
+  .testi-stat-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .testi-stat-value {
+    font-size: 28px;
+  }
+  
+  .testi-stat-label {
+    font-size: 12px;
+  }
+  
+  /* --- Eco --- */
+  .eco-title {
+    font-size: 26px;
+  }
+  
+  .eco-subtitle {
+    font-size: 20px;
+  }
+  
+  .eco-main-image {
+    max-height: 250px;
+  }
+  
+  /* --- Categories --- */
+  .category-card {
+    height: 300px;
+  }
+  
+  .category-label {
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+}
+
+/* ============================================
+   📱 INTERMEDIATE BREAKPOINTS
+   ============================================ */
+
+/* Large Tablet: 1200px */
+@media (max-width: 1200px) {
+  /* Header */
+  .header {
+    padding: 0 60px;
+  }
+  
+  .header-left {
+    gap: 80px;
+  }
+  
+  .nav-menu ul {
+    gap: 24px;
+  }
+  
+  /* Banner */
+  .banner-wrapper {
+    padding: 0 120px;
+  }
+  
+  .banner-heading {
+    font-size: 48px;
+  }
+  
+  /* Products */
+  .prod-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 вместо 4 */
+    gap: 16px;
+  }
+  
+  .prod-container {
+    padding: 0 30px;
+  }
+  
+  /* Offer */
+  .offer-vegetables-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 вместо 4 */
+  }
+  
+  /* About */
+  .about-container {
+    padding: 0 120px;
+    gap: 80px;
+  }
+  
+  /* Eco */
+  .eco-container {
+    padding: 0 30px;
+  }
+  
+  .eco-content-row {
+    gap: 40px;
+  }
+  
+  /* Categories */
+  .categories-container {
+    padding: 0 30px;
+  }
+  
+  .category-card {
+    height: 450px;
+  }
+}
+
+/* Medium Tablet: 992px */
+@media (max-width: 992px) {
+  /* Header */
+  .header {
+    padding: 0 40px;
+  }
+  
+  .header-left {
+    gap: 60px;
+  }
+  
+  .search-bar {
+    width: 280px;
+  }
+  
+  /* Banner */
+  .banner-wrapper {
+    padding: 0 80px;
+  }
+  
+  .banner-heading {
+    font-size: 42px;
+  }
+  
+  .action-button {
+    width: 200px;
+  }
+  
+  /* Products */
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
+  }
+  
+  /* Offer */
+  .offer-vegetables-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
+  }
+  
+  /* About */
+  .about-container {
+    padding: 0 80px;
+    gap: 60px;
+  }
+  
+  .about-image-col {
+    transform: translateX(-120px) translateY(-60px);
+  }
+  
+  /* Eco */
+  .eco-content-row {
+    gap: 30px;
+  }
+  
+  .eco-image-col {
+    transform: translateX(-50px);
+  }
+  
+  .eco-main-image {
+    margin-right: 80px;
+    max-height: 400px;
+  }
+  
+  /* Categories */
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 вместо 3 */
+    gap: 24px;
+  }
+  
+  .category-card {
+    height: 400px;
+  }
+}
+
+/* Small Tablet: 576px */
+@media (max-width: 576px) {
+  /* Header */
+  .header {
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    order: -1;
+    margin-bottom: 12px;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .cart-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .header-controls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Banner */
+  .banner-wrapper {
+    padding: 0 20px;
+  }
+  
+  .banner-heading {
+    font-size: 32px;
+  }
+  
+  .banner-subtitle {
+    font-size: 22px;
+  }
+  
+  .action-button {
+    width: 180px;
+    height: 56px;
+    font-size: 16px;
+  }
+  
+  /* Products */
+  .prod-container {
+    padding: 0 20px;
+  }
+  
+  .prod-grid {
+    gap: 12px;
+  }
+  
+  /* About */
+  .about-container {
+    padding: 0 20px;
+    gap: 30px;
+  }
+  
+  .about-image-col,
+  .about-content-col,
+  .pos-about-subtitle,
+  .pos-about-title,
+  .ab-description-settings,
+  .ab-featureVeganPh-settings,
+  .ab-featureVegan-settings,
+  .ab-featureMailingPh-settings,
+  .ab-featureMailing-settings,
+  .btn-shop-settings {
+    transform: translate(0, 0); /* Сброс всех transform */
+  }
+  
+  .about-main-img {
+    max-width: 100%;
+  }
+  
+  /* Offer */
+  .offer-vegetables-container {
+    padding: 0 20px;
+  }
+  
+  .offer-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .offer-title-wrapper,
+  .pos-offer-subtitle,
+  .pos-offer-heading,
+  .pos-view-all-btn {
+    transform: translate(0, 0);
+  }
+  
+  .offer-vegetables-grid {
+    grid-template-columns: 1fr; /* 1 колонка */
+  }
+  
+  /* Eco */
+  .eco-container {
+    padding: 0 20px;
+  }
+  
+  .eco-content-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .eco-image-col,
+  .eco-main-image {
+    transform: translate(0, 0);
+    margin-right: 0;
+  }
+  
+  .eco-text-col {
+    transform: translate(0, 0);
+  }
+  
+  /* Categories */
+  .categories-container {
+    padding: 0 20px;
+    margin-left: 0;
+    transform: translate(0, 0);
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr; /* 1 колонка */
+  }
+  
+  .category-card {
+    height: 350px;
+  }
+}
