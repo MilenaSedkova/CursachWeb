@@ -1,4 +1,3 @@
-/* Секция-обёртка */
 .error-section {
     position: relative;
     width: 100%;
@@ -7,7 +6,6 @@
     padding-bottom: 200px;
 }
 
-/* Превращаем <img> в фон */
 .error-bg-img {
     position: absolute;
     top: 0;
@@ -18,7 +16,6 @@
     z-index: 0;
 }
 
-/* Обёртка для контента */
 .error-content-wrapper {
     position: relative;
     z-index: 2; /* Поверх картинки */

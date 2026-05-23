@@ -1,0 +1,376 @@
+/* ============================================
+   SHOP PRODUCTS SECTION RESPONSIVE STYLES
+   ============================================ */
+
+/* --- 1. ШИРОКИЕ НОУТБУКИ (ДО 1534px) --- */
+@media screen and (max-width: 1534px) {
+    .prod-container {
+        transform: translateX(0) !important; /* Убираем сдвиг влево */
+        margin-top: 40px !important;       /* Переводим наложение в безопасный отступ */
+        padding: 0 40px;
+    }
+
+    /* Сбрасываем десктопные принудительные отступы для рядов карточек */
+    .prod-grid .prod-card:nth-child(-n+4),
+    .prod-grid .prod-card:nth-child(n+9):nth-child(-n+12) {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .shop-controls-buttons {
+        margin-left: 0 !important; /* Обнуляем десктопный сдвиг кнопок сортировки */
+    }
+}
+
+/* --- 2. СРЕДНИЕ ЭКРАНЫ И НОУТБУКИ (ДО 1305px) --- */
+@media screen and (max-width: 1305px) {
+    .prod-container {
+        padding: 0 30px;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero-title {
+        font-size: 52px;
+    }
+
+    .prod-stars {
+        position: relative !important;
+        right: 0 !important; 
+        transform: none !important;
+        margin-left: auto !important; /* Авто-маржин сам прижмет их к правому краю, но не даст вылететь */
+    }
+
+    /* Гарантируем, что нижняя строка распределяет элементы по краям */
+    .prod-price-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Слегка уменьшаем боковые паддинги инфо-зоны карточки, чтобы элементам хватало места */
+    .prod-info {
+        padding-inline: 15px !important; /* Чуть сужаем внутренние пустые поля */
+    }
+}
+
+/* --- 3. ПЛАНШЕТЫ (ДО 850px / 768px) --- */
+@media screen and (max-width: 850px) {
+    .hero {
+        height: 300px; /* Планшетная высота баннера */
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .prod-container {
+        padding: 0 24px; /* Одинаковые отступы, как у секции категорий */
+        margin-top: 30px !important;
+    }
+
+    /* Перестраиваем сетку под планшетный режим (например, в 2 колонки) */
+    .prod-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+
+    /* Центрируем блок с пагинацией и кнопками сортировки */
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .shop-controls-buttons {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .prod-stars {
+        position: relative !important;
+        right: 0 !important; 
+        transform: none !important;
+        margin-left: auto !important; /* Авто-маржин сам прижмет их к правому краю, но не даст вылететь */
+    }
+
+    /* Гарантируем, что нижняя строка распределяет элементы по краям */
+    .prod-price-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Слегка уменьшаем боковые паддинги инфо-зоны карточки, чтобы элементам хватало места */
+    .prod-info {
+        padding-inline: 15px !important; /* Чуть сужаем внутренние пустые поля */
+    }
+
+    /* ============================================
+   ЦЕНТРОВКА ПАГИНАЦИИ (СТРЕЛОЧЕК) НА МОБИЛЬНЫХ
+   ============================================ */
+.pagination-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Центрирует стрелочки внутри контейнера */
+    align-items: center !important;
+    width: 100% !important; /* Контейнер занимает всю ширину */
+    
+    /* Сбрасываем десктопные сдвиги, если они были прописаны */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    
+    /* Создаем аккуратный отступ между карточкой сверху и кнопками снизу */
+    margin-top: 30px !important;
+    margin-bottom: 25px !important; 
+}
+
+/* На всякий случай фиксируем, чтобы сами кнопочки-стрелки не разъезжались */
+.arrow-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+}
+
+
+/* --- 4. СМАРТФОНЫ (ДО 480px) --- */
+@media screen and (max-width: 480px) {
+    .hero {
+        height: 220px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .prod-container {
+        padding: 0 16px; /* Синхронно с About и Eco Friendly */
+    }
+
+    /* На смартфонах перестраиваем товары в одну вертикальную колонку */
+    .prod-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .prod-card {
+        max-width: 320px;
+        margin: 0 auto !important; /* Центрируем карточку на экране телефона */
+    }
+
+    /* Кнопки управления делаем компактнее */
+    .shop-controls-buttons .btn-primary {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    
+}
+
+/* --- 5. МИКРО-ЭКРАНЫ (ДО 320px) --- */
+@media(max-width: 320px) {
+    .hero {
+        height: 180px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .prod-container {
+        padding: 0 10px;
+    }
+
+    .prod-card {
+        max-width: 260px;
+    }
+
+    /* Сортировка перестраивается вертикально, чтобы не ломать ширину */
+    .shop-controls-buttons {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .shop-controls-buttons .btn-primary {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .pagination-wrapper {
+        display: flex !important;
+        justify-content: center !important; /* Центрирует стрелочки внутри себя */
+        align-items: center !important;
+        width: 100% !important; /* Контейнер занимает всю ширину экрана */
+        
+        /* Сбрасываем десктопные сдвиги вправо */
+        margin-left: 0 !important; 
+        margin-right: 0 !important;
+        transform: none !important;
+        
+        /* Задаем аккуратные мобильные отступы сверху и снизу */
+        margin-top: 30px !important;
+        margin-bottom: 20px !important;
+        }
+
+    /* На всякий случай проверяем кнопки сортировки ниже, чтобы они тоже стояли ровно */
+    .shop-controls-buttons {
+        margin-left: 0 !important; /* Обнуляем десктопный margin-left: 70px */
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important; /* Выстраиваем кнопки сортировки в стек */
+        align-items: center !important;
+        gap: 10px !important;
+    }
+}
+
+/* --- 6. УЛЬТРА-УЗКИЕ ЭКРАНЫ (ДО 244px) --- */
+@media screen and (max-width: 244px) {
+    .hero {
+        height: 140px;
+    }
+
+    .hero-title {
+        font-size: 20px;
+    }
+
+    .prod-container {
+        padding: 0 8px;
+    }
+
+    /* Сужаем карточки до предела, чтобы они не резались по бокам */
+    .prod-card {
+        max-width: 210px;
+        padding: 15px 8px !important;
+    }
+
+    /* Поведение нижней строки (цена + звезды) переводим в стек, как делали ранее */
+    .prod-price-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+
+    .prod-stars {
+        margin-left: 0 !important;
+    }
+
+    .shop-controls-buttons .btn-primary {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+}
+
+@media(max-width: 1048){
+    .prod-stars {
+        position: relative !important;
+        right: 0 !important; 
+        transform: none !important;
+        margin-left: auto !important; /* Авто-маржин сам прижмет их к правому краю, но не даст вылететь */
+    }
+
+    /* Гарантируем, что нижняя строка распределяет элементы по краям */
+    .prod-price-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Слегка уменьшаем боковые паддинги инфо-зоны карточки, чтобы элементам хватало места */
+    .prod-info {
+        padding-inline: 15px !important; /* Чуть сужаем внутренние пустые поля */
+    }
+}
+
+
+@media screen and (max-width: 1030px) and (min-width: 844px) {
+    
+    /* 1. Уменьшаем внутренние боковые паддинги карточки, 
+          чтобы освободить место для цен и звезд */
+    .prod-card {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Гарантируем правильное флекс-распределение элементов в строке */
+    .prod-price-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important; /* Цена слева, звезды справа */
+        width: 100% !important;
+        gap: 8px !important; /* Минимальный зазор между ценой и звездами */
+    }
+
+    /* 3. Полностью обнуляем десктопные выталкивания и сдвиги звезд наружу */
+    .prod-stars {
+        position: relative !important;
+        right: 0 !important;
+        transform: none !important;
+        margin-left: auto !important; /* Удерживает блок справа, не ломая верстку */
+    }
+
+    /* 4. Слегка уменьшаем размер самих звездочек для этого диапазона, 
+          чтобы они физически помещались без тесноты */
+    .prod-stars .star-icon {
+        width: 12px !important;  /* Было 14px */
+        height: 12px !important;
+    }
+}
+
+/* ============================================
+   ПЕРЕВОД СЕТКИ МАГАЗИНА В 3 КОЛОНКИ (ОТ 887px ДО 768px)
+   ============================================ */
+@media screen and (max-width: 996px) and (min-width: 768px) {
+    
+    /* 1. Перестраиваем сетку товаров на 3 колонки вместо 4 */
+    .prod-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important; /* Оптимальный зазор между карточками */
+        justify-items: center !important;
+    }
+
+    /* 2. Даем карточкам больше свободы и паддингов, так как места теперь полно */
+    .prod-card {
+        width: 100% !important;
+        max-width: 260px !important; /* Карточки станут крупнее и красивее */
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3. Окончательно фиксируем строку цены и звезд внутри просторной карточки */
+    .prod-price-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    /* На всякий случай держим звезды внутри, убирая десктопные сдвиги */
+    .prod-stars {
+        position: relative !important;
+        right: 0 !important;
+        transform: none !important;
+        margin-left: auto !important;
+    }
+
+    .prod-stars .star-icon {
+        width: 14px !important; /* Возвращаем стандартный десктопный размер звезд */
+        height: 14px !important;
+    }
+}

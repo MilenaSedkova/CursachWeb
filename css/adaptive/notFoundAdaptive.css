@@ -1,0 +1,216 @@
+@media(max-width: 1534px) {
+    .error-content-wrapper {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+    
+        display: flex;
+        align-items: center;       
+        justify-content: flex-end; 
+    
+        padding-top: 100px;        
+        padding-right: 150px;      
+        box-sizing: border-box;
+        margin-top: 100px;
+    }
+
+    .btn-shop-settings {
+        margin-left: 0 !important;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto; 
+    }
+
+    .error-content {
+        text-align: center; 
+        max-width: 550px;  
+    }
+
+}
+
+@media(max-width: 1305px) {
+    .error-section {
+        min-height: 80vh; 
+        padding-bottom: 100px;
+    }
+
+    .error-code {
+        font-size: 200px !important;
+    }
+
+    .error-title {
+        font-size: 52px !important;
+    }
+}
+
+@media(max-width: 895px) {
+    .error-section {
+        min-height: 70vh;
+        padding-bottom: 60px;
+    }
+
+    .error-content-wrapper {
+        padding: 60px 24px 0 !important;
+        margin-top: 20px !important;
+    }
+
+    .error-content {
+        max-width: 90%;
+    }
+
+    .error-code {
+        font-size: 140px !important;
+        letter-spacing: -4px !important;
+    }
+
+    .error-title {
+        font-size: 36px !important;
+        letter-spacing: -1px !important;
+        margin: 0 0 12px !important;
+    }
+
+    .error-text {
+        font-size: 16px !important;
+        margin-right: 0 !important;
+    }
+
+    .btn-shop-settings {
+        padding: 20px 35px !important; 
+        height: auto !important;
+    }
+}
+
+@media(max-width: 768px) {
+    
+    .error-content-wrapper {
+        display: flex !important;
+        justify-content: flex-end !important; 
+        align-items: center !important;
+        
+        padding-right: 20px !important; 
+        padding-left: 0 !important;
+        margin-top: 40px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .error-content {
+        max-width: 260px !important; 
+        text-align: center !important; 
+        margin-left: auto !important;  
+        margin-right: 0 !important;
+    }
+
+    .btn-shop-settings {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    
+    margin-top: 30px !important;
+
+    padding: 18px 28px !important;  
+    font-size: 15px !important;     
+    height: auto !important;        
+    min-width: auto !important;
+    }
+
+    .btn-arrow {
+        width: 12px !important;
+        height: auto !important;
+    }
+
+    .error-code {
+        font-size: 90px !important; 
+        letter-spacing: -3px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .error-title {
+        font-size: 24px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .error-text {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+
+    .footer-column-title {
+        font-size: 22px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .contact-label {
+        font-size: 15px !important; 
+        margin-bottom: 4px !important;
+    }
+
+    .contact-value {
+        font-size: 14px !important; 
+    }
+
+    .footer-description {
+        font-size: 15px !important; 
+        line-height: 1.5 !important;
+    }
+
+    .footer-link, 
+    .footer-title-right {
+        font-size: 14px !important; 
+        padding-top: 6px !important;
+    }
+
+    .contact-item {
+        margin-bottom: 20px !important; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .error-content-wrapper {
+        padding: 40px 16px 0 !important; 
+    }
+
+    .error-code {
+        font-size: 100px !important;
+    }
+
+    .error-title {
+        font-size: 28px !important;
+    }
+
+    .error-text {
+        font-size: 14px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .btn-shop-settings {
+        width: auto !important;
+        min-width: 180px !important;
+        padding: 14px 25px !important;
+    }
+    
+    .footer-main {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .error-content-wrapper {
+        padding: 30px 10px 0 !important;
+    }
+
+    .error-code {
+        font-size: 80px !important;
+        letter-spacing: -2px !important;
+    }
+
+    .error-title {
+        font-size: 24px !important;
+    }
+}
