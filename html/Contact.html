@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../css/AboutUs/AboutUsBase.css">
     <link rel="stylesheet" href="../css/ShopPage/ShopBase.css">
     <link rel="stylesheet" href="../css/Contact/ContactBase.css">
+    <link rel="stylesheet" href="/css/adaptive/headerAdaptive.css">
 
 </head>
 <body>
@@ -37,6 +38,44 @@
                         <li><a href="#">Log in</a></li>
                     </ul>
                 </nav>
+
+                <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu-content">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="/homepage.html" class="mobile-link">Home</a></li>
+                <li><a href="/html/AboutUs.html" class="mobile-link">About</a></li>
+                <li><a href="/html/Shop.html" class="mobile-link">Shop</a></li>
+                <li><a href="#" class="mobile-link">Register</a></li>
+                <li><a href="#" class="mobile-link">Log in</a></li>
+            </ul>
+        </nav>
+        
+        <div class="mobile-cart">
+            <a href="/html/Card.html" class="mobile-cart-btn" id="mobileCartBtn">
+                <div class="mobile-cart-icon">
+                    <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
+                </div>
+                <span id="mobileCartCount">Cart(0)</span>
+            </a>
+        </div>
+        
+        <div class="mobile-controls">
+            <button class="control-btn">li</button>
+            <button class="control-btn">en</button>
+            <button class="control-btn">A+</button>
+        </div>
+    </div>
+</div>
+
             </div>
 
             <div class="header-right">
@@ -186,12 +225,6 @@
     <span class="toast-text"> Review sent successfully!</span>
 </div>
 
-<script src="/js/update.js"></script>
-<script src="../js/contact.js"></script>
-
-
-</body>
-
 <footer class="footer">
 <div class="footer-newsletter pro-newsletter">
 
@@ -250,7 +283,7 @@
             <div class="footer-column footer-column-right">
                 <h4 class="footer-column-title ">Utility Pages</h4>
                 <ul class="footer-links">
-                    <li><a href="#" class="footer-link footer-title-right">404 Not Found</a></li>
+                    <li><a href="/html/NotFound.html" class="footer-link footer-title-right">404 Not Found</a></li>
                     <li><a href="/html/AboutUs.html" class="footer-link footer-title-right">About Us</a></li>   
                  </ul>
             </div>
@@ -259,5 +292,14 @@
     </div>
 </div>
 </footer>
+
+
+<script src="/js/update.js"></script>
+<script src="../js/contact.js"></script>
+<script src="/js/burgerMenu.js"></script>
+
+
+</body>
+
 
 </html>
