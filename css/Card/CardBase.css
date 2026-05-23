@@ -1,4 +1,3 @@
-/* Основная секция корзины */
 .cart-section {
     display: flex;
     flex-direction: column;
@@ -8,7 +7,6 @@
     background-color: #fff;
 }
 
-/* Пустая корзина */
 .empty-cart {
     display: flex;
     flex-direction: column;
@@ -28,7 +26,6 @@
     margin: 0;
 }
 
-/* Кнопка "Continue Shopping" */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -48,11 +45,6 @@
 .btn-text-offset { font-size: 20px; }
 .btn-arrow { width: 16px; height: 16px; }
 
-/* ============================================
-   CART GRID & ITEMS
-   ============================================ */
-
-/* Сетка товаров: строго 4 в ряд */
 .cart-items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -86,7 +78,6 @@
     width: 100%;
 }
 
-/* Блок управления количеством */
 .cart-controls {
     display: flex;
     align-items: center;
@@ -94,7 +85,6 @@
     flex-shrink: 0;
 }
 
-/* Счётчик количества */
 .cart-qty {
     font-weight: 600;
     font-size: 14px;
@@ -106,8 +96,7 @@
     text-align: center;
 }
 
-/* Кнопки +, -, 🗑️ (Стиль как у тега категории) */
-/* Группа управления количеством */
+
 .cart-qty-group {
     display: flex;
     align-items: center;
@@ -115,7 +104,6 @@
     flex-shrink: 0;
 }
 
-/* Счётчик количества */
 .cart-qty-value {
     font-weight: 600;
     font-size: 14px;
@@ -134,7 +122,7 @@
     height: 28px;
     border: none;
     border-radius: 6px;
-    background-color: #2C4A5C;  /* Тёмно-синий как тег */
+    background-color: #2C4A5C;  
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;
@@ -177,17 +165,4 @@
     margin-top:40px;
     border-radius: 16px;
     max-width: 179px;
-}
-/* ============================================
-   АДАПТИВНОСТЬ СЕТКИ
-   ============================================ */
-@media (max-width: 1024px) {
-    .cart-items { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-    .cart-items { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-}
-@media (max-width: 480px) {
-    .cart-items { grid-template-columns: 1fr; }
-    .cart-section { padding: 40px 16px; }
 }

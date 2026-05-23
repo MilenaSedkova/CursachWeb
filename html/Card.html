@@ -6,18 +6,19 @@
     <title>Cart - Organick</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
     
-    <!-- Твои стили -->
     <link rel="stylesheet" href="../css/Homepage/HomepageBase.css">
     <link rel="stylesheet" href="../css/Homepage/HomepageLayout.css">
     <link rel="stylesheet" href="../css/Header.css">
     <link rel="stylesheet" href="../css/Footer.css"> 
     <link rel="stylesheet" href="../css/Card/CardBase.css">
     <link rel="stylesheet" href="/css/adaptive/headerAdaptive.css">
+    <link rel="stylesheet" href="/css/adaptive/footerAdaptive.css">
+    <link rel="stylesheet" href="/css/adaptive/cardAdaptive.css">
+
 </head>
 
 <body>
     
-    <!-- 1. ХЕДЕР -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -26,7 +27,7 @@
                     <span>Organick</span>
                 </a>
 
-                <nav class="nav-menu">
+                 <nav class="nav-menu">
                     <ul>
                         <li><a href="/homepage.html">Home</a></li>
                         <li><a href="/html/AboutUs.html">About</a></li>
@@ -36,7 +37,13 @@
                     </ul>
                 </nav>
 
-                <div class="mobile-menu" id="mobileMenu">
+<button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+</button>
+
+<div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <div class="mobile-menu-content">
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
@@ -99,19 +106,16 @@
         </div>
     </header>
 
-    <!-- 2. БАННЕР (Hero Section) -->
+    
     <section class="hero">
         <div class="hero-inner">
-            <!--  Убедись, что путь к картинке верный! -->
             <img src="/pictures/CardImages/CardBanner.jpg" alt="Cart Banner" class="hero-image">
         </div>
     </section>
 
-    <!-- 3. СЕКЦИЯ КОРЗИНЫ -->
     <section class="cart-section">
         <div class="prod-container">
             
-            <!-- Пустая корзина -->
             <div id="emptyCart" class="empty-cart">
                 <h2>Your cart is empty</h2>
                 <p>Add some products to see them here</p>
@@ -121,9 +125,7 @@
                 </a>
             </div>
 
-            <!-- Заполненная корзина -->
             <div id="cartItems" class="cart-items" style="display: none;">
-                <!-- Товары будут здесь -->
             </div>
         </div>
 
@@ -136,9 +138,7 @@
 
 
 <footer class="footer">
-    <!-- Newsletter Banner -->
 <div class="footer-newsletter pro-newsletter">
-    <!-- Контент (текст и форма) -->
     <div class="newsletter-container pro-newsletter">
         <h3 class="newsletter-title pro-container">
             Subscribe to<br>
@@ -156,12 +156,10 @@
     <img src="/pictures/HomepageImages/ContactFooter.jpg" alt="Newsletter Background" class="newsletter-bg-image">
 </div>
 
-       <!-- Footer Main Content -->
 <div class="footer-main">
     <div class="footer-container">
         <div class="footer-grid">
             
-            <!-- Column 1: Contact Us -->
             <div class="footer-column footer-column-left">
                 <h4 class="footer-column-title ">Contact Us</h4>
                 <ul class="footer-contact-list">
@@ -180,7 +178,6 @@
                 </ul>
             </div>
 
-            <!-- Column 2: Organick (Logo + Description) -->
             <div class="footer-column footer-column-center">
                 <div class="footer-logo-wrapper">
                 <a href="#" class="logo">
@@ -194,7 +191,6 @@
         
             </div>
 
-            <!-- Column 3: Utility Pages -->
             <div class="footer-column footer-column-right">
                 <h4 class="footer-column-title ">Utility Pages</h4>
                 <ul class="footer-links">

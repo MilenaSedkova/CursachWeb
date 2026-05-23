@@ -1,12 +1,7 @@
-/* ============================================
-   FOOTER SECTION STYLES
-   ============================================ */
-
-/* --- Newsletter Banner --- */
 .footer-newsletter {
     width: 100%;
-    max-width: 1400px; /* 👈 Ограничивает максимальную ширину */
-    margin: 270px auto 0;    /* 👈 Центрирует блок */
+    max-width: 1400px; 
+    margin: 270px auto 0;    
     height: 323px;
     
     background-image: url('/pictures/HomepageImages/ContactFooter.jpg');
@@ -14,7 +9,7 @@
     background-position: center;
     position: relative;
     overflow: hidden;
-    border-radius: 20px; /* Опционально: скругление углов */
+    border-radius: 20px; 
 }
 
 .newsletter-container {
@@ -34,14 +29,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 60px; /* Уменьши расстояние */
+    gap: 60px;
 }
 
 .newsletter-form {
     display: flex;
     gap: 6px;
-    margin-left: 0; /* Убери авто-отступы */
-    flex: 0 0 auto; /* Не растягивай форму */
+    margin-left: 0;
+    flex: 0 0 auto; 
 }
 .newsletter-title {
     font-family: 'Inter', sans-serif;
@@ -94,7 +89,6 @@
     transform: translateY(-2px);
 }
 
-/* --- Footer Main Content --- */
 .footer-main {
     background-color: #ffffff;
     padding: 250px 0 60px;
@@ -131,7 +125,6 @@
     margin: 0 0 24px 40px;
 }
 
-/* Contact List */
 .footer-contact-list {
     list-style: none;
     padding: 0;
@@ -142,7 +135,6 @@
     max-width: 500px;
 }
 
-/* Левая колонка - выравнивание всего вправо */
 .footer-column-left {
     display: flex;
     flex-direction: column;
@@ -181,10 +173,9 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0; /* Убираем gap, так как есть margin-bottom у contact-item */
+    gap: 0; 
 }
 
-/* Footer Logo */
 .footer-logo {
     margin-bottom: 20px;
 }
@@ -204,7 +195,6 @@
 }
 
 
-/* Footer Links */
 .footer-links {
     list-style: none;
     padding: 0;
@@ -227,7 +217,6 @@
     padding-left: 4px;
 }
 
-/* --- Footer Bottom --- */
 .footer-bottom {
     background-color: #ffffff;
     border-top: 1px solid #E8F0E9;
@@ -250,7 +239,7 @@
     height: 100%;
     
     object-fit: cover;
-    object-position: center; /* Центрируем */
+    object-position: center; 
     
     z-index: 0;
 }
@@ -280,18 +269,17 @@
 }
 
 .footer-column-title .footer-link {
-    color: inherit; /* Наследует цвет заголовка */
+    color: inherit; 
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 30px;
 }
 
 .footer-column-title .footer-link:hover {
-    color: #669C61; /* Зелёный при наведении */
+    color: #669C61;
     text-decoration: underline;
 }
 
-/* --- Responsive Design --- */
 @media (max-width: 1024px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;

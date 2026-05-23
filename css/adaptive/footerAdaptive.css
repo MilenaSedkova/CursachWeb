@@ -4,201 +4,221 @@
 
 /* --- 1. ШИРОКИЕ НОУТБУКИ (ДО 1534px) --- */
 @media screen and (max-width: 1534px) {
-    .footer-newsletter {
-        max-width: 1200px; /* Сужаем баннер под ширину контента */
-        margin-top: 180px;  /* Уменьшаем гигантский верхний отступ */
-    }
+  .footer-newsletter {
+    max-width: 1200px; /* Сужаем баннер под ширину контента */
+    margin-top: 180px; /* Уменьшаем гигантский верхний отступ */
+  }
 
-    /* Начинаем плавно возвращать сдвинутые элементы на свои места */
-    .newsletter-title {
-        transform: translateX(0);
-        font-size: 42px;
-        min-width: auto;
-    }
+  /* Начинаем плавно возвращать сдвинутые элементы на свои места */
+  .newsletter-title {
+    transform: translateX(0);
+    font-size: 42px;
+    min-width: auto;
+  }
 
-    .newsletter-input,
-    .newsletter-btn {
-        transform: translateX(0);
-    }
+  .newsletter-input,
+  .newsletter-btn {
+    transform: translateX(0);
+  }
 
-    .footer-column-left {
-        transform: translateX(0); /* Убираем вылет левой колонки */
-    }
+  .footer-column-left {
+    transform: translateX(0); /* Убираем вылет левой колонки */
+  }
 
-    .footer-column-right {
-        transform: translateX(0); /* Убираем вылет правой колонки */
-    }
+  .footer-column-right {
+    transform: translateX(0); /* Убираем вылет правой колонки */
+  }
 }
 
 /* --- 2. СРЕДНИЕ ЭКРАНЫ И НОУТБУКИ (ДО 1305px) --- */
 @media screen and (max-width: 1305px) {
-    .footer-newsletter {
-        max-width: 95%; /* Даем баннеру резиновую ширину */
-        height: auto;
-        padding: 40px 0;
-    }
+  .footer-newsletter {
+    max-width: 95%; /* Даем баннеру резиновую ширину */
+    height: auto;
+    padding: 40px 0;
+  }
 
-    .newsletter-container {
-        flex-direction: column; /* Ставим заголовок и форму друг под друга */
-        gap: 30px;
-        text-align: center;
-    }
+  .newsletter-container {
+    flex-direction: column; /* Ставим заголовок и форму друг под друга */
+    gap: 30px;
+    text-align: center;
+  }
 
-    .newsletter-title {
-        text-align: center;
-        br { display: none; } /* На планшетах пишем заголовок в одну строку */
-    }
+  .newsletter-title {
+    text-align: center;
+    br {
+      display: none;
+    } /* На планшетах пишем заголовок в одну строку */
+  }
 
-    /* Сетка футера становится более компактной */
-    .footer-grid {
-        gap: 30px;
-    }
+  /* Сетка футера становится более компактной */
+  .footer-grid {
+    gap: 30px;
+  }
 
-    .footer-column-center {
-        margin-right: 0; /* Обнуляем десктопный маржин */
-    }
+  .footer-column-center {
+    margin-right: 0; /* Обнуляем десктопный маржин */
+  }
 }
 
 /* --- 3. ПЛАНШЕТЫ (ДО 850px / 768px) --- */
 @media screen and (max-width: 850px) {
-    .footer-main {
-        padding: 120px 0 40px; /* Уменьшаем верхний отступ, так как баннер теперь выше */
-    }
+  .footer-main {
+    padding: 120px 0 40px; /* Уменьшаем верхний отступ, так как баннер теперь выше */
+  }
 
-    .footer-container {
-        padding: 0 24px; /* Одинаковые боковые отступы, как у карточек категорий */
-    }
+  .footer-container {
+    padding: 0 24px; /* Одинаковые боковые отступы, как у карточек категорий */
+  }
 
-    /* Перестраиваем сетку футера: 3 колонки превращаются в 1 вертикальный ряд */
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-        gap: 50px;
-        text-align: center;
-    }
+  /* Перестраиваем сетку футера: 3 колонки превращаются в 1 вертикальный ряд */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 50px;
+    text-align: center;
+  }
 
-    /* Левая колонка (Контакты): выравниваем по центру */
-    .footer-column-left {
-        align-items: center !important;
-        text-align: center !important;
-    }
+  /* Левая колонка (Контакты): выравниваем по центру */
+  .footer-column-left {
+    align-items: center !important;
+    text-align: center !important;
+  }
 
-    .contact-item {
-        align-items: center !important;
-        justify-content: center !important;
-        margin-bottom: 24px;
-    }
+  .contact-item {
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 24px;
+  }
 
-    .contact-value {
-        text-align: center !important;
-    }
+  .contact-value {
+    text-align: center !important;
+  }
 
-    /* Средняя колонка (Логотип): убираем лишние сдвиги текста */
-    .footer-description {
-        margin: 15px auto;
-        max-width: 500px;
-    }
+  /* Средняя колонка (Логотип): убираем лишние сдвиги текста */
+  .footer-description {
+    margin: 15px auto;
+    max-width: 500px;
+  }
 
-    /* Правая колонка (Ссылки): выравниваем по центру */
-    .footer-column-right {
-        align-items: center !important;
-        text-align: center !important;
-    }
+  /* Правая колонка (Ссылки): выравниваем по центру */
+  .footer-column-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
 
-    .footer-column-title {
-        margin: 0 0 16px 0 !important; /* Обнуляем левый маржин в 40px */
-    }
+  .footer-column-title {
+    margin: 0 0 16px 0 !important; /* Обнуляем левый маржин в 40px */
+  }
 
-    .footer-title-right {
-        padding-left: 0 !important; /* Убираем десктопный отступ слева у ссылок */
-    }
+  .footer-title-right {
+    padding-left: 0 !important; /* Убираем десктопный отступ слева у ссылок */
+  }
 }
 
 /* --- 4. СМАРТФОНЫ (ДО 480px) --- */
 @media screen and (max-width: 480px) {
-    .footer-container {
-        padding: 0 16px;
-    }
+  .footer-container {
+    padding: 0 16px;
+  }
 
-    .footer-newsletter {
-        border-radius: 0; /* На телефонах баннер красивее смотрится во всю ширину экрана */
-        max-width: 100%;
-    }
+  .footer-newsletter {
+    border-radius: 0; /* На телефонах баннер красивее смотрится во всю ширину экрана */
+    max-width: 100%;
+  }
 
-    .newsletter-container {
-        padding: 0 16px;
-    }
+  .newsletter-container {
+    padding: 0 16px;
+  }
 
-    .newsletter-title {
-        font-size: 28px;
-    }
+  .newsletter-title {
+    font-size: 28px;
+  }
 
-    /* Форма подписки становится полностью вертикальной */
-    .newsletter-form {
-        flex-direction: column !important;
-        width: 100%;
-        gap: 12px;
-    }
+  /* Форма подписки становится полностью вертикальной */
+  .newsletter-form {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 12px;
+  }
 
-    .newsletter-input {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 20px;
-        font-size: 16px;
-    }
+  .newsletter-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 16px;
+  }
 
-    .newsletter-btn {
-        width: 100%;
-        padding: 20px;
-        font-size: 16px;
-    }
+  .newsletter-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+  }
 }
 
 /* --- 5. МИКРО-ЭКРАНЫ (ДО 320px) --- */
 @media screen and (max-width: 320px) {
-    .footer-container {
-        padding: 0 10px;
-    }
+  .footer-container {
+    padding: 0 10px;
+  }
 
-    .newsletter-title {
-        font-size: 22px;
-    }
+  .newsletter-title {
+    font-size: 22px;
+  }
 
-    .footer-column-title {
-        font-size: 24px;
-    }
+  .footer-column-title {
+    font-size: 24px;
+  }
 
-    .footer-description {
-        font-size: 15px;
-    }
+  .footer-description {
+    font-size: 15px;
+  }
 }
 
-/* --- 6. УЛЬТРА-УЗКИЕ ЭКРАНЫ (ДО 244px) --- */
-@media screen and (max-width: 244px) {
-    .footer-container {
-        padding: 0 8px;
-    }
 
-    .newsletter-title {
-        font-size: 18px;
-    }
+@media screen and (max-width: 1024px) {
+  
+  /* 1. Главная сетка: всё в одну колонку по центру */
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 50px !important; /* Расстояние между тремя большими блоками */
+    text-align: center !important;
+  }
 
-    .newsletter-input,
-    .newsletter-btn {
-        padding: 14px 10px;
-        font-size: 14px;
-    }
+  /* 2. Колонки занимают всю ширину, обнуляем старые сдвиги */
+  .footer-column-left,
+  .footer-column-center,
+  .footer-column-right {
+    width: 100% !important;
+    max-width: 400px !important; /* Чтобы текст не размазывался по всему экрану */
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    transform: none !important; /* Убиваем любые десктопные translateX */
+  }
 
-    .footer-column-title {
-        font-size: 20px;
-    }
+  /* 3. Центрируем внутренние элементы (контакты, ссылки) */
+  .contact-item {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
 
-    .contact-label {
-        font-size: 16px;
-    }
+  .footer-description {
+    margin: 15px auto !important; /* Центрируем текст под логотипом */
+  }
 
-    .contact-value,
-    .footer-description,
-    .footer-title-right {
-        font-size: 13px;
-    }
+  .footer-column-title {
+    margin: 0 0 16px 0 !important; /* Центрируем заголовки колонок */
+  }
+
+  .footer-title-right, 
+  .footer-link {
+    padding-left: 0 !important; /* Убираем левые отступы у списка ссылок */
+    text-align: center !important;
+  }
 }
