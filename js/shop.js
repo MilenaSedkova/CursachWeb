@@ -141,6 +141,7 @@ async function addToCart(productId) {
     
     const productData = {
         productId: parseInt(productId),
+        userId: user.id,       
         name: card.querySelector('.prod-name')?.textContent || 'Product',
         price: parseFloat(card.querySelector('.prod-price-new')?.textContent.replace('$', '')) || 0,
         image: card.querySelector('.prod-image-wrapper img')?.src || '',

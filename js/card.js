@@ -100,9 +100,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const empty = document.getElementById('emptyCart');
     const list = document.getElementById('cartItems');
     if (!list) return;
+
+    // 1. Проверка авторизации
+    const userJson = localStorage.getItem('currentUser');
+    if (!userJson) {
+        if (empty) {
+            empty.style.display = 'flex';
+            empty.innerHTML = '<h2>Please, log in for viewing a card</h2><a href="/login.html" class="btn-primary">Войти</a>';
+        }
+        list.style.display = 'none';
+        return;
+    }
+
+    const user = JSON.parse(userJson);
     
     try {
-        const res = await fetch(`${API_URL}/cartItems`);
+        const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
         let items = await res.json();
         if (!Array.isArray(items)) items = [];
         
@@ -117,9 +130,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (empty) empty.style.display = 'none';
             list.style.display = 'grid';
             list.innerHTML = items.map(createCartItemHTML).join('');
-            console.log('✅ Корзина отрисована');
+            console.log(`Корзина пользователя ${user.firstName} отрисована`);
         }
     } catch (e) {
-        console.error('❌ Ошибка:', e);
+        console.error('Ошибка:', e);
     }
 });
