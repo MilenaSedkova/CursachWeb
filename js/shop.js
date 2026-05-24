@@ -11,15 +11,21 @@ function createProductCard(product, withCartBtn = true) {
             <div class="prod-tags">
                 <span class="prod-tag">${product.category || 'Product'}</span>
             </div>
+            
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
             </div>
+            
             <h3 class="prod-name">${product.name}</h3>
+            
             <div class="prod-price-row">
                 ${oldPriceHtml}
                 <span class="prod-price-new">$${product.price.toFixed(2)}</span>
                 ${starsHtml}
             </div>
+            
+            <button class="btn-open-review" data-id="${product.id}">Review</button>
+
             ${withCartBtn ? `
             <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
@@ -211,4 +217,170 @@ function showNotification(text) {
     notif.textContent = text;
     document.body.appendChild(notif);
     setTimeout(() => notif.remove(), 2000);
+}
+
+document.addEventListener('click', async (e) => {
+    // Проверяем клик по кнопке отзыва
+    if (e.target.classList.contains('btn-open-review')) {
+        const productId = e.target.getAttribute('data-id');
+        const userJson = localStorage.getItem('currentUser');
+        
+        const modal = document.getElementById('reviewModal');
+        const reviewForm = document.getElementById('leaveReviewForm');
+        const statusEl = document.getElementById('reviewSubmitStatus');
+
+        if (!modal || !reviewForm || !statusEl) return;
+
+        // Открываем модальное окно
+        modal.style.display = 'flex';
+        // По умолчанию показываем форму и очищаем старые сообщения
+        reviewForm.style.display = 'block';
+        statusEl.className = 'form-status-message';
+        statusEl.textContent = '';
+
+        // 1. ПРОВЕРКА: Авторизован ли пользователь?
+        if (!userJson) {
+            reviewForm.style.display = 'none'; // Прячем форму
+            statusEl.textContent = 'Only logged-in customers can leave a review. Please log in to your account.';
+            statusEl.className = 'form-status-message error'; // Показываем красную плашку ошибки
+            return;
+        }
+
+        const user = JSON.parse(userJson);
+
+        try {
+
+            const res = await fetch(`${API_URL}/orders?userId=${user.id}`);
+            const orders = await res.json();
+
+        const hasPurchased = orders.some(order => 
+            order.productIds && order.productIds.some(id => id.toString() === productId.toString())
+        );
+
+            if (!hasPurchased) {
+                reviewForm.style.display = 'none'; // Прячем форму
+                statusEl.textContent = 'Oops, You can only leave a review for products you have actually purchased.';
+                statusEl.className = 'form-status-message error'; // Показываем ошибку на странице
+                return;
+            }
+
+            // 3. Если все проверки пройдены — настраиваем скрытый ID и запускаем валидацию формы
+            document.getElementById('reviewProductId').value = productId;
+            setupModalValidation(user.id);
+
+        } catch (error) {
+            console.error('Purchase check error:', error);
+            reviewForm.style.display = 'none';
+            statusEl.textContent = ' Error checking purchase history. Try again later.';
+            statusEl.className = 'form-status-message error';
+        }
+    }
+
+    // Закрытие модального окна по крестику
+    if (e.target.id === 'closeReviewModal') {
+        document.getElementById('reviewModal').style.display = 'none';
+    }
+});
+
+// Живая валидация и обработка формы внутри модального окна
+function setupModalValidation(userId) {
+    const reviewForm = document.getElementById('leaveReviewForm');
+    const reviewText = document.getElementById('reviewText');
+    const submitReviewBtn = document.getElementById('submitReviewBtn');
+    const reviewTextGroup = document.getElementById('reviewTextGroup');
+    
+    // Элементы интерактивного звездного рейтинга
+    const starsContainer = document.getElementById('ratingStarsContainer');
+    const hiddenRatingInput = document.getElementById('reviewRating');
+
+    // Сбрасываем рейтинг и визуальное состояние звезд в дефолт (5 звезд) при открытии модалки
+    if (hiddenRatingInput) hiddenRatingInput.value = "5";
+    if (starsContainer) {
+        const stars = starsContainer.querySelectorAll('.star-icon');
+        stars.forEach(star => star.classList.remove('inactive'));
+    }
+
+    // Функция живой проверки текста отзыва
+    function validate() {
+        const isTextValid = reviewText.value.trim().length >= 10;
+        
+        if (reviewText.value.trim().length > 0 && !isTextValid) {
+            reviewTextGroup.classList.add('error');
+        } else {
+            reviewTextGroup.classList.remove('error');
+        }
+        submitReviewBtn.disabled = !isTextValid;
+    }
+
+    // Перезаписываем событие ввода, защищая память браузера от утечек и дубликатов
+    reviewText.oninput = validate;
+
+    // ОБРАБОТКА КЛИКОВ ПО КАРТИНКАМ-ЗВЕЗДАМ
+    if (starsContainer) {
+        starsContainer.onclick = (e) => {
+            // Проверяем, что кликнули именно по картинке звезды
+            if (e.target.classList.contains('star-icon')) {
+                const selectedValue = parseInt(e.target.getAttribute('data-value'));
+                
+                // Сохраняем выбранную цифру в скрытый инпут
+                hiddenRatingInput.value = selectedValue;
+
+                // Подсвечиваем выбранные звезды, а остальные делаем серыми через CSS-класс
+                const stars = starsContainer.querySelectorAll('.star-icon');
+                stars.forEach(star => {
+                    const starValue = parseInt(star.getAttribute('data-value'));
+                    if (starValue <= selectedValue) {
+                        star.classList.remove('inactive');
+                    } else {
+                        star.classList.add('inactive');
+                    }
+                });
+            }
+        };
+    }
+
+    // Отправка POST запроса с отзывом на бэкенд
+    reviewForm.onsubmit = async (submitEvent) => {
+        submitEvent.preventDefault();
+
+        const reviewData = {
+            productId: document.getElementById('reviewProductId').value,
+            userId: userId,
+            text: reviewText.value.trim(),
+            rating: parseInt(hiddenRatingInput.value), // Передаем цифру из нашего скрытого поля звезд
+            date: new Date().toLocaleDateString()
+        };
+
+        try {
+            const response = await fetch(`${API_URL}/reviews`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reviewData)
+            });
+
+            if (response.ok) {
+                const statusEl = document.getElementById('reviewSubmitStatus');
+                statusEl.textContent = 'Review added successfully!';
+                statusEl.className = 'form-status-message success';
+                
+                // Очищаем текстовые поля формы
+                reviewForm.reset();
+                submitReviewBtn.disabled = true;
+
+                // Возвращаем звездам дефолтный вид после успешной отправки
+                if (starsContainer) {
+                    const stars = starsContainer.querySelectorAll('.star-icon');
+                    stars.forEach(star => star.classList.remove('inactive'));
+                }
+
+                // Закрываем окошко через 2 секунды красоты на экране
+                setTimeout(() => {
+                    document.getElementById('reviewModal').style.display = 'none';
+                    statusEl.className = 'form-status-message';
+                }, 2000);
+            }
+        } catch (err) {
+            console.error('Failed to submit review:', err);
+        }
+    };
 }

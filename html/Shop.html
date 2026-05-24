@@ -226,12 +226,48 @@
 </footer>
 
 
+
+
 <script src="/js/update.js"></script>
 <script src="/js/app.js"></script> 
 <script src="/js/shop.js"></script>
 <script src="/js/burgerMenu.js"></script>
 <script src="/js/authCheck.js"></script>
 
+
+<div id="reviewModal" class="admin-modal">
+    <div class="admin-modal-content">
+        <button class="admin-modal-close" id="closeReviewModal">&times;</button>
+        
+        <h2 class="admin-card-title">Leave a Review</h2>
+        <div id="reviewSubmitStatus" class="form-status-message"></div>
+
+        <form id="leaveReviewForm" novalidate>
+            <input type="hidden" id="reviewProductId">
+
+            <div class="form-group" id="reviewTextGroup">
+                <label for="reviewText">Your Comment *</label>
+                <textarea id="reviewText" required placeholder="Share your experience with this product..."></textarea>
+                <div class="error-message">Review must be at least 10 characters long</div>
+            </div>
+
+           <div class="form-group">
+    <label>Rating *</label>
+    <div class="rating-stars" id="ratingStarsContainer">
+        <img src="/pictures/ShopImages/oneStar.png" class="star-icon" data-value="1" alt="star">
+        <img src="/pictures/ShopImages/oneStar.png" class="star-icon" data-value="2" alt="star">
+        <img src="/pictures/ShopImages/oneStar.png" class="star-icon" data-value="3" alt="star">
+        <img src="/pictures/ShopImages/oneStar.png" class="star-icon" data-value="4" alt="star">
+        <img src="/pictures/ShopImages/oneStar.png" class="star-icon" data-value="5" alt="star">
+    </div>
+    
+    <input type="hidden" id="reviewRating" value="5">
+</div>
+
+            <button type="submit" id="submitReviewBtn" class="btn-admin" disabled>Submit Review</button>
+        </form>
+    </div>
+</div>
 
 </body>
 

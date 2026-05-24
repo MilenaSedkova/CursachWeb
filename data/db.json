@@ -474,6 +474,59 @@
       "createdAt": "2026-05-24T14:30:00.000Z"
     }
   ],
+  "orders": [
+    {
+      "userId": "TL1QRsWnITs",
+      "customerName": "yaroslav",
+      "items": [
+        {
+          "productId": 3,
+          "userId": "TL1QRsWnITs",
+          "name": "White Nuts",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Millets",
+          "quantity": 1,
+          "id": "bs8OeQ_pWvg"
+        },
+        {
+          "productId": 4,
+          "userId": "TL1QRsWnITs",
+          "name": "Vegan Red Tomato",
+          "price": 17,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "5fh01E5-zmo"
+        }
+      ],
+      "totalPrice": 32,
+      "date": "2026-05-24T21:58:30.418Z",
+      "status": "Processing",
+      "id": "4CRaWzO-Isk"
+    },
+    {
+      "userId": "TL1QRsWnITs",
+      "customerName": "yaroslav",
+      "items": [
+        {
+          "productId": 2,
+          "userId": "TL1QRsWnITs",
+          "name": "Fresh Banana Fruites",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "6cbVsGdulbs"
+        }
+      ],
+      "totalPrice": 14,
+      "date": "2026-05-24T22:00:22.748Z",
+      "status": "Processing",
+      "id": "yhs-5u24XlY"
+    }
+  ],
+  "reviews": [],
   "searchQuery": "",
   "$schema": "./node_modules/json-server/schema.json"
 }
