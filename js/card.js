@@ -96,7 +96,6 @@ function createCartItemHTML(item) {
 }
 
 // Инициализация
-// Инициализация корзины на странице (замени этот кусок в своем файле)
 document.addEventListener('DOMContentLoaded', async () => {
     const empty = document.getElementById('emptyCart');
     const list = document.getElementById('cartItems');
@@ -163,4 +162,86 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {
         console.error(' Ошибка:', e);
     }
+});
+
+// Функция оформления заказа
+async function handleOrder() {
+    const userJson = localStorage.getItem('currentUser');
+    if (!userJson) return;
+    
+    const user = JSON.parse(userJson);
+
+    try {
+        // 1. Получаем все товары из корзины ЭТОГО пользователя
+        const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
+        const items = await res.json();
+
+        if (items.length === 0) return; // Если пусто, ничего не делаем
+
+        // 2. Считаем общую сумму заказа (опционально, но полезно)
+        const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        // 3. Формируем объект Заказа
+        const orderData = {
+            userId: user.id,
+            customerName: user.firstName,
+            items: items, // Кладем все товары внутрь заказа
+            totalPrice: total,
+            date: new Date().toISOString(),
+            status: 'Processing' // Статус: В обработке
+        };
+
+        // 4. Отправляем заказ на сервер (в новую таблицу orders)
+        await fetch(`${API_URL}/orders`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData)
+        });
+
+        // 5. Очищаем корзину (удаляем каждый купленный товар из cartItems)
+        // JSON-server не умеет удалять всё разом, поэтому удаляем по очереди:
+        for (const item of items) {
+            await fetch(`${API_URL}/cartItems/${item.id}`, {
+                method: 'DELETE'
+            });
+        }
+
+        // 6. Обновляем счетчик в шапке (сбросится на 0)
+        if (typeof window.updateHeaderCartCount === 'function') {
+            await window.updateHeaderCartCount();
+        }
+
+        // 7. Показываем сообщение об успехе прямо на странице
+        const list = document.getElementById('cartItems');
+        const orderBtn = document.getElementById('orderBtn');
+        const empty = document.getElementById('emptyCart');
+        
+        list.style.display = 'none';
+        orderBtn.style.display = 'none';
+        
+        empty.style.display = 'flex';
+        empty.innerHTML = `
+            <h2>Thank you for your order, ${user.firstName}!</h2>
+            <p>Your order for $${total.toFixed(2)} has been successfully placed.</p>
+            <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+        `;
+
+    } catch (error) {
+        console.error(' Ошибка при оформлении заказа:', error);
+        alert('Произошла ошибка при оформлении заказа. Проверьте сервер.');
+    }
+}
+
+// Привязываем функцию к кнопке при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    // Ждем небольшую паузу, чтобы все элементы точно появились на странице
+    setTimeout(() => {
+        const orderBtn = document.getElementById('orderBtn');
+        if (orderBtn) {
+            orderBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Останавливаем стандартное поведение
+                handleOrder();      // Запускаем наш алгоритм
+            });
+        }
+    }, 500);
 });

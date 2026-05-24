@@ -263,28 +263,7 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [
-    {
-      "productId": 10,
-      "userId": "35GBjmjiqPA",
-      "name": "White Hazelnut",
-      "price": 12,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "z-jOGqm6xQs"
-    },
-    {
-      "productId": 11,
-      "userId": "35GBjmjiqPA",
-      "name": "Fresh Corn",
-      "price": 17,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/FreshCorn.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "NNe1dNqfMws"
-    }
-  ],
+  "cartItems": [],
   "users": [
     {
       "id": "1",
