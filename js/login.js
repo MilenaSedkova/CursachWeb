@@ -63,7 +63,7 @@ async function handleLogin(e) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         
         // ВЫВОДИМ УСПЕХ НА СТРАНИЦЕ (Зеленая плашка)
-        showStatusMessage(`Авторизация успешна! Добро пожаловать, ${user.firstName || user.nickname}!`, 'success');
+        showStatusMessage(`Authorization is successful! Welcome, ${user.firstName || user.nickname}!`, 'success');
         
         // Блокируем кнопку, чтобы не нажимали дважды
         const btnSubmit = document.getElementById('loginSubmitBtn');

@@ -263,7 +263,58 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "productId": 7,
+      "userId": "1hFZV4Q4L60",
+      "name": "Eggs",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "WKSOSfTmh-U"
+    },
+    {
+      "productId": 7,
+      "userId": "1hFZV4Q4L60",
+      "name": "Eggs",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "qxVFaWQ8LO4"
+    },
+    {
+      "productId": 12,
+      "userId": "1hFZV4Q4L60",
+      "name": "Organic Almonds",
+      "price": 15,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/OrganickAlmonds.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "7txNKp2lwLA"
+    },
+    {
+      "productId": 10,
+      "userId": "aK3GaXQxJPw",
+      "name": "White Hazelnut",
+      "price": 12,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "4QCs6XHTsZg"
+    },
+    {
+      "productId": 4,
+      "userId": "aK3GaXQxJPw",
+      "name": "Vegan Red Tomato",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
+      "category": "Vegetable",
+      "quantity": 1,
+      "id": "w3qFwJAG9-8"
+    }
+  ],
   "users": [
     {
       "id": "1",

@@ -102,34 +102,6 @@ function updateCartCount() {
     cartCount.textContent = `Cart(${totalItems})`;
 }
 
-// Сохранение корзины на сервер
-async function saveCartToServer() {
-    try {
-        await fetch(`${API_URL}/cartItems`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(cart)
-        });
-    } catch (error) {
-        console.error('Ошибка сохранения корзины:', error);
-    }
-}
-
-// Загрузка корзины с сервера
-async function loadCartFromServer() {
-    try {
-        const response = await fetch(`${API_URL}/cartItems`);
-        const data = await response.json();
-        if (data && data.length > 0) {
-            cart = data;
-            updateCartCount();
-        }
-    } catch (error) {
-        console.error('Ошибка загрузки корзины:', error);
-    }
-}
 
 // Поиск
 function handleSearch() {
