@@ -1,0 +1,190 @@
+.header-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.admin-logo {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    text-decoration: none; 
+    color: #274C5B; 
+    font-size: 24px; 
+    font-weight: 700;
+}
+
+.header-container .nav-menu ul {
+    display: flex; 
+    list-style: none; 
+    gap: 30px;
+}
+
+.back-home-link {
+    text-decoration: none; 
+    color: #274C5B; 
+    font-weight: 600;
+}
+
+.admin-main-title {
+    font-family: 'Yellowtail', cursive; 
+    color: #7EB693; 
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.admin-section { 
+    padding: 50px 0; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    font-family: 'Inter', sans-serif; 
+}
+
+.admin-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+    margin-top: 30px; 
+}
+
+.admin-card { 
+    background: #F9F9F9; 
+    padding: 30px; 
+    border-radius: 30px; 
+    border: 1px solid #E0E0E0; 
+}
+
+.admin-card-title {
+    color: #274C5B; 
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px; 
+}
+
+.form-group { 
+    margin-bottom: 20px; 
+    position: relative; 
+}
+
+.form-group label { 
+    display: block; 
+    color: #274C5B; 
+    font-weight: 600; 
+    margin-bottom: 8px; 
+}
+
+.form-group input, 
+.form-group select { 
+    width: 100%; 
+    padding: 15px; 
+    border: 1px solid #BBBBBB; 
+    border-radius: 16px; 
+    font-size: 16px; 
+    box-sizing: border-box; 
+}
+
+#filterValGroup {
+    display: none;
+}
+
+.form-group.error input { 
+    border-color: #dc3545; 
+    background-color: #fff8f8; 
+}
+
+.error-message { 
+    color: #dc3545; 
+    font-size: 14px; 
+    margin-top: 5px; 
+    display: none; 
+}
+
+.form-group.error .error-message { 
+    display: block; 
+}
+
+.btn-admin { 
+    width: 100%; 
+    padding: 15px; 
+    background: #274C5B; 
+    color: #fff; 
+    border: none; 
+    border-radius: 16px; 
+    font-size: 18px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: all 0.3s; 
+}
+
+.btn-admin:disabled { 
+    background: #CCCCCC; 
+    cursor: not-allowed; 
+    transform: none !important; 
+    box-shadow: none !important; 
+}
+
+.load-reviews-btn {
+    background: #7EB693; 
+    margin-bottom: 20px;
+}
+
+.reviews-list { 
+    max-height: 400px; 
+    overflow-y: auto; 
+    margin-top: 20px; 
+}
+
+.reviews-placeholder {
+    color: #666; 
+    text-align: center;
+}
+
+.review-item { 
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 16px; 
+    border: 1px solid #E0E0E0; 
+    margin-bottom: 10px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.btn-delete-review { 
+    background: #dc3545; 
+    color: white; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+}
+
+.form-status-message {
+    padding: 15px 20px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    display: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.form-status-message.success {
+    display: block;
+    background-color: #EDF7ED;
+    color: #1E4620;
+    border: 1px solid #C2E7C4;
+}
+
+.form-status-message.error {
+    display: block;
+    background-color: #FDE8E8;
+    color: #9B1C1C;
+    border: 1px solid #F8B4B4;
+}

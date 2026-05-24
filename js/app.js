@@ -129,7 +129,7 @@ if (loadMoreBtn) {  // Добавь проверку!
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
-    loadCartFromServer();
+    /*loadCartFromServer();*/
 });
 
 
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts();              // Основные товары
     loadOfferVegetables();       // Товары С ценами (в другой секции)
     loadOfferProducts();         // Товары БЕЗ цен (What We Offer)
-    loadCartFromServer();
+    /*loadCartFromServer();*/
 });
 
 // ========== TESTIMONIAL SECTION JS ==========

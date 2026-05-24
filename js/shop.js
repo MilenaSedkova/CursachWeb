@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     function renderPage() {
+        if (!gridElement) {
+            return;
+        }
+
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         const productsToShow = currentProducts.slice(start, end);
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     }
-    
+
     if (sortBtn) {
         sortBtn.addEventListener('click', () => {
             sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
@@ -106,10 +110,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateHeaderCartCount();
 });
 
-// ============================================
-// 🔽 ДОБАВЬ ЭТОТ БЛОК В КОНЕЦ ФАЙЛА:
-// ============================================
-
 // Глобальный обработчик кликов по кнопкам корзины
 document.addEventListener('click', async (e) => {
     const cartBtn = e.target.closest('.add-to-cart-btn');
@@ -136,7 +136,7 @@ async function addToCart(productId) {
     // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ (Исправляет ошибку "user is not defined")
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) {
-        alert('Пожалуйста, авторизуйтесь для добавления товаров в корзину!');
+        alert('Please, log in to view your card!');
         window.location.href = '/html/login.html'; // Или другой путь к странице входа
         return; 
     }
