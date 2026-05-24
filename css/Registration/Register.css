@@ -1,0 +1,41 @@
+.auth-generate-btn {
+    margin: 0 !important;
+    transform: none !important;
+    padding: 20px 30px !important; /* Чуть меньше основной кнопки .btn-send */
+    border-radius: 16px;
+    font-size: 18px;
+    width: fit-content;
+    height: auto;
+}
+
+.align-left {
+    align-items: flex-start;
+}
+
+.align-right {
+    align-items: flex-end; /* Кнопка пароля прижата к правому краю */
+}
+
+/* Состояние заблокированной кнопки (когда форма не валидна) */
+.auth-submit-btn:disabled {
+    background-color: #A8B2A9 !important; /* Серый цвет неактивности */
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 0.8;
+}
+
+.auth-error-message {
+    color: #dc3545; /* Ярко-красный цвет */
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 6px;
+    display: block; /* Чтобы текст переносился на новую строку под инпутом */
+}
+
+.form-input.invalid {
+    border-color: #dc3545 !important;
+    background-color: #FFF8F8 !important; /* Очень легкий красноватый фон для наглядности */
+}

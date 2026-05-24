@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/Login/Login.css">
     <link rel="stylesheet" href="/css/Footer.css">
     <link rel="stylesheet" href="../css/Header.css">
+    <link rel="stylesheet" href="/css/Registration/Register.css">
     <link rel="stylesheet" href="../css/adaptive/headerAdaptive.css"> 
     <link rel="stylesheet" href="../css/adaptive/footerAdaptive.css"> 
 
@@ -114,29 +115,77 @@
 
     <section class="hero">
         <div class="hero-inner">
-            <img src="/pictures/LoginImages/LoginBanner.png" alt="Shop" class="hero-image">
+            <img src="/pictures/RegistrationImages/RegistrationBanner.png" alt="Registration" class="hero-image">
         </div>
     </section>
 
-    <section class="auth-form-section">
+   <section class="auth-form-section">
     <div class="prod-container">
-        <form class="auth-form" id="loginForm" novalidate>
+        <form class="auth-form" id="registerForm" novalidate>
             
             <div class="form-group">
-                <label class="form-label" for="loginPassword">Password*</label>
-                <input type="password" id="loginPassword" class="form-input" placeholder="Your Password Address" required>
+                <label class="form-label" for="regEmail">Your Email*</label>
+                <input type="email" id="regEmail" class="form-input" placeholder="example@yourmail.com" required>
             </div>
-            
             <div class="form-group">
-                <label class="form-label" for="loginEmail">Your Email*</label>
-                <input type="email" id="loginEmail" class="form-input" placeholder="example@yourmail.com" required>
+                <label class="form-label" for="regDob">Your Date of birth*</label>
+                <input type="date" id="regDob" class="form-input" placeholder="dd.mm.yyyy" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="regName">Name*</label>
+                <input type="text" id="regName" class="form-input" placeholder="your name here" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="regPhone">Phone number*</label>
+                <input type="tel" id="regPhone" class="form-input" placeholder="+375(XX)-XXX-XX-XX" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label class="form-label" for="regMiddleName">Middle name (Optional)</label>
+                <input type="text" id="regMiddleName" class="form-input" placeholder="Your middle name">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="regLastName">Last name*</label>
+                <input type="text" id="regLastName" class="form-input" placeholder="Your last name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="regPassword">Password*</label>
+                <div class="password-wrapper" style="position: relative; width: 100%;">
+                    <input type="password" id="regPassword" class="form-input" placeholder="your password" required style="padding-right: 45px;">
+                    <button type="button" class="toggle-password-btn" data-target="regPassword" style="position: absolute; right: 15px; top: 25px; background: none; border: none; font-size: 18px; cursor: pointer;">👁️</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="regNickname">nickname*</label>
+                <input type="text" id="regNickname" class="form-input" placeholder="Your last name" readonly required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="regConfirmPassword">Confirm Password*</label>
+                <div class="password-wrapper" style="position: relative; width: 100%;">
+                    <input type="password" id="regConfirmPassword" class="form-input" placeholder="your password" required style="padding-right: 45px;">
+                    <button type="button" class="toggle-password-btn" data-target="regConfirmPassword" style="position: absolute; right: 15px; top: 25px; background: none; border: none; font-size: 18px; cursor: pointer;">👁️</button>
+                </div>
+            </div>
+
+            <div class="form-group align-left">
+                <button type="button" id="btnGenNickname" class="btn-send auth-generate-btn">Generate nickname</button>
+            </div>
+            <div class="form-group align-right">
+                <button type="button" id="btnGenPassword" class="btn-send auth-generate-btn">Generate password</button>
             </div>
 
             <div class="auth-actions-container">
-                <button type="submit" class="btn-send auth-submit-btn">Log in</button>
-                <p class="auth-redirect-text">
-                    Don't have an account? <a href="register.html">Register right now!</a>
-                </p>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 30px;">
+                    <input type="checkbox" id="regAgreement" required style="width: 20px; height: 20px; cursor: pointer;">
+                    <label for="regAgreement" style="font-family: 'Inter', sans-serif; font-size: 16px; color: #1F263E; cursor: pointer;">
+                        I have read and agree to the <a href="#" style="color: #669C61;">User Agreement</a>*
+                    </label>
+                </div>
+                
+                <button type="submit" id="registerSubmitBtn" class="btn-send auth-submit-btn" disabled>Register</button>
             </div>
 
         </form>
@@ -181,6 +230,6 @@
         </div>
     </footer>
 
-    <script type="module" src="/js/login.js"></script>
+    <script type="module" src="/js/register.js"></script>
 </body>
 </html>

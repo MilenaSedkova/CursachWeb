@@ -280,7 +280,7 @@
       "price": 15,
       "image": "http://127.0.0.1:5501/pictures/HomepageImages/bread.png",
       "category": "Fresh",
-      "quantity": 1,
+      "quantity": 2,
       "id": "Tk3LI4co84s"
     },
     {
@@ -293,7 +293,6 @@
       "id": "VtRXHkUOjsA"
     }
   ],
-
   "users": [
     {
       "id": "1",
@@ -314,6 +313,132 @@
       "nickname": "organic_lover",
       "role": "customer",
       "createdAt": "2026-05-24T12:05:00.000Z"
+    },
+    {
+      "email": "anna88@gmail.com",
+      "firstName": "Anna",
+      "lastName": "Novikova",
+      "middleName": "",
+      "dateOfBirth": "2005-02-02",
+      "phone": "375251556898",
+      "nickname": "AnnN779",
+      "password": "5G$!xI7wA6^n",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:16:59.726Z",
+      "id": "35GBjmjiqPA"
+    },
+    {
+      "email": "ivanivan@gmail.com",
+      "firstName": "vania",
+      "lastName": "sidorov",
+      "middleName": "romanovich",
+      "dateOfBirth": "2005-02-24",
+      "phone": "375259633214",
+      "nickname": "vans382",
+      "password": "OtWqiH!0aE53",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:21:04.546Z",
+      "id": "1hFZV4Q4L60"
+    },
+    {
+      "email": "masha@gmail.com",
+      "firstName": "maria",
+      "lastName": "ponomareva",
+      "middleName": "romanovna",
+      "dateOfBirth": "2000-03-01",
+      "phone": "375259687845",
+      "nickname": "mpo764",
+      "password": "$88S*FqYMw!b",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:24:39.218Z",
+      "id": "aK3GaXQxJPw"
+    },
+    {
+      "email": "yarik@gmail.com",
+      "firstName": "yaroslav",
+      "lastName": "korytko",
+      "middleName": "",
+      "dateOfBirth": "2005-12-12",
+      "phone": "375291556633",
+      "nickname": "yakor17877",
+      "password": "!7ft*O!vxZYu",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:29:41.265Z",
+      "id": "TL1QRsWnITs"
+    },
+    {
+      "email": "sedkovamilena80@gmail.com",
+      "firstName": "Milena",
+      "lastName": "Sedkova",
+      "middleName": "",
+      "dateOfBirth": "2006-10-03",
+      "phone": "375291445007",
+      "nickname": "Milena333",
+      "password": "GNhdF@71N89b",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:34:11.469Z",
+      "id": "NzlMEcKD8oI"
+    },
+    {
+      "email": "elinassss@gmail.com",
+      "firstName": "Elina",
+      "lastName": "Sedkova",
+      "middleName": "",
+      "dateOfBirth": "2000-08-10",
+      "phone": "375259201154",
+      "nickname": "ElS41",
+      "password": "x9h%84cJPVcY",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:40:00.830Z",
+      "id": "eAbRbFQHwJo"
+    },
+    {
+      "email": "anonimus@gmail.com",
+      "firstName": "iliya",
+      "lastName": "Kotov",
+      "middleName": "",
+      "dateOfBirth": "2005-10-05",
+      "phone": "375297854996",
+      "nickname": "iliK483",
+      "password": "Co&k6v&9Kqle",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:41:35.329Z",
+      "id": "JhqmGWaztf0"
+    },
+    {
+      "email": "sdfghjkl@gmail.com",
+      "firstName": "anton",
+      "lastName": "fghjk",
+      "middleName": "",
+      "dateOfBirth": "2000-11-10",
+      "phone": "375298002363",
+      "nickname": "anfg605",
+      "password": "Uy$D8&AjI23W",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:46:08.578Z",
+      "id": "dSrzlOPz1fU"
+    },
+    {
+      "email": "dfghjk@gmail.com",
+      "firstName": "Liza",
+      "lastName": "Barboskina",
+      "middleName": "",
+      "dateOfBirth": "2000-03-03",
+      "phone": "375258556565",
+      "nickname": "LizB591",
+      "password": "or$Q67%o*$Jh",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-24T16:50:11.428Z",
+      "id": "z4rEEPkhlog"
     }
   ],
   "feedbacks": [
