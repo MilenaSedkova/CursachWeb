@@ -1,0 +1,77 @@
+/* ============================================
+   АВТОРИЗАЦИЯ (По аналогии с контактной формой)
+   ============================================ */
+
+.auth-form-section {
+    margin-top: 100px;
+    padding: 60px 0 100px;
+    background-color: #ffffff;
+}
+
+/* Сетка формы: 2 колонки по 569px с автоматическим выравниванием по центру страницы */
+.auth-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px 42px; /* Сохраняем оригинальные отступы твоих полей */
+    max-width: 1180px; /* 569px * 2 + 42px отступ */
+    margin: 0 auto;
+}
+
+/* Общий контейнер для кнопки и ссылки переносит их на новую строку на всю ширину */
+.auth-actions-container {
+    grid-column: 1 / -1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем кнопку и текст */
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Стилизация кнопки на основе .btn-send */
+.auth-submit-btn {
+    /* Обнуляем сдвиги, которые ломали центрирование в контактной форме */
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    transform: none !important;
+    
+    /* Фирменный стиль Organick */
+    padding: 28px 80px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 16px;
+    width: auto;
+    min-width: 220px;
+}
+
+/* Ссылка под кнопкой в стиле макета */
+.auth-redirect-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F263E;
+    margin-top: 25px;
+    letter-spacing: -0.3px;
+}
+
+.auth-redirect-text a {
+    color: #669C61; /* Фирменный зеленый цвет Organick */
+    text-decoration: underline;
+    margin-left: 5px;
+    transition: color 0.2s ease;
+}
+
+.auth-redirect-text a:hover {
+    color: #1F263E;
+}
+
+/* Адаптив под мобильные устройства */
+@media (max-width: 992px) {
+    .auth-form {
+        grid-template-columns: 1fr; /* Перестраиваем поля в одну колонку */
+        padding: 0 20px;
+    }
+    
+    .form-group {
+        max-width: 100%;
+    }
+}

@@ -293,6 +293,40 @@
       "id": "VtRXHkUOjsA"
     }
   ],
+
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@organick.com",
+      "password": "AdminPassword123!",
+      "firstName": "Mila",
+      "lastName": "Sedkova",
+      "nickname": "mila_admin",
+      "role": "admin",
+      "createdAt": "2026-05-24T12:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "email": "customer@organick.com",
+      "password": "UserPassword123!",
+      "firstName": "Ivan",
+      "lastName": "Ivanov",
+      "nickname": "organic_lover",
+      "role": "customer",
+      "createdAt": "2026-05-24T12:05:00.000Z"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "1",
+      "userNickname": "organic_lover",
+      "productId": "1",
+      "productName": "Calabrese Broccoli",
+      "rating": 5,
+      "comment": "Very fresh and fast delivery! Love this store.",
+      "createdAt": "2026-05-24T14:30:00.000Z"
+    }
+  ],
   "searchQuery": "",
   "$schema": "./node_modules/json-server/schema.json"
 }
