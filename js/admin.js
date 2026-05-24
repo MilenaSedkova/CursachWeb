@@ -1,4 +1,4 @@
-// Находим элементы формы товаров
+// === ЭЛЕМЕНТЫ УПРАВЛЕНИЯ ТОВАРАМИ ===
 const productForm = document.getElementById('productForm');
 const prodId = document.getElementById('prodId');
 const prodName = document.getElementById('prodName');
@@ -7,35 +7,71 @@ const prodCategory = document.getElementById('prodCategory');
 const adminAction = document.getElementById('adminAction');
 const submitProductBtn = document.getElementById('submitProductBtn');
 
-// Находим контейнеры групп для вывода ошибок валидации инпутов
 const idGroup = document.getElementById('idGroup');
 const nameGroup = document.getElementById('nameGroup');
 const priceGroup = document.getElementById('priceGroup');
 
-// ФУНКЦИЯ ВЫВОДА УВЕДОМЛЕНИЙ НА СТРАНИЦЕ 
-function showFormStatus(message, isSuccess) {
-    const statusEl = document.getElementById('productFormStatus');
+// === ЭЛЕМЕНТЫ УПРАВЛЕНИЯ ПОЛЬЗОВАТЕЛЯМИ ===
+const userForm = document.getElementById('userForm');
+const userIdInput = document.getElementById('userIdInput');
+const userEmail = document.getElementById('userEmail');
+const userPassword = document.getElementById('userPassword');
+const userFirstName = document.getElementById('userFirstName');
+const userAction = document.getElementById('userAction');
+const submitUserBtn = document.getElementById('submitUserBtn');
+
+const userIdGroup = document.getElementById('userIdGroup');
+const userEmailGroup = document.getElementById('userEmailGroup');
+const userPassGroup = document.getElementById('userPassGroup');
+const userNameGroup = document.getElementById('userNameGroup');
+
+
+// === УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ВЫВОДА УВЕДОМЛЕНИЙ С ЗАЩИТОЙ ОТ ПЕРЕЗАГРУЗКИ ===
+function showStatus(elementId, message, isSuccess) {
+    const statusEl = document.getElementById(elementId);
     if (!statusEl) return;
 
     statusEl.textContent = message;
     statusEl.className = 'form-status-message ' + (isSuccess ? 'success' : 'error');
 
-    // Сохраняем статус в sessionStorage на случай, если Live Server сейчас перезагрузит страницу
-    sessionStorage.setItem('adminStatusMessage', message);
-    sessionStorage.setItem('adminStatusSuccess', isSuccess);
+    // Сохраняем данные конкретной плашки в sessionStorage перед перезагрузкой сервера
+    sessionStorage.setItem(elementId + '_msg', message);
+    sessionStorage.setItem(elementId + '_success', isSuccess);
 
     // Автоматически скрываем уведомление через 15 секунд
     setTimeout(() => {
         statusEl.className = 'form-status-message';
-        sessionStorage.removeItem('adminStatusMessage');
-        sessionStorage.removeItem('adminStatusSuccess');
+        sessionStorage.removeItem(elementId + '_msg');
+        sessionStorage.removeItem(elementId + '_success');
     }, 15000);
 }
 
-// 1. ФУНКЦИЯ ЖИВОЙ ВАЛИДАЦИИ ФОРМЫ
+// --- ПРОВЕРКА СОХРАНЕННЫХ СООБЩЕНИЙ ДЛЯ ОБЕИХ ФОРМ ПОСЛЕ ПЕРЕЗАГРУЗКИ СТРАНИЦЫ ---
+['productFormStatus', 'userFormStatus'].forEach(elementId => {
+    const savedMessage = sessionStorage.getItem(elementId + '_msg');
+    const savedSuccess = sessionStorage.getItem(elementId + '_success');
+
+    if (savedMessage) {
+        const statusEl = document.getElementById(elementId);
+        if (statusEl) {
+            statusEl.textContent = savedMessage;
+            statusEl.className = 'form-status-message ' + (savedSuccess === 'true' ? 'success' : 'error');
+            
+            // Оставляем плашку гореть на 15 секунд после перезагрузки
+            setTimeout(() => {
+                statusEl.className = 'form-status-message';
+            }, 15000);
+        }
+        // Стираем ключи, чтобы сообщение не всплывало повторно при обычном F5
+        sessionStorage.removeItem(elementId + '_msg');
+        sessionStorage.removeItem(elementId + '_success');
+    }
+});
+
+
+// 1. ВАЛИДАЦИЯ ФОРМЫ ТОВАРОВ
 function validateForm() {
     const action = adminAction.value;
-    
     const nameValue = prodName.value ? prodName.value.trim() : '';
     const priceValue = prodPrice.value ? prodPrice.value.trim() : '';
     const idValue = prodId.value ? prodId.value.trim() : '';
@@ -44,23 +80,14 @@ function validateForm() {
     const isPriceValid = priceValue !== '' && !isNaN(parseFloat(priceValue)) && parseFloat(priceValue) > 0;
     const isIdValid = idValue !== '';
 
-    if (nameValue.length > 0 && !isNameValid) {
-        nameGroup.classList.add('error');
-    } else {
-        nameGroup.classList.remove('error');
-    }
+    if (nameValue.length > 0 && !isNameValid) nameGroup.classList.add('error');
+    else nameGroup.classList.remove('error');
 
-    if (priceValue.length > 0 && !isPriceValid) {
-        priceGroup.classList.add('error');
-    } else {
-        priceGroup.classList.remove('error');
-    }
+    if (priceValue.length > 0 && !isPriceValid) priceGroup.classList.add('error');
+    else priceGroup.classList.remove('error');
 
-    if ((action === 'PUT' || action === 'DELETE') && !isIdValid) {
-        idGroup.classList.add('error');
-    } else {
-        idGroup.classList.remove('error');
-    }
+    if ((action === 'PUT' || action === 'DELETE') && !isIdValid) idGroup.classList.add('error');
+    else idGroup.classList.remove('error');
 
     if (action === 'POST') {
         submitProductBtn.disabled = !(isNameValid && isPriceValid);
@@ -71,48 +98,61 @@ function validateForm() {
     }
 }
 
-window.validateForm = validateForm;
+// 2. ВАЛИДАЦИЯ ФОРМЫ ПОЛЬЗОВАТЕЛЕЙ
+function validateUserForm() {
+    const action = userAction.value;
+    const idValue = userIdInput.value.trim();
+    const emailValue = userEmail.value.trim();
+    const passValue = userPassword.value.trim();
+    const nameValue = userFirstName.value.trim();
 
-// Вешаем слушатели событий через JS
-[prodId, prodName, prodPrice, adminAction].forEach(element => {
-    if (element) {
-        element.addEventListener('input', validateForm);
-        element.addEventListener('change', validateForm);
+    const isIdValid = idValue !== '';
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+    const isPassValid = passValue.length >= 6;
+    const isNameValid = nameValue.length >= 2;
+
+    if (idValue.length > 0 && !isIdValid) userIdGroup.classList.add('error');
+    else userIdGroup.classList.remove('error');
+
+    if (emailValue.length > 0 && !isEmailValid) userEmailGroup.classList.add('error');
+    else userEmailGroup.classList.remove('error');
+
+    if (passValue.length > 0 && !isPassValid) userPassGroup.classList.add('error');
+    else userPassGroup.classList.remove('error');
+
+    if (nameValue.length > 0 && !isNameValid) userNameGroup.classList.add('error');
+    else userNameGroup.classList.remove('error');
+
+    if ((action === 'DELETE' || action === 'BLOCK' || action === 'UNBLOCK') && !isIdValid) {
+        userIdGroup.classList.add('error');
     }
-});
 
-// Запускаем проверку один раз при старте
-validateForm();
-
-//ПРОВЕРКА СОХРАНЕННОГО СТАТУСА ПОСЛЕ ПЕРЕЗАГРУЗКИ СТРАНИЦЫ 
-const savedMessage = sessionStorage.getItem('adminStatusMessage');
-const savedSuccess = sessionStorage.getItem('adminStatusSuccess');
-
-if (savedMessage) {
-    const statusEl = document.getElementById('productFormStatus');
-    if (statusEl) {
-        statusEl.textContent = savedMessage;
-        statusEl.className = 'form-status-message ' + (savedSuccess === 'true' ? 'success' : 'error');
-        
-        // Оставляем висеть на 15 секунд после перезагрузки
-        setTimeout(() => {
-            statusEl.className = 'form-status-message';
-        }, 15000);
+    if (action === 'POST') {
+        submitUserBtn.disabled = !(isEmailValid && isPassValid && isNameValid);
+    } else {
+        submitUserBtn.disabled = !isIdValid;
     }
-    // Сразу очищаем хранилище, чтобы сообщение не всплывало при обычном обновлении через F5
-    sessionStorage.removeItem('adminStatusMessage');
-    sessionStorage.removeItem('adminStatusSuccess');
 }
 
+// Привязка живых обработчиков событий
+[prodId, prodName, prodPrice, adminAction].forEach(el => {
+    if (el) { el.addEventListener('input', validateForm); el.addEventListener('change', validateForm); }
+});
 
-// 2. ОБРАБОТКА ЗАПРОСОВ НА СЕРВЕР (POST, PUT, DELETE)
+[userIdInput, userEmail, userPassword, userFirstName, userAction].forEach(el => {
+    if (el) { el.addEventListener('input', validateUserForm); el.addEventListener('change', validateUserForm); }
+});
+
+validateForm();
+validateUserForm();
+
+
+// 3. ОТПРАВКА ЗАПРОСОВ ДЛЯ ТОВАРОВ
 if (productForm) {
     productForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const action = adminAction.value;
         const id = prodId.value.trim();
-
         const productData = {
             name: prodName.value.trim(),
             price: parseFloat(prodPrice.value),
@@ -127,47 +167,87 @@ if (productForm) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
                 });
-                if (res.ok) {
-                    showFormStatus('Product added successfully!', true);
-                } else {
-                    showFormStatus('Failed to add product. Try again.', false);
-                }
-
+                if (res.ok) showStatus('productFormStatus', ' Product added successfully!', true);
             } else if (action === 'PUT') {
                 const res = await fetch(`${API_URL}/products/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
                 });
-                if (res.ok) {
-                    showFormStatus(`Product ID ${id} updated successfully!`, true);
-                } else {
-                    showFormStatus('Product with this ID not found!', false);
-                }
-
+                if (res.ok) showStatus('productFormStatus', `Product ID ${id} updated successfully!`, true);
+                else showStatus('productFormStatus', ' Product ID not found!', false);
             } else if (action === 'DELETE') {
-                const res = await fetch(`${API_URL}/products/${id}`, {
-                    method: 'DELETE'
-                });
-                if (res.ok) {
-                    showFormStatus(`Product ID ${id} deleted successfully!`, true);
-                } else {
-                    showFormStatus('Product with this ID not found!', false);
-                }
+                const res = await fetch(`${API_URL}/products/${id}`, { method: 'DELETE' });
+                if (res.ok) showStatus('productFormStatus', `Product ID ${id} deleted successfully!`, true);
+                else showStatus('productFormStatus', ' Product ID not found!', false);
             }
-
             productForm.reset();
             validateForm();
-
-        } catch (error) {
-            console.error('Server CRUD Error:', error);
-            showFormStatus('Error communicating with server. Check terminal.', false);
+        } catch (err) {
+            showStatus('productFormStatus', 'Server error.', false);
         }
     });
 }
 
 
-// 3. УПРАВЛЕНИЕ ОТЗЫВАМИ
+// 4. ОТПРАВКА ЗАПРОСОВ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ
+if (userForm) {
+    userForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const action = userAction.value;
+        const id = userIdInput.value.trim();
+
+        const userData = {
+            email: userEmail.value.trim(),
+            password: userPassword.value.trim(),
+            firstName: userFirstName.value.trim(),
+            role: 'customer',
+            isBlocked: false,
+            createdAt: new Date().toISOString()
+        };
+
+        try {
+            if (action === 'POST') {
+                const res = await fetch(`${API_URL}/users`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+                if (res.ok) showStatus('userFormStatus', 'User registered successfully!', true);
+            } 
+            else if (action === 'DELETE') {
+                const res = await fetch(`${API_URL}/users/${id}`, { method: 'DELETE' });
+                if (res.ok) showStatus('userFormStatus', `User ID ${id} deleted successfully!`, true);
+                else showStatus('userFormStatus', ' User ID not found!', false);
+            } 
+            else if (action === 'BLOCK') {
+                const res = await fetch(`${API_URL}/users/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ isBlocked: true })
+                });
+                if (res.ok) showStatus('userFormStatus', `User ID ${id} has been blocked!`, true);
+                else showStatus('userFormStatus', 'User ID not found!', false);
+            } 
+            else if (action === 'UNBLOCK') {
+                const res = await fetch(`${API_URL}/users/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ isBlocked: false })
+                });
+                if (res.ok) showStatus('userFormStatus', `User ID ${id} unblocked successfully!`, true);
+                else showStatus('userFormStatus', ' User ID not found!', false);
+            }
+            userForm.reset();
+            validateUserForm();
+        } catch (err) {
+            showStatus('userFormStatus', ' Server communication error.', false);
+        }
+    });
+}
+
+
+// === 5. УПРАВЛЕНИЕ ОТЗЫВАМИ ===
 const filterType = document.getElementById('filterType');
 const filterValGroup = document.getElementById('filterValGroup');
 const filterLabel = document.getElementById('filterLabel');
@@ -215,7 +295,6 @@ if (loadReviewsBtn) {
                     <button class="btn-delete-review" onclick="deleteReview('${rev.id}')">🗑️</button>
                 </div>
             `).join('');
-
         } catch (e) {
             console.error(e);
             reviewsContainer.innerHTML = '<p style="color: #dc3545; text-align: center;">Failed to load reviews.</p>';

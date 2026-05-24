@@ -334,7 +334,8 @@
       "lastName": "Ivanov",
       "nickname": "organic_lover",
       "role": "customer",
-      "createdAt": "2026-05-24T12:05:00.000Z"
+      "createdAt": "2026-05-24T12:05:00.000Z",
+      "isBlocked": true
     },
     {
       "email": "anna88@gmail.com",
@@ -376,7 +377,8 @@
       "role": "customer",
       "agreementAccepted": true,
       "createdAt": "2026-05-24T16:24:39.218Z",
-      "id": "aK3GaXQxJPw"
+      "id": "aK3GaXQxJPw",
+      "isBlocked": false
     },
     {
       "email": "yarik@gmail.com",
