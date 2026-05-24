@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Создаем HTML для личного кабинета (убираем Login/Register, добавляем имя и выход)
         const loggedInMenuHTML = `
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="html/AboutUs.html">About</a></li>
-            <li><a href="html/Shop.html">Shop</a></li>
+            <li><a href="/homepage.html">Home</a></li>
+            <li><a href="/html/AboutUs.html">About</a></li>
+            <li><a href="/html/Shop.html">Shop</a></li>
             <li class="user-profile">
                 <a href="#" style="color: #669C61; font-weight: 700;">👋 ${displayName}</a>
             </li>

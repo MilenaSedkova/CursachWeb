@@ -265,41 +265,24 @@
   ],
   "cartItems": [
     {
-      "productId": 1,
-      "name": "Calabrese Broccoli",
-      "price": 13,
-      "oldPrice": 20,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/BroccoliPhoto.png",
-      "category": "Vegetable",
-      "quantity": 2,
-      "id": "M5Zp4znK_Gg"
-    },
-    {
-      "productId": 8,
-      "name": "Zelco Suji Elaichi Rusk",
-      "price": 15,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/bread.png",
-      "category": "Fresh",
-      "quantity": 2,
-      "id": "Tk3LI4co84s"
-    },
-    {
-      "productId": 13,
-      "name": "Chilly",
-      "price": 10,
-      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Spicy.png",
-      "category": "Spicy",
-      "quantity": 3,
-      "id": "VtRXHkUOjsA"
-    },
-    {
-      "productId": 9,
-      "name": "Mung Bean",
-      "price": 11,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/MungBeanBig.png",
-      "category": "Health",
+      "productId": 10,
+      "userId": "35GBjmjiqPA",
+      "name": "White Hazelnut",
+      "price": 12,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
+      "category": "Nuts",
       "quantity": 1,
-      "id": "HOVmeOzxE4o"
+      "id": "z-jOGqm6xQs"
+    },
+    {
+      "productId": 11,
+      "userId": "35GBjmjiqPA",
+      "name": "Fresh Corn",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/FreshCorn.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "NNe1dNqfMws"
     }
   ],
   "users": [

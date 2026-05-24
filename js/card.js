@@ -96,25 +96,38 @@ function createCartItemHTML(item) {
 }
 
 // Инициализация
+// Инициализация корзины на странице (замени этот кусок в своем файле)
 document.addEventListener('DOMContentLoaded', async () => {
     const empty = document.getElementById('emptyCart');
     const list = document.getElementById('cartItems');
+    
+    // НАХОДИМ КНОПКУ ЗАКАЗА (убедись, что у нее в HTML стоит id="orderBtn")
+    const orderBtn = document.getElementById('orderBtn'); 
+
     if (!list) return;
 
-    // 1. Проверка авторизации
+    // 1. Проверяем авторизацию
     const userJson = localStorage.getItem('currentUser');
+    
     if (!userJson) {
         if (empty) {
             empty.style.display = 'flex';
-            empty.innerHTML = '<h2>Please, log in for viewing a card</h2><a href="/login.html" class="btn-primary">Войти</a>';
+            empty.innerHTML = `
+                <h2>Please log in to view your cart</h2>
+                <a href="/html/login.html" class="btn-primary" style="margin-top: 20px;">Enter</a>
+            `;
         }
         list.style.display = 'none';
+        
+        // Прячем кнопку заказа!
+        if (orderBtn) orderBtn.style.display = 'none'; 
         return;
     }
 
     const user = JSON.parse(userJson);
     
     try {
+        // Запрашиваем товары ИМЕННО ЭТОГО пользователя
         const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
         let items = await res.json();
         if (!Array.isArray(items)) items = [];
@@ -124,15 +137,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         if (items.length === 0) {
-            if (empty) empty.style.display = 'flex';
+            // Авторизован, но корзина ПУСТАЯ
+            if (empty) {
+                empty.style.display = 'flex';
+                // Текст меняется, кнопку "Войти" не показываем, даем ссылку в магазин
+                empty.innerHTML = `
+                    <h2>Your cart is empty</h2>
+                    <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Go to Shop</a>
+                `;
+            }
             list.style.display = 'none';
+            
+            // Прячем кнопку заказа!
+            if (orderBtn) orderBtn.style.display = 'none'; 
+            
         } else {
+            // СЦЕНАРИЙ В: В корзине ЕСТЬ ТОВАРЫ
             if (empty) empty.style.display = 'none';
             list.style.display = 'grid';
             list.innerHTML = items.map(createCartItemHTML).join('');
-            console.log(`Корзина пользователя ${user.firstName} отрисована`);
+            
+            // ПОКАЗЫВАЕМ кнопку заказа!
+            if (orderBtn) orderBtn.style.display = 'inline-flex'; 
         }
     } catch (e) {
-        console.error('Ошибка:', e);
+        console.error(' Ошибка:', e);
     }
 });

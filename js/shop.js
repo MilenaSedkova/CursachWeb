@@ -131,31 +131,44 @@ document.addEventListener('click', async (e) => {
 });
 
 async function addToCart(productId) {
-    console.log('🛒 Добавляем товар:', productId);
-    
+    console.log(' Добавляем товар:', productId);
+
+    // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ (Исправляет ошибку "user is not defined")
+    const userJson = localStorage.getItem('currentUser');
+    if (!userJson) {
+        alert('Пожалуйста, авторизуйтесь для добавления товаров в корзину!');
+        window.location.href = '/html/login.html'; // Или другой путь к странице входа
+        return; 
+    }
+    const user = JSON.parse(userJson);
+
+    // 2. Ищем карточку
     const card = document.querySelector(`.prod-card[data-id="${productId}"]`);
     if (!card) {
-        console.error('❌ Карточка не найдена!');
+        console.error('Карточка не найдена!');
         return;
     }
-    
+
+    // 3. Формируем данные для корзины
     const productData = {
         productId: parseInt(productId),
-        userId: user.id,       
+        userId: user.id,       // Теперь скрипт знает, откуда взять user.id!
         name: card.querySelector('.prod-name')?.textContent || 'Product',
         price: parseFloat(card.querySelector('.prod-price-new')?.textContent.replace('$', '')) || 0,
         image: card.querySelector('.prod-image-wrapper img')?.src || '',
         category: card.querySelector('.prod-tag')?.textContent || '',
         quantity: 1
     };
-    
+
     try {
-        const res = await fetch('http://localhost:3000/cartItems');
+        // 4. ИЩЕМ ТОВАРЫ ТОЛЬКО ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ (Добавлен фильтр ?userId=...)
+        const res = await fetch(`http://localhost:3000/cartItems?userId=${user.id}`);
         let cartItems = await res.json();
         if (!Array.isArray(cartItems)) cartItems = [];
-        
+
+        // Проверяем, есть ли уже этот товар в корзине ЭТОГО пользователя
         const existing = cartItems.find(item => item.productId === productData.productId);
-        
+
         if (existing) {
             await fetch(`http://localhost:3000/cartItems/${existing.id}`, {
                 method: 'PATCH',
@@ -169,17 +182,17 @@ async function addToCart(productId) {
                 body: JSON.stringify(productData)
             });
         }
-        
+
         if (typeof window.updateHeaderCartCount === 'function') {
             await window.updateHeaderCartCount();
         }
-        
+
         if (typeof showNotification === 'function') {
             showNotification(`${productData.name} добавлен в корзину`);
         }
-        
+
     } catch (error) {
-        console.error('❌ Ошибка:', error);
+        console.error('Ошибка:', error);
     }
 }
 
