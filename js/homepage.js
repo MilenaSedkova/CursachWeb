@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await response.json();
     const allProducts = data.products;
     
-    // 🔑 ПОКАЗЫВАЕМ ТОЛЬКО 8 ТОВАРОВ (2 строки)
     const productsToShow = allProducts.slice(0, 8);
     
     // Отрисовка

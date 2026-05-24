@@ -249,22 +249,27 @@ document.addEventListener('click', async (e) => {
         const user = JSON.parse(userJson);
 
         try {
-
+            // 1. Запрашиваем заказы с сервера строго для текущего юзера
             const res = await fetch(`${API_URL}/orders?userId=${user.id}`);
             const orders = await res.json();
 
-        const hasPurchased = orders.some(order => 
-            order.productIds && order.productIds.some(id => id.toString() === productId.toString())
-        );
+            // 2. Идеально точная проверка под твою структуру базы данных
+            const hasPurchased = orders.some(order => {
+                return order.items && Array.isArray(order.items) && order.items.some(item => {
+                    // Сравниваем строго productId товара из заказа с productId кнопки
+                    return item.productId && item.productId.toString() === productId.toString();
+                });
+            });
 
+            // Если товар так и не найден в покупках этого аккаунта
             if (!hasPurchased) {
-                reviewForm.style.display = 'none'; // Прячем форму
+                reviewForm.style.display = 'none'; // Скрываем форму ввода
                 statusEl.textContent = 'Oops, You can only leave a review for products you have actually purchased.';
-                statusEl.className = 'form-status-message error'; // Показываем ошибку на странице
+                statusEl.className = 'form-status-message error'; // Показываем ошибку в модалке
                 return;
             }
 
-            // 3. Если все проверки пройдены — настраиваем скрытый ID и запускаем валидацию формы
+            // Если всё супер — передаем ID товара в скрытое поле и открываем форму
             document.getElementById('reviewProductId').value = productId;
             setupModalValidation(user.id);
 

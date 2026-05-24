@@ -288,3 +288,44 @@ html, body {
 .btn-open-review:active {
     transform: translateY(0);
 }
+
+/* Кнопка отправки отзыва в модальном окне */
+#submitReviewBtn {
+    display: block;
+    width: 100%;
+    padding: 16px 30px;
+    background-color: #274C5B; /* Фирменный благородный темно-синий */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px; /* Отодвигаем кнопку вниз от звездочек */
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(39, 76, 91, 0.15);
+}
+
+/* Эффект наведения (сработает только когда кнопка СНЯТА с блокировки) */
+#submitReviewBtn:not(:disabled):hover {
+    background-color: #7EB693; /* Фирменный зеленый */
+    transform: translateY(-2px); /* Эффект легкого приподнятия */
+    box-shadow: 0 6px 18px rgba(126, 182, 147, 0.4);
+}
+
+/* Эффект в момент самого клика */
+#submitReviewBtn:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* Стиль для заблокированной кнопки (когда текст отзыва меньше 10 символов) */
+#submitReviewBtn:disabled {
+    background-color: #CCCCCC; /* Нейтральный серый цвет */
+    color: #888888;
+    cursor: not-allowed; /* Курсор запрета */
+    transform: none;
+    box-shadow: none;
+}
