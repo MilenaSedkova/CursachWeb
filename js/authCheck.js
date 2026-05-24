@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <li><a href="/html/AboutUs.html">About</a></li>
             <li><a href="/html/Shop.html">Shop</a></li>
             <li class="user-profile">
-                <a href="#" style="color: #669C61; font-weight: 700;">👋 ${displayName}</a>
+                <a href="#" style="color: #669C61; font-weight: 700;"> ${displayName}</a>
             </li>
-            <li><a href="#" id="logoutBtn" style="color: #dc3545;">Logout</a></li>
+            <li><a href="#" id="logoutBtn" style="color: #669C61;">Logout</a></li>
         `;
 
         navUl.innerHTML = loggedInMenuHTML;
