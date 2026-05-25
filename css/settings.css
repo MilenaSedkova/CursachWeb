@@ -1,5 +1,5 @@
 /* =========================================================
-   THEME STYLES (Light / Dark)
+   THEME STYLES (Light / Dark) - PREMIUM DARK MODE
 ========================================================= */
 :root {
     --bg-primary: #ffffff;
@@ -10,74 +10,315 @@
 }
 
 body.dark-theme {
-    --bg-primary: #121212;
-    --bg-secondary: #1E1E1E;
-    --bg-tertiary: #2C2C2C;
-    --text-primary: #EAEAEA;
-    --text-secondary: #B0B0B0;
+    --bg-primary: #121212;      /* Основной глубокий ночной фон страниц */
+    --bg-secondary: #1E1E1E;    /* Объёмный фон для карточек и блоков */
+    --bg-tertiary: #2C2C2C;     /* Фон для инпутов, поиска и кнопок управления */
+    --text-primary: #ffffff;    /* Белый цвет для стандартных заголовков */
+    --text-secondary: #B0B0B0;  /* Мягкий серый для описаний и текстов */
     --border-color: #333333;
-    --accent-color: #7EB693;
+    --accent-color: #274C5B;    /* Фирменный сине-зеленый для кнопок-капсул */
+    
     background-color: var(--bg-primary) !important;
-    color: var(--text-primary) !important;
-}
-
-body.dark-theme h1, 
-body.dark-theme h2, 
-body.dark-theme h3, 
-body.dark-theme h4, 
-body.dark-theme h5, 
-body.dark-theme h6,
-body.dark-theme .section-title,
-body.dark-theme .category-label,
-body.dark-theme .logo span,
-body.dark-theme a,
-body.dark-theme .nav-menu a,
-body.dark-theme .cart-btn span,
-body.dark-theme .subtitle,
-body.dark-theme .footer-column-title {
-    color: var(--text-primary) !important;
-}
-
-body.dark-theme p,
-body.dark-theme span:not(.logo span):not(.cart-btn span),
-body.dark-theme .banner-subtitle,
-body.dark-theme .contact-label,
-body.dark-theme .contact-value {
     color: var(--text-secondary) !important;
 }
 
-body.dark-theme .header, 
-body.dark-theme .footer,
-body.dark-theme .mobile-menu-content,
-body.dark-theme .product-card,
-body.dark-theme .category-overlay,
+/* ---------------------------------------------------------
+   1. ОБЩИЕ СЕКЦИИ И КАРТОЧКИ (На всех страницах)
+--------------------------------------------------------- */
+body.dark-theme section,
+body.dark-theme .cart-section,
+body.dark-theme .auth-form-section,
 body.dark-theme .about-section,
-body.dark-theme .testi-section,
-body.dark-theme .eco-section,
-body.dark-theme .offer-vegetables-section,
-body.dark-theme .main-banner {
-    background-color: var(--bg-secondary) !important;
-    border-color: var(--border-color) !important;
-}
-
-body.dark-theme section {
+body.dark-theme .eco-section {
     background-color: var(--bg-primary) !important;
 }
 
-body.dark-theme input, 
-body.dark-theme .search-bar input {
+/* Все типы карточек (Магазин, Отзывы, Блог, Овощи в Offer) делаем объемными */
+body.dark-theme .prod-card,
+body.dark-theme .product-card,
+body.dark-theme .category-card,
+body.dark-theme .offer-card-simple,
+body.dark-theme .offer-wrapper,
+body.dark-theme .testi-slide,
+body.dark-theme .filter-btn {
+    background-color: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Теги и плашки категорий внутри карточек */
+body.dark-theme .prod-tag,
+body.dark-theme .category-label,
+body.dark-theme .offer-card-cat {
     background-color: var(--bg-tertiary) !important;
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------
+   2. ТЕКСТ, ЗАГЛОВКИ И ЦЕНЫ
+--------------------------------------------------------- */
+body.dark-theme section:not(.hero):not(.main-banner) h1, 
+body.dark-theme section:not(.hero):not(.main-banner) h2, 
+body.dark-theme section h3, 
+body.dark-theme section h4,
+body.dark-theme .prod-name, 
+body.dark-theme .offer-card-name,
+body.dark-theme .testi-name,
+body.dark-theme .form-label, /* Добавили класс для подписей полей */
+body.dark-theme .auth-form label /* На всякий случай для всех label в форме */ {
+    color: #ffffff !important;
+}
+
+body.dark-theme .auth-redirect-text {
+    color: var(--text-secondary) !important; /* Мягкий светлый цвет из твоих переменных */
+}
+
+/* На всякий случай делаем саму ссылку чуть ярче, если зеленый кажется темноватым */
+body.dark-theme .auth-redirect-text a {
+    color: #89c583 !important; /* Чуть более светлый пастельно-зеленый для сочности */
+}
+
+body.dark-theme .prod-price-new, 
+body.dark-theme .price-new,
+body.dark-theme .product-price-new { 
+    color: #ffffff !important; 
+}
+
+/* Старую цену (зачеркнутую) делаем мягкой и серой */
+body.dark-theme .prod-price-old, 
+body.dark-theme .price-old,
+body.dark-theme .product-price-old { 
+    color: var(--text-secondary) !important; 
+}
+
+/* ---------------------------------------------------------
+   3. ИСПРАВЛЕНИЕ БАННЕРОВ И ХЕДЕРА (Светлые фоны)
+--------------------------------------------------------- */
+body.dark-theme .hero::after,
+body.dark-theme .hero-inner::after,
+body.dark-theme .main-banner::after {
+    display: none !important;
+}
+
+body.dark-theme .hero h1, 
+body.dark-theme .hero-title,
+body.dark-theme .main-banner h1,
+body.dark-theme .banner-title,
+body.dark-theme .hero-inner h1,     /* Добавили для страницы Авторизации/Корзины */
+body.dark-theme .hero-inner .hero-title /* Добавили для страницы О Нас */ {
+    color: #274C5B !important; /* Фирменный глубокий темно-синий, который читается как черный */
+}
+
+/* Шапка сайта (Остается темно-серым блоком) */
+body.dark-theme .header {
+    background-color: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+body.dark-theme .nav-menu a,
+body.dark-theme .logo span {
+    color: #ffffff !important; 
+}
+body.dark-theme .cart-btn,
+body.dark-theme .cart-btn span {
+    color: #ffffff !important; 
+}
+
+body.dark-theme .testi-section {
+    /* 1. Полностью испаряем фоновую картинку */
+    background-image: none !important;
+    
+    /* 2. Заливаем всю секцию ровным, красивым темно-серым/черным цветом */
+    background-color: var(--bg-secondary) !important; /* #1E1E1E — мягкий черный, чтобы не сливался с совсем черным фоном страницы */
+    
+    /* Сохраняем аккуратные скругления и отступы */
+    border-radius: 30px !important; 
+    padding: 80px 0 !important;
+    margin-top: 100px;
     border: 1px solid var(--border-color) !important;
 }
 
+/* 3. Делаем все внутренности слайдера абсолютно прозрачными */
+body.dark-theme .testi-slide,
+body.dark-theme .testi-section .product-card,
+body.dark-theme .testi-slider-viewport,
+body.dark-theme .testi-slider-track {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 4. Настраиваем яркие и читаемые цвета текста */
+body.dark-theme .testi-section h2,
+body.dark-theme .testi-section h3,
+body.dark-theme .testi-name,
+body.dark-theme .testi-role {
+    color: #ffffff !important; /* Чистый белый для имен и заголовка */
+}
+
+body.dark-theme .testi-text {
+    color: #D1D1D1 !important; /* Приятный светло-серый для самого текста отзыва */
+}
+
+/* 5. Делаем кружочки статистики стильными темными элементами */
+body.dark-theme .testi-stat-circle {
+    background-color: var(--bg-tertiary) !important; /* Чуть светлее, чтобы выделяться */
+    border: 1px solid var(--border-color) !important;
+}
+
+body.dark-theme .testi-stat-value {
+    color: #ffffff !important; /* Цифры — белые */
+}
+
+body.dark-theme .testi-stat-label {
+    color: var(--text-secondary) !important; /* Текст под цифрами — серый */
+}
+
+body.dark-theme .testi-section h2,
+body.dark-theme .testi-section h3,
+body.dark-theme .testi-name {
+    color: #274C5B !important; /* Делаем имя (John Anderson) фирменным темно-синим */
+}
+
+body.dark-theme .testi-text {
+    color: #000000 !important; /* 👈 ДЕЛАЕМ ТЕКСТ КОММЕНТАРИЯ ЧЕРНЫМ */
+    font-weight: 500 !important; /* Немного уплотним, чтобы лучше читался */
+}
+
+body.dark-theme .testi-role {
+    color: #525C60 !important; /* Роль (Food Blogger) делаем аккуратным темно-серым */
+}
+/* ---------------------------------------------------------
+   4. ПОИСК, ФОРМЫ И КНОПКИ
+--------------------------------------------------------- */
+/* Поиск в шапке */
+body.dark-theme .search-bar {
+    background-color: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+body.dark-theme .search-bar input {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+/* Кнопки-капсулы (Исследовать сейчас, Заказать и т.д.) */
 body.dark-theme .btn-primary, 
 body.dark-theme .action-button,
-body.dark-theme .cart-btn,
-body.dark-theme .control-btn {
+body.dark-theme .auth-submit-btn {
+    background-color: #274C5B !important; /* Фирменный цвет бренда */
+    color: #ffffff !important;
+    border: none !important;
+}
+body.dark-theme .btn-primary:hover, 
+body.dark-theme .action-button:hover {
+    background-color: #1F263E !important;
+}
+
+/* Маленькие круглые кнопки (en, ru, лупа, стрелочки страниц) */
+body.dark-theme .control-btn,
+body.dark-theme .search-btn,
+body.dark-theme #prevBtn,
+body.dark-theme #nextBtn {
     background-color: var(--bg-tertiary) !important;
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
     border: 1px solid var(--border-color) !important;
+}
+
+/* ---------------------------------------------------------
+   5. ФУТЕР И РАССЫЛКА (Раздельные блоки)
+--------------------------------------------------------- */
+body.dark-theme .footer,
+body.dark-theme .footer-main {
+    background-color: var(--bg-primary) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+body.dark-theme .footer-column-title {
+    color: #ffffff !important;
+}
+
+/* Форма подписки на новости */
+body.dark-theme .newsletter-form {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+body.dark-theme .newsletter-input {
+    flex: 1 !important;
+    background-color: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    padding: 20px 25px !important;
+}
+body.dark-theme .newsletter-btn {
+    background-color: #274C5B !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 20px 40px !important;
+}
+
+
+body.dark-theme .farms-section {
+    /* 1. Делаем фон секции прозрачным, чтобы проявить картинку <img> внутри */
+    background-color: transparent !important;
+    position: relative;
+    overflow: hidden; /* Чтобы закругления картинки работали */
+}
+
+/* 2. Накладываем темную пелену ПОВЕРХ картинки, чтобы текст читался */
+body.dark-theme .farms-section::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* Густая темная пелена (75% темноты) */
+    background-color: rgba(18, 18, 18, 0.75) !important; 
+    
+    z-index: 1; /* Пелена над картинкой */
+    pointer-events: none; /* Чтобы пелена не мешала кликать */
+    border-radius: 25px; /* Копируем закругления секции */
+}
+
+/* 3. Вытаскиваем контент (белую карточку "Location") на передний план */
+body.dark-theme .farms-container {
+    position: relative;
+    z-index: 2; /* Контент над пеленой */
+}
+
+/* На всякий случай убедимся, что сама картинка не скрыта */
+body.dark-theme .farms-bg-img {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.footer-column-title a.contact-link,
+.footer-column-title a.contact-link:visited {
+    color: #274C5B !important; /* Всегда оригинальный темно-синий */
+    text-decoration: none !important; /* Убираем подчеркивание */
+}
+
+/* Эффект при наведении в светлой теме */
+.footer-column-title a.contact-link:hover {
+    color: #525C60 !important; /* Мягкий серый при наведении */
+}
+
+
+/* --- ТЕМНАЯ ТЕМА --- */
+/* Делаем ссылку белоснежной и также блокируем фиолетовый цвет */
+body.dark-theme .footer-column-title a.contact-link,
+body.dark-theme .footer-column-title a.contact-link:visited {
+    color: #ffffff !important; /* Всегда белый в темной теме */
+    text-decoration: none !important;
+}
+
+/* Эффект при наведении в темной теме */
+body.dark-theme .footer-column-title a.contact-link:hover {
+    color: #B0B0B0 !important; /* Приглушенный серый при наведении */
 }
 
 /* =========================================================
@@ -364,7 +605,7 @@ body.a11y-mode .app-toast {
     margin-right: 8 !important; 
 }
 
-/* 2. Заставляем кнопку растягиваться и даем тексту "подышать" */
+/* 2. Заставляем кнопку растягиваться и даем тексту*/
 .action-button {
     width: max-content !important; /* Кнопка растянется под любую длину текста */
     padding-left: 40px !important; /* Добавляем пространство слева */

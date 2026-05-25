@@ -1,8 +1,5 @@
-// translations.js
-
 window.AppI18n = {
     dictionary: {
-        // Navigation & General
         "Home": "Главная",
         "About": "О нас",
         "Shop": "Магазин",
@@ -146,7 +143,7 @@ window.AppI18n = {
 
         "Spicy": "Специи",
         "Nuts & Feeds": "Орехи и Семена",
-        "Nuts &amp; Feeds": "Орехи и Семена", /* Перехват спецсимвола HTML */
+        "Nuts &amp; Feeds": "Орехи и Семена", 
         "Fruits": "Фрукты",
         "Vegetable": "Овощи",
         "Vegetables": "Овощи",
@@ -169,7 +166,19 @@ window.AppI18n = {
         "Exotic Nuts": "Экзотические орехи",
         "Promegranate": "Гранат", 
         "Salad": "Салат",
-        "Ginger": "Имбирь"
+        "Ginger": "Имбирь",
+
+        "Health": "Здоровье",
+        "Fresh": "Свежее",
+
+        "Brown Hazelnut": "Коричневый фундук",
+        "Eggs": "Яйца",
+        "Zelco Suji Elaichi Rusk": "Сухарики Zelco Suji с кардамоном",
+
+        "Mung Bean": "Маш", 
+        "White Hazelnut": "Белый фундук",
+        "Fresh Corn": "Свежая кукуруза",
+        "Organic Almonds": "Органический миндаль",
     },
 
     translate: function(lang) {
@@ -184,7 +193,7 @@ window.AppI18n = {
         let trimmed = text.trim();
         if (!trimmed || trimmed.length < 2) return null;
 
-        // 🟢 УМНЫЙ ПЕРЕВОД КОРЗИНЫ С ЛЮБОЙ ЦИФРОЙ 🟢
+        // УМНЫЙ ПЕРЕВОД КОРЗИНЫ С ЛЮБОЙ ЦИФРОЙ 
         const cartMatch = trimmed.match(/^Cart\((\d+)\)$/i);
         if (cartMatch) {
             return text.replace(trimmed, `Корзина(${cartMatch[1]})`);
@@ -207,7 +216,7 @@ window.AppI18n = {
         let trimmed = text.trim();
         if (!trimmed || trimmed.length < 2) return null;
 
-        // 🟢 УМНЫЙ ВОЗВРАТ КОРЗИНЫ НА АНГЛИЙСКИЙ 🟢
+        // УМНЫЙ ВОЗВРАТ КОРЗИНЫ НА АНГЛИЙСКИЙ 
         const cartMatch = trimmed.match(/^Корзина\((\d+)\)$/i);
         if (cartMatch) {
             return text.replace(trimmed, `Cart(${cartMatch[1]})`);
