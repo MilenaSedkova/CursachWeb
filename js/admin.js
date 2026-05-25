@@ -11,7 +11,7 @@ const idGroup = document.getElementById('idGroup');
 const nameGroup = document.getElementById('nameGroup');
 const priceGroup = document.getElementById('priceGroup');
 
-// === ЭЛЕМЕНТЫ УПРАВЛЕНИЯ ПОЛЬЗОВАТЕЛЯМИ ===
+// ЭЛЕМЕНТЫ УПРАВЛЕНИЯ ПОЛЬЗОВАТЕЛЯМИ 
 const userForm = document.getElementById('userForm');
 const userIdInput = document.getElementById('userIdInput');
 const userEmail = document.getElementById('userEmail');
@@ -25,16 +25,37 @@ const userEmailGroup = document.getElementById('userEmailGroup');
 const userPassGroup = document.getElementById('userPassGroup');
 const userNameGroup = document.getElementById('userNameGroup');
 
+//ФУНКЦИЯ ДИНАМИЧЕСКОГО ПЕРЕВОДА СТРОК
+function getTxt(enText, elementId = '') {
+    // 1. Проверяем, какой язык сейчас выбран (обычно хранится в localStorage или на body)
+    const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+    
+    if (currentLang === 'ru' && typeof dictionary !== 'undefined') {
+        // Если передан ID элемента, пробуем найти перевод специального сообщения с ID
+        if (elementId && dictionary[elementId]) {
+            return dictionary[elementId];
+        }
+        // Иначе ищем прямой перевод английского текста в словаре
+        if (dictionary[enText]) {
+            return dictionary[enText];
+        }
+    }
+    return enText; // Возвращаем исходный текст, если язык английский
+}
 
-// === УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ВЫВОДА УВЕДОМЛЕНИЙ С ЗАЩИТОЙ ОТ ПЕРЕЗАГРУЗКИ ===
+// УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ВЫВОДА УВЕДОМЛЕНИЙ С ЗАЩИТОЙ ОТ ПЕРЕЗАГРУЗКИ
 function showStatus(elementId, message, isSuccess) {
     const statusEl = document.getElementById(elementId);
     if (!statusEl) return;
 
-    statusEl.textContent = message;
+    // Переводим сообщение перед выводом на экран
+    const translatedMessage = getTxt(message);
+
+    statusEl.textContent = translatedMessage;
     statusEl.className = 'form-status-message ' + (isSuccess ? 'success' : 'error');
 
-    // Сохраняем данные конкретной плашки в sessionStorage перед перезагрузкой сервера
+    // Сохраняем ОРИГИНАЛЬНЫЙ английский текст в sessionStorage,
+    // чтобы после перезагрузки он перевелся актуально выбранному языку
     sessionStorage.setItem(elementId + '_msg', message);
     sessionStorage.setItem(elementId + '_success', isSuccess);
 
@@ -46,7 +67,7 @@ function showStatus(elementId, message, isSuccess) {
     }, 15000);
 }
 
-// --- ПРОВЕРКА СОХРАНЕННЫХ СООБЩЕНИЙ ДЛЯ ОБЕИХ ФОРМ ПОСЛЕ ПЕРЕЗАГРУЗКИ СТРАНИЦЫ ---
+// ПРОВЕРКА СОХРАНЕННЫХ СООБЩЕНИЙ ДЛЯ ОБЕИХ ФОРМ ПОСЛЕ ПЕРЕЗАГРУЗКИ СТРАНИЦЫ
 ['productFormStatus', 'userFormStatus'].forEach(elementId => {
     const savedMessage = sessionStorage.getItem(elementId + '_msg');
     const savedSuccess = sessionStorage.getItem(elementId + '_success');
@@ -54,7 +75,8 @@ function showStatus(elementId, message, isSuccess) {
     if (savedMessage) {
         const statusEl = document.getElementById(elementId);
         if (statusEl) {
-            statusEl.textContent = savedMessage;
+            // Переводим сохраненный текст под текущий язык
+            statusEl.textContent = getTxt(savedMessage);
             statusEl.className = 'form-status-message ' + (savedSuccess === 'true' ? 'success' : 'error');
             
             // Оставляем плашку гореть на 15 секунд после перезагрузки
@@ -167,19 +189,19 @@ if (productForm) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
                 });
-                if (res.ok) showStatus('productFormStatus', ' Product added successfully!', true);
+                if (res.ok) showStatus('productFormStatus', 'Product added successfully!', true);
             } else if (action === 'PUT') {
                 const res = await fetch(`${API_URL}/products/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
                 });
-                if (res.ok) showStatus('productFormStatus', `Product ID ${id} updated successfully!`, true);
-                else showStatus('productFormStatus', ' Product ID not found!', false);
+                if (res.ok) showStatus('productFormStatus', 'Product updated successfully!', true); // 👈 Убрали динамический ID из строки для простоты перевода
+                else showStatus('productFormStatus', 'Product ID not found!', false);
             } else if (action === 'DELETE') {
                 const res = await fetch(`${API_URL}/products/${id}`, { method: 'DELETE' });
-                if (res.ok) showStatus('productFormStatus', `Product ID ${id} deleted successfully!`, true);
-                else showStatus('productFormStatus', ' Product ID not found!', false);
+                if (res.ok) showStatus('productFormStatus', 'Product deleted successfully!', true); // 👈 Убрали динамический ID
+                else showStatus('productFormStatus', 'Product ID not found!', false);
             }
             productForm.reset();
             validateForm();
@@ -217,8 +239,8 @@ if (userForm) {
             } 
             else if (action === 'DELETE') {
                 const res = await fetch(`${API_URL}/users/${id}`, { method: 'DELETE' });
-                if (res.ok) showStatus('userFormStatus', `User ID ${id} deleted successfully!`, true);
-                else showStatus('userFormStatus', ' User ID not found!', false);
+                if (res.ok) showStatus('userFormStatus', 'User deleted successfully!', true); // 👈 Убрали динамический ID
+                else showStatus('userFormStatus', 'User ID not found!', false);
             } 
             else if (action === 'BLOCK') {
                 const res = await fetch(`${API_URL}/users/${id}`, {
@@ -226,7 +248,7 @@ if (userForm) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ isBlocked: true })
                 });
-                if (res.ok) showStatus('userFormStatus', `User ID ${id} has been blocked!`, true);
+                if (res.ok) showStatus('userFormStatus', 'User has been blocked!', true); // 👈 Убрали динамический ID
                 else showStatus('userFormStatus', 'User ID not found!', false);
             } 
             else if (action === 'UNBLOCK') {
@@ -235,19 +257,19 @@ if (userForm) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ isBlocked: false })
                 });
-                if (res.ok) showStatus('userFormStatus', `User ID ${id} unblocked successfully!`, true);
-                else showStatus('userFormStatus', ' User ID not found!', false);
+                if (res.ok) showStatus('userFormStatus', 'User unblocked successfully!', true); // 👈 Убрали динамический ID
+                else showStatus('userFormStatus', 'User ID not found!', false);
             }
             userForm.reset();
             validateUserForm();
         } catch (err) {
-            showStatus('userFormStatus', ' Server communication error.', false);
+            showStatus('userFormStatus', 'Server communication error.', false);
         }
     });
 }
 
 
-// === 5. УПРАВЛЕНИЕ ОТЗЫВАМИ ===
+// 5. УПРАВЛЕНИЕ ОТЗЫВАМИ 
 const filterType = document.getElementById('filterType');
 const filterValGroup = document.getElementById('filterValGroup');
 const filterLabel = document.getElementById('filterLabel');
@@ -282,7 +304,8 @@ if (loadReviewsBtn) {
             const reviews = await res.json();
 
             if (!Array.isArray(reviews) || reviews.length === 0) {
-                reviewsContainer.innerHTML = '<p class="reviews-placeholder">No reviews found.</p>';
+                // Выводим сообщение об отсутствии отзывов через функцию динамического перевода
+                reviewsContainer.innerHTML = `<p class="reviews-placeholder">${getTxt("No reviews found.")}</p>`;
                 return;
             }
 
@@ -297,17 +320,23 @@ if (loadReviewsBtn) {
             `).join('');
         } catch (e) {
             console.error(e);
-            reviewsContainer.innerHTML = '<p style="color: #dc3545; text-align: center;">Failed to load reviews.</p>';
+            reviewsContainer.innerHTML = `<p style="color: #dc3545; text-align: center;">${getTxt("Failed to load reviews.")}</p>`;
         }
     });
 }
 
 window.deleteReview = async function(id) {
-    if (!confirm('Are you sure you want to delete this review?')) return;
+    // Перевод сообщения в окне подтверждения удаления (confirm)
+    if (!confirm(getTxt('Are you sure you want to delete this review?'))) return;
     try {
         const res = await fetch(`${API_URL}/reviews/${id}`, { method: 'DELETE' });
         if (res.ok) {
             document.querySelector(`.review-item[data-id="${id}"]`)?.remove();
+            
+            // Если после удаления карточки список стал пустым, выводим заглушку "Отзывы не найдены"
+            if (document.querySelectorAll('.review-item').length === 0) {
+                reviewsContainer.innerHTML = `<p class="reviews-placeholder">${getTxt("No reviews found.")}</p>`;
+            }
         }
     } catch (e) {
         console.error(e);

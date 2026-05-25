@@ -1,5 +1,3 @@
-// js/auth.js
-
 const form = document.getElementById('loginForm');
 const emailInput = document.getElementById('loginEmail');
 const passwordInput = document.getElementById('loginPassword');
@@ -15,6 +13,21 @@ function init() {
     });
 }
 
+function getTxt(enText) {
+    // 1. Проверяем выбранный пользователем язык
+    const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+    
+    // 2. Достаем словарь из глобального объекта window.AppI18n
+    const dict = window.AppI18n ? window.AppI18n.dictionary : undefined;
+    
+    // 3. Если язык русский и словарь доступен — берем перевод
+    if (currentLang === 'ru' && dict && dict[enText]) {
+        return dict[enText];
+    }
+    
+    return enText; // Возвращаем оригинал, если язык английский или перевод не найден
+}
+
 async function handleLogin(e) {
     e.preventDefault();
     
@@ -27,16 +40,18 @@ async function handleLogin(e) {
     
     let hasError = false;
 
+    // Валидация Email (Ошибки обернуты в функцию перевода)
     if (!email) {
-        showError(emailInput, 'Поле Email обязательно для заполнения');
+        showError(emailInput, getTxt('The field Email is necessary for input'));
         hasError = true;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError(emailInput, 'Неверный формат Email адреса');
+        showError(emailInput, getTxt('Uncorrect format of Email'));
         hasError = true;
     }
 
+    // Валидация Пароля
     if (!password) {
-        showError(passwordInput, 'Поле Пароль обязательно для заполнения');
+        showError(passwordInput, getTxt('The field Password is necessary for input'));
         hasError = true;
     }
 
@@ -48,22 +63,23 @@ async function handleLogin(e) {
         const usersByEmail = await emailRes.json();
 
         if (usersByEmail.length === 0) {
-            showError(emailInput, 'Аккаунт с таким Email не существует. Зарегистрируйтесь!');
+            showError(emailInput, getTxt('There is no account with such an Email. Register rigth now!'));
             return;
         }
 
         // Шаг 2: Проверяем пароль
         const user = usersByEmail[0];
         if (user.password !== password) {
-            showError(passwordInput, 'Неверный пароль. Попробуйте еще раз');
+            showError(passwordInput, getTxt('Uncorrect password, try again'));
             return;
         }
         
         // Авторизация успешна! Сохраняем пользователя
         localStorage.setItem('currentUser', JSON.stringify(user));
         
-        // ВЫВОДИМ УСПЕХ НА СТРАНИЦЕ (Зеленая плашка)
-        showStatusMessage(`Authorization is successful! Welcome, ${user.firstName || user.nickname}!`, 'success');
+        const welcomePrefix = getTxt('Authorization is successful! Welcome');
+        const userName = user.firstName || user.nickname || '';
+        showStatusMessage(`${welcomePrefix}, ${userName}!`, 'success');
         
         // Блокируем кнопку, чтобы не нажимали дважды
         const btnSubmit = document.getElementById('loginSubmitBtn');
@@ -72,15 +88,15 @@ async function handleLogin(e) {
             btnSubmit.style.backgroundColor = '#A8B2A9';
         }
         
-        // Ждем 2 секунды и редиректим (Судя по скрину, ты в папке html, поэтому путь ../)
+        // Ждем 2 секунды и редиректим
         setTimeout(() => {
             window.location.href = user.role === 'admin' ? 'admin.html' : '../homepage.html';
         }, 2000);
 
     } catch (error) {
         console.error('Auth error:', error);
-        // ВЫВОДИМ ОШИБКУ НА СТРАНИЦЕ (Красная плашка)
-        showStatusMessage('Ошибка сервера. Убедитесь, что json-server запущен.', 'error');
+        // ВЫВОДИМ ОШИБКУ НА СТРАНИЦЕ
+        showStatusMessage(getTxt('Server error. Make sure json-server is running.'), 'error');
     }
 }
 

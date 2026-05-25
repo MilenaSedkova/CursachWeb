@@ -145,6 +145,20 @@
       "price": 13,
       "image": "/pictures/AboutUsImages/Vegetable.png",
       "customClass": "small-image"
+    },
+    {
+      "name": "Мармелад",
+      "price": 18,
+      "category": "Fresh",
+      "image": "/pictures/HomepageImages/default-product.png",
+      "id": "0cxguJ5Nj14"
+    },
+    {
+      "name": "Груша",
+      "price": 18,
+      "category": "Fruit",
+      "image": "/pictures/HomepageImages/default-product.png",
+      "id": "NXjCBPRtU1k"
     }
   ],
   "offerVegetables": [

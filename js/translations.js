@@ -213,7 +213,31 @@ window.AppI18n = {
         "Add Customer (POST)": "Добавить клиента (POST)",
         "Execute User Request": "Выполнить запрос",
         "Category": "Категория",
-        "Execute Request": "Выполнить запрос"
+        "Execute Request": "Выполнить запрос",
+
+        "Product added successfully!": "Товар успешно добавлен!",
+        "Product updated successfully!": "Товар успешно обновлен!",
+        "Product deleted successfully!": "Товар успешно удален!",
+        "Product ID not found!": "ID товара не найден!",
+        "Server error.": "Ошибка сервера.",
+
+        "User registered successfully!": "Пользователь успешно зарегистрирован!",
+        "User deleted successfully!": "Пользователь успешно удален!",
+        "User has been blocked!": "Пользователь был заблокирован!",
+        "User unblocked successfully!": "Пользователь успешно разблокирован!",
+        "User ID not found!": "ID пользователя не найден!",
+        "Server communication error.": "Ошибка связи с сервером.",
+
+        "No reviews found.": "Отзывы не найдены.",
+        "Failed to load reviews.": "Не удалось загрузить отзывы.",
+        "Are you sure you want to delete this review?": "Вы уверены, что хотите удалить этот отзыв?",
+        "No reviews found.": "Отзывы не найдены",
+
+        "The field Email is necessary for input": "Поле Email обязательно для ввода",
+        "Uncorrect format of Email": "Неверный формат Email",
+        "The field Password is necessary for input": "Поле пароль обязательно для ввода",
+        "There is no account with such an Email. Register rigth now!": "Аккаунта с таким Email нетт. Зарегистрируйтесь прямо сейчас!", 
+        "Uncorrect password, try again": "Неправильный пароль, попробуйте еще раз"
     },
 
     translate: function(lang) {
