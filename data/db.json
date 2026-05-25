@@ -528,16 +528,7 @@
       "id": "yhs-5u24XlY"
     }
   ],
-  "reviews": [
-    {
-      "productId": "2",
-      "userId": "TL1QRsWnITs",
-      "text": "Very yummy and fresh, I really appreciate it",
-      "rating": 5,
-      "date": "25.05.2026",
-      "id": "7tYhBLhtWMQ"
-    }
-  ],
+  "reviews": [],
   "searchQuery": "",
   "$schema": "./node_modules/json-server/schema.json"
 }
