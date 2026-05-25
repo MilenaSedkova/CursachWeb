@@ -317,3 +317,74 @@
     }
 }
 
+/* =========================================================
+   ФИНАЛЬНЫЙ ФИКС: ВЫТАЛКИВАЕМ ТЕКСТ АВТОРИЗАЦИИ ИЗ БАННЕРА
+========================================================= */
+
+@media (max-width: 768px) {
+    /* 1. Возвращаем баннеру стандартное поведение и ровняем заголовок "Корзина" */
+    body .hero {
+        height: 250px !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    body .hero-title,
+    body .hero-inner h1 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        font-size: 32px !important;
+        margin: 0 !important;
+    }
+
+    /* 2. СБРАСЫВАЕМ АБСОЛЮТНОЕ ПОЗИЦИОНИРОВАНИЕ ТЕКСТА ОШИБКИ 
+       Теперь он встает в нормальный поток элементов */
+    body .hero-title h2,
+    body .hero-title p,
+    body .hero-title span,
+    body .empty-cart h2 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        
+        /* Стилизуем строку */
+        display: block !important;
+        width: 100% !important;
+        max-width: 500px !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        color: #1F263E !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+        
+        /* Задаем аккуратный нижний отступ, чтобы отодвинуть кнопку */
+        margin: 0 auto 25px auto !important; 
+    }
+
+    /* 3. Выстраиваем контейнер корзины: сначала текст, затем кнопка строго под ним */
+   body .cart-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        
+        /* Увеличиваем отступ сверху, чтобы отодвинуть всю группу элементов от баннера */
+        padding-top: 280px !important; 
+    }
+
+    /* 4. Кнопка следует строго за текстом с аккуратным зазором */
+    body .cart-section .btn-primary,
+    body .cart-section a.btn-primary,
+    body .cart-section #emptyCart .btn-primary {
+        position: relative !important;
+        display: inline-flex !important;
+        
+        /* Фиксируем отступ между текстом и кнопкой */
+        margin-top: 30px !important; 
+    }
+}
