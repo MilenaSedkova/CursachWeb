@@ -143,15 +143,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // ЧИТАЕМ "ЗАПИСКУ" О ПОСЛЕДНЕМ ЗАКАЗЕ ИЗ ПАМЯТИ
                 const lastOrderTotal = localStorage.getItem('lastOrderTotal');
                 
-                if (lastOrderTotal) {
-                    // ЕСЛИ ЗАПИСКА ЕСТЬ -> Показываем благодарность
-                    empty.innerHTML = `
-                        <h2>Thank you for your order, ${user.firstName}!</h2>
-                        <p>Your order for $${lastOrderTotal} has been successfully placed.</p>
-                        <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
-                    `;
-                    localStorage.removeItem('lastOrderTotal');
-                } else {
+               if (lastOrderTotal) {
+    // Получаем переведенные части фраз
+    const thanksPrefix = typeof getTxt === 'function' ? getTxt('Thank you for your order') : 'Thank you for your order';
+    const orderPrefix = typeof getTxt === 'function' ? getTxt('Your order for') : 'Your order for';
+    const orderSuffix = typeof getTxt === 'function' ? getTxt('has been successfully placed.') : 'has been successfully placed.';
+    const btnText = typeof getTxt === 'function' ? getTxt('Continue Shopping') : 'Continue Shopping';
+
+    empty.innerHTML = `
+        <h2>${thanksPrefix}, ${user.firstName}!</h2>
+        <p>${orderPrefix} $${lastOrderTotal} ${orderSuffix}</p>
+        <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">${btnText}</a>
+    `;
+    localStorage.removeItem('lastOrderTotal');
+} else {
                     // ЕСЛИ ЗАПИСКИ НЕТ -> Обычная пустая корзина
                     empty.innerHTML = `
                         <h2>Your cart is empty</h2>

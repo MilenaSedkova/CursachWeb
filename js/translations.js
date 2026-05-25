@@ -237,7 +237,12 @@ window.AppI18n = {
         "Uncorrect format of Email": "Неверный формат Email",
         "The field Password is necessary for input": "Поле пароль обязательно для ввода",
         "There is no account with such an Email. Register rigth now!": "Аккаунта с таким Email нетт. Зарегистрируйтесь прямо сейчас!", 
-        "Uncorrect password, try again": "Неправильный пароль, попробуйте еще раз"
+        "Uncorrect password, try again": "Неправильный пароль, попробуйте еще раз",
+
+        "Thank you for your order": "Спасибо за ваш заказ",
+        "Your order for": "Ваш заказ на сумму",
+        "has been successfully placed.": "был успешно оформлен.",
+        "Continue Shopping": "Продолжить покупки"
     },
 
     translate: function(lang) {

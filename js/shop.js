@@ -138,14 +138,80 @@ document.addEventListener('click', async (e) => {
     }
 });
 
-async function addToCart(productId) {
-    console.log(' Добавляем товар:', productId);
+function getModalTxt(enText) {
+    const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+    const dict = window.AppI18n ? window.AppI18n.dictionary : undefined;
+    if (currentLang === 'ru' && dict && dict[enText]) {
+        return dict[enText];
+    }
+    return enText;
+}
 
-    // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ (Исправляет ошибку "user is not defined")
+function openAuthModal() {
+    let modal = document.getElementById('authAlertModal');
+    
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'authAlertModal';
+        modal.className = 'app-modal-overlay';
+        modal.innerHTML = `
+            <div class="app-modal">
+                <div class="app-modal-header">
+                    <h3 class="app-modal-title">${getModalTxt('Authorization')}</h3>
+                    <button class="app-modal-close" onclick="closeAuthModalOnly()">&times;</button>
+                </div>
+                <div class="app-modal-body">
+                    <p style="font-size: 16px; margin-bottom: 25px; color: #1F263E;">
+                        ${getModalTxt('Please log in to view your cart')}
+                    </p>
+                    <div style="display: flex; justify-content: flex-end; gap: 12px; align-items: center;">
+                        <button class="control-btn" onclick="closeAuthModalOnly()">
+                            ${getModalTxt('Close')}
+                        </button>
+                        <a href="/html/Login.html" class="btn-primary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                            <span>${getModalTxt('Log in')}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Клик по темному фону просто закрывает окно
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeAuthModalOnly();
+        });
+    }
+
+    setTimeout(() => modal.classList.add('active'), 10);
+}
+
+// Новая функция: ПРОСТО закрывает окно, никуда не перемещая пользователя
+function closeAuthModalOnly() {
+    const modal = document.getElementById('authAlertModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+
+function closeAuthModal() {
+    const modal = document.getElementById('authAlertModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+
+// === ИСПРАВЛЕННАЯ ФУНКЦИЯ ДОБАВЛЕНИЯ В КОРЗИНУ ===
+async function addToCart(productId) {
+    console.log('Добавляем товар:', productId);
+
+    // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) {
-        alert('Please, log in to view your card!');
-        window.location.href = '/html/login.html'; // Или другой путь к странице входа
+        // Вместо alert() вызываем кастомное красивое окно!
+        openAuthModal();
         return; 
     }
     const user = JSON.parse(userJson);
@@ -160,7 +226,7 @@ async function addToCart(productId) {
     // 3. Формируем данные для корзины
     const productData = {
         productId: parseInt(productId),
-        userId: user.id,       // Теперь скрипт знает, откуда взять user.id!
+        userId: user.id,
         name: card.querySelector('.prod-name')?.textContent || 'Product',
         price: parseFloat(card.querySelector('.prod-price-new')?.textContent.replace('$', '')) || 0,
         image: card.querySelector('.prod-image-wrapper img')?.src || '',
@@ -169,7 +235,7 @@ async function addToCart(productId) {
     };
 
     try {
-        // 4. ИЩЕМ ТОВАРЫ ТОЛЬКО ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ (Добавлен фильтр ?userId=...)
+        // 4. ИЩЕМ ТТОВАРЫ ТОЛЬКО ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
         const res = await fetch(`http://localhost:3000/cartItems?userId=${user.id}`);
         let cartItems = await res.json();
         if (!Array.isArray(cartItems)) cartItems = [];
@@ -203,7 +269,6 @@ async function addToCart(productId) {
         console.error('Ошибка:', error);
     }
 }
-
 function showNotification(text) {
     const notif = document.createElement('div');
     notif.style.cssText = `

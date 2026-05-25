@@ -268,6 +268,23 @@
 
     <script src="/js/translations.js"></script>
     <script src="/js/settings.js"></script>
+
+    <div id="authAlertModal" class="app-modal-overlay">
+    <div class="app-modal">
+        <div class="app-modal-header">
+            <h3 class="app-modal-title" data-translate="Authorization">Authorization</h3>
+            <button class="app-modal-close" onclick="closeAuthModal()">&times;</button>
+        </div>
+        <div class="app-modal-body">
+            <p id="authModalMessage" style="font-size: 16px; margin-bottom: 25px; color: var(--text-primary);" data-translate="Please log in to view your cart">Please log in to view your cart</p>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="a11y-btn" onclick="closeAuthModal()" data-translate="Close">Close</button>
+                <a href="/html/Login.html" class="btn-primary" style="text-decoration: none; padding: 8px 16px; border-radius: 4px; font-size: 14px;" data-translate="Log in">Log in</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

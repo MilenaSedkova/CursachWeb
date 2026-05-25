@@ -18,6 +18,17 @@ const fields = {
 const TOP_100_PASSWORDS = ['12345678', 'password', 'qwerty1234', '11111111', '123456789'];
 let nicknameAttempts = 0;
 
+// === ФУНКЦИЯ ДИНАМИЧЕСКОГО ПЕРЕВОДА СТРОК ===
+function getTxt(enText) {
+    const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+    const dict = window.AppI18n ? window.AppI18n.dictionary : undefined;
+    
+    if (currentLang === 'ru' && dict && dict[enText]) {
+        return dict[enText];
+    }
+    return enText;
+}
+
 function init() {
     // 1. Глазки для пароля
     document.querySelectorAll('.toggle-password-btn').forEach(btn => {
@@ -37,7 +48,7 @@ function init() {
     // 2. Блокировка вставки в поле подтверждения пароля
     fields.confirmPassword.addEventListener('paste', (e) => {
         e.preventDefault();
-        showError(fields.confirmPassword, 'Вставка пароля запрещена. Введите вручную.');
+        showError(fields.confirmPassword, getTxt('Password pasting is prohibited. Enter manually.'));
     });
 
     // 3. Форматирование номера телефона РБ на лету
@@ -62,58 +73,64 @@ function init() {
     });
 
     // Генерация пароля
-    document.getElementById('btnGenPassword').addEventListener('click', () => {
-        const genPwd = generateSecurePassword();
-        fields.password.value = genPwd;
-        fields.confirmPassword.value = genPwd;
-        clearError(fields.password);
-        clearError(fields.confirmPassword);
-        fields.password.type = 'text'; // Временно показываем пароль
-        checkFormValidity();
-    });
+    const btnGenPassword = document.getElementById('btnGenPassword');
+    if (btnGenPassword) {
+        btnGenPassword.addEventListener('click', () => {
+            const genPwd = generateSecurePassword();
+            fields.password.value = genPwd;
+            fields.confirmPassword.value = genPwd;
+            clearError(fields.password);
+            clearError(fields.confirmPassword);
+            fields.password.type = 'text'; // Временно показываем пароль
+            checkFormValidity();
+        });
+    }
 
     // Генерация никнейма
-    document.getElementById('btnGenNickname').addEventListener('click', async () => {
-        const fName = fields.name.value.trim();
-        const lName = fields.lastName.value.trim();
-        
-        if (!fName || !lName) {
-            showError(fields.nickname, 'Сначала введите Name и Last name');
-            return;
-        }
+    const btnGenNickname = document.getElementById('btnGenNickname');
+    if (btnGenNickname) {
+        btnGenNickname.addEventListener('click', async () => {
+            const fName = fields.name.value.trim();
+            const lName = fields.lastName.value.trim();
+            
+            if (!fName || !lName) {
+                showError(fields.nickname, getTxt('Please enter Name and Last name first'));
+                return;
+            }
 
-        if (nicknameAttempts >= 5) {
-            fields.nickname.removeAttribute('readonly');
-            showError(fields.nickname, 'Лимит попыток. Введите никнейм самостоятельно.');
-            fields.nickname.focus();
-            return;
-        }
+            if (nicknameAttempts >= 5) {
+                fields.nickname.removeAttribute('readonly');
+                showError(fields.nickname, getTxt('Attempt limit. Enter nickname manually.'));
+                fields.nickname.focus();
+                return;
+            }
 
-        const newNick = generateNickname(fName, lName, nicknameAttempts);
-        
-        // Проверка уникальности
-        const isUnique = await checkUnique('nickname', newNick);
-        nicknameAttempts++;
+            const newNick = generateNickname(fName, lName, nicknameAttempts);
+            
+            // Проверка уникальности
+            const isUnique = await checkUnique('nickname', newNick);
+            nicknameAttempts++;
 
-        if (isUnique) {
-            fields.nickname.value = newNick;
-            fields.nickname.removeAttribute('readonly');
-            clearError(fields.nickname);
-        } else {
-            showError(fields.nickname, `Ник ${newNick} занят. Жмите еще раз.`);
-        }
-        checkFormValidity();
-    });
+            if (isUnique) {
+                fields.nickname.value = newNick;
+                fields.nickname.removeAttribute('readonly');
+                clearError(fields.nickname);
+            } else {
+                showError(fields.nickname, `${getTxt('Nickname')} ${newNick} ${getTxt('is taken. Try again.')}`);
+            }
+            checkFormValidity();
+        });
+    }
 
     form.addEventListener('submit', handleRegister);
 }
 
-// функция генерации //
+// === ФУНКЦИИ ГЕНЕРАЦИИ (Вынесены на глобальный уровень) ===
 function generateSecurePassword() {
     const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lower = "abcdefghijklmnopqrstuvwxyz";
     const digits = "0123456789";
-    const special = "!@#$%^&*";
+    const special = "!@#$*()_+-="; 
     const all = upper + lower + digits + special;
     
     let pwd = "";
@@ -122,11 +139,11 @@ function generateSecurePassword() {
     pwd += digits[Math.floor(Math.random() * digits.length)];
     pwd += special[Math.floor(Math.random() * special.length)];
     
-    for(let i=0; i<8; i++) {
+    for(let i = 0; i < 8; i++) {
         pwd += all[Math.floor(Math.random() * all.length)];
     }
-    // Перемешиваем
-    return pwd.split('').sort(() => 0.5 - Math.random()).join('');
+    
+    return pwd.split('').sort(() => Math.random() - 0.5).join('');
 }
 
 function generateNickname(fName, lName, attempt) {
@@ -137,25 +154,25 @@ function generateNickname(fName, lName, attempt) {
     return `${p1}${p2}${num}${suffixes[attempt] || ''}`.replace(/\s/g, '');
 }
 
-// валидация //
+// === ВАЛИДАЦИЯ ФОРМЫ ===
 function validateAll() {
     let isValid = true;
 
     // Email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.value)) {
-        showError(fields.email, 'Неверный формат Email');
+        showError(fields.email, getTxt('Uncorrect format of Email'));
         isValid = false;
     }
 
     // Возраст 16+
     if (!fields.dob.value) {
-        showError(fields.dob, 'Выберите дату рождения');
+        showError(fields.dob, getTxt('Choose the date of birth'));
         isValid = false;
     } else {
         const dob = new Date(fields.dob.value);
         const age = new Date().getFullYear() - dob.getFullYear();
         if (age < 16) {
-            showError(fields.dob, 'Вам должно быть не менее 16 лет');
+            showError(fields.dob, getTxt('You must be at least 16 years old'));
             isValid = false;
         }
     }
@@ -163,31 +180,31 @@ function validateAll() {
     // Телефон (Только РБ)
     const phoneRaw = fields.phone.value.replace(/\D/g, '');
     if (!/^375(25|29|33|44)\d{7}$/.test(phoneRaw)) {
-        showError(fields.phone, 'Формат: +375(XX)-XXX-XX-XX (только РБ)');
+        showError(fields.phone, getTxt('Format: +375(XX)-XXX-XX-XX (only RB)'));
         isValid = false;
     }
 
-    // Имя и Фамилия
-    if (!fields.name.value.trim()) { showError(fields.name, 'Обязательное поле'); isValid = false; }
-    if (!fields.lastName.value.trim()) { showError(fields.lastName, 'Обязательное поле'); isValid = false; }
-    if (!fields.nickname.value.trim()) { showError(fields.nickname, 'Сгенерируйте или введите никнейм'); isValid = false; }
+    // Имя, Фамилия, Никнейм
+    if (!fields.name.value.trim()) { showError(fields.name, getTxt('Required field')); isValid = false; }
+    if (!fields.lastName.value.trim()) { showError(fields.lastName, getTxt('Required field')); isValid = false; }
+    if (!fields.nickname.value.trim()) { showError(fields.nickname, getTxt('Generate or enter a nickname')); isValid = false; }
 
     // Пароль (Правила)
     const pwd = fields.password.value;
     if (pwd.length < 8 || pwd.length > 20) {
-        showError(fields.password, 'Длина от 8 до 20 символов');
+        showError(fields.password, getTxt('Length from 8 to 20 characters'));
         isValid = false;
     } else if (!/[A-Z]/.test(pwd) || !/[a-z]/.test(pwd) || !/\d/.test(pwd) || !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pwd)) {
-        showError(fields.password, 'Нужна заглавная, строчная, цифра и спецсимвол');
+        showError(fields.password, getTxt('Need uppercase, lowercase, digit and special character'));
         isValid = false;
     } else if (TOP_100_PASSWORDS.includes(pwd)) {
-        showError(fields.password, 'Пароль слишком простой (в TOP-100)');
+        showError(fields.password, getTxt('Password is too simple (in TOP-100)'));
         isValid = false;
     }
 
     // Подтверждение пароля
     if (pwd !== fields.confirmPassword.value) {
-        showError(fields.confirmPassword, 'Пароли не совпадают');
+        showError(fields.confirmPassword, getTxt('Passwords do not match'));
         isValid = false;
     }
 
@@ -201,24 +218,16 @@ function validateAll() {
 
 function checkFormValidity() {
     const requiredFilled = Object.values(fields).every(f => {
-        // 1. Если поля вообще нет в HTML, игнорируем его, чтобы скрипт не падал
         if (!f) return true; 
-        
-        // 2. Отчество необязательно, его не проверяем на пустоту
         if (f.id === 'regMiddleName') return true; 
-        
-        // 3. Для чекбокса (соглашения) проверяем галочку
         if (f.type === 'checkbox') return f.checked; 
-        
-        // 4. Для остальных полей проверяем, что введено хоть что-то
         return f.value.trim().length > 0;
     });
     
-    // Если всё заполнено — разблокируем кнопку (она станет темно-синей)
-    btnSubmit.disabled = !requiredFilled;
+    if (btnSubmit) btnSubmit.disabled = !requiredFilled;
 }
 
-// отправка на сервер //
+// === СВЯЗЬ С СЕРВЕРОМ ===
 async function checkUnique(field, value) {
     try {
         const res = await fetch(`http://localhost:3000/users?${field}=${encodeURIComponent(value)}`);
@@ -232,33 +241,30 @@ async function checkUnique(field, value) {
 async function handleRegister(e) {
     e.preventDefault();
     
-    // Очищаем старый статус перед новой попыткой (если он был)
     const oldStatus = document.getElementById('formStatusMessage');
     if (oldStatus) oldStatus.remove();
 
-    // Если локальная валидация не пройдена
     if (!validateAll()) {
-        showStatusMessage('Пожалуйста, исправьте ошибки в полях выше.', 'error');
+        showStatusMessage(getTxt('Please fix the errors in the fields above.'), 'error');
         return; 
     }
 
     // Проверка уникальности Email
     const isEmailUnique = await checkUnique('email', fields.email.value);
     if (!isEmailUnique) {
-        showError(fields.email, 'Этот Email уже зарегистрирован');
-        showStatusMessage('Ошибка: Данный Email уже используется.', 'error');
+        showError(fields.email, getTxt('This Email is already registered'));
+        showStatusMessage(getTxt('Error: This Email is already in use.'), 'error');
         return;
     }
 
     // Проверка уникальности Никнейма
     const isNickUnique = await checkUnique('nickname', fields.nickname.value);
     if (!isNickUnique) {
-        showError(fields.nickname, 'Этот никнейм уже занят');
-        showStatusMessage('Ошибка: Никнейм занят, сгенерируйте другой.', 'error');
+        showError(fields.nickname, getTxt('This nickname is already taken'));
+        showStatusMessage(getTxt('Error: Nickname is taken, generate another one.'), 'error');
         return;
     }
 
-    // Собираем данные
     const userData = {
         email: fields.email.value.trim(),
         firstName: fields.name.value.trim(),
@@ -273,46 +279,43 @@ async function handleRegister(e) {
         createdAt: new Date().toISOString()
     };
 
-   try {
+    try {
         const res = await fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData)
         });
         
-        if (!res.ok) throw new Error('Ошибка сервера');
+        if (!res.ok) throw new Error('Server error');
         
         const savedUser = await res.json();
         localStorage.setItem('currentUser', JSON.stringify(savedUser));
         
-        // 1. Показываем сообщение
-        showStatusMessage('Регистрация успешна! Перенаправляем на главную...', 'success');
+        showStatusMessage(getTxt('Registration is successful! Redirecting to home page...'), 'success');
         
-        // 2. Блокируем кнопку
-        const btnSubmit = document.getElementById('registerSubmitBtn');
-        btnSubmit.disabled = true;
-        btnSubmit.style.backgroundColor = '#A8B2A9'; 
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.style.backgroundColor = '#A8B2A9'; 
+        }
 
         setTimeout(() => {
             window.location.href = '/homepage.html'; 
         }, 2000);
         
     } catch (err) {
-        showStatusMessage('Сбой регистрации. Проверьте подключение сервера JSON-Server.', 'error');
+        showStatusMessage(getTxt('Registration failed. Check JSON-Server connection.'), 'error');
     }
 }
 
+// === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ИНТЕРФЕЙСА ===
 function showStatusMessage(message, type) {
-    // Ищем, есть ли уже блок для сообщений
     let statusDiv = document.getElementById('formStatusMessage');
     
-    // Если его нет — создаем
     if (!statusDiv) {
         statusDiv = document.createElement('div');
         statusDiv.id = 'formStatusMessage';
         
-        // Стилизация блока
-        statusDiv.style.marginTop = '20px'; // Отступ сверху, так как блок теперь ПОД кнопкой
+        statusDiv.style.marginTop = '20px';
         statusDiv.style.padding = '18px 24px';
         statusDiv.style.borderRadius = '16px';
         statusDiv.style.fontFamily = "'Inter', sans-serif";
@@ -322,12 +325,11 @@ function showStatusMessage(message, type) {
         statusDiv.style.width = '100%';
         statusDiv.style.boxSizing = 'border-box';
         
-        // Вставляем блок СРАЗУ ПОСЛЕ кнопки отправки (Register)
-        const btnSubmit = document.getElementById('registerSubmitBtn');
-        btnSubmit.parentNode.insertBefore(statusDiv, btnSubmit.nextSibling);
+        if (btnSubmit) {
+            btnSubmit.parentNode.insertBefore(statusDiv, btnSubmit.nextSibling);
+        }
     }
     
-    // Красим блок в зависимости от статуса (Успех или Ошибка)
     if (type === 'success') {
         statusDiv.style.backgroundColor = '#F1F8F4'; 
         statusDiv.style.color = '#669C61'; 
@@ -338,7 +340,6 @@ function showStatusMessage(message, type) {
         statusDiv.style.border = '1px solid #F5C2C7';
     }
     
-    // Записываем текст. Никаких таймеров скрытия здесь нет — он останется навсегда!
     statusDiv.textContent = message;
 }
 
@@ -349,7 +350,6 @@ function showError(input, message) {
     err.className = 'auth-error-message';
     err.textContent = message;
     
-    // Вставляем ошибку после контейнера, если есть глаз, либо после инпута
     const ref = input.parentElement.classList.contains('password-wrapper') ? input.parentElement : input;
     ref.parentElement.appendChild(err);
 }

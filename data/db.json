@@ -327,6 +327,16 @@
       "category": "Vegetable",
       "quantity": 1,
       "id": "w3qFwJAG9-8"
+    },
+    {
+      "productId": 7,
+      "userId": "0liV0xsOEaw",
+      "name": "Яйца",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
+      "category": "Свежее",
+      "quantity": 1,
+      "id": "8YwjQfQDFo4"
     }
   ],
   "users": [
@@ -477,6 +487,20 @@
       "agreementAccepted": true,
       "createdAt": "2026-05-24T16:50:11.428Z",
       "id": "z4rEEPkhlog"
+    },
+    {
+      "email": "вапролд@gmail.com",
+      "firstName": "fghjkl",
+      "lastName": "kjhgfc",
+      "middleName": "",
+      "dateOfBirth": "2007-02-02",
+      "phone": "375295656566",
+      "nickname": "fgk33277",
+      "password": "KRln*94uyb$U",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-25T23:00:50.441Z",
+      "id": "0liV0xsOEaw"
     }
   ],
   "feedbacks": [
@@ -540,9 +564,78 @@
       "date": "2026-05-24T22:00:22.748Z",
       "status": "Processing",
       "id": "yhs-5u24XlY"
+    },
+    {
+      "userId": "0liV0xsOEaw",
+      "customerName": "fghjkl",
+      "items": [
+        {
+          "productId": 2,
+          "userId": "0liV0xsOEaw",
+          "name": "Свежие Бананы",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Свежее",
+          "quantity": 2,
+          "id": "UvXVLwertQs"
+        }
+      ],
+      "totalPrice": 28,
+      "date": "2026-05-25T23:01:06.541Z",
+      "status": "Processing",
+      "id": "8LayeaSQmtw"
+    },
+    {
+      "userId": "0liV0xsOEaw",
+      "customerName": "fghjkl",
+      "items": [
+        {
+          "productId": 3,
+          "userId": "0liV0xsOEaw",
+          "name": "Белые Орехи",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Злаки",
+          "quantity": 1,
+          "id": "JiVp-M9uW2A"
+        }
+      ],
+      "totalPrice": 15,
+      "date": "2026-05-25T23:04:21.917Z",
+      "status": "Processing",
+      "id": "vx-bmHBioN8"
+    },
+    {
+      "userId": "0liV0xsOEaw",
+      "customerName": "fghjkl",
+      "items": [
+        {
+          "productId": 6,
+          "userId": "0liV0xsOEaw",
+          "name": "Коричневый фундук",
+          "price": 12,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/hazelnut.png",
+          "category": "Орехи",
+          "quantity": 1,
+          "id": "pSytGcGMkZA"
+        }
+      ],
+      "totalPrice": 12,
+      "date": "2026-05-25T23:05:34.170Z",
+      "status": "Processing",
+      "id": "zALiOQ4iG2Q"
     }
   ],
-  "reviews": [],
+  "reviews": [
+    {
+      "productId": "2",
+      "userId": "0liV0xsOEaw",
+      "text": "очень понравилось!",
+      "rating": 5,
+      "date": "26.05.2026",
+      "id": "n4oiRTY-s5M"
+    }
+  ],
   "subscribers": [
     {
       "email": "sedkovamilena80@gmail.com",
