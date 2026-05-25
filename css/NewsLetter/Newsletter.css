@@ -1,0 +1,15 @@
+.newsletter-form {
+  position: relative; /* Делаем форму родителем-якорем для уведомления */
+}
+
+.newsletter-status {
+  position: absolute; /* Отрываем от сетки, чтобы не ломать дизайн */
+  top: -30px; /* Поднимаем ровно над инпутом */
+  left: 0;
+  width: 100%; /* Растягиваем по ширине формы */
+  text-align: center; 
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 10; /* Выводим поверх всех картинок */
+  transition: all 0.3s ease;
+}
