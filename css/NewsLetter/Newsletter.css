@@ -1,15 +1,22 @@
 .newsletter-form {
-  position: relative; /* Делаем форму родителем-якорем для уведомления */
+  position: relative; 
 }
 
 .newsletter-status {
-  position: absolute; /* Отрываем от сетки, чтобы не ломать дизайн */
-  top: -30px; /* Поднимаем ровно над инпутом */
-  left: 0;
-  width: 100%; /* Растягиваем по ширине формы */
-  text-align: center; 
-  font-size: 14px;
-  font-weight: bold;
-  z-index: 10; /* Выводим поверх всех картинок */
+  position: fixed !important; /* Отрываем от страницы, привязываем к экрану */
+  top: 30px !important;       /* Отступ сверху экрана */
+  right: 30px !important;     /* Отступ справа экрана */
+  background-color: #ffffff !important; /* Белый плотный фон */
+  padding: 15px 30px !important;
+  border-radius: 10px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; /* Мощная тень */
+  z-index: 999999 !important; /* Пробьёт ЛЮБЫЕ картинки и слои */
   transition: all 0.3s ease;
+}
+
+/* Эта магия спрячет белую плашку, пока JS не добавит в нее текст */
+.newsletter-status:empty {
+  display: none !important;
 }

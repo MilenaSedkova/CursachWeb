@@ -529,6 +529,33 @@
     }
   ],
   "reviews": [],
+  "subscribers": [
+    {
+      "email": "anonimus@gmail.com",
+      "subscribedAt": "2026-05-25T07:51:25.088Z",
+      "id": "c1gLE5Bsoqc"
+    },
+    {
+      "email": "sedkovamilena80@gmail.com",
+      "subscribedAt": "2026-05-25T07:53:12.175Z",
+      "id": "Y7qW-ohZINg"
+    },
+    {
+      "email": "elinassss@gmail.com",
+      "subscribedAt": "2026-05-25T07:54:58.743Z",
+      "id": "LGdgPxvI2Go"
+    },
+    {
+      "email": "yarik@gmail.com",
+      "subscribedAt": "2026-05-25T07:57:11.087Z",
+      "id": "J-0k1LCf4ys"
+    },
+    {
+      "email": "masha@gmail.com",
+      "subscribedAt": "2026-05-25T07:57:28.025Z",
+      "id": "S05dTPCZx9Q"
+    }
+  ],
   "searchQuery": "",
   "$schema": "./node_modules/json-server/schema.json"
 }

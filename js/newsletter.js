@@ -21,27 +21,27 @@ function initNewsletter() {
     }
   });
 
-  form.addEventListener('submit', handleSubscribe);
+form.addEventListener('submit', handleSubscribe);
 }
 
-// Функция-помощник для вывода текста прямо на баннер
 function showStatus(message, type = 'success') {
   statusDiv.textContent = message;
   
   if (type === 'error') {
-    statusDiv.style.color = '#ff4d4f'; 
+    statusDiv.style.color = '#ff4d4f'; // Красный для ошибок (уже подписан/ошибка формата)
   } else {
-    statusDiv.style.color = '#fff'; 
-    statusDiv.style.fontWeight = 'bold';
+    statusDiv.style.color = '#4ade80'; // Красивый зелёный цвет для успешной подписки
   }
 
   setTimeout(() => {
     statusDiv.textContent = '';
-  }, 4000);
+  }, 48000);
+
 }
 
 async function handleSubscribe(e) {
   e.preventDefault();
+  
   const email = emailInput.value.trim();
 
   if (!validateEmail(email)) {
@@ -59,7 +59,7 @@ async function handleSubscribe(e) {
     const existingSubscribers = await checkResponse.json();
 
     if (existingSubscribers.length > 0) {
-      showStatus('Вы уже подписаны на наши новости!', 'error');
+      showStatus('You are already subcribed to our news', 'error');
       return;
     }
 
@@ -69,7 +69,7 @@ async function handleSubscribe(e) {
       body: JSON.stringify(subscriberData)
     });
 
-    showStatus('Спасибо за подписку!', 'success');
+    showStatus('Thank you for subscribtion!', 'success');
     form.reset(); 
     submitBtn.disabled = true; 
 
