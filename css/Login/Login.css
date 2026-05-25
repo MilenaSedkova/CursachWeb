@@ -1,8 +1,9 @@
 .auth-form-section {
-    margin-top: 100px;
-    padding: 60px 0 100px;
+    margin-top: 180px; 
+    padding: 90px 0 100px;
     background-color: #ffffff;
 }
+
 
 /* Сетка формы: 2 колонки по 569px с автоматическим выравниванием по центру страницы */
 .auth-form {
@@ -29,8 +30,6 @@
     margin-right: 0 !important;
     margin-top: 0 !important;
     transform: none !important;
-    
-    /* Фирменный стиль Organick */
     padding: 28px 80px;
     font-size: 20px;
     font-weight: 600;
@@ -60,10 +59,9 @@
     color: #1F263E;
 }
 
-/* Адаптив под мобильные устройства */
 @media (max-width: 992px) {
     .auth-form {
-        grid-template-columns: 1fr; /* Перестраиваем поля в одну колонку */
+        grid-template-columns: 1fr; 
         padding: 0 20px;
     }
     

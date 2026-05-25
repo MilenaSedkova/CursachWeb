@@ -346,3 +346,31 @@ body.a11y-mode .app-toast {
     color: var(--a11y-color) !important;
     border: 2px solid var(--a11y-color);
 }
+
+
+.btn-primary, 
+.action-button, 
+.btn-view-all,
+.cart-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px !important; /* Добавляет идеальный пробел между словами и стрелкой */
+    white-space: nowrap !important; /* Заставляет текст идти в одну аккуратную линию */
+}
+
+/* Убираем костыль, который мы писали раньше, он больше не нужен благодаря gap */
+.word-explore {
+    margin-right: 8 !important; 
+}
+
+/* 2. Заставляем кнопку растягиваться и даем тексту "подышать" */
+.action-button {
+    width: max-content !important; /* Кнопка растянется под любую длину текста */
+    padding-left: 40px !important; /* Добавляем пространство слева */
+    padding-right: 40px !important; /* Добавляем пространство справа */
+}
+
+.word-explore::after {
+    content: "\00A0"; /* Это код неразрывного пробела. Браузер ОБЯЗАН его отрисовать */
+}

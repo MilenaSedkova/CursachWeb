@@ -60,6 +60,9 @@ async function loadProducts(searchTerm = '') {
         
         if (productsGrid) {
             productsGrid.innerHTML = products.map(createProductCard).join('');
+
+
+            if (typeof applyLanguage === 'function') applyLanguage();
         }
         
         // Добавляем обработчики на кнопки "Добавить в корзину"
@@ -117,15 +120,6 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
-
-
-if (loadMoreBtn) {  // Добавь проверку!
-    loadMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Загрузка дополнительных товаров...');
-    });
-}
-
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
@@ -179,6 +173,8 @@ async function loadOfferVegetables() {
         const grid = document.getElementById('offerVegetablesGrid');
         if (grid) {
             grid.innerHTML = vegetables.map(createOfferVegetableCard).join('');
+
+            if (typeof applyLanguage === 'function') applyLanguage();
             
             // Добавляем обработчики кликов (как в основных товарах)
             document.querySelectorAll('.offer-vegetables-grid .prod-card').forEach(card => {
@@ -201,7 +197,7 @@ async function loadOfferProducts() {
         const response = await fetch(`${API_URL}/offerProducts`);
         const products = await response.json();
         
-        const grid = document.getElementById('offerProductsGrid'); // 👈 НОВЫЙ ID в HTML
+        const grid = document.getElementById('offerProductsGrid'); 
         if (grid) {
            grid.innerHTML = products.map(product => `
     <div class="offer-wrapper">
@@ -214,6 +210,8 @@ async function loadOfferProducts() {
         <p class="offer-card-cat">${product.category}</p>
     </div>
 `).join('');
+
+if (typeof applyLanguage === 'function') applyLanguage();
         }
         
     } catch (error) {
@@ -343,6 +341,8 @@ async function loadTestimonials() {
         const track = document.getElementById('testiSliderTrack');
         if (track) {
             track.innerHTML = data.map(createTestiCard).join('');
+
+            if (typeof applyLanguage === 'function') applyLanguage();
         }
         
         createTestiDots(testiTotalSlides);
@@ -362,6 +362,8 @@ async function loadTestiStats() {
         const container = document.getElementById('testiStatsRow');
         if (container) {
             container.innerHTML = data.map(createTestiStat).join('');
+
+            if (typeof applyLanguage === 'function') applyLanguage();
         }
     } catch (error) {
         console.error('Ошибка загрузки статистики:', error);
@@ -593,12 +595,14 @@ class ShopRenderer {
 
     render() {
         if (!this.gridElement) {
-            console.log('⚠️ gridElement не найден, пропускаем отрисовку');
+            console.log(' gridElement не найден, пропускаем отрисовку');
             return;
         }
 
         const products = this.api.getPaginatedProducts();
         this.gridElement.innerHTML = products.map(product => this.createCardHTML(product)).join('');
+
+        if (typeof applyLanguage === 'function') applyLanguage();
         
         // Обновление состояния кнопок
         if (this.prevBtn) this.prevBtn.disabled = !this.api.hasPrevPage();

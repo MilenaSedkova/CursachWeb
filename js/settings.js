@@ -1,8 +1,3 @@
-// settings.js
-
-// -----------------------------------------------------
-// 1. GENERIC MODAL & TOAST API
-// -----------------------------------------------------
 window.AppUI = {
     showModal: function(title, contentHtml) {
         let overlay = document.getElementById('appModalOverlay');
@@ -64,9 +59,6 @@ window.AppUI = {
     }
 };
 
-// -----------------------------------------------------
-// 2. STATE MANAGEMENT (localStorage)
-// -----------------------------------------------------
 const defaultSettings = {
     theme: 'light', // 'light' or 'dark'
     lang: 'en', // 'en' or 'ru'

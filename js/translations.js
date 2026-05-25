@@ -8,7 +8,6 @@ window.AppI18n = {
         "Shop": "Магазин",
         "Register": "Регистрация",
         "Log in": "Войти",
-        "Cart(0)": "Корзина(0)",
         "Search...": "Поиск...",
         "100% Natural Food": "100% Натуральная Еда",
         "Choose the best": "Выберите лучший",
@@ -35,9 +34,29 @@ window.AppI18n = {
         "Start with Our Company First": "Начните с нашей компании",
         "Learn How to Grow Yourself": "Узнайте, как выращивать самому",
         "Farming Strategies of Today": "Стратегии фермерства сегодня",
+        
+        // Категории и продукты из скриншотов
         "Organic Juice": "Органический сок",
         "Organic Food": "Органическая еда",
         "Nuts Cookies": "Ореховое печенье",
+        "Vegetable": "Овощи",
+        "Fresh": "Свежее",
+        "Millets": "Злаки",
+        "Spicy": "Специи",
+        "Nuts & Feeds": "Орехи и Семена",
+        "Fruits": "Фрукты",
+        "Calabrese Broccoli": "Брокколи Калабрезе",
+        "Fresh Banana Fruites": "Свежие Бананы",
+        "White Nuts": "Белые Орехи",
+        "Vegan Red Tomato": "Красные Томаты",
+        
+        // Статистика в отзывах
+        "Consumer": "Покупатель",
+        "Active Product": "Активных продуктов",
+        "Organic Orchards": "Органических садов",
+        "Years of Farming": "Лет фермерства",
+
+        // Футер и подписка
         "Subscribe to": "Подписаться на",
         "our Newsletter": "нашу рассылку",
         "Your Email Address": "Ваш email",
@@ -48,6 +67,8 @@ window.AppI18n = {
         "Address": "Адрес",
         "Utility Pages": "Полезные страницы",
         "404 Not Found": "404 Не найдено",
+        
+        // Страница About и другие
         "About Us - Organick": "О нас - Organick",
         "We do Creative": "Мы создаем креативные",
         "Things for Success": "Вещи для успеха",
@@ -56,7 +77,7 @@ window.AppI18n = {
         "Explore more": "Узнать больше",
         "Why Choose us?": "Почему выбирают нас?",
         "We do not buy from the": "Мы не покупаем у",
-        "open market & traders.": "на открытом рынке и у посредников.",
+        "open market & traders.": "на открытом рынке и посредников.",
         "We work directly with certified organic farms, skipping wholesalers and traders. This means guaranteed freshness, fair prices for farmers, and complete peace of mind for you.": "Мы работаем напрямую с сертифицированными фермами. Это гарантирует свежесть, честные цены и спокойствие для вас.",
         "100% Natural Product": "100% Натуральный Продукт",
         "Increases resistance": "Повышает иммунитет",
@@ -69,11 +90,17 @@ window.AppI18n = {
         "Secured Payment": "Безопасная оплата",
         "Your data and payment details are always safe with us.": "Ваши данные всегда в безопасности.",
         "What We Offer for You": "Что мы предлагаем",
+        
+        // Корзина
         "Shop - Organick": "Магазин - Organick",
         "Cart - Organick": "Корзина - Organick",
+        "Please log in to view your cart": "Пожалуйста, войдите, чтобы посмотреть корзину",
+        "Enter": "Войти",
         "Your cart is empty": "Ваша корзина пуста",
         "Add some products to see them here": "Добавьте товары, чтобы увидеть их здесь",
         "Order": "Заказать",
+        
+        // Остальное
         "Contact Us - Organick": "Связаться с нами - Organick",
         "We'd love to talk about how we can work together.": "Мы будем рады обсудить сотрудничество.",
         "Message": "Сообщение",
@@ -115,7 +142,34 @@ window.AppI18n = {
         "Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.": "Просто текст для заполнения. Lorem используется как стандартный текст с 1500-х годов.",
         "Simply dummy text of the printing and typesetting industry. Lorem Ipsum": "Просто текст для заполнения. Lorem Ipsum",
         "Simply dummy text of the printing and typesetting industry.": "Просто текст для заполнения.",
-        "Lorem Ipsum simply dummy text of the printing.": "Lorem Ipsum просто текст."
+        "Lorem Ipsum simply dummy text of the printing.": "Lorem Ipsum просто текст.",
+
+        "Spicy": "Специи",
+        "Nuts & Feeds": "Орехи и Семена",
+        "Nuts &amp; Feeds": "Орехи и Семена", /* Перехват спецсимвола HTML */
+        "Fruits": "Фрукты",
+        "Vegetable": "Овощи",
+        "Vegetables": "Овощи",
+
+        "Review": "Отзыв",
+
+        "Only logged-in customers can leave a review. Please log in to your account.": "Только авторизованные пользователи могут оставлять отзывы. Пожалуйста, войдите в аккаунт.",
+
+        "Authorization": "Авторизация",
+
+        "Registration": "Регистрация",
+
+        "Cart": "Корзина",
+
+
+        "Nuts": "Орехи",
+        "Mixed": "Микс", 
+
+        "Chilly": "Чили",
+        "Exotic Nuts": "Экзотические орехи",
+        "Promegranate": "Гранат", 
+        "Salad": "Салат",
+        "Ginger": "Имбирь"
     },
 
     translate: function(lang) {
@@ -128,16 +182,19 @@ window.AppI18n = {
 
     toRu: function(text) {
         let trimmed = text.trim();
-        // Skip translating whitespace or short symbols
         if (!trimmed || trimmed.length < 2) return null;
 
-        // Exact match
+        // 🟢 УМНЫЙ ПЕРЕВОД КОРЗИНЫ С ЛЮБОЙ ЦИФРОЙ 🟢
+        const cartMatch = trimmed.match(/^Cart\((\d+)\)$/i);
+        if (cartMatch) {
+            return text.replace(trimmed, `Корзина(${cartMatch[1]})`);
+        }
+
+        // Точное совпадение
         if (this.dictionary[trimmed]) {
             return text.replace(trimmed, this.dictionary[trimmed]);
         }
 
-        // Sometimes text contains multiple spaces or newlines that ruin exact matching.
-        // Let's normalize it.
         const normalized = trimmed.replace(/\s+/g, ' ');
         if (this.dictionary[normalized]) {
             return text.replace(trimmed, this.dictionary[normalized]);
@@ -150,8 +207,14 @@ window.AppI18n = {
         let trimmed = text.trim();
         if (!trimmed || trimmed.length < 2) return null;
 
+        // 🟢 УМНЫЙ ВОЗВРАТ КОРЗИНЫ НА АНГЛИЙСКИЙ 🟢
+        const cartMatch = trimmed.match(/^Корзина\((\d+)\)$/i);
+        if (cartMatch) {
+            return text.replace(trimmed, `Cart(${cartMatch[1]})`);
+        }
+
         const normalized = trimmed.replace(/\s+/g, ' ');
-        // Find key by value
+        // Поиск ключа по значению (обратный перевод)
         for (let key in this.dictionary) {
             if (this.dictionary[key] === trimmed || this.dictionary[key] === normalized) {
                 return text.replace(trimmed, key);
@@ -161,13 +224,12 @@ window.AppI18n = {
     },
 
     walkDOM: function(node, transFn) {
-        // Exclude script, style, and settings modal
         if (node.nodeName === 'SCRIPT' || node.nodeName === 'STYLE' || (node.classList && node.classList.contains('app-modal-overlay'))) {
             return;
         }
         
-        // Translate placeholder
-        if (node.nodeType === 1) { // Element node
+        // Перевод плейсхолдеров
+        if (node.nodeType === 1) { 
             if (node.hasAttribute('placeholder')) {
                 let current = node.getAttribute('placeholder');
                 let newText = transFn(current);
@@ -182,8 +244,8 @@ window.AppI18n = {
             }
         }
 
-        if (node.nodeType === 3) { // Text node
-            // Protect against empty or purely whitespace nodes to save time
+        // Перевод текстовых узлов
+        if (node.nodeType === 3) { 
             if (node.nodeValue.trim().length > 0) {
                 let text = node.nodeValue;
                 let newText = transFn(text);

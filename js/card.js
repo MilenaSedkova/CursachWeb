@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. Проверяем авторизацию
     const userJson = localStorage.getItem('currentUser');
     
+    if (orderBtn) orderBtn.style.setProperty('display', 'none', 'important');
+
     if (!userJson) {
         if (empty) {
             empty.style.display = 'flex';
@@ -113,9 +115,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <h2>Please log in to view your cart</h2>
                 <a href="/html/Login.html" class="btn-primary" style="margin-top: 20px;">Enter</a>
             `;
+            // ПИНАЕМ ПЕРЕВОДЧИК
+            if (typeof applyLanguage === 'function') applyLanguage(); 
         }
         list.style.display = 'none';
-        if (orderBtn) orderBtn.style.display = 'none'; 
         return;
     }
 
@@ -147,7 +150,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p>Your order for $${lastOrderTotal} has been successfully placed.</p>
                         <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
                     `;
-                    // Сразу удаляем записку
                     localStorage.removeItem('lastOrderTotal');
                 } else {
                     // ЕСЛИ ЗАПИСКИ НЕТ -> Обычная пустая корзина
@@ -156,16 +158,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Go to Shop</a>
                     `;
                 }
+                
+                // ПИНАЕМ ПЕРЕВОДЧИК ЗДЕСЬ ТОЖЕ
+                if (typeof applyLanguage === 'function') applyLanguage(); 
             }
             list.style.display = 'none';
-            if (orderBtn) orderBtn.style.display = 'none'; 
+            // Кнопка Order уже скрыта по умолчанию выше
             
         } else {
             // 4. ЕСЛИ В КОРЗИНЕ ЕСТЬ ТОВАРЫ
             if (empty) empty.style.display = 'none';
             list.style.display = 'grid';
             list.innerHTML = items.map(createCartItemHTML).join('');
-            if (orderBtn) orderBtn.style.display = 'inline-flex'; 
+            
+    if (orderBtn) orderBtn.style.setProperty('display', 'inline-flex', 'important');            
+            // ПИНАЕМ ПЕРЕВОДЧИК ДЛЯ КАРТОЧЕК В КОРЗИНЕ
+            if (typeof applyLanguage === 'function') applyLanguage(); 
         }
     } catch (e) {
         console.error('Ошибка загрузки корзины:', e);
@@ -222,7 +230,7 @@ async function handleOrder() {
         window.location.reload();
 
     } catch (error) {
-        console.error('❌ Ошибка при оформлении заказа:', error);
+        console.error('Ошибка при оформлении заказа:', error);
         alert('Произошла ошибка при оформлении заказа. Проверьте сервер.');
     }
 }

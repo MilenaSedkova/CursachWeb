@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const productsToShow = currentProducts.slice(start, end);
         
         gridElement.innerHTML = productsToShow.map(product => createProductCard(product, true)).join('');
+
+        if (typeof applyLanguage === 'function') applyLanguage();
         
         if (prevBtn) prevBtn.disabled = currentPage === 1;
         if (nextBtn) nextBtn.disabled = end >= currentProducts.length;
@@ -243,6 +245,8 @@ document.addEventListener('click', async (e) => {
             reviewForm.style.display = 'none'; // Прячем форму
             statusEl.textContent = 'Only logged-in customers can leave a review. Please log in to your account.';
             statusEl.className = 'form-status-message error'; // Показываем красную плашку ошибки
+
+            if (typeof applyLanguage === 'function') applyLanguage();
             return;
         }
 
