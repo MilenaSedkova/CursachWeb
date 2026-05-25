@@ -179,6 +179,39 @@ window.AppI18n = {
         "White Hazelnut": "Белый фундук",
         "Fresh Corn": "Свежая кукуруза",
         "Organic Almonds": "Органический миндаль",
+
+        "Admin Panel": "Панель администратора",
+        "Logout": "Выйти",
+        "Click \"Load Reviews\" to display data": "Нажмите «Загрузить отзывы» для отображения данных",
+
+        // Блок: Управление товарами (Manage Products)
+        "Manage Products": "Управление товарами",
+        "Product ID (leave empty for ADD, fill for EDIT/DELETE)": "ID товара (оставьте пустым для ДОБАВЛЕНИЯ, заполните для ИЗМЕНЕНИЯ/УДАЛЕНИЯ)",
+        "Product Name *": "Название товара *",
+        "Price ($) *": "Цена ($) *",
+        "Action to Perform": "Действие",
+        "e.g., 5 or prod_9": "например, 5 или prod_9",
+        "e.g., Fresh Organic Honey": "например, Свежий органический мед",
+        "e.g., 15.99": "например, 15.99",
+
+        // Блок: Модерация отзывов (Review Moderation)
+        "Review Moderation": "Модерация отзывов",
+        "Filter Reviews By": "Фильтровать отзывы по",
+        "Show All Reviews": "Показать все отзывы",
+        "Load Reviews": "Загрузить отзывы",
+
+        // Блок: Управление пользователями (Manage Users)
+        "Manage Users": "Управление пользователями",
+        "User ID (leave empty for ADD, fill for DELETE/BLOCK)": "ID пользователя (оставьте пустым для ДОБАВЛЕНИЯ, заполните для УДАЛЕНИЯ/БЛОКИРОВКИ)",
+        "Email *": "Эл. почта *",
+        "Password *": "Пароль *",
+        "First Name *": "Имя *",
+        "Minimum 6 characters": "Минимум 6 символов",
+        "e.g., 1hFZV4Q4L60": "например, 1hFZV4Q4L60",
+        "e.g., customer@organick.com": "например, customer@organick.com",
+        "e.g., Ivan": "например, Иван",
+        "Add Customer (POST)": "Добавить клиента (POST)",
+        "Execute User Request": "Выполнить запрос"
     },
 
     translate: function(lang) {
