@@ -211,7 +211,9 @@ window.AppI18n = {
         "e.g., customer@organick.com": "например, customer@organick.com",
         "e.g., Ivan": "например, Иван",
         "Add Customer (POST)": "Добавить клиента (POST)",
-        "Execute User Request": "Выполнить запрос"
+        "Execute User Request": "Выполнить запрос",
+        "Category": "Категория",
+        "Execute Request": "Выполнить запрос"
     },
 
     translate: function(lang) {

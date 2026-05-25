@@ -308,7 +308,6 @@ body.dark-theme .farms-bg-img {
 }
 
 
-/* --- ТЕМНАЯ ТЕМА --- */
 /* Делаем ссылку белоснежной и также блокируем фиолетовый цвет */
 body.dark-theme .footer-column-title a.contact-link,
 body.dark-theme .footer-column-title a.contact-link:visited {
@@ -319,6 +318,27 @@ body.dark-theme .footer-column-title a.contact-link:visited {
 /* Эффект при наведении в темной теме */
 body.dark-theme .footer-column-title a.contact-link:hover {
     color: #B0B0B0 !important; /* Приглушенный серый при наведении */
+}
+
+.form-group input.form-input,
+.form-group input,
+.admin-panel-section input { /* Добавил разные селекторы для подстраховки */
+    background-color: #ffffff !important;
+    color: #1F263E !important; /* Темный цвет текста при вводе */
+    border: 1px solid #CCCCCC !important; /* Аккуратная тонкая рамка */
+}
+
+/* Настраиваем красивый серый цвет для текста-подсказки (placeholder) */
+.form-group input::placeholder,
+.admin-panel-section input::placeholder {
+    color: #A8B2A9 !important;
+}
+
+/* Эффект фокуса при клике на поле */
+.form-group input:focus,
+.admin-panel-section input:focus {
+    border-color: #7EB693 !important; /* Мягкий зеленый бренд-цвет при клике */
+    background-color: #ffffff !important;
 }
 
 /* =========================================================
