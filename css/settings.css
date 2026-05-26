@@ -113,6 +113,8 @@ body.dark-theme .cart-btn span {
     color: #ffffff !important; 
 }
 
+
+
 body.dark-theme .testi-section {
     /* 1. Полностью испаряем фоновую картинку */
     background-image: none !important;
@@ -709,6 +711,11 @@ body.a11y-mode .product-card [class*="star"] {
     margin-top: 10px !important; /* Отступ от цены сверху */
     width: 100% !important;
     text-align: left !important;
+}
+
+body.dark-theme .about-hero-title,
+body.dark-theme .about-hero-title * {
+    color: #274C5B !important; 
 }
 
 /* 4. Разрешаем самим названиям товаров (Mung Bean и т.д.) переноситься */

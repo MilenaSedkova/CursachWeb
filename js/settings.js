@@ -210,9 +210,22 @@ window.setA11yFont = (val) => { appSettings.a11y.fontScale = val; updateA11yAndR
 window.setA11yTheme = (val) => { appSettings.a11y.themeIndex = val; updateA11yAndReopen(); };
 window.setA11yImages = (val) => { appSettings.a11y.hideImages = val; updateA11yAndReopen(); };
 window.resetAllSettings = () => {
-    // Безопасный сброс только настроек сайта (не трогаем currentUser, чтобы не выбило из аккаунта!)
-    localStorage.removeItem('appSettings');
-    location.reload();
+    // 1. Возвращаем текущие настройки к эталонным (глубокое копирование)
+    appSettings = JSON.parse(JSON.stringify(defaultSettings));
+    
+    // 2. Сохраняем "чистые" настройки в память
+    saveSettings();
+    
+    // 3. Моментально применяем их к сайту БЕЗ перезагрузки страницы
+    applyTheme();
+    applyA11y();
+    applyLanguage();
+    
+    // 4. Показываем красивое уведомление
+    AppUI.showToast(appSettings.lang === 'ru' ? 'Все настройки сброшены' : 'All settings reset');
+    
+    // 5. Закрываем модальное окно для слабовидящих, если оно было открыто
+    AppUI.closeModal();
 };
 
 function updateA11yAndReopen() {
@@ -243,6 +256,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const text = btn.innerText.trim().toLowerCase();
+
+        const globalResetBtn = document.getElementById('globalResetBtn');
+    if (globalResetBtn) {
+        globalResetBtn.addEventListener('click', () => {
+            window.resetAllSettings(); // Вызываем ту же самую умную функцию
+        });
+    }
         
         // 2. Логика переключения темы (li / d)
         if (text === 'li' || text === 'd') {
@@ -260,3 +280,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
