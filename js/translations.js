@@ -274,7 +274,12 @@ window.AppI18n = {
         "Filter": "Фильтр",
         "Visit Our Locations": "Посетите наше местоположение",
         "Minsk Farm":"Минская Ферма",
-        "Mogilev Farm":"Могилевская Ферма"
+        "Mogilev Farm":"Могилевская Ферма",
+
+        "Get in touch with us": "Свяжитесь с нами",
+
+        "Belarus, Minsk, Scholnaya, 21A": "Беларусь, Минск, Школьная 21А",
+        "Be better with us": "Становись лучше с нами"
     },
 
     translate: function(lang) {
