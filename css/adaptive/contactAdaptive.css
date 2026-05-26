@@ -1,8 +1,3 @@
-/* ==========================================================
-   ПОЛНОСТЬЮ ОЧИЩЕННЫЙ И СИНХРОНИЗИРОВАННЫЙ АДАПТИВ (ФИНАЛ)
-   ========================================================== */
-
-/* --- 1. ШИРОКИЕ ЭКРАНЫ (ДО 1534px) --- */
 @media screen and (max-width: 1534px) {
     .contact-wrapper, .farms-container, .locations-container {
         padding: 0 40px !important;
@@ -12,7 +7,6 @@
     }
 }
 
-/* --- 2. БОЛЬШИЕ МОНИТОРЫ ДЛЯ ФЕРМ (ДО 1850px) --- */
 @media(max-width: 1850px) {
     .farms-section {
         position: relative;
@@ -59,10 +53,8 @@
     }
 }
 
-/* --- 3. НОУТБУКИ, ПЛАНШЕТЫ И ТЕЛЕФОНЫ (ОТ 1440px И ДО САМОГО НИЗА) --- */
 @media screen and (max-width: 1440px) {
     
-    /* Центрируем внешние границы секции */
     .contact-section {
         width: 100% !important;
         max-width: 100% !important;
@@ -86,12 +78,10 @@
         align-items: center !important;
     }
 
-    /* 🔥 ЖЕСТКО УБИРАЕМ ФОТОГРАФИЮ НА ВСЕХ АДАПТИВАХ */
     .contact-image-block {
         display: none !important; 
     }
 
-    /* Превращаем сетку в один вертикальный контейнер */
     .contact-grid {
         display: flex !important;
         flex-direction: column !important;
@@ -100,7 +90,6 @@
         width: 100% !important;
     }
 
-    /* Главный текстовый контейнер */
     .contact-content {
         width: 100% !important;
         max-width: 100% !important;   
@@ -112,7 +101,6 @@
         box-sizing: border-box !important;
     }
 
-    /* 🔥 ТОТАЛЬНЫЙ ФИКС ЗАГОЛОВКА: СБРАСЫВАЕМ ДЕСКТОПНЫЕ ОГРАНИЧЕНИЯ СТРОКИ */
     .contact-heading,
     .contact-content h2 {
         font-size: 32px !important; /* Комфортный адаптивный размер */
@@ -121,7 +109,7 @@
         margin: 0 auto 20px auto !important;
         width: 100% !important;
         max-width: 100% !important;
-        white-space: normal !important;   /* ПРИНУДИТЕЛЬНО РАЗРЕШАЕМ ПЕРЕНОС */
+        white-space: normal !important;  
         word-wrap: break-word !important;  /* Защита от вылета слов */
         transform: none !important;
         display: block !important;
@@ -136,7 +124,6 @@
         max-width: 600px !important;
     }
 
-    /* Общая обертка для плашек контактов */
     .contact-cards {
         width: 100% !important;
         max-width: 450px !important; /* Зажимаем ширину плашек, чтоб стояли кучно */
@@ -157,6 +144,44 @@
         margin: 0 auto !important;    
         box-sizing: border-box !important;
     }
+
+    .booking-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    #bookingSectionContainer.prod-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important; 
+        padding: 0 20px !important; /* Защитные боковые поля для мобилок */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important; 
+        box-sizing: border-box !important;
+    }
+
+    #bookingSectionContainer > * {
+        margin-left: auto !important;
+        margin-right: auto !important; /* Принудительно выравнивает сгенерированную рамку */
+        text-align: center !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+    }
+
+    /* Фикс кнопок "Войти" и "Регистрация" внутри этого динамического блока */
+    #bookingSectionContainer button,
+    #bookingSectionContainer .btn,
+    #bookingSectionContainer a {
+        font-size: 15px !important; /* Чуть аккуратнее для адаптива */
+    }
 }
 
 /* --- 4. СРЕДНИЕ ЭКРАНЫ ДЛЯ ОСТАЛЬНЫХ СЕКЦИЙ (ДО 1305px) --- */
@@ -170,7 +195,6 @@
     /* Из этой зоны полностью удален старый flex текста и картинка, чтобы не ломать центровку! */
 }
 
-/* --- 5. ПЛАНШЕТЫ (ДО 850px) --- */
 @media screen and (max-width: 850px) {
     .contact-wrapper, .farms-container, .locations-container {
         padding: 0 24px !important;
@@ -214,9 +238,52 @@
     .farms-city { font-size: 18px !important; }
     .farms-address { font-size: 16px !important; }
     .farms-icon img { width: 40px !important; height: auto !important; }
+
+    .access-section,
+    section.restricted-access { /* Замени на свой класс секции, если он другой */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Центрирует по вертикали */
+        align-items: center !important;     /* Центрирует по горизонтали */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 40px 20px !important;      /* Симметричные отступы по бокам */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Находим саму карточку с зеленой пунктирной рамкой */
+    .access-container,
+    .restricted-card { /* Замени на класс своего блока с рамкой */
+        width: 100% !important;
+        max-width: 700px !important; /* Оптимальная ширина карточки на планшетах */
+        
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        
+        box-sizing: border-box !important;
+        
+        /* Внутренние элементы (текст, кнопки) тоже выстраиваем по центру */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    /* 3. Фикс для кнопок "Войти" и "Регистрация" (чтобы они тоже стояли ровно) */
+    .access-buttons,
+    .auth-buttons-wrapper { /* Замени на класс обертки твоих двух кнопок */
+        display: flex !important;
+        flex-direction: row !important; /* Оставляем их рядом */
+        justify-content: center !important; /* Центрируем кнопки друг относительно друга */
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+        margin-top: 25px !important;
+    }
 }
 
-/* --- 6. СМАРТФОНЫ (ДО 480px) --- */
 @media screen and (max-width: 480px) {
     .contact-wrapper, .farms-container, .locations-container {
         padding: 0 16px !important;
@@ -240,133 +307,508 @@
     }
 }
 
-/* --- 7. МИКРО-ЭКРАНЫ (ДО 320px) --- */
 @media screen and (max-width: 320px) {
-    .contact-wrapper, .farms-container, .locations-container {
-        padding: 0 10px !important;
-    }
 
-    .contact-heading, .contact-content h2 {
-        font-size: 22px !important;
-    }
-
-    .contact-card-link {
-        font-size: 14px !important;
-        word-break: break-all !important; 
-    }
-
-    .contact-card-info h4 {
-        font-size: 18px !important;
-    }
-
-    .map-iframe {
-        height: 250px !important; 
-    }
-
-    .farms-card .section-title { font-size: 28px !important; line-height: 1.2 !important; }
-    .farms-card .subtitle { font-size: 22px !important; }
-    .farms-subtitle { font-size: 14px !important; margin-bottom: 20px !important; }
-    .farms-city { font-size: 16px !important; }
-    .farms-address { font-size: 14px !important; }
-    .farms-icon img { width: 35px !important; height: auto !important; }
-}
-
-
-@media screen and (max-width: 650px) {
-
-    /* 1. Зажимаем внешнюю секцию, чтобы правый край не улетал */
-    html body .contact-section {
-        padding: 30px 0 !important;
+    /* Сбрасываем абсолютно все боковые отступы у родителей секции */
+    html body .contact-section,
+    html body .contact-wrapper,
+    html body .contact-grid,
+    html body .contact-content {
         width: 100% !important;
-        overflow: hidden !important;
-    }
-
-    html body .contact-section .contact-wrapper {
-        padding: 0 16px !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
         box-sizing: border-box !important;
     }
 
-    /* 2. Контейнер контента жестко по центру */
-    html body .contact-section .contact-content {
+    html body .contact-section .contact-cards {
         width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
+        max-width: 280px !important; /* Карточка станет уже экрана и сможет встать по центру! */
+        margin-left: auto !important;  /* Авто-маржины выровняют блок ровно по середине */
+        margin-right: auto !important; 
+        margin-top: 20px !important;
+        margin-bottom: 0 !important;
         padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        text-align: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
     }
 
-    /* 🔥 3. УМЕНЬШАЕМ ШРИФТ ЗАГОЛОВКА И ВКЛЮЧАЕМ ПЕРЕНОС СЛОВ */
-    html body .contact-section .contact-content .contact-heading,
-    html body .contact-section .contact-content h2 {
-        font-size: 22px !important; /* Сделали шрифт аккуратным и компактным */
-        line-height: 1.3 !important;
-        text-align: center !important;
-        white-space: normal !important; /* Убиваем десктопный nowrap */
-        width: auto !important;
-        max-width: 100% !important;
-        display: block !important;
-        margin: 0 auto 12px auto !important;
-        transform: none !important;
-        position: static !important;
+
+    /* Чтобы длинная почта не распирала карточку изнутри */
+    .contact-card-info {
+        min-width: 0 !important;
+        flex: 1 !important;
     }
 
-    /* Уменьшаем и центрируем серый подзаголовок */
-    html body .contact-section .contact-content .contact-text {
+    .contact-card-link {
+        font-size: 12px !important;
+        word-break: break-all !important; /* Если email длинный, он перенесется */
+    }
+
+    .contact-card-title {
         font-size: 14px !important;
-        line-height: 1.4 !important;
-        text-align: center !important;
-        white-space: normal !important;
-        margin: 0 auto 25px auto !important;
-        width: 100% !important;
+        margin-bottom: 2px !important;
     }
 
-    /* 🔥 4. УМЕНЬШАЕМ ЯЧЕЙКИ С КОНТАКТАМИ */
-    html body .contact-section .contact-cards {
+    .contact-card-icon {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        margin-right: 10px !important;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    
+    /* 1. Сжимаем внешнюю секцию и запрещаем горизонтальный скролл */
+    html body .contact-section {
         width: 100% !important;
-        max-width: 320px !important; /* Сузили общую ширину плашек, теперь они не огромные */
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        padding: 40px 0 !important;
+        display: block !important;
+    }
+
+    /* Обертка контейнера */
+    .contact-section .contact-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 16px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Сбрасываем сетку */
+    .contact-grid {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 12px !important; /* Сделали зазор между ними компактнее */
-        margin: 0 auto !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
 
-    /* Делаем сами белые карточки изящными */
-    html body .contact-section .contact-card {
+    /*  2. ГЛАВНЫЙ ФИКС: уничтожаем фиксированную десктопную ширину контента */
+    .contact-content {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 12px 16px !important; /* Сильно уменьшили внутренние отступы */
-        border-radius: 12px !important; /* Чуть аккуратнее скругление */
+        min-width: 0 !important; /* СБРАСЫВАЕТ десктопный min-width, который распирал экран! */
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important; /* Убираем любые translateX */
+        position: static !important;
         display: flex !important;
-        justify-content: flex-start !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Центрирует всё внутри */
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3. ПРИНУДИТЕЛЬНЫЙ ПЕРЕНОС ДЛЯ ВСЕХ ТЕКСТОВ */
+    .contact-content h2,
+    .contact-content .contact-heading,
+    .contact-content p,
+    .contact-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        display: block !important;
+        
+        /* Ломаем десктопные запреты на переносы (nowrap / max-content) */
+        white-space: normal !important; 
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        
+        /* Стираем любые сдвиги и маржины */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+        position: static !important;
+        
+        /* Идеальное выравнивание */
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Корректируем мобильные размеры шрифтов */
+    .contact-content h2,
+    .contact-heading {
+        font-size: 24px !important; /* Уменьшили, чтобы фраза красиво разбивалась */
+        line-height: 1.3 !important;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .contact-text {
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 4. Компактные ячейки с контактами строго по центру */
+    .contact-cards {
+        width: 100% !important;
+        max-width: 340px !important; /* Сузили плашки, чтобы они не были огромными */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        gap: 15px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    .contact-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 18px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        justify-content: flex-start !important; /* Внутри карточки иконка и текст слева */
         align-items: center !important;
         margin: 0 auto !important;
         box-sizing: border-box !important;
     }
 
-    /* Уменьшаем иконки (сообщение и телефон) внутри карточек */
-    html body .contact-section .contact-card .contact-card-icon {
-        width: 36px !important;  /* Сжали контейнер иконки */
+    .contact-card-icon {
+        width: 36px !important;
         height: 36px !important;
         min-width: 36px !important;
         margin-right: 12px !important;
     }
 
-    html body .contact-section .contact-card .contact-card-icon img {
-        max-width: 20px !important; /* Сами контурные картинки внутри стали меньше */
+    .contact-card-icon img {
+        max-width: 20px !important;
         height: auto !important;
     }
 
-    /* Уменьшаем шрифты внутри карточек */
-    html body .contact-section .contact-card .contact-card-title {
-        font-size: 14px !important; /* Слово "Сообщение" / "Свяжитесь" */
+    .contact-card-title {
+        font-size: 14px !important;
         margin-bottom: 2px !important;
     }
 
-    html body .contact-section .contact-card .contact-card-link {
-        font-size: 13px !important; /* Сам email и телефон */
+    .contact-card-link {
+        font-size: 13px !important;
+    }
+
+    html body .contact-form-section .btn-send {
+        /* Превращаем кнопку во флекс-бокс с вертикальной осью */
+        display: flex !important;
+        flex-direction: column !important; 
+        
+        /* Центрируем текст по вертикали и горизонтали */
+        justify-content: center !important; 
+        align-items: center !important;     
+        text-align: center !important;      
+        
+        /* Внутренние отступы, чтобы кнопка была красивой формы */
+        padding: 14px 24px !important; 
+        box-sizing: border-box !important;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    html body .farms-section .farms-container {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+        left: auto !important;
+        width: 100% !important;
+    }
+
+    html body .farms-section .farms-card {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 285px !important; /* Идеальная ширина, чтобы карточка помещалась везде */
+        padding: 25px 15px !important; /* Уменьшили пустые поля внутри, освободив место текстам */
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Центрируем всё содержимое по горизонтали */
+        text-align: center !important;
+        height: auto !important;
+        border-radius: 20px !important;
+    }
+
+    html body .farms-section .farms-card .subtitle {
+        font-size: 16px !important;
+        text-align: center !important;
+        margin-bottom: 4px !important;
+        display: block !important;
+    }
+
+    html body .farms-section .farms-card .section-title {
+        font-size: 22px !important; /* Сделали заголовок компактным и аккуратным */
+        line-height: 1.2 !important;
+        text-align: center !important;
+        margin-bottom: 8px !important;
+    }
+
+    html body .farms-section .farms-subtitle {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    html body .farms-section .farms-list {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 18px !important; /* Чуть уменьшили расстояние между Минском и Могилевом */
+        align-items: center !important;
+    }
+
+    html body .farms-section .farms-item {
+        display: flex !important;
+        flex-direction: column !important; /* Картинка теперь над текстом — ничего не сожмется и не улетит */
+        align-items: center !important;
+        text-align: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    html body .farms-section .farms-icon {
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    html body .farms-section .farms-icon img {
+        width: 28px !important; /* Сделали маркер изящным */
+        height: auto !important;
+    }
+
+    html body .farms-section .farms-info {
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    html body .farms-section .farms-city {
+        font-size: 15px !important;
+        margin-top: 0 !important;
+        margin-bottom: 2px !important;
+        text-align: center !important;
+    }
+
+    html body .farms-section .farms-address {
+        font-size: 13px !important;
+        text-align: center !important;
+        margin: 0 !important;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    
+    html body .booking-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 50px 20px !important; 
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    html body #bookingSectionContainer.prod-container {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        position: static !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+    }
+
+    html body #bookingSectionContainer > * {
+        position: static !important; 
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        
+        transform: none !important; 
+        
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+
+        width: 100% !important;
+        max-width: 700px !important; 
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    html body #bookingSectionContainer > * div {
+        gap: 10px !important; 
+    }
+
+    html body #bookingSectionContainer button,
+    html body #bookingSectionContainer a,
+    html body #bookingSectionContainer .btn {
+        font-size: 14px !important;      
+        padding: 10px 16px !important;   
+        height: auto !important;
+        
+        min-width: 105px !important;     
+        max-width: 145px !important;     
+        width: 100% !important;
+        
+        white-space: nowrap !important;  
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    @media screen and (max-width: 375px) {
+        html body #bookingSectionContainer > * div {
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 12px !important;
+        }
+        
+        html body #bookingSectionContainer button,
+        html body #bookingSectionContainer a,
+        html body #bookingSectionContainer .btn {
+            max-width: 200px !important; 
+            width: 100% !important;
+        }
+
+        html body #bookingSectionContainer .subtitle,
+    html body #bookingSectionContainer span,
+    html body #bookingSectionContainer > * > span {
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 4px !important;
+        display: block !important;
+    }
+
+    html body #bookingSectionContainer h2,
+    html body #bookingSectionContainer .section-title,
+    html body #bookingSectionContainer > * > h2 {
+        font-size: 21px !important; 
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+
+    html body #bookingSectionContainer p,
+    html body #bookingSectionContainer > * > p {
+        font-size: 13px !important; 
+        line-height: 1.4 !important;
+        max-width: 260px !important; 
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+
+    html body .locations-section .locations-header {
+        margin-bottom: 25px !important;
+        padding-inline: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    html body .locations-section .locations-header .subtitle {
+        font-size: 15px !important;
+        display: block !important;
+        margin-bottom: 4px !important;
+    }
+
+    html body .locations-section .locations-header .section-title,
+    html body .locations-section h2.section-title {
+        font-size: 22px !important; 
+        line-height: 1.2 !important;
+        text-align: center !important;
+        
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    html body .locations-section .map-title {
+        font-size: 16px !important;
+        margin-bottom: 4px !important;
+    }
+    html body .locations-section .map-address {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+    }
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    html body .contact-form-section .btn-text-offset {
+        margin-top: 30px !important; 
+        margin-bottom: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        
+        position: static !important; 
+        transform: none !important; 
+        
+        display: flex !important;
+        justify-content: center !important; 
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    html body .contact-form-section .btn-send {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 700 !important; 
+        font-size: 14px !important;
+        padding: 22px 24px !important;
+        
+        margin: 0 auto !important; 
+        white-space: nowrap !important; 
+        flex-direction: row !important;
+        
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: auto !important;
+        max-width: 220px !important;
+        box-sizing: border-box !important;
     }
 }
