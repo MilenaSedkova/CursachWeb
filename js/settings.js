@@ -119,6 +119,22 @@ function applyA11y() {
 function processAltText(show) {
     if (show) {
         document.querySelectorAll('img').forEach(img => {
+            // ИГНОРИРУЕМ декоративные картинки (логотипы, иконки кнопок, фоны, стрелочки)
+            const parentClass = img.parentElement ? img.parentElement.className : '';
+            if (
+                img.closest('.logo') || 
+                img.closest('.btn-primary') || 
+                img.closest('.cart-btn') || 
+                img.closest('.search-btn') || 
+                img.closest('.about-hero-bg') || 
+                img.closest('.newsletter-bg-image') ||
+                img.classList.contains('btn-arrow') ||
+                img.classList.contains('a11y-ignore') // Специальный класс, если захочешь скрыть что-то еще
+            ) {
+                return; // Пропускаем эти картинки, не создаем для них Alt-текст
+            }
+
+            // Для остальных картинок создаем текст-заглушку
             if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('a11y-alt-text')) {
                 const span = document.createElement('span');
                 span.className = 'a11y-alt-text';
@@ -194,7 +210,8 @@ window.setA11yFont = (val) => { appSettings.a11y.fontScale = val; updateA11yAndR
 window.setA11yTheme = (val) => { appSettings.a11y.themeIndex = val; updateA11yAndReopen(); };
 window.setA11yImages = (val) => { appSettings.a11y.hideImages = val; updateA11yAndReopen(); };
 window.resetAllSettings = () => {
-    localStorage.clear();
+    // Безопасный сброс только настроек сайта (не трогаем currentUser, чтобы не выбило из аккаунта!)
+    localStorage.removeItem('appSettings');
     location.reload();
 };
 
@@ -205,7 +222,7 @@ function updateA11yAndReopen() {
 }
 
 // -----------------------------------------------------
-// 5. EVENT LISTENERS
+// 5. ИСПРАВЛЕННЫЕ EVENT LISTENERS
 // -----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
     // Initial apply
@@ -215,24 +232,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bind header buttons
     document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('control-btn')) {
-            const text = e.target.innerText.trim().toLowerCase();
-            if (text === 'li' || text === 'd') {
-                // Toggle theme
-                appSettings.theme = appSettings.theme === 'light' ? 'dark' : 'light';
-                saveSettings();
-                applyTheme();
-                AppUI.showToast(appSettings.lang === 'ru' ? 'Тема изменена' : 'Theme changed');
-            } else if (text === 'en' || text === 'ru') {
-                // Toggle language
-                appSettings.lang = appSettings.lang === 'en' ? 'ru' : 'en';
-                saveSettings();
-                applyLanguage();
-                AppUI.showToast(appSettings.lang === 'ru' ? 'Язык изменен на Русский' : 'Language changed to English');
-            } else if (text === 'a+') {
-                // Open modal
-                openA11yModal();
-            }
+        // Ищем ближайшую кнопку контроля
+        const btn = e.target.closest('.control-btn');
+        if (!btn) return; // Если клик был не по кнопке - игнорируем
+
+        // 1. Проверяем кнопку A+ по ID, чтобы перевод текста её не ломал!
+        if (btn.id === 'toggleA11yModal') {
+            openA11yModal();
+            return;
+        }
+
+        const text = btn.innerText.trim().toLowerCase();
+        
+        // 2. Логика переключения темы (li / d)
+        if (text === 'li' || text === 'd') {
+            appSettings.theme = appSettings.theme === 'light' ? 'dark' : 'light';
+            saveSettings();
+            applyTheme();
+            AppUI.showToast(appSettings.lang === 'ru' ? 'Тема изменена' : 'Theme changed');
+        } 
+        // 3. Логика переключения языка (en / ru)
+        else if (text === 'en' || text === 'ru') {
+            appSettings.lang = appSettings.lang === 'en' ? 'ru' : 'en';
+            saveSettings();
+            applyLanguage();
+            AppUI.showToast(appSettings.lang === 'ru' ? 'Язык изменен на Русский' : 'Language changed to English');
         }
     });
 });

@@ -390,97 +390,94 @@ body.dark-theme .action-button {
    ACCESSIBILITY (A11Y) STYLES
 ========================================================= */
 
+/* =========================================================
+   ACCESSIBILITY (A11Y) STYLES (ИСПРАВЛЕННАЯ БЕЗОПАСНАЯ ВЕРСИЯ)
+========================================================= */
+
 body.a11y-mode {
-    --a11y-font-scale: 1;
+    --a11y-font-scale: 1.25; 
     font-size: calc(16px * var(--a11y-font-scale)) !important;
-    line-height: 1.5 !important;
-    letter-spacing: 0.12em !important;
-    word-spacing: 0.16em !important;
-    text-align: left !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.1em !important;
+    word-spacing: 0.15em !important;
     background-color: var(--a11y-bg) !important;
     color: var(--a11y-color) !important;
-    max-width: 80ch;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-body.a11y-mode p {
-    margin-bottom: 2em !important;
 }
 
 body.a11y-mode * {
-    text-align: left !important;
     transition: none !important;
     animation: none !important;
     font-family: Arial, Helvetica, sans-serif !important;
 }
 
-body.a11y-mode h1, 
-body.a11y-mode h2, 
-body.a11y-mode h3, 
-body.a11y-mode h4, 
-body.a11y-mode h5, 
-body.a11y-mode h6,
-body.a11y-mode p,
-body.a11y-mode span,
-body.a11y-mode a,
-body.a11y-mode div {
+body.a11y-mode h1, body.a11y-mode h2, body.a11y-mode h3, 
+body.a11y-mode h4, body.a11y-mode h5, body.a11y-mode h6,
+body.a11y-mode p, body.a11y-mode span, body.a11y-mode a, 
+body.a11y-mode label, body.a11y-mode time {
     color: var(--a11y-color) !important;
-    background-color: transparent !important;
 }
 
 body.a11y-mode .header,
 body.a11y-mode .footer,
+body.a11y-mode .prod-card,
 body.a11y-mode .product-card,
 body.a11y-mode section,
-body.a11y-mode .mobile-menu-content {
+body.a11y-mode main,
+body.a11y-mode .mobile-menu-content,
+body.a11y-mode .empty-cart,
+body.a11y-mode .cart-section {
     background-color: var(--a11y-bg) !important;
+    background-image: none !important;
+    border-color: var(--a11y-color) !important;
+}
+
+body.a11y-mode .prod-card,
+body.a11y-mode .btn-primary,
+body.a11y-mode .add-to-cart-btn,
+body.a11y-mode .control-btn {
+    border: 2px solid var(--a11y-color) !important;
+}
+
+body.a11y-mode .btn-primary:hover,
+body.a11y-mode .control-btn:hover {
+    background-color: var(--a11y-color) !important;
+    color: var(--a11y-bg) !important;
+}
+
+body.a11y-mode .app-modal {
+    background-color: var(--a11y-bg) !important;
+    color: var(--a11y-color) !important;
+    border: 3px solid var(--a11y-color) !important;
+    box-shadow: none !important;
+}
+
+body.a11y-mode .app-modal-header {
+    border-bottom: 2px solid var(--a11y-color) !important;
 }
 
 /* A11Y Color Schemes */
-body.a11y-theme-1 {
-    /* Black on White */
-    --a11y-bg: #FFFFFF;
-    --a11y-color: #000000;
-}
-body.a11y-theme-2 {
-    /* Green on Black */
-    --a11y-bg: #000000;
-    --a11y-color: #00FF00;
-}
-body.a11y-theme-3 {
-    /* White on Black */
-    --a11y-bg: #000000;
-    --a11y-color: #FFFFFF;
-}
-body.a11y-theme-4 {
-    /* Brown on Beige */
-    --a11y-bg: #F5F5DC;
-    --a11y-color: #8B4513;
-}
-body.a11y-theme-5 {
-    /* Dark Blue on Light Blue */
-    --a11y-bg: #ADD8E6;
-    --a11y-color: #00008B;
-}
+body.a11y-theme-1 { --a11y-bg: #FFFFFF; --a11y-color: #000000; }
+body.a11y-theme-2 { --a11y-bg: #000000; --a11y-color: #00FF00; }
+body.a11y-theme-3 { --a11y-bg: #000000; --a11y-color: #FFFFFF; }
+body.a11y-theme-4 { --a11y-bg: #F5F5DC; --a11y-color: #8B4513; }
+body.a11y-theme-5 { --a11y-bg: #ADD8E6; --a11y-color: #00008B; }
 
 /* A11Y No Images */
-body.a11y-no-images img {
+body.a11y-no-images img:not(.logo img):not(.cart-icon img) {
     display: none !important;
 }
 .a11y-alt-text {
     display: inline-block;
     border: 1px dashed var(--a11y-color, currentColor);
-    padding: 4px;
-    font-size: 0.8em;
+    padding: 6px;
+    font-size: 0.9em;
     font-weight: bold;
 }
 
 /* =========================================================
-   MODAL & POPUP STYLES
+   MODAL & POPUP STYLES (ТВОИ ПРАВИЛЬНЫЕ СТИЛИ)
 ========================================================= */
 
-/* Overlay */
 .app-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -498,7 +495,6 @@ body.a11y-no-images img {
     pointer-events: auto;
 }
 
-/* Modal Box */
 .app-modal {
     background: var(--bg-primary, #fff);
     color: var(--text-primary, #333);
@@ -511,11 +507,6 @@ body.a11y-no-images img {
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     transform: translateY(-20px);
     transition: transform 0.3s ease;
-}
-body.a11y-mode .app-modal {
-    background: var(--a11y-bg) !important;
-    color: var(--a11y-color) !important;
-    border: 2px solid var(--a11y-color);
 }
 .app-modal-overlay.active .app-modal {
     transform: translateY(0);
@@ -543,18 +534,10 @@ body.a11y-mode .app-modal {
     line-height: 1;
 }
 
-/* A11Y Options specific styles */
-.a11y-option-group {
-    margin-bottom: 15px;
-}
-.a11y-option-group h4 {
-    margin-bottom: 8px;
-}
-.a11y-btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+.a11y-option-group { margin-bottom: 15px; }
+.a11y-option-group h4 { margin-bottom: 8px; }
+.a11y-btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
 .a11y-btn {
     padding: 8px 12px;
     border: 1px solid var(--border-color, #ccc);
@@ -563,51 +546,25 @@ body.a11y-mode .app-modal {
     cursor: pointer;
     border-radius: 4px;
 }
-body.a11y-mode .a11y-btn {
-    border: 1px solid var(--a11y-color);
-    background: transparent !important;
-    color: var(--a11y-color) !important;
-}
 .a11y-btn.active {
     background: #274C5B;
     color: #fff;
     border-color: #274C5B;
+}
+
+body.a11y-mode .a11y-btn {
+    border: 1px solid var(--a11y-color);
+    background: transparent !important;
+    color: var(--a11y-color) !important;
 }
 body.a11y-mode .a11y-btn.active {
     background: var(--a11y-color) !important;
     color: var(--a11y-bg) !important;
 }
 
-/* Generic Popups / Toasts */
-.app-toast-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 10000;
-}
-.app-toast {
-    background: #333;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    opacity: 0;
-    transform: translateX(100%);
-    transition: all 0.3s ease;
-}
-.app-toast.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-body.a11y-mode .app-toast {
-    background: var(--a11y-bg) !important;
-    color: var(--a11y-color) !important;
-    border: 2px solid var(--a11y-color);
-}
-
+/* =========================================================
+   КНОПКИ (ТВОИ ПРАВИЛЬНЫЕ СТИЛИ)
+========================================================= */
 
 .btn-primary, 
 .action-button, 
@@ -616,22 +573,179 @@ body.a11y-mode .app-toast {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    gap: 6px !important; /* Добавляет идеальный пробел между словами и стрелкой */
-    white-space: nowrap !important; /* Заставляет текст идти в одну аккуратную линию */
+    gap: 6px !important; 
+    white-space: nowrap !important; 
 }
 
-/* Убираем костыль, который мы писали раньше, он больше не нужен благодаря gap */
 .word-explore {
     margin-right: 8 !important; 
 }
 
-/* 2. Заставляем кнопку растягиваться и даем тексту*/
 .action-button {
-    width: max-content !important; /* Кнопка растянется под любую длину текста */
-    padding-left: 40px !important; /* Добавляем пространство слева */
-    padding-right: 40px !important; /* Добавляем пространство справа */
+    width: max-content !important; 
+    padding-left: 40px !important; 
+    padding-right: 40px !important; 
 }
 
 .word-explore::after {
-    content: "\00A0"; /* Это код неразрывного пробела. Браузер ОБЯЗАН его отрисовать */
+    content: "\00A0"; 
 }
+
+/* =========================================================
+   ПРИНУДИТЕЛЬНОЕ УВЕЛИЧЕНИЕ ШРИФТОВ ДЛЯ СЛАБОВИДЯЩИХ
+========================================================= */
+
+body.a11y-mode h1 { font-size: calc(48px * var(--a11y-font-scale)) !important; line-height: 1.2 !important; }
+body.a11y-mode h2 { font-size: calc(36px * var(--a11y-font-scale)) !important; line-height: 1.3 !important; }
+body.a11y-mode h3 { font-size: calc(28px * var(--a11y-font-scale)) !important; line-height: 1.4 !important; }
+body.a11y-mode h4 { font-size: calc(22px * var(--a11y-font-scale)) !important; line-height: 1.4 !important; }
+body.a11y-mode h5, 
+body.a11y-mode h6 { font-size: calc(18px * var(--a11y-font-scale)) !important; }
+
+/* Увеличиваем весь обычный текст: абзацы, ссылки, списки, кнопки */
+body.a11y-mode p, 
+body.a11y-mode a:not(.logo), 
+body.a11y-mode li, 
+body.a11y-mode span:not(.logo span):not(.a11y-alt-text), 
+body.a11y-mode button, 
+body.a11y-mode input,
+body.a11y-mode label {
+    font-size: calc(16px * var(--a11y-font-scale)) !important;
+}
+
+body.a11y-mode .header {
+    height: auto !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+body.a11y-mode .header .container {
+    display: flex !important;
+    flex-direction: column !important; /* Выстраиваем элементы сверху вниз */
+    gap: 20px !important;
+    align-items: flex-start !important;
+}
+
+body.a11y-mode .header-left,
+body.a11y-mode .header-right,
+body.a11y-mode .nav-menu ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+}
+
+/* 2. Отменяем круглую форму у кнопок. Превращаем их в прямоугольники, чтобы текст не выпадал */
+body.a11y-mode .search-btn,
+body.a11y-mode .control-btn,
+body.a11y-mode .cart-btn {
+    width: auto !important;
+    height: auto !important;
+    border-radius: 8px !important; /* Мягкие углы вместо идеального круга */
+    padding: 10px 15px !important;
+    white-space: nowrap !important; /* Запрещаем тексту внутри кнопки рваться на две строки */
+    position: static !important;
+}
+
+/* 3. Делаем строку поиска гибкой */
+body.a11y-mode .search-bar {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    position: static !important;
+    height: auto !important;
+}
+
+body.a11y-mode .search-bar input {
+    flex-grow: 1 !important;
+    width: auto !important;
+}
+
+/* 4. Скрываем "мусорный" Alt-текст внутри кнопок. 
+   Поскольку кнопка корзины уже содержит текст "Корзина(0)", слово "cart-icon" рядом только ломает верстку. */
+body.a11y-mode .search-btn .a11y-alt-text,
+body.a11y-mode .cart-btn .a11y-alt-text,
+body.a11y-mode .cart-icon .a11y-alt-text {
+    display: none !important;
+}
+
+/* 5. Чиним карточки и блоки с контактами (чтобы длинный текст не обрезался) */
+body.a11y-mode [class*="box"],   
+body.a11y-mode [class*="card"] { 
+    height: auto !important;
+    min-height: min-content !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* Приводим в порядок оставшиеся рамки с Alt-текстом */
+body.a11y-mode .a11y-alt-text {
+    display: inline-block !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+    max-width: 200px !important;
+    margin: 5px !important;
+}
+
+body.a11y-mode .about-hero-bg .a11y-alt-text,
+body.a11y-mode .btn-primary .a11y-alt-text,
+body.a11y-mode .btn-arrow + .a11y-alt-text,
+body.a11y-mode [class*="bg"] .a11y-alt-text,
+body.a11y-mode [class*="background"] .a11y-alt-text {
+    display: none !important;
+}
+
+/* 2. Растягиваем главный текстовый блок, чтобы текст не зажимался в узкую колонку */
+body.a11y-mode .about-hero-content,
+body.a11y-mode [class*="hero-content"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    position: static !important; /* Убираем жесткую привязку к экрану */
+    padding: 40px 20px !important;
+}
+
+/* 3. Отключаем жесткие переносы строк <br> в заголовках, чтобы они выстраивались естественно */
+body.a11y-mode .about-hero-title br,
+body.a11y-mode .section-title br,
+body.a11y-mode h1 br,
+body.a11y-mode h2 br {
+    display: none !important; 
+    content: " " !important; /* Заменяем перенос на обычный пробел */
+}
+
+/* 4. Разрешаем тексту нормально заполнять пространство */
+body.a11y-mode h1,
+body.a11y-mode h2,
+body.a11y-mode .section-title {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    display: block !important;
+}
+
+body.a11y-mode .about-hero-content,
+body.a11y-mode [class*="hero-content"],
+body.a11y-mode .about-content-col {
+    max-width: 100% !important;
+    width: 100% !important;
+    position: static !important; 
+    padding: 20px !important;
+}
+
+/* Принудительно отключаем жесткие переносы строк <br> */
+body.a11y-mode br {
+    display: none !important;
+}
+
+/* Разрешаем заголовкам выстраиваться в строку */
+body.a11y-mode h1,
+body.a11y-mode h2,
+body.a11y-mode .section-title,
+body.a11y-mode .about-hero-title {
+    white-space: normal !important;
+    word-break: normal !important;
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
