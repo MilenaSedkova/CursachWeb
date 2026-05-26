@@ -249,7 +249,28 @@ window.AppI18n = {
         "Consultations text": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
         "Log In": "Войти",
         "Register": "Регистрация",
-        "Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт."
+        "Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
+
+
+        "Calorie Nutri-Calculator": "Нутри-калькулятор калорий",
+        "Product:": "Продукт:",
+        "Calories per unit:": "Калорий на единицу:",
+        "Hide Personal Calculator": "Скрыть персональный калькулятор",
+        "Calculate My Daily Goal": "Рассчитать мою суточную норму",
+        "Gender": "Пол",
+        "Male": "Мужчина",
+        "Female": "Женщина",
+        "Age (years)": "Возраст (лет)",
+        "Weight (kg)": "Вес (кг)",
+        "Height (cm)": "Рост (см)",
+        "Activity Level": "Уровень активности",
+        "Sedentary (No exercise)": "Сидячий (Без тренировок)",
+        "Light (1-3 days/week)": "Низкий (1-3 дня в неделю)",
+        "Moderate (3-5 days/week)": "Умеренный (3-5 дней в неделю)",
+        "Heavy (6-7 days/week)": "Высокий (6-7 дней в неделю)",
+        "Target Daily Calories (kcal):": "Целевые суточные калории (ккал):",
+        "To fulfill your day's standard, you need:": "Чтобы выполнить суточную норму, вам нужно:",
+        "units (approx. packs/pieces/100g)": "ед. (примерно упаковок/штук/100г)"
     },
 
     translate: function(lang) {
