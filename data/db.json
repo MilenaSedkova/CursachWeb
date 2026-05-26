@@ -455,8 +455,28 @@
       "price": 14,
       "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
       "category": "Fresh",
-      "quantity": 2,
+      "quantity": 3,
       "id": "HbqlKunlJAM"
+    },
+    {
+      "productId": 14,
+      "userId": "35GBjmjiqPA",
+      "name": "Exotic Nuts",
+      "price": 20,
+      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/NutsAndFeesd.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "fw2aukIejCQ"
+    },
+    {
+      "productId": 14,
+      "userId": "35GBjmjiqPA",
+      "name": "Exotic Nuts",
+      "price": 20,
+      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/NutsAndFeesd.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "jovff_N32Ps"
     }
   ],
   "users": [

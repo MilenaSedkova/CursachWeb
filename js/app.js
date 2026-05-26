@@ -16,27 +16,33 @@ function generateStars(rating) {
 }
 
 // Создание карточки товара (ТОЧНО ТАКАЯ ЖЕ СТРУКТУРА как в вашем HTML)
-function createProductCard(product, showCart = false) {
+// Создание карточки товара (ИСПРАВЛЕННАЯ СТАБИЛЬНАЯ ВЕРСИЯ)
+function createProductCard(product) {
     const extraClass = product.customClass ? ` ${product.customClass}` : '';
+    
+    // Безопасные фоллбэки для ID и имени
+    const productId = product.id !== undefined ? product.id : 1;
+    const productName = product.name || 'Organic Product';
 
-    //  Условная отрисовка кнопки корзины
-    const cartHTML = showCart ? `
-        <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}">
-            <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
-        </button>` : '';
-
+    // Кнопка корзины теперь железно встроена в шаблон и не зависит от индексов .map()
     return `
-        <div class="prod-card${extraClass}" data-id="${product.id}">
-            <span class="prod-tag">${product.category}</span>
-            ${cartHTML}
+        <div class="prod-card${extraClass}" data-id="${productId}">
+            <span class="prod-tag">${product.category || 'Organic'}</span>
+            
+            <button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}" style="background: none; border: none; padding: 0; cursor: pointer; display: block !important;">
+                <div class="cart-icon-small">
+                    <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
+                </div>
+            </button>
+            
             <div class="prod-image-wrapper">
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${product.image}" alt="${productName}">
             </div>
             <div class="prod-info">
-                <h3 class="prod-name">${product.name}</h3>
+                <h3 class="prod-name">${productName}</h3>
                 <div class="prod-price-row">
-                    <span class="prod-price-old">$${product.oldPrice?.toFixed(2)}</span>
-                    <span class="prod-price-new">$${product.price?.toFixed(2)}</span>
+                    <span class="prod-price-old">$${product.oldPrice ? product.oldPrice.toFixed(2) : '0.00'}</span>
+                    <span class="prod-price-new">$${product.price ? product.price.toFixed(2) : '0.00'}</span>
                     <div class="prod-stars">
                         ${generateStars(product.rating)}
                     </div>
@@ -46,8 +52,7 @@ function createProductCard(product, showCart = false) {
     `;
 }
 
-// Загрузка товаров
-// Загрузка товаров с гарантированным поиском на стороне клиента
+// Загрузка товаров 
 async function loadProducts(searchTerm = '') {
     try {
         // 1. Всегда запрашиваем чистый список товаров с сервера
@@ -69,8 +74,7 @@ async function loadProducts(searchTerm = '') {
         if (productsGrid) {
             if (products.length > 0) {
                 // Если что-то нашли — отрисовываем карточки товаров
-                productsGrid.innerHTML = products.map(createProductCard).join('');
-            } else {
+productsGrid.innerHTML = products.map(product => createProductCard(product, true)).join('');            } else {
                 // Если массив пустой — выводим наше сообщение об отсутствии
                 productsGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; font-size: 1.2rem; color: #525C60;">
