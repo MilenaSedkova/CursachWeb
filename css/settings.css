@@ -881,21 +881,13 @@ body.a11y-mode .contact-item {
     flex-wrap: wrap !important;
 }
 
-
-.prod-card .add-to-cart-btn,
-.product-card .add-to-cart-btn,
-div[class*="card"] .add-to-cart-btn,
-.prod-grid > div:first-child .add-to-cart-btn,
-#productsGrid > div:first-child .add-to-cart-btn {
-    display: flex !important;         /* Заставляем кнопку существовать в потоке */
-    opacity: 1 !important;            /* Делаем полностью видимой */
-    visibility: visible !important;   /* Отменяем скрытие */
-    z-index: 999 !important;          /* Вытаскиваем на самый передний план */
-}
-
 /* На всякий случай проверяем иконку внутри этой кнопки */
 .add-to-cart-btn img {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
+}
+
+body.home-page .add-to-cart-btn {
+    display: none !important;
 }

@@ -29,11 +29,11 @@ function createProductCard(product) {
         <div class="prod-card${extraClass}" data-id="${productId}">
             <span class="prod-tag">${product.category || 'Organic'}</span>
             
-            <button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}" style="background: none; border: none; padding: 0; cursor: pointer; display: block !important;">
-                <div class="cart-icon-small">
-                    <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
-                </div>
-            </button>
+<button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}">
+    <div class="cart-icon-small">
+        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
+    </div>
+</button>
             
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${productName}">
@@ -63,18 +63,25 @@ async function loadProducts(searchTerm = '') {
         // Сохраняем полный массив в глобальную переменную (для работы корзины)
         allProducts = products;
 
-        // 2. ГАРАНТИРОВАННАЯ ФИЛЬТРАЦИЯ НА КЛИЕНТЕ (без учета регистра)
+        // 2. ГАРАНТИРОВАННАЯ ФИЛЬТРАЦИЯ НА КЛИЕНТЕ (Английский + Русский)
         if (searchTerm) {
             const cleanSearch = searchTerm.trim().toLowerCase();
             products = products.filter(product => {
-                return product.name && product.name.toLowerCase().includes(cleanSearch);
+                // Берем оба названия и переводим в нижний регистр. 
+                // Конструкция || '' нужна, чтобы код не сломался, если у товара вдруг забыли указать имя
+                const nameEn = (product.name || '').toLowerCase();
+                const nameRu = (product.nameRu || '').toLowerCase();
+                
+                // Возвращаем товар, если совпадение есть ХОТЯ БЫ В ОДНОМ из языков
+                return nameEn.includes(cleanSearch) || nameRu.includes(cleanSearch);
             });
         }
         
         if (productsGrid) {
             if (products.length > 0) {
                 // Если что-то нашли — отрисовываем карточки товаров
-productsGrid.innerHTML = products.map(product => createProductCard(product, true)).join('');            } else {
+                productsGrid.innerHTML = products.map(product => createProductCard(product, true)).join('');
+            } else {
                 // Если массив пустой — выводим наше сообщение об отсутствии
                 productsGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; font-size: 1.2rem; color: #525C60;">
@@ -89,7 +96,7 @@ productsGrid.innerHTML = products.map(product => createProductCard(product, true
         }
         
         // Добавляем обработчики на кнопки "Добавить в корзину"
-       if (productsGrid) {
+        if (productsGrid) {
             // Удаляем старый слушатель перед добавлением нового, чтобы они не копились
             productsGrid.onclick = null; 
             
@@ -102,9 +109,11 @@ productsGrid.innerHTML = products.map(product => createProductCard(product, true
                     e.stopPropagation(); // Жестко запрещаем клику ломать карточку
                     
                     // Берем ID товара прямо из кнопки
-                    const id = parseInt(cartBtn.dataset.id);
+                    // Обрати внимание: если ID в базе строковые (например "0cxguJ5Nj14"), parseInt может сломать их.
+                    // Лучше использовать просто dataset.id, если у тебя буквенно-цифровые ID:
+                    const id = cartBtn.dataset.id; 
                     if (id) {
-                        addToCart(id);
+                        addToCart(id); // Убедись, что addToCart тоже принимает строки, а не только числа
                     }
                 }
             };
@@ -113,7 +122,7 @@ productsGrid.innerHTML = products.map(product => createProductCard(product, true
     } catch (error) {
         console.error('Ошибка загрузки товаров:', error);
     }
-}
+} 
 
 // Добавление в корзину
 async function addToCart(productId) {
@@ -631,11 +640,11 @@ class ShopRenderer {
             <div class="card-top">
                 <span class="card-tag prod-tag">${product.category || 'Organic'}</span>
                 
-                <button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}" style="background: none; border: none; padding: 0; cursor: pointer; display: block !important;">
-                    <div class="cart-icon-small">
-                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
-                    </div>
-                </button>
+               <button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}">
+    <div class="cart-icon-small">
+        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
+    </div>
+</button>
             </div>
             <div class="card-image-box">
                 <img src="${product.image}" alt="${productName}">

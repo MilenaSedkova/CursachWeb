@@ -3,6 +3,7 @@
     {
       "id": "1",
       "name": "Calabrese Broccoli",
+      "nameRu": "Брокколи Калабрезе",
       "category": "Vegetable",
       "price": 13,
       "oldPrice": 20,
@@ -12,6 +13,7 @@
     {
       "id": "2",
       "name": "Fresh Banana Fruites",
+      "nameRu": "Свежие бананы",
       "category": "Fresh",
       "price": 14,
       "oldPrice": 20,
@@ -21,6 +23,7 @@
     {
       "id": "3",
       "name": "White Nuts",
+      "nameRu": "Белые орехи",
       "category": "Millets",
       "price": 15,
       "oldPrice": 20,
@@ -30,6 +33,7 @@
     {
       "id": "4",
       "name": "Vegan Red Tomato",
+      "nameRu": "Органические красные томаты",
       "category": "Vegetable",
       "price": 17,
       "oldPrice": 20,
@@ -39,6 +43,7 @@
     {
       "id": "5",
       "name": "Mung Bean",
+      "nameRu": "Бобы мунг (Маш)",
       "category": "Health",
       "price": 11,
       "oldPrice": 20,
@@ -48,6 +53,7 @@
     {
       "id": "6",
       "name": "Brown Hazelnut",
+      "nameRu": "Коричневый фундук",
       "category": "Nuts",
       "price": 12,
       "oldPrice": 20,
@@ -57,6 +63,7 @@
     {
       "id": "7",
       "name": "Eggs",
+      "nameRu": "Яйца",
       "category": "Fresh",
       "price": 17,
       "oldPrice": 20,
@@ -66,6 +73,7 @@
     {
       "id": "8",
       "name": "Zelco Suji Elaichi Rusk",
+      "nameRu": "Пшеничные сухари с кардамоном",
       "category": "Fresh",
       "price": 15,
       "oldPrice": 20,
@@ -75,6 +83,7 @@
     {
       "id": "9",
       "name": "Mung Bean",
+      "nameRu": "Бобы мунг (Маш)",
       "category": "Health",
       "oldPrice": 20,
       "price": 11,
@@ -83,6 +92,7 @@
     {
       "id": "10",
       "name": "White Hazelnut",
+      "nameRu": "Белый фундук",
       "category": "Nuts",
       "oldPrice": 20,
       "price": 12,
@@ -91,6 +101,7 @@
     {
       "id": "11",
       "name": "Fresh Corn",
+      "nameRu": "Свежая кукуруза",
       "category": "Fresh",
       "oldPrice": 20,
       "price": 17,
@@ -100,6 +111,7 @@
     {
       "id": "12",
       "name": "Organic Almonds",
+      "nameRu": "Органический миндаль",
       "category": "Fresh",
       "oldPrice": 20,
       "price": 15,
@@ -108,6 +120,7 @@
     {
       "id": "13",
       "name": "Chilly",
+      "nameRu": "Перец чили",
       "category": "Spicy",
       "oldPrice": 18,
       "price": 10,
@@ -116,6 +129,7 @@
     {
       "id": "14",
       "name": "Exotic Nuts",
+      "nameRu": "Экзотические орехи",
       "category": "Nuts",
       "oldPrice": 25,
       "price": 20,
@@ -124,6 +138,7 @@
     {
       "id": "15",
       "name": "Promegranate",
+      "nameRu": "Гранат",
       "category": "Fruits",
       "oldPrice": 14,
       "price": 9,
@@ -132,6 +147,7 @@
     {
       "id": "16",
       "name": "Salad",
+      "nameRu": "Свежий салат",
       "category": "Mixed",
       "oldPrice": 22,
       "price": 17,
@@ -140,6 +156,7 @@
     {
       "id": "17",
       "name": "Ginger",
+      "nameRu": "Имбирь",
       "category": "Vegetables",
       "oldPrice": 18,
       "price": 13,
@@ -147,18 +164,20 @@
       "customClass": "small-image"
     },
     {
+      "id": "0cxguJ5Nj14",
       "name": "Мармелад",
+      "nameRu": "Мармелад",
       "price": 18,
       "category": "Fresh",
-      "image": "/pictures/HomepageImages/default-product.png",
-      "id": "0cxguJ5Nj14"
+      "image": "/pictures/HomepageImages/default-product.png"
     },
     {
+      "id": "NXjCBPRtU1k",
       "name": "Груша",
+      "nameRu": "Груша",
       "price": 18,
       "category": "Fruit",
-      "image": "/pictures/HomepageImages/default-product.png",
-      "id": "NXjCBPRtU1k"
+      "image": "/pictures/HomepageImages/default-product.png"
     }
   ],
   "offerVegetables": [
@@ -437,46 +456,6 @@
       "category": "Millets",
       "quantity": 1,
       "id": "BlRiiy47JHg"
-    },
-    {
-      "productId": 3,
-      "userId": "35GBjmjiqPA",
-      "name": "White Nuts",
-      "price": 15,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
-      "category": "Millets",
-      "quantity": 1,
-      "id": "md493mXea0Y"
-    },
-    {
-      "productId": 2,
-      "userId": "35GBjmjiqPA",
-      "name": "Fresh Banana Fruites",
-      "price": 14,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
-      "category": "Fresh",
-      "quantity": 3,
-      "id": "HbqlKunlJAM"
-    },
-    {
-      "productId": 14,
-      "userId": "35GBjmjiqPA",
-      "name": "Exotic Nuts",
-      "price": 20,
-      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/NutsAndFeesd.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "fw2aukIejCQ"
-    },
-    {
-      "productId": 14,
-      "userId": "35GBjmjiqPA",
-      "name": "Exotic Nuts",
-      "price": 20,
-      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/NutsAndFeesd.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "jovff_N32Ps"
     }
   ],
   "users": [
@@ -764,6 +743,46 @@
       "date": "2026-05-25T23:05:34.170Z",
       "status": "Processing",
       "id": "zALiOQ4iG2Q"
+    },
+    {
+      "userId": "35GBjmjiqPA",
+      "customerName": "Anna",
+      "items": [
+        {
+          "productId": 3,
+          "userId": "35GBjmjiqPA",
+          "name": "White Nuts",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Millets",
+          "quantity": 1,
+          "id": "md493mXea0Y"
+        },
+        {
+          "productId": 2,
+          "userId": "35GBjmjiqPA",
+          "name": "Fresh Banana Fruites",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Fresh",
+          "quantity": 4,
+          "id": "HbqlKunlJAM"
+        },
+        {
+          "productId": 14,
+          "userId": "35GBjmjiqPA",
+          "name": "Exotic Nuts",
+          "price": 20,
+          "image": "http://127.0.0.1:5501/pictures/AboutUsImages/NutsAndFeesd.png",
+          "category": "Nuts",
+          "quantity": 1,
+          "id": "jovff_N32Ps"
+        }
+      ],
+      "totalPrice": 91,
+      "date": "2026-05-26T12:22:16.298Z",
+      "status": "Processing",
+      "id": "qFbLWjBgCnQ"
     }
   ],
   "reviews": [
@@ -774,6 +793,14 @@
       "rating": 5,
       "date": "26.05.2026",
       "id": "n4oiRTY-s5M"
+    },
+    {
+      "productId": "2",
+      "userId": "35GBjmjiqPA",
+      "text": "verry yummy and fresh, recommentit",
+      "rating": 5,
+      "date": "26.05.2026",
+      "id": "IRKHdw5DIOk"
     }
   ],
   "subscribers": [
