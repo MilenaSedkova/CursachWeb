@@ -833,3 +833,12 @@ body {
         padding: 14px 28px;
     }
 }
+
+
+
+.prod-card .add-to-cart-btn,
+.product-card .add-to-cart-btn {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}

@@ -337,6 +337,126 @@
       "category": "Свежее",
       "quantity": 1,
       "id": "8YwjQfQDFo4"
+    },
+    {
+      "productId": 10,
+      "userId": "2",
+      "name": "White Hazelnut",
+      "price": 12,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "tC9RmqPxNiM"
+    },
+    {
+      "productId": 10,
+      "userId": "2",
+      "name": "White Hazelnut",
+      "price": 12,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "BbnY-ZCioto"
+    },
+    {
+      "productId": 10,
+      "userId": "2",
+      "name": "White Hazelnut",
+      "price": 12,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
+      "category": "Nuts",
+      "quantity": 1,
+      "id": "YmFc-vIeh-U"
+    },
+    {
+      "productId": 2,
+      "userId": "2",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "NdRPkpPGJHs"
+    },
+    {
+      "productId": 15,
+      "userId": "2",
+      "name": "Promegranate",
+      "price": 9,
+      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Fruits.png",
+      "category": "Fruits",
+      "quantity": 1,
+      "id": "ZJRXGFaOBTs"
+    },
+    {
+      "productId": 15,
+      "userId": "2",
+      "name": "Promegranate",
+      "price": 9,
+      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Fruits.png",
+      "category": "Fruits",
+      "quantity": 1,
+      "id": "9a9vbZ_Qpi4"
+    },
+    {
+      "productId": 2,
+      "userId": "2",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "lBOo1DwlPNs"
+    },
+    {
+      "productId": 2,
+      "userId": "2",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "MD45MiX_INE"
+    },
+    {
+      "productId": 3,
+      "userId": "2",
+      "name": "White Nuts",
+      "price": 15,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+      "category": "Millets",
+      "quantity": 1,
+      "id": "8CPizkGM6t0"
+    },
+    {
+      "productId": 3,
+      "userId": "2",
+      "name": "White Nuts",
+      "price": 15,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+      "category": "Millets",
+      "quantity": 1,
+      "id": "BlRiiy47JHg"
+    },
+    {
+      "productId": 3,
+      "userId": "35GBjmjiqPA",
+      "name": "White Nuts",
+      "price": 15,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+      "category": "Millets",
+      "quantity": 1,
+      "id": "md493mXea0Y"
+    },
+    {
+      "productId": 2,
+      "userId": "35GBjmjiqPA",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 2,
+      "id": "HbqlKunlJAM"
     }
   ],
   "users": [

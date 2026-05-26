@@ -19,7 +19,7 @@ function generateStars(rating) {
 function createProductCard(product, showCart = false) {
     const extraClass = product.customClass ? ` ${product.customClass}` : '';
 
-    // 🔑 Условная отрисовка кнопки корзины
+    //  Условная отрисовка кнопки корзины
     const cartHTML = showCart ? `
         <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}">
             <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
@@ -47,32 +47,64 @@ function createProductCard(product, showCart = false) {
 }
 
 // Загрузка товаров
+// Загрузка товаров с гарантированным поиском на стороне клиента
 async function loadProducts(searchTerm = '') {
     try {
-        let url = `${API_URL}/products`;
+        // 1. Всегда запрашиваем чистый список товаров с сервера
+        const url = `${API_URL}/products`;
+        const response = await fetch(url);
+        let products = await response.json();
+        
+        // Сохраняем полный массив в глобальную переменную (для работы корзины)
+        allProducts = products;
+
+        // 2. ГАРАНТИРОВАННАЯ ФИЛЬТРАЦИЯ НА КЛИЕНТЕ (без учета регистра)
         if (searchTerm) {
-            url += `?name_like=${searchTerm}`;
+            const cleanSearch = searchTerm.trim().toLowerCase();
+            products = products.filter(product => {
+                return product.name && product.name.toLowerCase().includes(cleanSearch);
+            });
         }
         
-        const response = await fetch(url);
-        const products = await response.json();
-        allProducts = products;
-        
         if (productsGrid) {
-            productsGrid.innerHTML = products.map(createProductCard).join('');
-
+            if (products.length > 0) {
+                // Если что-то нашли — отрисовываем карточки товаров
+                productsGrid.innerHTML = products.map(createProductCard).join('');
+            } else {
+                // Если массив пустой — выводим наше сообщение об отсутствии
+                productsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; font-size: 1.2rem; color: #525C60;">
+                        ${typeof appSettings !== 'undefined' && appSettings.lang === 'ru' 
+                            ? `Продукты по запросу "${searchTerm}" не найдены.` 
+                            : `No products found for "${searchTerm}".`}
+                    </div>
+                `;
+            }
 
             if (typeof applyLanguage === 'function') applyLanguage();
         }
         
         // Добавляем обработчики на кнопки "Добавить в корзину"
-        document.querySelectorAll('.prod-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const id = parseInt(card.dataset.id);
-                addToCart(id);
-            });
-            card.style.cursor = 'pointer';
-        });
+       if (productsGrid) {
+            // Удаляем старый слушатель перед добавлением нового, чтобы они не копились
+            productsGrid.onclick = null; 
+            
+            productsGrid.onclick = function(e) {
+                // Ищем, кликнул ли пользователь на кнопку корзины или на картинку внутри неё
+                const cartBtn = e.target.closest('.add-to-cart-btn');
+                
+                if (cartBtn) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Жестко запрещаем клику ломать карточку
+                    
+                    // Берем ID товара прямо из кнопки
+                    const id = parseInt(cartBtn.dataset.id);
+                    if (id) {
+                        addToCart(id);
+                    }
+                }
+            };
+        }
         
     } catch (error) {
         console.error('Ошибка загрузки товаров:', error);
@@ -108,8 +140,16 @@ function updateCartCount() {
 
 // Поиск
 function handleSearch() {
+    if (!searchInput) return;
     const searchTerm = searchInput.value.trim();
     loadProducts(searchTerm);
+}
+
+// Запускаем поиск при вводе каждой буквы (Живой поиск в реальном времени)
+if (searchInput) {
+    searchInput.addEventListener('input', () => {
+        handleSearch();
+    });
 }
 
 // Event Listeners
@@ -119,6 +159,15 @@ searchInput.addEventListener('keypress', (e) => {
         handleSearch();
     }
 });
+
+
+
+if (loadMoreBtn) {  // Добавь проверку!
+    loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Загрузка дополнительных товаров...');
+    });
+}
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
@@ -554,6 +603,10 @@ class ShopAPI {
 // ОТРИСОВКА ТОВАРОВ
 // ============================================
 
+// ============================================
+// ОТРИСОВКА ТОВАРОВ (ИСПРАВЛЕННАЯ СИНХРОННАЯ ВЕРСИЯ)
+// ============================================
+
 class ShopRenderer {
     constructor(api, gridElement, prevBtn, nextBtn, sortBtn) {
         this.api = api;
@@ -563,39 +616,43 @@ class ShopRenderer {
         this.sortBtn = sortBtn;
     }
 
-    // Генерация HTML звезд рейтинга
-  
-
-    // Создание HTML карточки товара
+    // Создание HTML карточки товара (СИНХРОНИЗИРОВАНО ПО КЛАССАМ И КНОПКАМ)
     createCardHTML(product) {
-        return `
-            <div class="product-card">
-                <div class="card-top">
-                    <span class="card-tag">${product.category}</span>
+    // Подстраховка на случай, если id равен 0 или не пришел
+    const productId = product.id !== undefined ? product.id : 1;
+    const productName = product.name || 'Organic Product';
+
+    return `
+        <div class="product-card prod-card" data-id="${productId}">
+            <div class="card-top">
+                <span class="card-tag prod-tag">${product.category || 'Organic'}</span>
+                
+                <button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}" style="background: none; border: none; padding: 0; cursor: pointer; display: block !important;">
                     <div class="cart-icon-small">
-                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
+                        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
                     </div>
+                </button>
+            </div>
+            <div class="card-image-box">
+                <img src="${product.image}" alt="${productName}">
+            </div>
+            <div class="card-info">
+                <h3 class="card-title prod-name">${productName}</h3>
+                <div class="card-price prod-price-row">
+                    <span class="price-old prod-price-old">$${product.oldPrice ? product.oldPrice.toFixed(2) : '0.00'}</span>
+                    <span class="price-new prod-price-new">$${product.price ? product.price.toFixed(2) : '0.00'}</span>
                 </div>
-                <div class="card-image-box">
-                    <img src="${product.image}" alt="${product.name}">
-                </div>
-                <div class="card-info">
-                    <h3 class="card-title">${product.name}</h3>
-                    <div class="card-price">
-                        <span class="price-old">$${product.oldPrice.toFixed(2)}</span>
-                        <span class="price-new">$${product.price.toFixed(2)}</span>
-                    </div>
-                   <div class="card-stars">
-                           <img src="/pictures/HomepageImages/Star.svg" alt="5 stars">
-                    </div>
+                <div class="card-stars prod-stars">
+                    <img src="/pictures/HomepageImages/Star.svg" alt="5 stars" class="stars-image">
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
     render() {
         if (!this.gridElement) {
-            console.log(' gridElement не найден, пропускаем отрисовку');
+            console.log('gridElement не найден, пропускаем отрисовку');
             return;
         }
 
@@ -604,7 +661,7 @@ class ShopRenderer {
 
         if (typeof applyLanguage === 'function') applyLanguage();
         
-        // Обновление состояния кнопок
+        // Обновление состояния кнопок пагинации
         if (this.prevBtn) this.prevBtn.disabled = !this.api.hasPrevPage();
         if (this.nextBtn) this.nextBtn.disabled = !this.api.hasNextPage();
         
@@ -619,47 +676,60 @@ class ShopRenderer {
     }
 }
 
-// ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ
-
+// ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ И КОРЗИНЫ ДЛЯ КЛАССОВ
 document.addEventListener('DOMContentLoaded', async () => {
-    // Элементы DOM
     const gridElement = document.getElementById('productsGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const sortBtn = document.getElementById('sortBtn');
 
-    // Создание экземпляра API
-    const shopAPI = new ShopAPI('/data/db.json'); // Путь к твоему db.json
-    
-    // Загрузка товаров
+    const shopAPI = new ShopAPI('/data/db.json');
     await shopAPI.fetchProducts();
 
-    // Создание рендерера
-    const renderer = new ShopRenderer(shopAPI, gridElement, prevBtn, nextBtn, sortBtn);
+    // Сохраняем продукты в общую переменную, чтобы функция addToCart() видела их при клике
+    if (shopAPI.products && shopAPI.products.length > 0) {
+        allProducts = shopAPI.products;
+    }
 
-    // Первая отрисовка
+    const renderer = new ShopRenderer(shopAPI, gridElement, prevBtn, nextBtn, sortBtn);
     renderer.render();
 
-    // Обработчики событий
+    // Навешиваем безопасный делегированный клик на корзину для новой разметки пагинации
+    if (gridElement) {
+        gridElement.addEventListener('click', function(e) {
+            const cartBtn = e.target.closest('.add-to-cart-btn');
+            if (cartBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const id = parseInt(cartBtn.dataset.id, 10);
+                if (id) {
+                    addToCart(id);
+                }
+            }
+        });
+    }
+
+    // Обработчики событий для кнопок пагинации
     if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-        if (shopAPI.prevPage()) {
-            renderer.render();
-        }
-    });
-}
+        prevBtn.addEventListener('click', () => {
+            if (shopAPI.prevPage()) {
+                renderer.render();
+            }
+        });
+    }
     if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-        if (shopAPI.nextPage()) {
-            renderer.render();
-        }
-    });
+        nextBtn.addEventListener('click', () => {
+            if (shopAPI.nextPage()) {
+                renderer.render();
+            }
+        });
     }   
-if (sortBtn) {
-    sortBtn.addEventListener('click', () => {
-        shopAPI.toggleSortOrder();
-        shopAPI.resetPage(); // Сброс на первую страницу при сортировке
-        renderer.render();
-    });
+    if (sortBtn) {
+        sortBtn.addEventListener('click', () => {
+            shopAPI.toggleSortOrder();
+            shopAPI.resetPage();
+            renderer.render();
+        });
     }
 });
