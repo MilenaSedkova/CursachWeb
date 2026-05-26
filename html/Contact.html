@@ -189,29 +189,29 @@
 <section class="contact-form-section">
     <div class="prod-container">
         <form class="contact-form" id="contactForm">
-            
-            <div class="form-group">
-                <label class="form-label">Full Name*</label>
-                <input type="text" class="form-input" placeholder="Your Email Address" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Your Email*</label>
-                <input type="email" class="form-input" placeholder="example@yourmail.com" required>
-            </div>
+    
+    <div class="form-group">
+        <label class="form-label" for="contactName">Full Name*</label>
+        <input type="text" id="contactName" class="form-input" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="contactEmail">Your Email*</label>
+        <input type="email" id="contactEmail" class="form-input" placeholder="example@yourmail.com" required>
+    </div>
 
-            <div class="form-group">
-                <label class="form-label">Company*</label>
-                <input type="text" class="form-input" placeholder="yourcompany name here" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Subject*</label>
-                <input type="text" class="form-input" placeholder="how can we help" required>
-            </div>
+    <div class="form-group">
+        <label class="form-label" for="contactCompany">Company</label>
+        <input type="text" id="contactCompany" class="form-input" placeholder="yourcompany name here">
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="contactSubject">Subject*</label>
+        <input type="text" id="contactSubject" class="form-input" placeholder="how can we help" required>
+    </div>
 
-            <div class="form-group full-width">
-                <label class="form-label">Message*</label>
-                <textarea class="form-textarea" placeholder="hello there,i would like to talk about how to..." required></textarea>
-            </div>
+    <div class="form-group full-width">
+        <label class="form-label" for="contactMessage">Message*</label>
+        <textarea id="contactMessage" class="form-textarea" placeholder="hello there, i would like to talk about how to..." required></textarea>
+    </div>
 
             <div class="btn-text-offset">
                 <button type="submit" class="btn-send">Send Review</button>
