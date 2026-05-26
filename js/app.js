@@ -81,9 +81,6 @@ function createShopCard(product, withCartBtn = true) {
     `;
 }
 
-// ==========================================
-// 3. ГЛАВНЫЙ РАСПРЕДЕЛИТЕЛЬ
-// ==========================================
 function createProductCard(product, withCartBtn = true) {
     // Узнаем, где мы находимся
     const isShopPage = window.location.pathname.toLowerCase().includes('shop');
@@ -176,7 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentProducts = [...originalProducts];
             sortDirection = 'asc'; 
             currentPage = 1;
-            activeCategory = 'all'; // 👈 Сбрасываем категорию при общем сбросе
+            activeCategory = 'all'; // Сбрасываем категорию при общем сбросе
             if (categorySelect) categorySelect.value = 'all'; // Сбрасываем визуально селект
             renderPage();
         });
@@ -283,15 +280,11 @@ function closeAuthModal() {
     }
 }
 
-
-// === ИСПРАВЛЕННАЯ ФУНКЦИЯ ДОБАВЛЕНИЯ В КОРЗИНУ ===
 async function addToCart(productId) {
     console.log('Добавляем товар:', productId);
 
-    // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) {
-        // Вместо alert() вызываем кастомное красивое окно!
         openAuthModal();
         return; 
     }
@@ -316,12 +309,10 @@ async function addToCart(productId) {
     };
 
     try {
-        // 4. ИЩЕМ ТТОВАРЫ ТОЛЬКО ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
         const res = await fetch(`http://localhost:3000/cartItems?userId=${user.id}`);
         let cartItems = await res.json();
         if (!Array.isArray(cartItems)) cartItems = [];
 
-        // Проверяем, есть ли уже этот товар в корзине ЭТОГО пользователя
         const existing = cartItems.find(item => item.productId === productData.productId);
 
         if (existing) {
@@ -659,10 +650,6 @@ function setupModalValidation(userId) {
 }
 
 
-// ==========================================
-// ВОССТАНОВЛЕННЫЙ КОД ДЛЯ ОФФЕРОВ И ОТЗЫВОВ
-// ==========================================
-
 const API_URL_FALLBACK = typeof API_URL !== 'undefined' ? API_URL : 'http://localhost:3000';
 
 function createOfferVegetableCard(vegetable) {
@@ -738,7 +725,6 @@ async function loadOfferProducts() {
     }
 }
 
-// ========== TESTIMONIAL SECTION JS ==========
 const TESTI_API = 'http://localhost:3000';
 let testiCurrentIndex = 0;
 let testiTotalSlides = 0;
@@ -850,7 +836,6 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.addEventListener('mouseleave', startTestiAutoPlay);
     }
     
-    // Запускаем отрисовку пропавших секций
     loadOfferVegetables();
     loadOfferProducts();
     loadTestimonials();
