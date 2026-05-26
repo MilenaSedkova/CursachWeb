@@ -279,7 +279,14 @@ window.AppI18n = {
         "Get in touch with us": "Свяжитесь с нами",
 
         "Belarus, Minsk, Scholnaya, 21A": "Беларусь, Минск, Школьная 21А",
-        "Be better with us": "Становись лучше с нами"
+        "Be better with us": "Становись лучше с нами",
+
+        "Care about customers - our main priority": "Забота о покупателях - наш главный приоретет",
+
+        "Naturally grown products": "Натурально выращенные продукты",
+
+        "We went to all the quality checks": "Мы прошли все продукты качества"
+
     },
 
     translate: function(lang) {
