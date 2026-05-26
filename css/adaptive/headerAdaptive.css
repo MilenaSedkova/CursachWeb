@@ -1,13 +1,12 @@
-/* Экраны меньше 1700px */
 @media(max-width: 1700px) {
     .header {
-        padding: 0 60px; /* Уменьшаем боковые отступы в два раза */
+        padding: 0 60px; 
     }
     .header-left {
-        gap: 80px; /* Уменьшаем гигантское расстояние между лого и меню */
+        gap: 80px; 
     }
     .logo {
-        margin-left: 0; /* Убираем лишний отступ слева, который съедал место */
+        margin-left: 0; 
     }
 }
 
@@ -19,77 +18,70 @@
         gap: 40px;
     }
     .nav-menu ul {
-        gap: 25px; /* Сближаем пункты меню */
+        gap: 25px; 
     }
     .search-bar {
-        width: 260px; /* Укорачиваем строку поиска */
+        width: 260px; 
     }
     .header-right {
-        margin-left: 15px; /* Уменьшаем отступ перед правой панелью */
+        margin-left: 15px; 
     }
 }
 
-/* Экраны до 1305px (Дополнительная корректировка) */
-@media screen and (max-width: 1305px) {
+@media(max-width: 1305px) {
     .header {
-        padding: 0 30px; /* Немного уменьшаем боковые отступы */
+        padding: 0 30px; 
     }
     
     .header-left {
-        gap: 25px; /* Сближаем логотип и навигацию */
+        gap: 25px; 
     }
     
     .nav-menu ul {
-        gap: 15px; /* Сближаем пункты меню */
+        gap: 15px; 
     }
     
     .nav-menu a {
-        font-size: 18px; /* Слегка уменьшаем шрифт меню (был 20px) */
+        font-size: 18px; 
     }
     
     .search-bar {
-        width: 220px; /* Еще немного укорачиваем строку поиска */
+        width: 220px;
     }
     
     .header-right {
-        gap: 8px; /* Уменьшаем расстояние между поиском, корзиной и кнопками */
+        gap: 8px; 
     }
 
     .control-btn {
-        width: 50px; /* Немного уменьшаем круглые кнопки языков */
+        width: 50px; 
         height: 50px;
     }
-}
 
-/* =========================================
-   ПЕРЕХОД НА БУРГЕР МЕНЮ (Планшеты, 1125px и ниже)
-   ========================================= */
+    
+}
 @media(max-width: 1125px) {
     .header {
-        height: 100px; /* Уменьшаем высоту шапки для планшетов */
-        padding: 0 40px; /* Комфортные отступы */
+        height: 100px; 
+        padding: 0 40px; 
     }
 
-    /* 1. ПРЯЧЕМ ВСЮ ДЕСКТОПНУЮ НАВИГАЦИЮ И ПРАВУЮ ЧАСТЬ */
     .nav-menu,
     .header-right {
         display: none;
     }
 
-    /* 2. РАСТЯГИВАЕМ КОНТЕЙНЕР ДЛЯ ЛОГОТИПА И БУРГЕРА */
     .header-left {
         width: 100%;
-        justify-content: space-between; /* Раскидываем по краям */
+        justify-content: space-between; 
         gap: 0;
     }
 
-    /* Немного уменьшаем логотип */
     .logo {
         font-size: 32px;
         margin-left: 0;
     }
 
-    /* 3. ПОКАЗЫВАЕМ БУРГЕР */
     .burger-btn {
         display: flex;
         flex-direction: column;
@@ -111,14 +103,29 @@
         transition: all 0.3s ease;
     }
 
+    html body .mobile-menu .mobile-nav a,
+    html body .mobile-menu .mobile-link {
+    text-decoration: none !important; 
+    color: #274C5B !important;      
+    
+    font-weight: 600 !important;
+    display: inline-block !important;
+    transition: color 0.3s ease !important;
+}
+
+    html body .mobile-menu .mobile-nav a:hover,
+    html body .mobile-menu .mobile-link:hover {
+    color: #7EB693 !important;       
+}
+
 }
 
 
 
-@media screen and (max-width: 768px) {
+@media(max-width: 768px) {
     .header {
         height: 80px; 
-        padding: 0 20px; /* Уменьшаем боковые отступы для мобилок */
+        padding: 0 20px; 
     }
 
     .logo {
