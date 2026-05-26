@@ -242,7 +242,14 @@ window.AppI18n = {
         "Thank you for your order": "Спасибо за ваш заказ",
         "Your order for": "Ваш заказ на сумму",
         "has been successfully placed.": "был успешно оформлен.",
-        "Continue Shopping": "Продолжить покупки"
+        "Continue Shopping": "Продолжить покупки",
+
+        "Exclusive Access": "Закрытый доступ",
+        "Want a Free Consultation?": "Хотите бесплатную консультацию?",
+        "Consultations text": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
+        "Log In": "Войти",
+        "Register": "Регистрация",
+        "Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт."
     },
 
     translate: function(lang) {

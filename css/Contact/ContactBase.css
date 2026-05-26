@@ -507,21 +507,17 @@
     font-weight: 500;
     box-shadow: 0 8px 24px rgba(102, 156, 97, 0.4);
     z-index: 10000;
-    
-    /* Скрыто по умолчанию */
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
 }
 
-/* Показываем уведомление */
 .success-toast.show {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-/* Анимация появления */
 @keyframes slideUp {
     from {
         transform: translateX(-50%) translateY(100px);
@@ -537,7 +533,6 @@
     animation: slideUp 0.4s ease forwards;
 }
 
-/* Опускаем всю секцию записи ниже, чтобы она не прилипала к верхнему блоку */
 .booking-section {
     padding: 180px 0 20px 0;
     background-color: #F9F8F6; 
@@ -548,16 +543,15 @@
     margin: 0 auto;
     background: #FFFFFF;
     padding: 50px;
-    border-radius: 30px; /* Фирменные закругленные углы Organick */
+    border-radius: 30px; 
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.03);
 }
 
-/* Элегантная плашка с email пользователя */
 .user-badge-notice {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: rgba(126, 182, 147, 0.15); /* Мягкий полупрозрачный зеленый */
+    background-color: rgba(126, 182, 147, 0.15); 
     color: #274C5B;
     padding: 8px 20px;
     border-radius: 100px;
@@ -570,63 +564,55 @@
     height: 16px;
 }
 
-/* Стили для красивой закрытой карточки (для гостей) */
 .booking-lock-card {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
     background: #FFFFFF;
-    border: 2px dashed #7EB693; /* Текстурный эко-бордюр */
+    border: 2px dashed #7EB693; 
     padding: 60px 40px;
     border-radius: 30px;
 }
 
-/* Адаптивность селекта времени под дизайн остальных инпутов */
 select.form-input {
     appearance: none;
+}
 
 
-/* Ровная сетка для формы записи (чтобы поля не плющило) */
 .booking-form {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Две одинаковые колонки */
-    gap: 30px !important; /* Расстояние между полями */
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 30px !important; 
     margin-top: 40px;
 }
 
-/* Сообщение и кнопка должны занимать всю ширину (обе колонки) */
 .booking-form .full-width,
 .booking-form .btn-text-offset {
     grid-column: 1 / -1 !important;
 }
 
-/* Исправляем ширину самих инпутов, чтобы они занимали 100% своей колонки */
 .booking-form .form-group {
     width: 100% !important;
-    margin: 0 !important; /* Убираем лишние отступы от старых стилей */
-}    background-repeat: no-repeat;
+    margin: 0 !important; 
+   background-repeat: no-repeat;
     background-position: right 20px center;
     background-size: 16px;
     padding-right: 45px;
 }
 
-/* Ровная сетка для формы записи (чтобы поля не плющило) */
 .booking-form {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Две одинаковые колонки */
-    gap: 30px !important; /* Расстояние между полями */
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 30px !important; 
     margin-top: 40px;
 }
 
-/* Сообщение и кнопка должны занимать всю ширину (обе колонки) */
 .booking-form .full-width,
 .booking-form .btn-text-offset {
     grid-column: 1 / -1 !important;
 }
 
-/* Исправляем ширину самих инпутов, чтобы они занимали 100% своей колонки */
 .booking-form .form-group {
     width: 100% !important;
-    margin: 0 !important; /* Убираем лишние отступы от старых стилей */
+    margin: 0 !important; 
 }
-

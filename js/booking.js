@@ -3,14 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
 
     // 1. Проверяем авторизацию (ищем пользователя в localStorage)
-    // Адаптируй под ключ, который используется в твоем проекте (например, 'currentUser' или 'user')
     const currentUser = JSON.parse(localStorage.getItem('currentUser')) || JSON.parse(localStorage.getItem('user'));
 
     if (currentUser && currentUser.email) {
-        // === ВАРИАНТ ДЛЯ АВТОРИЗОВАННОГО ПОЛЬЗОВАТЕЛЯ ===
+        // вариант для авторизованного пользователя
         renderBookingForm(container, currentUser);
     } else {
-        // === ВАРИАНТ ДЛЯ ГОСТЯ ===
+        // вариант для гостя
         renderAuthRequiredBanner(container);
     }
 });
@@ -100,18 +99,31 @@ function renderBookingForm(container, user) {
 }
 
 // Функция отрисовки заглушки, если пользователь не вошел
+// Функция отрисовки заглушки (на английском по умолчанию)
 function renderAuthRequiredBanner(container) {
     container.innerHTML = `
         <div class="booking-lock-card">
-            <span class="subtitle" style="font-family: 'Yellowtail', cursive; color: #7EB693; font-size: 2.2rem;">Exclusive Access</span>
-            <h2 style="color: #274C5B; margin-bottom: 15px;">Want a Free Consultation?</h2>
-            <p style="color: #525C60; max-width: 500px; margin: 0 auto 25px;">
+            <span class="subtitle" style="font-family: 'Yellowtail', cursive; color: #7EB693; font-size: 2.2rem;" data-translate="Exclusive Access">Exclusive Access</span>
+            
+            <h2 style="color: #274C5B; margin-bottom: 15px;" data-translate="Want a Free Consultation?">Want a Free Consultation?</h2>
+            
+<p style="color: #525C60; max-width: 500px; margin: 0 auto 25px;" data-translate="Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.">
                 Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.
             </p>
+            
             <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="/html/Login.html" class="btn-primary" style="padding: 10px 25px; background-color: #274C5B; color: white; border-radius: 8px; text-decoration: none;">Log In</a>
-                <a href="/html/Register.html" class="btn-primary" style="padding: 10px 25px; background-color: #7EB693; color: white; border-radius: 8px; text-decoration: none;">Register</a>
+                <a href="/html/Login.html" class="btn-primary" style="padding: 10px 25px; background-color: #274C5B; color: white; border-radius: 8px; text-decoration: none;">
+                    <span data-translate="Log In">Log In</span>
+                </a>
+                <a href="/html/Register.html" class="btn-primary" style="padding: 10px 25px; background-color: #7EB693; color: white; border-radius: 8px; text-decoration: none;">
+                    <span data-translate="Register">Register</span>
+                </a>
             </div>
         </div>
     `;
+
+    //  Запускаем твой скрипт перевода сразу после создания HTML
+    if (typeof applyLanguage === 'function') {
+        applyLanguage();
+    }
 }
