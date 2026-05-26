@@ -788,3 +788,88 @@ body.a11y-mode .product-card .add-to-cart {
     visibility: visible !important;
     z-index: 10 !important;
 }
+
+/* =========================================================
+   ИСПРАВЛЕНИЕ БЛОКА "OUR FARMS" (АДРЕСА И ИКОНКИ)
+========================================================= */
+
+/* 1. Прячем вылезший слева мусорный текст от фоновой текстуры */
+body.a11y-mode [class*="texture"] .a11y-alt-text,
+body.a11y-mode [class*="pattern"] .a11y-alt-text,
+body.a11y-mode [class*="location-bg"] .a11y-alt-text {
+    display: none !important;
+}
+
+/* 2. Выстраиваем содержимое белой карточки аккуратно по левому краю */
+body.a11y-mode [class*="location-content"],
+body.a11y-mode [class*="location-card"],
+body.a11y-mode [class*="contact-info"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Ровняем всё по левому краю */
+    text-align: left !important;
+    gap: 15px !important; /* Расстояние между заголовками и адресами */
+}
+
+/* 3. Отменяем абсолютное позиционирование для иконок-заглушек */
+body.a11y-mode [class*="location"] .a11y-alt-text,
+body.a11y-mode [class*="address"] .a11y-alt-text,
+body.a11y-mode [class*="contact"] .a11y-alt-text {
+    position: static !important; /* Возвращаем заглушку в общий поток страницы */
+    margin: 0 !important;
+    flex-shrink: 0 !important; /* Запрещаем рамке сплющиваться */
+}
+
+/* 4. Настраиваем блок с адресом: рамка слева, текст справа + ОТСТУП */
+body.a11y-mode [class*="location-item"],
+body.a11y-mode [class*="farm"],
+body.a11y-mode .contact-item {
+    display: flex !important;
+    flex-direction: row !important; /* Ставим в один ряд */
+    align-items: flex-start !important; 
+    gap: 20px !important; /* МАГИЧЕСКИЙ ОТСТУП, чтобы текст не налезал на рамку! */
+    margin-bottom: 20px !important;
+    position: relative !important; /* Сбрасываем чужие настройки */
+    width: 100% !important;
+}
+
+/* 5. Группируем Город и Улицу в колонку друг под другом */
+body.a11y-mode [class*="location-item"] > div,
+body.a11y-mode [class*="farm"] > div,
+body.a11y-mode .contact-item > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 5px !important; /* Небольшой отступ между городом и улицей */
+}
+
+/* 6. Убираем странные отступы у заголовков внутри карточки */
+body.a11y-mode [class*="location-content"] h1,
+body.a11y-mode [class*="location-content"] h2,
+body.a11y-mode [class*="location-content"] h3,
+body.a11y-mode [class*="location-content"] p {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+body.a11y-mode {
+    overflow-x: hidden !important; 
+}
+
+/* Разрешаем длинным ссылкам и тексту разрываться, если они упираются в край экрана */
+body.a11y-mode p,
+body.a11y-mode span,
+body.a11y-mode a,
+body.a11y-mode .contact-value {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+}
+
+/* На всякий случай разрешаем самим строкам контактов мягко переноситься */
+body.a11y-mode .contact-item {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
