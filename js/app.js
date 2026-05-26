@@ -14,40 +14,45 @@ const loadMoreBtn = document.getElementById('loadMoreBtn');
 function generateStars(rating) {
         return '<img src="/pictures/HomepageImages/Star.svg" alt="5 stars" class="stars-image">'
 }
-
-// Создание карточки товара (ТОЧНО ТАКАЯ ЖЕ СТРУКТУРА как в вашем HTML)
 // Создание карточки товара (ИСПРАВЛЕННАЯ СТАБИЛЬНАЯ ВЕРСИЯ)
-function createProductCard(product) {
-    const extraClass = product.customClass ? ` ${product.customClass}` : '';
+function createProductCard(product, withCartBtn = true) {
+    const oldPriceHtml = product.oldPrice 
+        ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` 
+        : '';
     
-    // Безопасные фоллбэки для ID и имени
-    const productId = product.id !== undefined ? product.id : 1;
+    const starsHtml = `<div class="prod-stars"><img src="/pictures/HomepageImages/Star.svg" alt="rating"></div>`;
+    const extraClass = product.customClass ? product.customClass : '';
+    // Подстраховка для имени, чтобы оно точно передалось в калькулятор
     const productName = product.name || 'Organic Product';
-
-    // Кнопка корзины теперь железно встроена в шаблон и не зависит от индексов .map()
+    
     return `
-        <div class="prod-card${extraClass}" data-id="${productId}">
-            <span class="prod-tag">${product.category || 'Organic'}</span>
-            
-<button class="add-to-cart-btn" data-id="${productId}" data-name="${productName}">
-    <div class="cart-icon-small">
-        <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
-    </div>
-</button>
+        <div class="prod-card ${extraClass}" data-id="${product.id}">
+            <div class="prod-tags">
+                <span class="prod-tag">${product.category || 'Product'}</span>
+            </div>
             
             <div class="prod-image-wrapper">
-                <img src="${product.image}" alt="${productName}">
+                <img src="${product.image}" alt="${productName}" loading="lazy">
             </div>
-            <div class="prod-info">
-                <h3 class="prod-name">${productName}</h3>
-                <div class="prod-price-row">
-                    <span class="prod-price-old">$${product.oldPrice ? product.oldPrice.toFixed(2) : '0.00'}</span>
-                    <span class="prod-price-new">$${product.price ? product.price.toFixed(2) : '0.00'}</span>
-                    <div class="prod-stars">
-                        ${generateStars(product.rating)}
-                    </div>
-                </div>
+            
+            <h3 class="prod-name">${productName}</h3>
+            
+            <div class="prod-price-row">
+                ${oldPriceHtml}
+                <span class="prod-price-new">$${product.price.toFixed(2)}</span>
+                ${starsHtml}
             </div>
+            
+            <button class="btn-open-review" data-id="${product.id}">Review</button>
+
+            ${withCartBtn ? `
+            <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
+                <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
+            </button>` : ''}
+
+            <button class="calc-calories-btn" data-name="${productName}" data-calories="${product.calories || 100}" title="Calculate Calories">
+                kcal
+            </button>
         </div>
     `;
 }
@@ -645,6 +650,12 @@ class ShopRenderer {
         <img src="/pictures/HomepageImages/Cart Icon.svg" alt="Add to cart">
     </div>
 </button>
+
+<button class="calc-calories-btn" data-name="${productName}" data-calories="${product.calories || 100}" title="Calculate Calories">
+                    kcal
+                </button>
+            </div>
+            
             </div>
             <div class="card-image-box">
                 <img src="${product.image}" alt="${productName}">

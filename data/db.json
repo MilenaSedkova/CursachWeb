@@ -1,5 +1,5 @@
 {
-  "products": [
+"products": [
     {
       "id": "1",
       "name": "Calabrese Broccoli",
@@ -7,6 +7,8 @@
       "category": "Vegetable",
       "price": 13,
       "oldPrice": 20,
+      "calories": 34,
+      "unit": "pcs",
       "image": "/pictures/HomepageImages/BroccoliPhoto.png",
       "rating": 5
     },
@@ -17,6 +19,8 @@
       "category": "Fresh",
       "price": 14,
       "oldPrice": 20,
+      "calories": 89,
+      "unit": "pcs",
       "image": "/pictures/HomepageImages/banana.png",
       "rating": 5
     },
@@ -27,6 +31,8 @@
       "category": "Millets",
       "price": 15,
       "oldPrice": 20,
+      "calories": 600,
+      "unit": "packs",
       "image": "/pictures/HomepageImages/nuts.png",
       "rating": 5
     },
@@ -37,6 +43,8 @@
       "category": "Vegetable",
       "price": 17,
       "oldPrice": 20,
+      "calories": 18,
+      "unit": "pcs",
       "image": "/pictures/HomepageImages/tomato.png",
       "rating": 5
     },
@@ -47,6 +55,8 @@
       "category": "Health",
       "price": 11,
       "oldPrice": 20,
+      "calories": 347,
+      "unit": "packs",
       "image": "/pictures/HomepageImages/bean.png",
       "rating": 5
     },
@@ -57,6 +67,8 @@
       "category": "Nuts",
       "price": 12,
       "oldPrice": 20,
+      "calories": 628,
+      "unit": "packs",
       "image": "/pictures/HomepageImages/hazelnut.png",
       "rating": 5
     },
@@ -67,6 +79,8 @@
       "category": "Fresh",
       "price": 17,
       "oldPrice": 20,
+      "calories": 155,
+      "unit": "pcs",
       "image": "/pictures/HomepageImages/eggs.png",
       "rating": 5
     },
@@ -77,6 +91,8 @@
       "category": "Fresh",
       "price": 15,
       "oldPrice": 20,
+      "calories": 400,
+      "unit": "packs",
       "image": "/pictures/HomepageImages/bread.png",
       "rating": 5
     },
@@ -87,6 +103,8 @@
       "category": "Health",
       "oldPrice": 20,
       "price": 11,
+      "calories": 347,
+      "unit": "packs",
       "image": "/pictures/ShopImages/MungBeanBig.png"
     },
     {
@@ -95,91 +113,10 @@
       "nameRu": "Белый фундук",
       "category": "Nuts",
       "oldPrice": 20,
-      "price": 12,
-      "image": "/pictures/ShopImages/WhiteHuzelnut.png"
-    },
-    {
-      "id": "11",
-      "name": "Fresh Corn",
-      "nameRu": "Свежая кукуруза",
-      "category": "Fresh",
-      "oldPrice": 20,
-      "price": 17,
-      "image": "/pictures/ShopImages/FreshCorn.png",
-      "customClass": "small-corn"
-    },
-    {
-      "id": "12",
-      "name": "Organic Almonds",
-      "nameRu": "Органический миндаль",
-      "category": "Fresh",
-      "oldPrice": 20,
-      "price": 15,
-      "image": "/pictures/ShopImages/OrganickAlmonds.png"
-    },
-    {
-      "id": "13",
-      "name": "Chilly",
-      "nameRu": "Перец чили",
-      "category": "Spicy",
-      "oldPrice": 18,
-      "price": 10,
-      "image": "/pictures/AboutUsImages/Spicy.png"
-    },
-    {
-      "id": "14",
-      "name": "Exotic Nuts",
-      "nameRu": "Экзотические орехи",
-      "category": "Nuts",
-      "oldPrice": 25,
-      "price": 20,
-      "image": "/pictures/AboutUsImages/NutsAndFeesd.png"
-    },
-    {
-      "id": "15",
-      "name": "Promegranate",
-      "nameRu": "Гранат",
-      "category": "Fruits",
-      "oldPrice": 14,
-      "price": 9,
-      "image": "/pictures/AboutUsImages/Fruits.png"
-    },
-    {
-      "id": "16",
-      "name": "Salad",
-      "nameRu": "Свежий салат",
-      "category": "Mixed",
-      "oldPrice": 22,
-      "price": 17,
-      "image": "/pictures/AboutUsImages/TomatoImage.png"
-    },
-    {
-      "id": "17",
-      "name": "Ginger",
-      "nameRu": "Имбирь",
-      "category": "Vegetables",
-      "oldPrice": 18,
-      "price": 13,
-      "image": "/pictures/AboutUsImages/Vegetable.png",
-      "customClass": "small-image"
-    },
-    {
-      "id": "0cxguJ5Nj14",
-      "name": "Мармелад",
-      "nameRu": "Мармелад",
-      "price": 18,
-      "category": "Fresh",
-      "image": "/pictures/HomepageImages/default-product.png"
-    },
-    {
-      "id": "NXjCBPRtU1k",
-      "name": "Груша",
-      "nameRu": "Груша",
-      "price": 18,
-      "category": "Fruit",
-      "image": "/pictures/HomepageImages/default-product.png"
+      "price": 12
     }
-  ],
+    ],
+
   "offerVegetables": [
     {
       "id": "1",

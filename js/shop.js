@@ -30,6 +30,10 @@ function createProductCard(product, withCartBtn = true) {
             <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
+
+           <button class="calc-calories-btn" data-name="${product.name}" data-calories="${product.calories || 100}" data-unit="${product.unit || 'units'}" title="Calculate Calories">
+    kcal
+</button>
         </div>
     `;
 }
@@ -353,6 +357,124 @@ document.addEventListener('click', async (e) => {
     // Закрытие модального окна по крестику
     if (e.target.id === 'closeReviewModal') {
         document.getElementById('reviewModal').style.display = 'none';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('calorieModal');
+    const closeBtn = document.getElementById('closeCalorieModal');
+    const input = document.getElementById('dailyCalorieInput');
+    const resultSpan = document.getElementById('calcResult');
+    const grid = document.getElementById('productsGrid');
+    
+    // Новые элементы продвинутого калькулятора
+    const togglePanelBtn = document.getElementById('toggleMacroCalc');
+    const macroPanel = document.getElementById('macroCalcPanel');
+    const genderSel = document.getElementById('calcGender');
+    const ageInp = document.getElementById('calcAge');
+    const weightInp = document.getElementById('calcWeight');
+    const heightInp = document.getElementById('calcHeight');
+    const activitySel = document.getElementById('calcActivity');
+    
+    let currentCalories = 0;
+
+    // 1. Открытие модалки при клике по кнопке "kcal" на товаре
+    if (grid) {
+        grid.addEventListener('click', (e) => {
+            const calcBtn = e.target.closest('.calc-calories-btn');
+            if (calcBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const name = calcBtn.dataset.name;
+                currentCalories = parseInt(calcBtn.dataset.calories) || 100;
+
+                const productUnit = calcBtn.dataset.unit || 'units'; 
+    
+                document.getElementById('calcProductName').textContent = name;
+                document.getElementById('calcProductCalories').textContent = currentCalories
+                
+                document.getElementById('calcProductName').textContent = name;
+                document.getElementById('calcProductCalories').textContent = currentCalories;
+                
+                resultSpan.dataset.unit = productUnit;
+                
+                calculateUnits();
+                if (modal) modal.style.display = 'flex';
+            }
+        });
+    }
+
+    // 2. Закрытие модального окна
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
+
+    // 3. Переключатель панели персонального расчёта
+    if (togglePanelBtn && macroPanel) {
+        togglePanelBtn.addEventListener('click', () => {
+            if (macroPanel.style.display === 'none') {
+                macroPanel.style.display = 'block';
+                togglePanelBtn.textContent = '▲ Hide Personal Calculator';
+                calculateDailyNorm(); // Считаем норму сразу при раскрытии
+            } else {
+                macroPanel.style.display = 'none';
+                togglePanelBtn.textContent = '⚙️ Calculate My Daily Goal';
+            }
+        });
+    }
+
+    // 4. Функция автоматического расчёта суточной нормы (Формула Миффлина - Сан Жеора)
+    function calculateDailyNorm() {
+        if (!macroPanel || macroPanel.style.display === 'none') return;
+
+        const gender = genderSel.value;
+        const age = parseFloat(ageInp.value) || 0;
+        const weight = parseFloat(weightInp.value) || 0;
+        const height = parseFloat(heightInp.value) || 0;
+        const activity = parseFloat(activitySel.value) || 1.2;
+
+        if (age > 0 && weight > 0 && height > 0) {
+            // Базовый метаболизм (BMR)
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            if (gender === 'male') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
+            }
+            // Итоговая норма с учётом нагрузок
+            const totalKcal = Math.round(bmr * activity);
+            
+            // Записываем результат в главный инпут целей
+            input.value = totalKcal;
+            calculateUnits();
+        }
+    }
+
+    // Вешаем пересчёт нормы при изменении любого фитнес-параметра
+    [genderSel, ageInp, weightInp, heightInp, activitySel].forEach(elem => {
+        if (elem) elem.addEventListener('input', calculateDailyNorm);
+    });
+
+    // 5. Функция финального подсчёта количества штук/упаковок продукта
+    function calculateUnits() {
+        if (!input || !resultSpan) return;
+        const goal = parseInt(input.value) || 0;
+        
+        if (currentCalories > 0 && goal > 0) {
+            const units = (goal / currentCalories).toFixed(1);
+            resultSpan.textContent = units;
+        } else {
+            resultSpan.textContent = "0";
+        }
+    }
+
+    // Если пользователь меняет итоговые калории вручную
+    if (input) {
+        input.addEventListener('input', calculateUnits);
     }
 });
 

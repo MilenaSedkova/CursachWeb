@@ -283,6 +283,67 @@
     </div>
 </div>
 
+<div id="calorieModal" class="admin-modal">
+    <div class="admin-modal-content" style="max-width: 480px; text-align: center; padding: 30px;">
+        <button class="admin-modal-close" id="closeCalorieModal">&times;</button>
+        
+        <h2 class="admin-card-title" style="margin-bottom: 15px; color: #274C5B;">Calorie Nutri-Calculator</h2>
+        
+        <p style="color: #525C60; margin-bottom: 5px; font-size: 15px;">Product: <strong id="calcProductName" style="color: #274C5B;">Name</strong></p>
+        <p style="color: #525C60; margin-bottom: 15px; font-size: 15px;">Calories per unit: <strong id="calcProductCalories" style="color: #7EB693;">0</strong> kcal</p>
+        
+        <button id="toggleMacroCalc" class="btn-open-review" style="margin: 0 0 20px 0; font-size: 12px; padding: 6px 12px; background-color: #7EB693;">
+            Calculate My Daily Goal
+        </button>
+
+        <div id="macroCalcPanel" style="display: none; background: #F9F8F6; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: left; border: 1px solid #E0E0E0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                <div>
+                    <label style="font-size: 12px; color: #274C5B; font-weight: 600;">Gender</label>
+                    <select id="calcGender" style="width: 100%; padding: 8px; border: 1px solid #BBBBBB; border-radius: 8px; font-size: 14px;">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 12px; color: #274C5B; font-weight: 600;">Age (years)</label>
+                    <input type="number" id="calcAge" style="width: 100%; padding: 8px; border: 1px solid #BBBBBB; border-radius: 8px; font-size: 14px; box-sizing: border-box;" value="25">
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                <div>
+                    <label style="font-size: 12px; color: #274C5B; font-weight: 600;">Weight (kg)</label>
+                    <input type="number" id="calcWeight" style="width: 100%; padding: 8px; border: 1px solid #BBBBBB; border-radius: 8px; font-size: 14px; box-sizing: border-box;" value="70">
+                </div>
+                <div>
+                    <label style="font-size: 12px; color: #274C5B; font-weight: 600;">Height (cm)</label>
+                    <input type="number" id="calcHeight" style="width: 100%; padding: 8px; border: 1px solid #BBBBBB; border-radius: 8px; font-size: 14px; box-sizing: border-box;" value="175">
+                </div>
+            </div>
+            <div style="margin-bottom: 5px;">
+                <label style="font-size: 12px; color: #274C5B; font-weight: 600;">Activity Level</label>
+                <select id="calcActivity" style="width: 100%; padding: 8px; border: 1px solid #BBBBBB; border-radius: 8px; font-size: 14px;">
+                    <option value="1.2">Sedentary (No exercise)</option>
+                    <option value="1.375">Light (1-3 days/week)</option>
+                    <option value="1.55">Moderate (3-5 days/week)</option>
+                    <option value="1.725">Heavy (6-7 days/week)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" style="text-align: left;">
+            <label style="color: #274C5B; font-weight: 600; font-family: 'Inter', sans-serif;">Target Daily Calories (kcal):</label>
+            <input type="number" id="dailyCalorieInput" style="width: 100%; padding: 12px 15px; border: 1px solid #BBBBBB; border-radius: 16px; margin-top: 6px; font-size: 16px; box-sizing: border-box; font-weight: bold; color: #274C5B;" value="2000">
+        </div>
+        
+        <div style="margin-top: 20px; padding: 20px; background: #F9F8F6; border-radius: 16px; border: 2px dashed #7EB693;">
+            <span style="color: #525C60; font-size: 15px;">To fulfill your day's standard, you need:</span> <br>
+            <span id="calcResult" style="font-size: 3.5rem; color: #274C5B; font-weight: bold; line-height: 1.2; display: inline-block; margin: 5px 0;">0</span><br>
+            <span style="color: #525C60; font-size: 15px;">units (approx. packs/pieces/100g)</span>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>
