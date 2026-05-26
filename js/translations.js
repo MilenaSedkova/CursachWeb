@@ -271,7 +271,10 @@ window.AppI18n = {
         "Target Daily Calories (kcal):": "Целевые суточные калории (ккал):",
         "To fulfill your day's standard, you need:": "Чтобы выполнить суточную норму, вам нужно:",
         "units (approx. packs/pieces/100g)": "ед. (примерно упаковок/штук/100г)",
-        "Filter": "Фильтр"
+        "Filter": "Фильтр",
+        "Visit Our Locations": "Посетите наше местоположение",
+        "Minsk Farm":"Минская Ферма",
+        "Mogilev Farm":"Могилевская Ферма"
     },
 
     translate: function(lang) {
