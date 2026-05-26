@@ -1,12 +1,13 @@
 let activeCategory = 'all';
 
+// ЧИСТАЯ ВЕРСИЯ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (БЕЗ ЛИШНИХ КНОПОК)
 function createProductCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice 
         ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` 
         : '';
     
-    const starsHtml = `<div class="prod-stars"><img src="/pictures/HomepageImages/Star.svg" alt="rating"></div>`;
     const extraClass = product.customClass ? product.customClass : '';
+    const productName = product.name || 'Organic Product';
     
     return `
         <div class="prod-card ${extraClass}" data-id="${product.id}">
@@ -14,28 +15,25 @@ function createProductCard(product, withCartBtn = true) {
                 <span class="prod-tag">${product.category || 'Product'}</span>
             </div>
             
-            <div class="prod-image-wrapper">
-                <img src="${product.image}" alt="${product.name}" loading="lazy">
-            </div>
-            
-            <h3 class="prod-name">${product.name}</h3>
-            
-            <div class="prod-price-row">
-                ${oldPriceHtml}
-                <span class="prod-price-new">$${product.price.toFixed(2)}</span>
-                ${starsHtml}
-            </div>
-            
-            <button class="btn-open-review" data-id="${product.id}">Review</button>
-
             ${withCartBtn ? `
             <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
-
-            <button class="calc-calories-btn" data-name="${product.name}" data-calories="${product.calories || 100}" data-unit="${product.unit || 'units'}" title="Calculate Calories">
-                kcal
-            </button>
+            
+            <div class="prod-image-wrapper">
+                <img src="${product.image}" alt="${productName}" loading="lazy">
+            </div>
+            
+            <div class="prod-info">
+                <h3 class="prod-name">${productName}</h3>
+                <div class="prod-price-row">
+                    ${oldPriceHtml}
+                    <span class="prod-price-new">$${product.price.toFixed(2)}</span>
+                    <div class="prod-stars">
+                        <img src="/pictures/HomepageImages/Star.svg" alt="rating">
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 }
