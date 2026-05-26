@@ -24,7 +24,7 @@
 
 .contact-wrapper {
     width: 100%;
-    max-width: 1320px; /* Стандартная ширина контейнера */
+    max-width: 1320px; 
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -36,7 +36,6 @@
     align-items: start; 
 }
 
-/* Левый блок с картинкой */
 .contact-image-block {
     width: 100%;
     border-radius: 24px;
@@ -58,7 +57,6 @@
     object-fit: cover;
 }
 
-/* Правая колонка */
 .contact-content {
     display: flex;
     flex-direction: column;
@@ -66,7 +64,6 @@
     padding-top: 45px;
 
 }
-
 
 .contact-heading {
     font-size: 48px !important;        
@@ -118,7 +115,6 @@
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
 }
 
-/* Иконка в карточке */
 .contact-card-icon {
     width: 89px;
     height: 89px;
@@ -183,10 +179,10 @@
 .farms-section {
     position: relative;
     width: 100%;
-    min-height: 758px; /* Высота из Figma */
+    min-height: 758px; 
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Карточка прижата вправо */
+    justify-content: flex-end; 
     overflow: hidden;
     margin-top: 100px;
     max-width: 1400px;
@@ -308,7 +304,6 @@
      max-width: 405px;
 
 }
-/* Адаптив: на планшетах/телефонах карточка по центру */
 @media (max-width: 992px) {
     .farms-section {
         justify-content: center;
@@ -337,7 +332,6 @@
     margin-left: 100px;
 }
 
-/* Группа поля (Label + Input) */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -347,7 +341,6 @@
 
 }
 
-/* Поле на всю ширину (для Message) */
 .full-width {
     grid-column: 1 / -1; 
     padding: 40px 0px;
@@ -355,18 +348,16 @@
     max-width: 1190px !important;
 }
 
-/* Заголовок поля */
 .form-label {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #1F263E;
-    text-align: left;  /* 🔑 Выравнивание по левому краю */
+    text-align: left;  
     margin-top: 5px;
 
 }
 
-/* Стили полей ввода */
 .form-input, 
 .form-textarea {
     width: 100%;
@@ -386,7 +377,7 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-    color: #A8B2A9; /* Серый текст плейсхолдера */
+    color: #A8B2A9; 
 }
 
 .form-input:focus,
@@ -426,7 +417,6 @@
     background-color: #1F263E;
 }
 
-/* Адаптив для мобильных */
 @media (max-width: 768px) {
     .contact-form {
         grid-template-columns: 1fr; /* Одна колонка */
@@ -434,9 +424,7 @@
     }
 }
 
-/* ============================================
-   FORM NOTIFICATION (Toast)
-   ============================================ */
+/* FORM NOTIFICATION (Toast) */
 .form-notification {
     position: fixed;
     bottom: 30px;
@@ -504,9 +492,7 @@
     animation: notificationFadeOut 0.3s ease forwards;
 }
 
-/* ============================================
-   SUCCESS TOAST NOTIFICATION
-   ============================================ */
+/* SUCCESS TOAST NOTIFICATION */
 .success-toast {
     position: fixed !important;
     bottom: 30px;
@@ -550,3 +536,97 @@
 .success-toast.show {
     animation: slideUp 0.4s ease forwards;
 }
+
+/* Опускаем всю секцию записи ниже, чтобы она не прилипала к верхнему блоку */
+.booking-section {
+    padding: 180px 0 20px 0;
+    background-color: #F9F8F6; 
+}
+
+.booking-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    padding: 50px;
+    border-radius: 30px; /* Фирменные закругленные углы Organick */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.03);
+}
+
+/* Элегантная плашка с email пользователя */
+.user-badge-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(126, 182, 147, 0.15); /* Мягкий полупрозрачный зеленый */
+    color: #274C5B;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    margin-top: 15px;
+    font-family: 'Inter', sans-serif;
+}
+.user-badge-notice img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Стили для красивой закрытой карточки (для гостей) */
+.booking-lock-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: #FFFFFF;
+    border: 2px dashed #7EB693; /* Текстурный эко-бордюр */
+    padding: 60px 40px;
+    border-radius: 30px;
+}
+
+/* Адаптивность селекта времени под дизайн остальных инпутов */
+select.form-input {
+    appearance: none;
+
+
+/* Ровная сетка для формы записи (чтобы поля не плющило) */
+.booking-form {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Две одинаковые колонки */
+    gap: 30px !important; /* Расстояние между полями */
+    margin-top: 40px;
+}
+
+/* Сообщение и кнопка должны занимать всю ширину (обе колонки) */
+.booking-form .full-width,
+.booking-form .btn-text-offset {
+    grid-column: 1 / -1 !important;
+}
+
+/* Исправляем ширину самих инпутов, чтобы они занимали 100% своей колонки */
+.booking-form .form-group {
+    width: 100% !important;
+    margin: 0 !important; /* Убираем лишние отступы от старых стилей */
+}    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+/* Ровная сетка для формы записи (чтобы поля не плющило) */
+.booking-form {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Две одинаковые колонки */
+    gap: 30px !important; /* Расстояние между полями */
+    margin-top: 40px;
+}
+
+/* Сообщение и кнопка должны занимать всю ширину (обе колонки) */
+.booking-form .full-width,
+.booking-form .btn-text-offset {
+    grid-column: 1 / -1 !important;
+}
+
+/* Исправляем ширину самих инпутов, чтобы они занимали 100% своей колонки */
+.booking-form .form-group {
+    width: 100% !important;
+    margin: 0 !important; /* Убираем лишние отступы от старых стилей */
+}
+

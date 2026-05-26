@@ -821,6 +821,24 @@
       "id": "916AG_bTVZA"
     }
   ],
+  "bookings": [
+    {
+      "userEmail": "anna88@gmail.com",
+      "date": "2026-05-28",
+      "time": "10:00 - 11:00",
+      "notes": "Grow strategies",
+      "createdAt": "2026-05-26T13:08:22.896Z",
+      "id": "MAomBVZWnHQ"
+    },
+    {
+      "userEmail": "anna88@gmail.com",
+      "date": "2026-05-28",
+      "time": "14:00 - 15:00",
+      "notes": "delivery times",
+      "createdAt": "2026-05-26T13:08:46.350Z",
+      "id": "UsADOiDgqt0"
+    }
+  ],
   "searchQuery": "",
   "$schema": "./node_modules/json-server/schema.json"
 }
