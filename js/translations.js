@@ -246,7 +246,7 @@ window.AppI18n = {
 
         "Exclusive Access": "Закрытый доступ",
         "Want a Free Consultation?": "Хотите бесплатную консультацию?",
-        "Consultations text": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
+        "Consultations text": "Консультации c нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
         "Log In": "Войти",
         "Register": "Регистрация",
         "Consultations with our accredited farmers are available strictly to members of the Organick community. Please log in to your account.": "Консультации с нашими аккредитованными фермерами доступны исключительно участникам сообщества Organick. Пожалуйста, войдите в свой аккаунт.",
@@ -270,7 +270,8 @@ window.AppI18n = {
         "Heavy (6-7 days/week)": "Высокий (6-7 дней в неделю)",
         "Target Daily Calories (kcal):": "Целевые суточные калории (ккал):",
         "To fulfill your day's standard, you need:": "Чтобы выполнить суточную норму, вам нужно:",
-        "units (approx. packs/pieces/100g)": "ед. (примерно упаковок/штук/100г)"
+        "units (approx. packs/pieces/100g)": "ед. (примерно упаковок/штук/100г)",
+        "Filter": "Фильтр"
     },
 
     translate: function(lang) {

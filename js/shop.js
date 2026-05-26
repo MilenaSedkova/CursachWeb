@@ -1,3 +1,5 @@
+let activeCategory = 'all';
+
 function createProductCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice 
         ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` 
@@ -31,9 +33,9 @@ function createProductCard(product, withCartBtn = true) {
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
 
-           <button class="calc-calories-btn" data-name="${product.name}" data-calories="${product.calories || 100}" data-unit="${product.unit || 'units'}" title="Calculate Calories">
-    kcal
-</button>
+            <button class="calc-calories-btn" data-name="${product.name}" data-calories="${product.calories || 100}" data-unit="${product.unit || 'units'}" title="Calculate Calories">
+                kcal
+            </button>
         </div>
     `;
 }
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nextBtn = document.getElementById('nextBtn');
     const sortBtn = document.getElementById('sortPriceBtn');
     const resetBtn = document.getElementById('resetSortBtn');
+    const categorySelect = document.getElementById('shopCategorySelect'); // 👈 Перенесли сюда
     
     const itemsPerPage = 12;
     let currentPage = 1;
@@ -62,20 +65,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     function renderPage() {
-        if (!gridElement) {
-            return;
+        if (!gridElement) return;
+
+        // 1. Фильтруем массив по выбранной категории
+        let filteredProducts = currentProducts;
+        if (activeCategory !== 'all') {
+            filteredProducts = currentProducts.filter(product => {
+                return (product.category || '').toLowerCase() === activeCategory.toLowerCase();
+            });
         }
 
+        // 2. Берем нужный срез для текущей страницы
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        const productsToShow = currentProducts.slice(start, end);
+        const productsToShow = filteredProducts.slice(start, end);
         
         gridElement.innerHTML = productsToShow.map(product => createProductCard(product, true)).join('');
 
         if (typeof applyLanguage === 'function') applyLanguage();
         
         if (prevBtn) prevBtn.disabled = currentPage === 1;
-        if (nextBtn) nextBtn.disabled = end >= currentProducts.length;
+        if (nextBtn) nextBtn.disabled = end >= filteredProducts.length;
         
         if (sortBtn) {
             const arrow = sortBtn.querySelector('.sort-arrow');
@@ -83,6 +93,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
             }
         }
+    }
+
+    // Слушатель изменения категорий (теперь он видит renderPage!)
+    if (categorySelect) {
+        categorySelect.addEventListener('change', (e) => {
+            activeCategory = e.target.value; 
+            currentPage = 1;                  
+            renderPage();                     
+        });
     }
 
     if (sortBtn) {
@@ -101,6 +120,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentProducts = [...originalProducts];
             sortDirection = 'asc'; 
             currentPage = 1;
+            activeCategory = 'all'; // 👈 Сбрасываем категорию при общем сбросе
+            if (categorySelect) categorySelect.value = 'all'; // Сбрасываем визуально селект
             renderPage();
         });
     }
@@ -119,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     renderPage();
-    updateHeaderCartCount();
+    if (typeof updateHeaderCartCount === 'function') updateHeaderCartCount();
 });
 
 // Глобальный обработчик кликов по кнопкам корзины
@@ -422,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 calculateDailyNorm(); // Считаем норму сразу при раскрытии
             } else {
                 macroPanel.style.display = 'none';
-                togglePanelBtn.textContent = '⚙️ Calculate My Daily Goal';
+                togglePanelBtn.textContent = '\ Calculate My Daily Goal';
             }
         });
     }

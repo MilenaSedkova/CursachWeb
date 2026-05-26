@@ -334,7 +334,7 @@ html, body {
 
 .product-card .calc-calories-btn {
     position: absolute !important;
-    top: 65px !important;    /* Чуть опустил, чтобы точно не слиплась с корзиной */
+    top: 65px !important;    
     right: 15px !important;
     background: #274C5B !important;
     color: white !important;
@@ -345,9 +345,8 @@ html, body {
     font-size: 12px !important;
     font-weight: 700 !important;
     cursor: pointer !important;
-    z-index: 999 !important; /* Вытягиваем поверх всех картинок и блоков */
+    z-index: 999 !important;
    
-    /* КНОПКА ВИДНА ВСЕГДА */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -356,13 +355,9 @@ html, body {
     transform: none !important;
 }
 
-
-
-/* Эффект при наведении (немного увеличивается) */
-
 .prod-card .calc-calories-btn:hover,
 .product-card .calc-calories-btn:hover {
     background: #274C5B !important;
     transform: scale(1.1) !important;
-
 }
+
