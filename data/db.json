@@ -440,18 +440,7 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [
-    {
-      "productId": "5",
-      "userId": "2",
-      "name": "Mung Bean",
-      "price": 11,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/bean.png",
-      "category": "Health",
-      "quantity": 1,
-      "id": "A6XxHmxJx1I"
-    }
-  ],
+  "cartItems": [],
   "users": [
     {
       "id": "1",
@@ -857,6 +846,36 @@
       "date": "2026-05-27T20:23:30.605Z",
       "status": "Processing",
       "id": "bl2mBHlVT5A"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "4",
+          "userId": "2",
+          "name": "Vegan Red Tomato",
+          "price": 17,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "MvwdfRnZTms"
+        },
+        {
+          "productId": "25",
+          "userId": "2",
+          "name": "Sweet Potato",
+          "price": 9,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/potato.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "CaexinYjp40"
+        }
+      ],
+      "totalPrice": 26,
+      "date": "2026-05-27T20:32:07.374Z",
+      "status": "Processing",
+      "id": "7ngFuyqEVI0"
     }
   ],
   "reviews": [
@@ -875,6 +894,14 @@
       "rating": 5,
       "date": "26.05.2026",
       "id": "IRKHdw5DIOk"
+    },
+    {
+      "productId": "2",
+      "userId": "2",
+      "text": "the best bananas ever!",
+      "rating": 5,
+      "date": "27.05.2026",
+      "id": "AxxEtfPNK4o"
     }
   ],
   "subscribers": [
@@ -887,6 +914,11 @@
       "email": "admin@organick.com",
       "subscribedAt": "2026-05-27T07:44:26.296Z",
       "id": "MBKon18HYWA"
+    },
+    {
+      "email": "customer@organick.com",
+      "subscribedAt": "2026-05-27T20:30:51.600Z",
+      "id": "HjGmFe1m8AU"
     }
   ],
   "messages": [
@@ -933,6 +965,14 @@
       "notes": "food",
       "createdAt": "2026-05-26T13:12:17.726Z",
       "id": "ow8MhN3noLs"
+    },
+    {
+      "userEmail": "customer@organick.com",
+      "date": "2026-05-27",
+      "time": "10:00 - 11:00",
+      "notes": "food",
+      "createdAt": "2026-05-27T20:32:54.632Z",
+      "id": "8UWONc4hjRI"
     }
   ],
   "searchQuery": "",

@@ -1,15 +1,10 @@
-// ==========================================
-// 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ И СЧЕТЧИК КОРЗИНЫ
-// ==========================================
 const API_URL = 'http://localhost:3000'; // Объявляем один раз для всех скриптов
 
 
 let activeCategory = 'all';
 let searchQuery = ''; 
 
-// ==========================================
 // 2. ГЕНЕРАЦИЯ КАРТОЧЕК ТОВАРОВ
-// ==========================================
 function createHomeCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` : '';
     const extraClass = product.customClass ? product.customClass : '';
@@ -83,9 +78,8 @@ function createProductCard(product, withCartBtn = true) {
     }
 }
 
-// ==========================================
 // 3. ОТРИСОВКА, ПАГИНАЦИЯ, ПОИСК И ФИЛЬТРЫ
-// ==========================================
+
 document.addEventListener('DOMContentLoaded', async () => {
     const gridElement = document.getElementById('productsGrid');
     const prevBtn = document.getElementById('prevBtn');
@@ -209,9 +203,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (typeof updateHeaderCartCount === 'function') updateHeaderCartCount();
 });
 
-// ==========================================
 // 4. ДОБАВЛЕНИЕ В КОРЗИНУ И АВТОРИЗАЦИЯ
-// ==========================================
 document.addEventListener('click', async (e) => {
     const cartBtn = e.target.closest('.add-to-cart-btn');
     if (cartBtn && cartBtn.dataset.id) {
@@ -296,7 +288,6 @@ async function addToCart(productId) {
     if (!card) return;
 
     // БЕЗОПАСНОЕ ПОЛУЧЕНИЕ ДАННЫХ ДЛЯ КОРЗИНЫ
-   // БЕЗОПАСНОЕ ПОЛУЧЕНИЕ ДАННЫХ ДЛЯ КОРЗИНЫ
     const imgElement = card.querySelector('.prod-image-wrapper img');
     const imageSrc = imgElement ? imgElement.src : '';
 
@@ -369,9 +360,7 @@ function showNotification(text) {
     setTimeout(() => notif.remove(), 2000);
 }
 
-// ==========================================
 // 5. МОДАЛЬНОЕ ОКНО ОТЗЫВОВ
-// ==========================================
 document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-open-review')) {
         const productId = e.target.getAttribute('data-id');
@@ -398,13 +387,18 @@ document.addEventListener('click', async (e) => {
 
         const user = JSON.parse(userJson);
 
-        try {
-            const res = await fetch(`${API_URL}/orders?userId=${user.id}`);
-            const orders = await res.json();
+       try {
+            //  1. БЕРЕМ ВООБЩЕ ВСЕ ЗАКАЗЫ (без фильтра в ссылке)
+            const res = await fetch(`${API_URL}/orders`);
+            const allOrders = await res.json();
 
-            const hasPurchased = orders.some(order => {
+            //  2. ФИЛЬТРУЕМ ВРУЧНУЮ ПО ПОЛЬЗОВАТЕЛЮ
+            const userOrders = allOrders.filter(order => String(order.userId) === String(user.id));
+
+            // 3. Проверяем, есть ли текущий товар в заказах этого юзера
+            const hasPurchased = userOrders.some(order => {
                 return order.items && Array.isArray(order.items) && order.items.some(item => {
-                    return item.productId && item.productId.toString() === productId.toString();
+                    return item.productId && String(item.productId) === String(productId);
                 });
             });
 
@@ -415,13 +409,14 @@ document.addEventListener('click', async (e) => {
                 return;
             }
 
+            // Если всё супер — передаем ID товара в скрытое поле и открываем форму
             document.getElementById('reviewProductId').value = productId;
             setupModalValidation(user.id);
 
         } catch (error) {
             console.error('Purchase check error:', error);
             reviewForm.style.display = 'none';
-            statusEl.textContent = ' Error checking purchase history. Try again later.';
+            statusEl.textContent = 'Error checking purchase history. Try again later.';
             statusEl.className = 'form-status-message error';
         }
     }
@@ -518,9 +513,7 @@ function setupModalValidation(userId) {
     };
 }
 
-// ==========================================
 // 6. КАЛЬКУЛЯТОР КАЛОРИЙ
-// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('calorieModal');
     const closeBtn = document.getElementById('closeCalorieModal');
@@ -623,9 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ==========================================
 // 7. СЕКЦИИ ПРЕДЛОЖЕНИЙ И ОТЗЫВЫ (OFFERS & TESTIMONIALS)
-// ==========================================
 function createOfferVegetableCard(vegetable) {
     if (!vegetable.price) {
         return `
