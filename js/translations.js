@@ -285,7 +285,22 @@ window.AppI18n = {
 
         "Naturally grown products": "Натурально выращенные продукты",
 
-        "We went to all the quality checks": "Мы прошли все продукты качества"
+        "We went to all the quality checks": "Мы прошли все продукты качества",
+
+        "Organic Blueberries": "Органическая голубика",
+        "Fresh Avocado": "Свежий авокадо",
+        "Organic Ginger Root": "Корень органического имбиря",
+        "Raw Cashews": "Натуральный кешью",
+        "Crisp Cucumber": "Хрустящие огурцы",
+        "Organic Quinoa Grain": "Органическое киноа",
+        "Fresh Strawberries": "Свежая клубника",
+        "Sweet Potato": "Сладкий батат",
+        "Natural Pumpkin Seeds": "Тыквенные семечки",
+        "Organic Chia Seeds": "Органические семена чиа",
+        "Fresh Garlic": "Свежий чеснок",
+        "Organic Spinach": "Органический шпинат",
+        "Juicy Orange": "Сочные апельсины",
+        "Shelled Walnuts": "Очищенный грецкий орех"
 
     },
 
