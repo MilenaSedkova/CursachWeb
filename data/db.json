@@ -181,22 +181,147 @@
       "customClass": "small-image"
     },
     {
-      "id": "0cxguJ5Nj14",
-      "name": "Мармелад",
-      "nameRu": "Мармелад",
+      "id": "18",
+      "name": "Organic Blueberries",
+      "nameRu": "Органическая голубика",
+      "category": "Fruits",
       "price": 18,
-      "category": "Fresh",
-      "calories": 250,
-      "image": "/pictures/HomepageImages/default-product.png"
+      "oldPrice": 25,
+      "calories": 57,
+      "image": "/pictures/ShopImages/Blueberries.png",
+      "rating": 5
     },
     {
-      "id": "NXjCBPRtU1k",
-      "name": "Груша",
-      "nameRu": "Груша",
-      "price": 18,
-      "category": "Fruit",
-      "calories": 57,
-      "image": "/pictures/HomepageImages/default-product.png"
+      "id": "19",
+      "name": "Fresh Avocado",
+      "nameRu": "Свежий авокадо",
+      "category": "Fresh",
+      "price": 15,
+      "oldPrice": 22,
+      "calories": 160,
+      "image": "/pictures/ShopImages/Avocado.png",
+      "rating": 5
+    },
+    {
+      "id": "21",
+      "name": "Raw Cashews",
+      "nameRu": "Натуральный кешью",
+      "category": "Nuts",
+      "price": 19,
+      "oldPrice": 26,
+      "calories": 553,
+      "image": "/pictures/ShopImages/Cashews.png",
+      "rating": 5
+    },
+    {
+      "id": "22",
+      "name": "Crisp Cucumber",
+      "nameRu": "Хрустящие огурцы",
+      "category": "Vegetable",
+      "price": 6,
+      "oldPrice": 10,
+      "calories": 15,
+      "image": "/pictures/ShopImages/Cucumbers.png",
+      "rating": 5
+    },
+    {
+      "id": "23",
+      "name": "Organic Quinoa Grain",
+      "nameRu": "Органическое киноа",
+      "category": "Millets",
+      "price": 14,
+      "oldPrice": 20,
+      "calories": 120,
+      "image": "/pictures/ShopImages/Quino.png",
+      "rating": 5
+    },
+    {
+      "id": "24",
+      "name": "Fresh Strawberries",
+      "nameRu": "Свежая клубника",
+      "category": "Fresh",
+      "price": 16,
+      "oldPrice": 24,
+      "calories": 33,
+      "image": "/pictures/ShopImages/Strawberries.png",
+      "rating": 5
+    },
+    {
+      "id": "25",
+      "name": "Sweet Potato",
+      "nameRu": "Сладкий батат",
+      "category": "Vegetable",
+      "price": 9,
+      "oldPrice": 15,
+      "calories": 86,
+      "image": "/pictures/ShopImages/potato.png",
+      "rating": 5
+    },
+    {
+      "id": "26",
+      "name": "Natural Pumpkin Seeds",
+      "nameRu": "Тыквенные семечки",
+      "category": "Health",
+      "price": 7,
+      "oldPrice": 11,
+      "calories": 559,
+      "image": "/pictures/ShopImages/PumpkinSeeds.png",
+      "rating": 5
+    },
+    {
+      "id": "27",
+      "name": "Organic Chia Seeds",
+      "nameRu": "Органические семена чиа",
+      "category": "Health",
+      "price": 12,
+      "oldPrice": 18,
+      "calories": 486,
+      "image": "/pictures/ShopImages/ChiaSeeds.png",
+      "rating": 5
+    },
+    {
+      "id": "28",
+      "name": "Fresh Garlic",
+      "nameRu": "Свежий чеснок",
+      "category": "Spicy",
+      "price": 5,
+      "oldPrice": 8,
+      "calories": 149,
+      "image": "/pictures/ShopImages/Garlic.png",
+      "rating": 5
+    },
+    {
+      "id": "29",
+      "name": "Organic Spinach",
+      "nameRu": "Органический шпинат",
+      "category": "Vegetable",
+      "price": 7,
+      "oldPrice": 11,
+      "calories": 23,
+      "image": "/pictures/ShopImages/Spinach.png",
+      "rating": 5
+    },
+    {
+      "id": "30",
+      "name": "Juicy Orange",
+      "nameRu": "Сочные апельсины",
+      "category": "Fruits",
+      "price": 8,
+      "oldPrice": 13,
+      "calories": 47,
+      "image": "/pictures/ShopImages/Orange.png",
+      "rating": 5
+    },
+    {
+      "id": "31",
+      "name": "Shelled Walnuts",
+      "nameRu": "Очищенный грецкий орех",
+      "category": "Nuts",
+      "price": 22,
+      "oldPrice": 30,
+      "calories": 654,
+      "image": "/pictures/ShopImages/Walnuts.png",
+      "rating": 5
     }
   ],
   "offerVegetables": [
