@@ -74,7 +74,6 @@ function createCartItemHTML(item) {
         </div>`;
 }
 
-// ГЛАВНЫЙ БЛОК ОТРИСОВКИ И ПРИВЯЗКИ КНОПКИ ЗАКАЗА
 document.addEventListener('DOMContentLoaded', async () => {
     const empty = document.getElementById('emptyCart');
     const list = document.getElementById('cartItems');
@@ -98,15 +97,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const user = JSON.parse(userJson);
     
     try {
-        // 🔥 1. БЕРЕМ ВООБЩЕ ВСЕ ТОВАРЫ ВНЕ ЗАВИСИМОСТИ ОТ ID
         const res = await fetch(`${API_URL}/cartItems`);
         let allItems = await res.json();
         if (!Array.isArray(allItems)) allItems = [];
 
-        // 🔥 2. ФИЛЬТРУЕМ ВРУЧНУЮ (железобетонное сравнение строк)
         let items = allItems.filter(item => String(item.userId) === String(user.id));
 
-        // 🔥 3. АВАРИЙНЫЙ СПАСАТЕЛЬ: если товары есть, но ID не сошлись — выводим ВСЁ, чтобы ты их увидел!
         if (items.length === 0 && allItems.length > 0) {
             console.warn('ID не сошлись! Вывожу все товары базы.');
             items = allItems; 

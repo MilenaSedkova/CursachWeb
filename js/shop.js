@@ -19,7 +19,7 @@ function createProductCard(product, withCartBtn = true) {
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
             
-            <!-- ✅ КНОПКА КАЛОРИЙ -->
+            <!--  КНОПКА КАЛОРИЙ -->
             <button class="calc-calories-btn" 
                     data-name="${productName}" 
                     data-calories="${product.calories || 100}" 
@@ -43,7 +43,7 @@ function createProductCard(product, withCartBtn = true) {
                 </div>
             </div>
             
-            <!-- ✅ КНОПКА ОТЗЫВА -->
+            <!--  КНОПКА ОТЗЫВА -->
             <button class="btn-open-review" data-id="${product.id}">Review</button>
         </div>
     `;
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentProducts = [...originalProducts];
             sortDirection = 'asc'; 
             currentPage = 1;
-            activeCategory = 'all'; // 👈 Сбрасываем категорию при общем сбросе
+            activeCategory = 'all'; //  Сбрасываем категорию при общем сбросе
             if (categorySelect) categorySelect.value = 'all'; // Сбрасываем визуально селект
             renderPage();
         });

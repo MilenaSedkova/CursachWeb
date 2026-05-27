@@ -440,7 +440,18 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "productId": "5",
+      "userId": "2",
+      "name": "Mung Bean",
+      "price": 11,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/bean.png",
+      "category": "Health",
+      "quantity": 1,
+      "id": "A6XxHmxJx1I"
+    }
+  ],
   "users": [
     {
       "id": "1",
@@ -826,6 +837,26 @@
       "date": "2026-05-27T20:17:46.933Z",
       "status": "Processing",
       "id": "502TkMTKC-U"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "2",
+          "userId": "2",
+          "name": "Fresh Banana Fruites",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Fresh",
+          "quantity": 2,
+          "id": "DfuIkEOSTFk"
+        }
+      ],
+      "totalPrice": 28,
+      "date": "2026-05-27T20:23:30.605Z",
+      "status": "Processing",
+      "id": "bl2mBHlVT5A"
     }
   ],
   "reviews": [
