@@ -842,3 +842,8 @@ body {
     opacity: 1 !important;
     visibility: visible !important;
 }
+
+.mobile-menu-content .search-bar,
+#mobileMenu .search-bar {
+    display: none !important;
+}

@@ -796,10 +796,6 @@ body.a11y-mode .product-card .add-to-cart {
     z-index: 10 !important;
 }
 
-/* =========================================================
-   ИСПРАВЛЕНИЕ БЛОКА "OUR FARMS" (АДРЕСА И ИКОНКИ)
-========================================================= */
-
 /* 1. Прячем вылезший слева мусорный текст от фоновой текстуры */
 body.a11y-mode [class*="texture"] .a11y-alt-text,
 body.a11y-mode [class*="pattern"] .a11y-alt-text,
@@ -851,7 +847,6 @@ body.a11y-mode .contact-item > div {
     gap: 5px !important; /* Небольшой отступ между городом и улицей */
 }
 
-/* 6. Убираем странные отступы у заголовков внутри карточки */
 body.a11y-mode [class*="location-content"] h1,
 body.a11y-mode [class*="location-content"] h2,
 body.a11y-mode [class*="location-content"] h3,
@@ -890,4 +885,61 @@ body.a11y-mode .contact-item {
 
 body.home-page .add-to-cart-btn {
     display: none !important;
+}
+
+body.dark-theme .mobile-menu-content {
+    background-color: var(--bg-secondary) !important; /* Твой мягкий чёрный из переменных (#1E1E1E) */
+    background: var(--bg-secondary) !important;
+    color: #ffffff !important;
+}
+
+/* 2. Текст мобильных ссылок (Главная, О нас...) становится БЕЛЫМ */
+body.dark-theme .mobile-link,
+body.dark-theme .mobile-menu-content a {
+    color: #ffffff !important;
+}
+
+/* Цвет ссылок при наведении в тёмной теме */
+body.dark-theme .mobile-link:hover {
+    color: #7EB693 !important; /* Наш сочный зелёный акцент */
+}
+
+/* 3. Кнопка-крестик закрытия меню */
+body.dark-theme .mobile-menu-close {
+    color: #ffffff !important;
+}
+body.dark-theme .mobile-menu-close:hover {
+    color: #7EB693 !important;
+}
+
+/* 4. Текст корзины Корзина(0) */
+body.dark-theme #mobileCartCount {
+    color: #ffffff !important;
+}
+
+/* 5. Круглые кнопки в самом низу (li, ru, A+) */
+body.dark-theme .mobile-controls .control-btn {
+    background-color: var(--bg-tertiary) !important; /* Твой серый цвет инпутов (#2C2C2C) */
+    color: #ffffff !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+body.dark-theme .mobile-controls .control-btn:hover {
+    background-color: #7EB693 !important;
+    color: var(--bg-primary) !important; /* Текст становится тёмным на зелёном фоне */
+    border-color: #7EB693 !important;
+}
+
+.mobile-menu-content .search-bar,
+#mobileMenu .search-bar {
+    display: none !important;
+}
+
+@media screen and (max-width: 560px) {
+    html body .mobile-menu-content .search-bar,
+    html body #mobileMenu .search-bar {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
 }

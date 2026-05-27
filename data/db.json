@@ -876,6 +876,26 @@
       "date": "2026-05-27T20:32:07.374Z",
       "status": "Processing",
       "id": "7ngFuyqEVI0"
+    },
+    {
+      "userId": "JhqmGWaztf0",
+      "customerName": "iliya",
+      "items": [
+        {
+          "productId": "3",
+          "userId": "JhqmGWaztf0",
+          "name": "Белые Орехи",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Злаки",
+          "quantity": 1,
+          "id": "BKr8a1w4KxU"
+        }
+      ],
+      "totalPrice": 15,
+      "date": "2026-05-27T21:53:35.733Z",
+      "status": "Processing",
+      "id": "ZmTT6tCrT50"
     }
   ],
   "reviews": [
