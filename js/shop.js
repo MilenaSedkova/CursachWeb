@@ -1,6 +1,5 @@
-let activeCategory = 'all';
+var activeCategory = window.activeCategory || 'all';
 
-// ЧИСТАЯ ВЕРСИЯ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (БЕЗ ЛИШНИХ КНОПОК)
 function createProductCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice 
         ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` 
@@ -20,6 +19,15 @@ function createProductCard(product, withCartBtn = true) {
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
             
+            <!-- ✅ КНОПКА КАЛОРИЙ -->
+            <button class="calc-calories-btn" 
+                    data-name="${productName}" 
+                    data-calories="${product.calories || 100}" 
+                    data-unit="${product.unit || 'units'}" 
+                    title="Calculate Calories">
+                kcal
+            </button>
+            
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${productName}" loading="lazy">
             </div>
@@ -34,6 +42,9 @@ function createProductCard(product, withCartBtn = true) {
                     </div>
                 </div>
             </div>
+            
+            <!-- ✅ КНОПКА ОТЗЫВА -->
+            <button class="btn-open-review" data-id="${product.id}">Review</button>
         </div>
     `;
 }
@@ -226,14 +237,12 @@ function closeAuthModal() {
 }
 
 
-// === ИСПРАВЛЕННАЯ ФУНКЦИЯ ДОБАВЛЕНИЯ В КОРЗИНУ ===
 async function addToCart(productId) {
     console.log('Добавляем товар:', productId);
 
     // 1. ПОЛУЧАЕМ ПОЛЬЗОВАТЕЛЯ ИЗ ПАМЯТИ
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) {
-        // Вместо alert() вызываем кастомное красивое окно!
         openAuthModal();
         return; 
     }
@@ -258,7 +267,6 @@ async function addToCart(productId) {
     };
 
     try {
-        // 4. ИЩЕМ ТТОВАРЫ ТОЛЬКО ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
         const res = await fetch(`http://localhost:3000/cartItems?userId=${user.id}`);
         let cartItems = await res.json();
         if (!Array.isArray(cartItems)) cartItems = [];

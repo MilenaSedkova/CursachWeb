@@ -440,178 +440,7 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [
-    {
-      "productId": 7,
-      "userId": "1hFZV4Q4L60",
-      "name": "Eggs",
-      "price": 17,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "WKSOSfTmh-U"
-    },
-    {
-      "productId": 7,
-      "userId": "1hFZV4Q4L60",
-      "name": "Eggs",
-      "price": 17,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "qxVFaWQ8LO4"
-    },
-    {
-      "productId": 12,
-      "userId": "1hFZV4Q4L60",
-      "name": "Organic Almonds",
-      "price": 15,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/OrganickAlmonds.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "7txNKp2lwLA"
-    },
-    {
-      "productId": 10,
-      "userId": "aK3GaXQxJPw",
-      "name": "White Hazelnut",
-      "price": 12,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "4QCs6XHTsZg"
-    },
-    {
-      "productId": 4,
-      "userId": "aK3GaXQxJPw",
-      "name": "Vegan Red Tomato",
-      "price": 17,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
-      "category": "Vegetable",
-      "quantity": 1,
-      "id": "w3qFwJAG9-8"
-    },
-    {
-      "productId": 7,
-      "userId": "0liV0xsOEaw",
-      "name": "Яйца",
-      "price": 17,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/eggs.png",
-      "category": "Свежее",
-      "quantity": 1,
-      "id": "8YwjQfQDFo4"
-    },
-    {
-      "productId": 10,
-      "userId": "2",
-      "name": "White Hazelnut",
-      "price": 12,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "tC9RmqPxNiM"
-    },
-    {
-      "productId": 10,
-      "userId": "2",
-      "name": "White Hazelnut",
-      "price": 12,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "BbnY-ZCioto"
-    },
-    {
-      "productId": 10,
-      "userId": "2",
-      "name": "White Hazelnut",
-      "price": 12,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/WhiteHuzelnut.png",
-      "category": "Nuts",
-      "quantity": 1,
-      "id": "YmFc-vIeh-U"
-    },
-    {
-      "productId": 2,
-      "userId": "2",
-      "name": "Fresh Banana Fruites",
-      "price": 14,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "NdRPkpPGJHs"
-    },
-    {
-      "productId": 15,
-      "userId": "2",
-      "name": "Promegranate",
-      "price": 9,
-      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Fruits.png",
-      "category": "Fruits",
-      "quantity": 1,
-      "id": "ZJRXGFaOBTs"
-    },
-    {
-      "productId": 15,
-      "userId": "2",
-      "name": "Promegranate",
-      "price": 9,
-      "image": "http://127.0.0.1:5501/pictures/AboutUsImages/Fruits.png",
-      "category": "Fruits",
-      "quantity": 1,
-      "id": "9a9vbZ_Qpi4"
-    },
-    {
-      "productId": 2,
-      "userId": "2",
-      "name": "Fresh Banana Fruites",
-      "price": 14,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "lBOo1DwlPNs"
-    },
-    {
-      "productId": 2,
-      "userId": "2",
-      "name": "Fresh Banana Fruites",
-      "price": 14,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
-      "category": "Fresh",
-      "quantity": 1,
-      "id": "MD45MiX_INE"
-    },
-    {
-      "productId": 3,
-      "userId": "2",
-      "name": "White Nuts",
-      "price": 15,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
-      "category": "Millets",
-      "quantity": 1,
-      "id": "8CPizkGM6t0"
-    },
-    {
-      "productId": 3,
-      "userId": "2",
-      "name": "White Nuts",
-      "price": 15,
-      "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
-      "category": "Millets",
-      "quantity": 1,
-      "id": "BlRiiy47JHg"
-    },
-    {
-      "productId": 9,
-      "userId": "1",
-      "name": "Маш",
-      "price": 11,
-      "image": "http://127.0.0.1:5501/pictures/ShopImages/MungBeanBig.png",
-      "category": "Здоровье",
-      "quantity": 1,
-      "id": "yqm4n6iyIHs"
-    }
-  ],
+  "cartItems": [],
   "users": [
     {
       "id": "1",
@@ -937,6 +766,66 @@
       "date": "2026-05-26T12:22:16.298Z",
       "status": "Processing",
       "id": "qFbLWjBgCnQ"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "2",
+          "userId": "2",
+          "name": "Fresh Banana Fruites",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "YdmFSVzuGYc"
+        },
+        {
+          "productId": "3",
+          "userId": "2",
+          "name": "White Nuts",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Millets",
+          "quantity": 1,
+          "id": "mKpuZBMp7-w"
+        }
+      ],
+      "totalPrice": 29,
+      "date": "2026-05-27T20:17:31.902Z",
+      "status": "Processing",
+      "id": "GSOlEBIus64"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "3",
+          "userId": "2",
+          "name": "White Nuts",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Millets",
+          "quantity": 1,
+          "id": "LMvV8l1Jgq0"
+        },
+        {
+          "productId": "4",
+          "userId": "2",
+          "name": "Vegan Red Tomato",
+          "price": 17,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "MBtZhbHLo-o"
+        }
+      ],
+      "totalPrice": 32,
+      "date": "2026-05-27T20:17:46.933Z",
+      "status": "Processing",
+      "id": "502TkMTKC-U"
     }
   ],
   "reviews": [
@@ -962,6 +851,11 @@
       "email": "sedkovamilena80@gmail.com",
       "subscribedAt": "2026-05-25T08:04:43.507Z",
       "id": "sQKSogchkJA"
+    },
+    {
+      "email": "admin@organick.com",
+      "subscribedAt": "2026-05-27T07:44:26.296Z",
+      "id": "MBKon18HYWA"
     }
   ],
   "messages": [
@@ -973,6 +867,15 @@
       "message": "consider adding more point of issue please",
       "date": "2026-05-26T12:46:34.357Z",
       "id": "916AG_bTVZA"
+    },
+    {
+      "name": "fghjk",
+      "email": "admin@organick.com",
+      "company": "fghj",
+      "subject": "fgyu",
+      "message": "tgyui",
+      "date": "2026-05-27T07:44:59.275Z",
+      "id": "gp4rJnRmGgo"
     }
   ],
   "bookings": [

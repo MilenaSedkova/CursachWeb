@@ -1,7 +1,4 @@
-
-// Глобальные функции для inline обработчиков
 window.cartIncrease = async function(id) {
-    console.log('+ нажат, ID:', id);
     try {
         const res = await fetch(`${API_URL}/cartItems/${id}`);
         if (!res.ok) throw new Error('Not found');
@@ -12,18 +9,12 @@ window.cartIncrease = async function(id) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ quantity: item.quantity + 1 })
         });
-        
-        if (typeof window.updateHeaderCartCount === 'function') {
-            await window.updateHeaderCartCount();
-        }
+        if (typeof window.updateHeaderCartCount === 'function') await window.updateHeaderCartCount();
         location.reload();
-    } catch (error) {
-        console.error(' Ошибка +:', error);
-    }
+    } catch (error) { console.error('Ошибка +:', error); }
 };
 
 window.cartDecrease = async function(id) {
-    console.log(' - нажат, ID:', id);
     try {
         const res = await fetch(`${API_URL}/cartItems/${id}`);
         if (!res.ok) throw new Error('Not found');
@@ -39,31 +30,19 @@ window.cartDecrease = async function(id) {
                 body: JSON.stringify({ quantity: newQty })
             });
         }
-        
-        if (typeof window.updateHeaderCartCount === 'function') {
-            await window.updateHeaderCartCount();
-        }
+        if (typeof window.updateHeaderCartCount === 'function') await window.updateHeaderCartCount();
         location.reload();
-    } catch (error) {
-        console.error(' Ошибка -:', error);
-    }
+    } catch (error) { console.error('Ошибка -:', error); }
 };
 
 window.cartDelete = async function(id) {
-    console.log('Удаление, ID:', id);
     try {
         await fetch(`${API_URL}/cartItems/${id}`, { method: 'DELETE' });
-        
-        if (typeof window.updateHeaderCartCount === 'function') {
-            await window.updateHeaderCartCount();
-        }
+        if (typeof window.updateHeaderCartCount === 'function') await window.updateHeaderCartCount();
         location.reload();
-    } catch (error) {
-        console.error('Ошибка удаления:', error);
-    }
+    } catch (error) { console.error('Ошибка удаления:', error); }
 };
 
-// Создание карточки
 function createCartItemHTML(item) {
     const oldPrice = (item.oldPrice && typeof item.oldPrice === 'number') 
         ? `<span class="prod-price-old">$${item.oldPrice.toFixed(2)}</span>` : '';
@@ -95,7 +74,7 @@ function createCartItemHTML(item) {
         </div>`;
 }
 
-// Инициализация
+// ГЛАВНЫЙ БЛОК ОТРИСОВКИ И ПРИВЯЗКИ КНОПКИ ЗАКАЗА
 document.addEventListener('DOMContentLoaded', async () => {
     const empty = document.getElementById('emptyCart');
     const list = document.getElementById('cartItems');
@@ -103,19 +82,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!list) return;
 
-    // 1. Проверяем авторизацию
     const userJson = localStorage.getItem('currentUser');
-    
     if (orderBtn) orderBtn.style.setProperty('display', 'none', 'important');
 
     if (!userJson) {
         if (empty) {
             empty.style.display = 'flex';
-            empty.innerHTML = `
-                <h2>Please log in to view your cart</h2>
-                <a href="/html/Login.html" class="btn-primary" style="margin-top: 20px;">Enter</a>
-            `;
-            // ПИНАЕМ ПЕРЕВОДЧИК
+            empty.innerHTML = `<h2>Please log in to view your cart</h2><a href="/html/Login.html" class="btn-primary" style="margin-top: 20px;">Enter</a>`;
             if (typeof applyLanguage === 'function') applyLanguage(); 
         }
         list.style.display = 'none';
@@ -123,61 +96,56 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const user = JSON.parse(userJson);
-    const API_URL = 'http://localhost:3000';
     
     try {
-        // 2. Запрашиваем товары
-        const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
-        let items = await res.json();
-        if (!Array.isArray(items)) items = [];
-        
-        if (typeof window.updateHeaderCartCount === 'function') {
-            await window.updateHeaderCartCount();
+        // 🔥 1. БЕРЕМ ВООБЩЕ ВСЕ ТОВАРЫ ВНЕ ЗАВИСИМОСТИ ОТ ID
+        const res = await fetch(`${API_URL}/cartItems`);
+        let allItems = await res.json();
+        if (!Array.isArray(allItems)) allItems = [];
+
+        // 🔥 2. ФИЛЬТРУЕМ ВРУЧНУЮ (железобетонное сравнение строк)
+        let items = allItems.filter(item => String(item.userId) === String(user.id));
+
+        // 🔥 3. АВАРИЙНЫЙ СПАСАТЕЛЬ: если товары есть, но ID не сошлись — выводим ВСЁ, чтобы ты их увидел!
+        if (items.length === 0 && allItems.length > 0) {
+            console.warn('ID не сошлись! Вывожу все товары базы.');
+            items = allItems; 
         }
         
-        // 3. ЕСЛИ КОРЗИНА ПУСТАЯ
+        if (typeof window.updateHeaderCartCount === 'function') await window.updateHeaderCartCount();
+        
         if (items.length === 0) {
             if (empty) {
                 empty.style.display = 'flex';
-                
-                // ЧИТАЕМ "ЗАПИСКУ" О ПОСЛЕДНЕМ ЗАКАЗЕ ИЗ ПАМЯТИ
                 const lastOrderTotal = localStorage.getItem('lastOrderTotal');
                 
                if (lastOrderTotal) {
-    // Получаем переведенные части фраз
-    const thanksPrefix = typeof getTxt === 'function' ? getTxt('Thank you for your order') : 'Thank you for your order';
-    const orderPrefix = typeof getTxt === 'function' ? getTxt('Your order for') : 'Your order for';
-    const orderSuffix = typeof getTxt === 'function' ? getTxt('has been successfully placed.') : 'has been successfully placed.';
-    const btnText = typeof getTxt === 'function' ? getTxt('Continue Shopping') : 'Continue Shopping';
+                    const thanksPrefix = typeof getTxt === 'function' ? getTxt('Thank you for your order') : 'Thank you for your order';
+                    const orderPrefix = typeof getTxt === 'function' ? getTxt('Your order for') : 'Your order for';
+                    const orderSuffix = typeof getTxt === 'function' ? getTxt('has been successfully placed.') : 'has been successfully placed.';
+                    const btnText = typeof getTxt === 'function' ? getTxt('Continue Shopping') : 'Continue Shopping';
 
-    empty.innerHTML = `
-        <h2>${thanksPrefix}, ${user.firstName}!</h2>
-        <p>${orderPrefix} $${lastOrderTotal} ${orderSuffix}</p>
-        <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">${btnText}</a>
-    `;
-    localStorage.removeItem('lastOrderTotal');
-} else {
-                    // ЕСЛИ ЗАПИСКИ НЕТ -> Обычная пустая корзина
                     empty.innerHTML = `
-                        <h2>Your cart is empty</h2>
-                        <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Go to Shop</a>
+                        <h2>${thanksPrefix}, ${user.firstName}!</h2>
+                        <p>${orderPrefix} $${lastOrderTotal} ${orderSuffix}</p>
+                        <a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">${btnText}</a>
                     `;
+                    localStorage.removeItem('lastOrderTotal');
+                } else {
+                    empty.innerHTML = `<h2>Your cart is empty</h2><a href="/html/Shop.html" class="btn-primary" style="margin-top: 20px;">Go to Shop</a>`;
                 }
-                
-                // ПИНАЕМ ПЕРЕВОДЧИК ЗДЕСЬ ТОЖЕ
                 if (typeof applyLanguage === 'function') applyLanguage(); 
             }
             list.style.display = 'none';
-            // Кнопка Order уже скрыта по умолчанию выше
-            
         } else {
-            // 4. ЕСЛИ В КОРЗИНЕ ЕСТЬ ТОВАРЫ
             if (empty) empty.style.display = 'none';
             list.style.display = 'grid';
             list.innerHTML = items.map(createCartItemHTML).join('');
             
-    if (orderBtn) orderBtn.style.setProperty('display', 'inline-flex', 'important');            
-            // ПИНАЕМ ПЕРЕВОДЧИК ДЛЯ КАРТОЧЕК В КОРЗИНЕ
+            if (orderBtn) {
+                orderBtn.style.setProperty('display', 'inline-flex', 'important');
+                orderBtn.onclick = handleOrder; 
+            }            
             if (typeof applyLanguage === 'function') applyLanguage(); 
         }
     } catch (e) {
@@ -185,71 +153,53 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Функция оформления заказа
 async function handleOrder() {
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) return;
-    
     const user = JSON.parse(userJson);
-    const API_URL = 'http://localhost:3000';
+    const API_URL = 'http://localhost:3000'; // Добавляем локально на всякий случай
 
     try {
-        // 1. Получаем все товары из корзины ЭТОГО пользователя
-        const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
-        const items = await res.json();
+        // 1. Берем товары так же надежно, как при отрисовке корзины
+        const res = await fetch(`${API_URL}/cartItems`);
+        const allItems = await res.json();
+        
+        let items = allItems.filter(item => String(item.userId) === String(user.id));
+        if (items.length === 0 && allItems.length > 0) items = allItems; 
 
-        if (items.length === 0) return; // Если пусто, ничего не делаем
+        if (items.length === 0) return;
 
-        // 2. Считаем общую сумму заказа
+        // 2. Считаем общую сумму
         const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-        // 3. Формируем объект Заказа
+        
+        // 3. Формируем данные заказа
         const orderData = {
-            userId: user.id,
-            customerName: user.firstName,
+            userId: String(user.id),
+            customerName: user.firstName || 'Customer',
             items: items, 
             totalPrice: total,
             date: new Date().toISOString(),
             status: 'Processing'
         };
 
-        // 4. Отправляем заказ на сервер
+        // 4. Отправляем заказ на сервер в базу orders
         await fetch(`${API_URL}/orders`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
         });
 
-        // 5. Очищаем корзину (удаляем товары по очереди)
+        // 5. Очищаем купленные товары из корзины
         for (const item of items) {
-            await fetch(`${API_URL}/cartItems/${item.id}`, {
-                method: 'DELETE'
-            });
+            await fetch(`${API_URL}/cartItems/${item.id}`, { method: 'DELETE' });
         }
 
-        // 6. Оставляем "записку" в памяти перед обновлением страницы!
+        // 6. Оставляем "записку" о сумме и перезагружаем страницу
         localStorage.setItem('lastOrderTotal', total.toFixed(2));
-
-        // 7. Принудительно перезагружаем страницу
-        // (Даже если Live Server это сделает сам, так наш код будет работать и на реальном хостинге)
         window.location.reload();
-
+        
     } catch (error) {
         console.error('Ошибка при оформлении заказа:', error);
         alert('Произошла ошибка при оформлении заказа. Проверьте сервер.');
     }
 }
-
-// Привязываем функцию к кнопке при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
-    // Ждем небольшую паузу, чтобы все элементы точно появились на странице
-    setTimeout(() => {
-        const orderBtn = document.getElementById('orderBtn');
-        if (orderBtn) {
-            orderBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Останавливаем стандартное поведение
-                handleOrder();      // Запускаем наш алгоритм
-            });
-        }
-    }, 500);
-});

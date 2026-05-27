@@ -1,8 +1,14 @@
-let activeCategory = 'all';
-// ИДЕАЛЬНАЯ ВЕРСИЯ: Возвращаем правильную обертку для тега
-// ВОЗВРАТ К ОРИГИНАЛЬНОЙ ВЕРСТКЕ (БЕЗ ЛОМАЮЩИХ ДИВОВ)
 // ==========================================
-// 1. ФУНКЦИЯ СТРОГО ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
+// 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ И СЧЕТЧИК КОРЗИНЫ
+// ==========================================
+const API_URL = 'http://localhost:3000'; // Объявляем один раз для всех скриптов
+
+
+let activeCategory = 'all';
+let searchQuery = ''; 
+
+// ==========================================
+// 2. ГЕНЕРАЦИЯ КАРТОЧЕК ТОВАРОВ
 // ==========================================
 function createHomeCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` : '';
@@ -11,15 +17,12 @@ function createHomeCard(product, withCartBtn = true) {
     
     return `
         <div class="prod-card ${extraClass}" data-id="${product.id}">
-            
             <div class="prod-tags" style="padding-top: 20px; padding-left: 5px;">
                 <span class="prod-tag">${product.category || 'Product'}</span>
             </div>
-            
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${productName}" loading="lazy">
             </div>
-            
             <div class="prod-info">
                 <h3 class="prod-name">${productName}</h3>
                 <div class="prod-price-row">
@@ -30,7 +33,6 @@ function createHomeCard(product, withCartBtn = true) {
                     </div>
                 </div>
             </div>
-
             ${withCartBtn ? `
             <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
@@ -39,9 +41,6 @@ function createHomeCard(product, withCartBtn = true) {
     `;
 }
 
-// ==========================================
-// 2. ФУНКЦИЯ СТРОГО ДЛЯ МАГАЗИНА (SHOP)
-// ==========================================
 function createShopCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice ? `<span class="prod-price-old">$${product.oldPrice.toFixed(2)}</span>` : '';
     const extraClass = product.customClass ? product.customClass : '';
@@ -49,22 +48,17 @@ function createShopCard(product, withCartBtn = true) {
     
     return `
         <div class="prod-card ${extraClass}" data-id="${product.id}">
-            
             <span class="prod-tag">${product.category || 'Product'}</span>
-            
             ${withCartBtn ? `
             <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add to cart">
                 <img src="/pictures/HomepageImages/Cart Icon.svg" alt="cart">
             </button>` : ''}
-
             <button class="calc-calories-btn" data-name="${productName}" data-calories="${product.calories || 100}" data-unit="${product.unit || 'units'}" title="Calculate Calories">
                 kcal
             </button>
-            
             <div class="prod-image-wrapper">
                 <img src="${product.image}" alt="${productName}" loading="lazy">
             </div>
-            
             <div class="prod-info">
                 <h3 class="prod-name">${productName}</h3>
                 <div class="prod-price-row">
@@ -75,17 +69,13 @@ function createShopCard(product, withCartBtn = true) {
                     </div>
                 </div>
             </div>
-
             <button class="btn-open-review" data-id="${product.id}">Review</button>
         </div>
     `;
 }
 
 function createProductCard(product, withCartBtn = true) {
-    // Узнаем, где мы находимся
     const isShopPage = window.location.pathname.toLowerCase().includes('shop');
-    
-    // Вызываем нужную функцию в зависимости от страницы
     if (isShopPage) {
         return createShopCard(product, withCartBtn);
     } else {
@@ -93,13 +83,17 @@ function createProductCard(product, withCartBtn = true) {
     }
 }
 
+// ==========================================
+// 3. ОТРИСОВКА, ПАГИНАЦИЯ, ПОИСК И ФИЛЬТРЫ
+// ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
     const gridElement = document.getElementById('productsGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const sortBtn = document.getElementById('sortPriceBtn');
     const resetBtn = document.getElementById('resetSortBtn');
-    const categorySelect = document.getElementById('shopCategorySelect'); //Перенесли сюда
+    const categorySelect = document.getElementById('shopCategorySelect');
+    const searchInput = document.getElementById('searchInput');
     
     const itemsPerPage = 12;
     let currentPage = 1;
@@ -113,22 +107,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         originalProducts = data.products;
         currentProducts = [...originalProducts];
     } catch (error) {
-        console.error('Ошибка загрузки:', error);
+        console.error('Ошибка загрузки db.json:', error);
         return;
     }
     
     function renderPage() {
         if (!gridElement) return;
 
-        // 1. Фильтруем массив по выбранной категории
         let filteredProducts = currentProducts;
+        
+        // 1. Фильтр по категории
         if (activeCategory !== 'all') {
             filteredProducts = currentProducts.filter(product => {
                 return (product.category || '').toLowerCase() === activeCategory.toLowerCase();
             });
         }
 
-        // 2. Берем нужный срез для текущей страницы
+        // 2. Фильтр по поиску
+        if (searchQuery) {
+            filteredProducts = filteredProducts.filter(product => {
+                const nameEn = (product.name || '').toLowerCase();
+                const nameRu = (product.nameRu || '').toLowerCase();
+                return nameEn.includes(searchQuery) || nameRu.includes(searchQuery);
+            });
+        }
+
+        // 3. Пагинация
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         const productsToShow = filteredProducts.slice(start, end);
@@ -142,18 +146,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (sortBtn) {
             const arrow = sortBtn.querySelector('.sort-arrow');
-            if (arrow) {
-                arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
-            }
+            if (arrow) arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
         }
     }
 
-    // Слушатель изменения категорий (теперь он видит renderPage!)
     if (categorySelect) {
         categorySelect.addEventListener('change', (e) => {
             activeCategory = e.target.value; 
             currentPage = 1;                  
             renderPage();                     
+        });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            currentPage = 1;
+            renderPage();
         });
     }
 
@@ -173,8 +182,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentProducts = [...originalProducts];
             sortDirection = 'asc'; 
             currentPage = 1;
-            activeCategory = 'all'; // Сбрасываем категорию при общем сбросе
-            if (categorySelect) categorySelect.value = 'all'; // Сбрасываем визуально селект
+            activeCategory = 'all'; 
+            searchQuery = ''; 
+            
+            if (categorySelect) categorySelect.value = 'all'; 
+            if (searchInput) searchInput.value = ''; 
+            
             renderPage();
         });
     }
@@ -196,22 +209,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (typeof updateHeaderCartCount === 'function') updateHeaderCartCount();
 });
 
-// Глобальный обработчик кликов по кнопкам корзины
+// ==========================================
+// 4. ДОБАВЛЕНИЕ В КОРЗИНУ И АВТОРИЗАЦИЯ
+// ==========================================
 document.addEventListener('click', async (e) => {
     const cartBtn = e.target.closest('.add-to-cart-btn');
-    
     if (cartBtn && cartBtn.dataset.id) {
         e.preventDefault();
         e.stopPropagation();
         
-        const productId = parseInt(cartBtn.dataset.id);
-        console.log('🖱️ Клик по корзине, ID:', productId);
+        // Было: const productId = parseInt(cartBtn.dataset.id);
+        const productId = String(cartBtn.dataset.id); // Стало: железобетонно делаем строкой
         
-        // Визуальный эффект
         cartBtn.style.transform = 'scale(0.9)';
         setTimeout(() => cartBtn.style.transform = 'scale(1)', 150);
         
-        // Вызов функции добавления
         await addToCart(productId);
     }
 });
@@ -255,34 +267,24 @@ function openAuthModal() {
         `;
         document.body.appendChild(modal);
 
-        // Клик по темному фону просто закрывает окно
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeAuthModalOnly();
         });
     }
-
     setTimeout(() => modal.classList.add('active'), 10);
 }
 
-// Новая функция: ПРОСТО закрывает окно, никуда не перемещая пользователя
 function closeAuthModalOnly() {
     const modal = document.getElementById('authAlertModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
+    if (modal) modal.classList.remove('active');
 }
-
 
 function closeAuthModal() {
     const modal = document.getElementById('authAlertModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
+    if (modal) modal.classList.remove('active');
 }
 
 async function addToCart(productId) {
-    console.log('Добавляем товар:', productId);
-
     const userJson = localStorage.getItem('currentUser');
     if (!userJson) {
         openAuthModal();
@@ -290,39 +292,48 @@ async function addToCart(productId) {
     }
     const user = JSON.parse(userJson);
 
-    // 2. Ищем карточку
     const card = document.querySelector(`.prod-card[data-id="${productId}"]`);
-    if (!card) {
-        console.error('Карточка не найдена!');
-        return;
-    }
+    if (!card) return;
 
-    // 3. Формируем данные для корзины
+    // БЕЗОПАСНОЕ ПОЛУЧЕНИЕ ДАННЫХ ДЛЯ КОРЗИНЫ
+   // БЕЗОПАСНОЕ ПОЛУЧЕНИЕ ДАННЫХ ДЛЯ КОРЗИНЫ
+    const imgElement = card.querySelector('.prod-image-wrapper img');
+    const imageSrc = imgElement ? imgElement.src : '';
+
+    const nameElement = card.querySelector('.prod-name');
+    const nameText = nameElement ? nameElement.textContent : 'Product';
+
+    const priceElement = card.querySelector('.prod-price-new');
+    const priceText = priceElement ? priceElement.textContent.replace('$', '') : '0';
+    
+    const categoryElement = card.querySelector('.prod-tag');
+    const categoryText = categoryElement ? categoryElement.textContent : '';
+
     const productData = {
-        productId: parseInt(productId),
-        userId: user.id,
-        name: card.querySelector('.prod-name')?.textContent || 'Product',
-        price: parseFloat(card.querySelector('.prod-price-new')?.textContent.replace('$', '')) || 0,
-        image: card.querySelector('.prod-image-wrapper img')?.src || '',
-        category: card.querySelector('.prod-tag')?.textContent || '',
+        productId: String(productId), // ДЕЛАЕМ СТРОКОЙ
+        userId: String(user.id),      // ДЕЛАЕМ СТРОКОЙ
+        name: nameText,
+        price: parseFloat(priceText) || 0,
+        image: imageSrc,
+        category: categoryText,
         quantity: 1
     };
 
     try {
-        const res = await fetch(`http://localhost:3000/cartItems?userId=${user.id}`);
+        const res = await fetch(`${API_URL}/cartItems?userId=${user.id}`);
         let cartItems = await res.json();
         if (!Array.isArray(cartItems)) cartItems = [];
 
         const existing = cartItems.find(item => item.productId === productData.productId);
 
         if (existing) {
-            await fetch(`http://localhost:3000/cartItems/${existing.id}`, {
+            await fetch(`${API_URL}/cartItems/${existing.id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ quantity: existing.quantity + 1 })
             });
         } else {
-            await fetch('http://localhost:3000/cartItems', {
+            await fetch(`${API_URL}/cartItems`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(productData)
@@ -336,11 +347,11 @@ async function addToCart(productId) {
         if (typeof showNotification === 'function') {
             showNotification(`${productData.name} добавлен в корзину`);
         }
-
     } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Ошибка добавления в корзину:', error);
     }
 }
+
 function showNotification(text) {
     const notif = document.createElement('div');
     notif.style.cssText = `
@@ -358,8 +369,10 @@ function showNotification(text) {
     setTimeout(() => notif.remove(), 2000);
 }
 
+// ==========================================
+// 5. МОДАЛЬНОЕ ОКНО ОТЗЫВОВ
+// ==========================================
 document.addEventListener('click', async (e) => {
-    // Проверяем клик по кнопке отзыва
     if (e.target.classList.contains('btn-open-review')) {
         const productId = e.target.getAttribute('data-id');
         const userJson = localStorage.getItem('currentUser');
@@ -370,19 +383,15 @@ document.addEventListener('click', async (e) => {
 
         if (!modal || !reviewForm || !statusEl) return;
 
-        // Открываем модальное окно
         modal.style.display = 'flex';
-        // По умолчанию показываем форму и очищаем старые сообщения
         reviewForm.style.display = 'block';
         statusEl.className = 'form-status-message';
         statusEl.textContent = '';
 
-        // 1. ПРОВЕРКА: Авторизован ли пользователь?
         if (!userJson) {
-            reviewForm.style.display = 'none'; // Прячем форму
+            reviewForm.style.display = 'none'; 
             statusEl.textContent = 'Only logged-in customers can leave a review. Please log in to your account.';
-            statusEl.className = 'form-status-message error'; // Показываем красную плашку ошибки
-
+            statusEl.className = 'form-status-message error'; 
             if (typeof applyLanguage === 'function') applyLanguage();
             return;
         }
@@ -390,27 +399,22 @@ document.addEventListener('click', async (e) => {
         const user = JSON.parse(userJson);
 
         try {
-            // 1. Запрашиваем заказы с сервера строго для текущего юзера
             const res = await fetch(`${API_URL}/orders?userId=${user.id}`);
             const orders = await res.json();
 
-            // 2. Идеально точная проверка под твою структуру базы данных
             const hasPurchased = orders.some(order => {
                 return order.items && Array.isArray(order.items) && order.items.some(item => {
-                    // Сравниваем строго productId товара из заказа с productId кнопки
                     return item.productId && item.productId.toString() === productId.toString();
                 });
             });
 
-            // Если товар так и не найден в покупках этого аккаунта
             if (!hasPurchased) {
-                reviewForm.style.display = 'none'; // Скрываем форму ввода
+                reviewForm.style.display = 'none'; 
                 statusEl.textContent = 'Oops, You can only leave a review for products you have actually purchased.';
-                statusEl.className = 'form-status-message error'; // Показываем ошибку в модалке
+                statusEl.className = 'form-status-message error'; 
                 return;
             }
 
-            // Если всё супер — передаем ID товара в скрытое поле и открываем форму
             document.getElementById('reviewProductId').value = productId;
             setupModalValidation(user.id);
 
@@ -422,152 +426,27 @@ document.addEventListener('click', async (e) => {
         }
     }
 
-    // Закрытие модального окна по крестику
     if (e.target.id === 'closeReviewModal') {
         document.getElementById('reviewModal').style.display = 'none';
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('calorieModal');
-    const closeBtn = document.getElementById('closeCalorieModal');
-    const input = document.getElementById('dailyCalorieInput');
-    const resultSpan = document.getElementById('calcResult');
-    const grid = document.getElementById('productsGrid');
-    
-    // Новые элементы продвинутого калькулятора
-    const togglePanelBtn = document.getElementById('toggleMacroCalc');
-    const macroPanel = document.getElementById('macroCalcPanel');
-    const genderSel = document.getElementById('calcGender');
-    const ageInp = document.getElementById('calcAge');
-    const weightInp = document.getElementById('calcWeight');
-    const heightInp = document.getElementById('calcHeight');
-    const activitySel = document.getElementById('calcActivity');
-    
-    let currentCalories = 0;
-
-    // 1. Открытие модалки при клике по кнопке "kcal" на товаре
-    if (grid) {
-        grid.addEventListener('click', (e) => {
-            const calcBtn = e.target.closest('.calc-calories-btn');
-            if (calcBtn) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const name = calcBtn.dataset.name;
-                currentCalories = parseInt(calcBtn.dataset.calories) || 100;
-
-                const productUnit = calcBtn.dataset.unit || 'units'; 
-    
-                document.getElementById('calcProductName').textContent = name;
-                document.getElementById('calcProductCalories').textContent = currentCalories
-                
-                document.getElementById('calcProductName').textContent = name;
-                document.getElementById('calcProductCalories').textContent = currentCalories;
-                
-                resultSpan.dataset.unit = productUnit;
-                
-                calculateUnits();
-                if (modal) modal.style.display = 'flex';
-            }
-        });
-    }
-
-    // 2. Закрытие модального окна
-    if (closeBtn && modal) {
-        closeBtn.addEventListener('click', () => modal.style.display = 'none');
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
-    }
-
-    // 3. Переключатель панели персонального расчёта
-    if (togglePanelBtn && macroPanel) {
-        togglePanelBtn.addEventListener('click', () => {
-            if (macroPanel.style.display === 'none') {
-                macroPanel.style.display = 'block';
-                togglePanelBtn.textContent = '▲ Hide Personal Calculator';
-                calculateDailyNorm(); // Считаем норму сразу при раскрытии
-            } else {
-                macroPanel.style.display = 'none';
-                togglePanelBtn.textContent = '\ Calculate My Daily Goal';
-            }
-        });
-    }
-
-    // 4. Функция автоматического расчёта суточной нормы (Формула Миффлина - Сан Жеора)
-    function calculateDailyNorm() {
-        if (!macroPanel || macroPanel.style.display === 'none') return;
-
-        const gender = genderSel.value;
-        const age = parseFloat(ageInp.value) || 0;
-        const weight = parseFloat(weightInp.value) || 0;
-        const height = parseFloat(heightInp.value) || 0;
-        const activity = parseFloat(activitySel.value) || 1.2;
-
-        if (age > 0 && weight > 0 && height > 0) {
-            // Базовый метаболизм (BMR)
-            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
-            if (gender === 'male') {
-                bmr += 5;
-            } else {
-                bmr -= 161;
-            }
-            // Итоговая норма с учётом нагрузок
-            const totalKcal = Math.round(bmr * activity);
-            
-            // Записываем результат в главный инпут целей
-            input.value = totalKcal;
-            calculateUnits();
-        }
-    }
-
-    // Вешаем пересчёт нормы при изменении любого фитнес-параметра
-    [genderSel, ageInp, weightInp, heightInp, activitySel].forEach(elem => {
-        if (elem) elem.addEventListener('input', calculateDailyNorm);
-    });
-
-    // 5. Функция финального подсчёта количества штук/упаковок продукта
-    function calculateUnits() {
-        if (!input || !resultSpan) return;
-        const goal = parseInt(input.value) || 0;
-        
-        if (currentCalories > 0 && goal > 0) {
-            const units = (goal / currentCalories).toFixed(1);
-            resultSpan.textContent = units;
-        } else {
-            resultSpan.textContent = "0";
-        }
-    }
-
-    // Если пользователь меняет итоговые калории вручную
-    if (input) {
-        input.addEventListener('input', calculateUnits);
-    }
-});
-
-// Живая валидация и обработка формы внутри модального окна
 function setupModalValidation(userId) {
     const reviewForm = document.getElementById('leaveReviewForm');
     const reviewText = document.getElementById('reviewText');
     const submitReviewBtn = document.getElementById('submitReviewBtn');
     const reviewTextGroup = document.getElementById('reviewTextGroup');
-    
-    // Элементы интерактивного звездного рейтинга
     const starsContainer = document.getElementById('ratingStarsContainer');
     const hiddenRatingInput = document.getElementById('reviewRating');
 
-    // Сбрасываем рейтинг и визуальное состояние звезд в дефолт (5 звезд) при открытии модалки
     if (hiddenRatingInput) hiddenRatingInput.value = "5";
     if (starsContainer) {
         const stars = starsContainer.querySelectorAll('.star-icon');
         stars.forEach(star => star.classList.remove('inactive'));
     }
 
-    // Функция живой проверки текста отзыва
     function validate() {
         const isTextValid = reviewText.value.trim().length >= 10;
-        
         if (reviewText.value.trim().length > 0 && !isTextValid) {
             reviewTextGroup.classList.add('error');
         } else {
@@ -576,20 +455,14 @@ function setupModalValidation(userId) {
         submitReviewBtn.disabled = !isTextValid;
     }
 
-    // Перезаписываем событие ввода, защищая память браузера от утечек и дубликатов
     reviewText.oninput = validate;
 
-    // ОБРАБОТКА КЛИКОВ ПО КАРТИНКАМ-ЗВЕЗДАМ
     if (starsContainer) {
         starsContainer.onclick = (e) => {
-            // Проверяем, что кликнули именно по картинке звезды
             if (e.target.classList.contains('star-icon')) {
                 const selectedValue = parseInt(e.target.getAttribute('data-value'));
-                
-                // Сохраняем выбранную цифру в скрытый инпут
                 hiddenRatingInput.value = selectedValue;
 
-                // Подсвечиваем выбранные звезды, а остальные делаем серыми через CSS-класс
                 const stars = starsContainer.querySelectorAll('.star-icon');
                 stars.forEach(star => {
                     const starValue = parseInt(star.getAttribute('data-value'));
@@ -603,7 +476,6 @@ function setupModalValidation(userId) {
         };
     }
 
-    // Отправка POST запроса с отзывом на бэкенд
     reviewForm.onsubmit = async (submitEvent) => {
         submitEvent.preventDefault();
 
@@ -611,7 +483,7 @@ function setupModalValidation(userId) {
             productId: document.getElementById('reviewProductId').value,
             userId: userId,
             text: reviewText.value.trim(),
-            rating: parseInt(hiddenRatingInput.value), // Передаем цифру из нашего скрытого поля звезд
+            rating: parseInt(hiddenRatingInput.value), 
             date: new Date().toLocaleDateString()
         };
 
@@ -627,17 +499,14 @@ function setupModalValidation(userId) {
                 statusEl.textContent = 'Review added successfully!';
                 statusEl.className = 'form-status-message success';
                 
-                // Очищаем текстовые поля формы
                 reviewForm.reset();
                 submitReviewBtn.disabled = true;
 
-                // Возвращаем звездам дефолтный вид после успешной отправки
                 if (starsContainer) {
                     const stars = starsContainer.querySelectorAll('.star-icon');
                     stars.forEach(star => star.classList.remove('inactive'));
                 }
 
-                // Закрываем окошко через 2 секунды красоты на экране
                 setTimeout(() => {
                     document.getElementById('reviewModal').style.display = 'none';
                     statusEl.className = 'form-status-message';
@@ -649,9 +518,114 @@ function setupModalValidation(userId) {
     };
 }
 
+// ==========================================
+// 6. КАЛЬКУЛЯТОР КАЛОРИЙ
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('calorieModal');
+    const closeBtn = document.getElementById('closeCalorieModal');
+    const input = document.getElementById('dailyCalorieInput');
+    const resultSpan = document.getElementById('calcResult');
+    const grid = document.getElementById('productsGrid');
+    
+    const togglePanelBtn = document.getElementById('toggleMacroCalc');
+    const macroPanel = document.getElementById('macroCalcPanel');
+    const genderSel = document.getElementById('calcGender');
+    const ageInp = document.getElementById('calcAge');
+    const weightInp = document.getElementById('calcWeight');
+    const heightInp = document.getElementById('calcHeight');
+    const activitySel = document.getElementById('calcActivity');
+    
+    let currentCalories = 0;
 
-const API_URL_FALLBACK = typeof API_URL !== 'undefined' ? API_URL : 'http://localhost:3000';
+    if (grid) {
+        grid.addEventListener('click', (e) => {
+            const calcBtn = e.target.closest('.calc-calories-btn');
+            if (calcBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const name = calcBtn.dataset.name;
+                currentCalories = parseInt(calcBtn.dataset.calories) || 100;
+                const productUnit = calcBtn.dataset.unit || 'units'; 
+    
+                document.getElementById('calcProductName').textContent = name;
+                document.getElementById('calcProductCalories').textContent = currentCalories;
+                
+                resultSpan.dataset.unit = productUnit;
+                calculateUnits();
+                if (modal) modal.style.display = 'flex';
+            }
+        });
+    }
 
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
+
+    if (togglePanelBtn && macroPanel) {
+        togglePanelBtn.addEventListener('click', () => {
+            if (macroPanel.style.display === 'none') {
+                macroPanel.style.display = 'block';
+                togglePanelBtn.textContent = '▲ Hide Personal Calculator';
+                calculateDailyNorm(); 
+            } else {
+                macroPanel.style.display = 'none';
+                togglePanelBtn.textContent = '\\ Calculate My Daily Goal';
+            }
+        });
+    }
+
+    function calculateDailyNorm() {
+        if (!macroPanel || macroPanel.style.display === 'none') return;
+
+        const gender = genderSel.value;
+        const age = parseFloat(ageInp.value) || 0;
+        const weight = parseFloat(weightInp.value) || 0;
+        const height = parseFloat(heightInp.value) || 0;
+        const activity = parseFloat(activitySel.value) || 1.2;
+
+        if (age > 0 && weight > 0 && height > 0) {
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            if (gender === 'male') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
+            }
+            const totalKcal = Math.round(bmr * activity);
+            
+            input.value = totalKcal;
+            calculateUnits();
+        }
+    }
+
+    [genderSel, ageInp, weightInp, heightInp, activitySel].forEach(elem => {
+        if (elem) elem.addEventListener('input', calculateDailyNorm);
+    });
+
+    function calculateUnits() {
+        if (!input || !resultSpan) return;
+        const goal = parseInt(input.value) || 0;
+        
+        if (currentCalories > 0 && goal > 0) {
+            const units = (goal / currentCalories).toFixed(1);
+            resultSpan.textContent = units;
+        } else {
+            resultSpan.textContent = "0";
+        }
+    }
+
+    if (input) {
+        input.addEventListener('input', calculateUnits);
+    }
+});
+
+// ==========================================
+// 7. СЕКЦИИ ПРЕДЛОЖЕНИЙ И ОТЗЫВЫ (OFFERS & TESTIMONIALS)
+// ==========================================
 function createOfferVegetableCard(vegetable) {
     if (!vegetable.price) {
         return `
@@ -687,7 +661,7 @@ function createOfferVegetableCard(vegetable) {
 
 async function loadOfferVegetables() {
     try {
-        const response = await fetch(`${API_URL_FALLBACK}/offerVegetables`);
+        const response = await fetch(`${API_URL}/offerVegetables`);
         const vegetables = await response.json();
         
         const grid = document.getElementById('offerVegetablesGrid');
@@ -695,14 +669,12 @@ async function loadOfferVegetables() {
             grid.innerHTML = vegetables.map(createOfferVegetableCard).join('');
             if (typeof applyLanguage === 'function') applyLanguage();
         }
-    } catch (error) {
-        console.error('Ошибка загрузки овощей:', error);
-    }
+    } catch (error) { console.error('Ошибка загрузки овощей:', error); }
 }
 
 async function loadOfferProducts() {
     try {
-        const response = await fetch(`${API_URL_FALLBACK}/offerProducts`);
+        const response = await fetch(`${API_URL}/offerProducts`);
         const products = await response.json();
         
         const grid = document.getElementById('offerProductsGrid'); 
@@ -720,12 +692,9 @@ async function loadOfferProducts() {
             `).join('');
            if (typeof applyLanguage === 'function') applyLanguage();
         }
-    } catch (error) {
-        console.error('Ошибка загрузки товаров:', error);
-    }
+    } catch (error) { console.error('Ошибка загрузки товаров:', error); }
 }
 
-const TESTI_API = 'http://localhost:3000';
 let testiCurrentIndex = 0;
 let testiTotalSlides = 0;
 let testiAutoPlay;
@@ -733,12 +702,8 @@ let testiAutoPlay;
 function createTestiCard(item) {
     return `
         <div class="testi-slide">
-            <div class="testi-avatar">
-                <img src="${item.avatar}" alt="${item.name}">
-            </div>
-            <div class="testi-stars">
-                <img src="${item.starsImage}" alt="5 stars">
-            </div>
+            <div class="testi-avatar"><img src="${item.avatar}" alt="${item.name}"></div>
+            <div class="testi-stars"><img src="${item.starsImage}" alt="5 stars"></div>
             <p class="testi-text">${item.text}</p>
             <h4 class="testi-name">${item.name}</h4>
             <p class="testi-role">${item.role}</p>
@@ -771,9 +736,7 @@ function createTestiDots(count) {
 function goToTestiSlide(index) {
     testiCurrentIndex = index;
     const track = document.getElementById('testiSliderTrack');
-    if (track) {
-        track.style.transform = `translateX(-${index * 100}%)`;
-    }
+    if (track) track.style.transform = `translateX(-${index * 100}%)`;
     
     document.querySelectorAll('.testi-dot').forEach((dot, i) => {
         dot.classList.toggle('is-active', i === index);
@@ -796,7 +759,7 @@ function stopTestiAutoPlay() {
 
 async function loadTestimonials() {
     try {
-        const res = await fetch(`${TESTI_API}/testimonials`);
+        const res = await fetch(`${API_URL}/testimonials`);
         const data = await res.json();
         testiTotalSlides = data.length;
         
@@ -808,15 +771,12 @@ async function loadTestimonials() {
         
         createTestiDots(testiTotalSlides);
         startTestiAutoPlay();
-        
-    } catch (error) {
-        console.error('Ошибка загрузки отзывов:', error);
-    }
+    } catch (error) { console.error('Ошибка загрузки отзывов:', error); }
 }
 
 async function loadTestiStats() {
     try {
-        const res = await fetch(`${TESTI_API}/stats`);
+        const res = await fetch(`${API_URL}/stats`);
         const data = await res.json();
         
         const container = document.getElementById('testiStatsRow');
@@ -824,9 +784,7 @@ async function loadTestiStats() {
             container.innerHTML = data.map(createTestiStat).join('');
             if (typeof applyLanguage === 'function') applyLanguage();
         }
-    } catch (error) {
-        console.error('Ошибка загрузки статистики:', error);
-    }
+    } catch (error) { console.error('Ошибка загрузки статистики:', error); }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
