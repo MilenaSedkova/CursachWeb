@@ -13,11 +13,11 @@ html, body {
   max-width: 100vw;
 }
 
-/* Все изображения адаптивные 
-img {
+/* Все изображения адаптивные */
+/* img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 /* Контейнеры не выходят за пределы */
 .container,
@@ -31,7 +31,7 @@ img {
 
 }
 
-.html{
+html {
     overflow-x: hidden !important;
     width: 100%;
 }
@@ -390,15 +390,13 @@ body {
 }
 
 
-/* ============================================
-   TESTIMONIAL SECTION - BASE STYLES
-   ============================================ */
+   /*TESTIMONIAL SECTION - BASE STYLES
 
 /* --- Testimonial Section Layout --- */
 .testi-section {
     position: relative;
     width: 100%;
-    min-height: 1267px; /* Высота как у main-banner */
+    min-height: 1267px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -414,8 +412,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /*object-position: center 12%; /* Поднимает декор (лимон/корицу) вверх */
-   /* z-index: 0;*/
 }
 
 .testi-wrapper {
@@ -471,7 +467,7 @@ body {
     height: 110px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 20px; /* Центрируем и добавляем отступ снизу */
+    margin: 0 auto 20px; 
     transform: translateY(195px);
 }
 
@@ -498,7 +494,7 @@ body {
     color: #5A6670;
     line-height: 1.65;
     max-width: 780px;
-    margin: 0 auto 16px; /* Без сдвигов */
+    margin: 0 auto 16px;
     transform: translateY(195px);
 }
 
@@ -524,8 +520,11 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 30px 0 48px; /* Нормальный отступ вместо transform */
-    /* transform: translateY(72px); ← УДАЛЕНО */
+    margin: 40px 0 48px; 
+
+    transform: translateY(30px) !important; 
+    
+    padding-bottom: 20px !important;
 }
 
 .testi-dot {
@@ -583,9 +582,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* ============================================
-   ECO FRIENDLY SECTION
-   ============================================ */
+/* ECO FRIENDLY SECTION */
 
 .eco-section {
     padding: 120px 0;
@@ -605,7 +602,6 @@ body {
     align-items: center;
 }
 
-/* Ограничиваем ширину колонки с картинкой */
 .eco-image-col {
     width: 100%;
     max-width: none;
@@ -616,20 +612,17 @@ body {
 .eco-main-image {
     width: 100%;
     height: auto; 
-    max-height: 520px; /* Максимальная высота */
-    object-fit: cover; /* Обрезает лишнее, сохраняя пропорции */
-    /*border-radius: 20px;*/
+    max-height: 520px; 
+    object-fit: cover; 
     box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     display: block; /* Убирает лишний отступ снизу у inline-картинок */
     margin-right: 180px;
 }
 
-/* Правая колонка: Текст */
 .eco-text-col {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    /*transform: translateY(95px) translateX(-180px);*/
 }
 
 .eco-subtitle {
@@ -678,7 +671,6 @@ body {
     margin: 0;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .eco-content-row {
         grid-template-columns: 1fr;
@@ -717,12 +709,10 @@ body {
 }
 
 
-/* ============================================
-   CATEGORIES SECTION
-   ============================================ */
+/* CATEGORIES SECTION*/
 
 .categories-section {
-    padding: 190px 0; /* Отступы сверху и снизу как на макете */
+    padding: 190px 0; 
     background-color: #F1F8F4;
     margin-top: 90px;
 }
@@ -731,7 +721,6 @@ body {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding-right: -5px;
     padding: 0px 40px;
     transform: translateX(-20px); 
     margin-left: 22px;
@@ -742,25 +731,17 @@ body {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* Расстояние между карточками */
+    gap: 40px;
 }
 
 .category-card {
     position: relative;
     width: 100%;
-    height: 580px; /* Высота карточки */
+    height: 580px; 
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-
-/*.category-card:first-child {
-    margin-left: 20px;
-}
-*/
-/*.category-card:hover {
-    transform: translateY(-8px);
-}*/
 
 .category-image {
     width: 100%;
@@ -778,12 +759,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2); /* Лёгкое затемнение */
+    background: rgba(0, 0, 0, 0.2); 
     transition: background 0.3s ease;
 }
 
 .category-card:hover .category-overlay {
-    background: rgba(0, 0, 0, 0.3); /* Темнее при наведении */
+    background: rgba(0, 0, 0, 0.3); 
 }
 
 .category-label {
@@ -804,7 +785,6 @@ body {
     box-shadow: 0 12px 32px rgba(0,0,0,0.2);
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -834,8 +814,6 @@ body {
     }
 }
 
-
-
 .prod-card .add-to-cart-btn,
 .product-card .add-to-cart-btn {
     display: block !important;
@@ -846,4 +824,20 @@ body {
 .mobile-menu-content .search-bar,
 #mobileMenu .search-bar {
     display: none !important;
+}
+
+html body .testi-stats-row {
+   
+    transform: translateY(130px) translateX(5px) !important; 
+}
+
+html body .testi-subtitle-settings,
+html body .testi-title-settings,
+html body .testi-slider-viewport,
+html body .testi-dots {
+    transform: translateY(40px) !important; 
+}
+
+html body .testi-dots {
+    margin-top: 50px !important; 
 }

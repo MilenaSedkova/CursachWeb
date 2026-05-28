@@ -393,25 +393,50 @@
       "id": "1",
       "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
-      "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+      "text": "The quality of the organic vegetables is outstanding. Delivery is always on time, and customer support is incredibly helpful!",
       "name": "Sara Taylor",
       "role": "Consumer"
     },
     {
       "id": "2",
-      "avatar": "pictures/HomepageImages/woman.png",
+      "avatar": "pictures/HomepageImages/man2.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
-      "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "text": "I've been buying here for a year. The fresh fruits are amazing. My family loves it, highly recommend to everyone who cares about health.",
       "name": "John Anderson",
       "role": "Food Blogger"
     },
     {
       "id": "3",
-      "avatar": "pictures/HomepageImages/woman.png",
+      "avatar": "pictures/HomepageImages/woman2.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
-      "text": "Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.",
+      "text": "Great service and top-notch products! The organic nuts and seeds are exactly what I need for my daily diet.",
       "name": "Emily Carter",
       "role": "Consumer"
+    },
+    {
+      "id": "4",
+      "avatar": "pictures/HomepageImages/woman3.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "Very convenient store. The interface is simple, the checkout is fast, and the quality of the products exceeds expectations.",
+      "name": "Emily Carter",
+      "role": "Consumer"
+    },
+
+    {
+      "id": "5",
+      "avatar": "/pictures/HomepageImages/woman2.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "Very convenient store. The interface is simple, the checkout is fast, and the quality of the products exceeds expectations.",
+      "name": "Anna Johnson",
+      "role": "Food Blogger"
+    },
+    {
+      "id": "6",
+      "avatar": "/pictures/HomepageImages/man3.png",
+      "starsImage": "pictures/HomepageImages/Star.svg",
+      "text": "I was skeptical at first, but now I only buy my groceries here. Best organic farm products on the market, hands down.",
+      "name": "Robert Fox",
+      "role": "Restaurant Chef"
     }
   ],
   "stats": [

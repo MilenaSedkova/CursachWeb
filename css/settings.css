@@ -859,7 +859,6 @@ body.a11y-mode {
     overflow-x: hidden !important; 
 }
 
-/* Разрешаем длинным ссылкам и тексту разрываться, если они упираются в край экрана */
 body.a11y-mode p,
 body.a11y-mode span,
 body.a11y-mode a,
@@ -870,13 +869,11 @@ body.a11y-mode .contact-value {
     white-space: normal !important;
 }
 
-/* На всякий случай разрешаем самим строкам контактов мягко переноситься */
 body.a11y-mode .contact-item {
     display: flex !important;
     flex-wrap: wrap !important;
 }
 
-/* На всякий случай проверяем иконку внутри этой кнопки */
 .add-to-cart-btn img {
     display: block !important;
     opacity: 1 !important;
@@ -888,7 +885,7 @@ body.home-page .add-to-cart-btn {
 }
 
 body.dark-theme .mobile-menu-content {
-    background-color: var(--bg-secondary) !important; /* Твой мягкий чёрный из переменных (#1E1E1E) */
+    background-color: var(--bg-secondary) !important; 
     background: var(--bg-secondary) !important;
     color: #ffffff !important;
 }
@@ -899,12 +896,10 @@ body.dark-theme .mobile-menu-content a {
     color: #ffffff !important;
 }
 
-/* Цвет ссылок при наведении в тёмной теме */
 body.dark-theme .mobile-link:hover {
-    color: #7EB693 !important; /* Наш сочный зелёный акцент */
+    color: #7EB693 !important; 
 }
 
-/* 3. Кнопка-крестик закрытия меню */
 body.dark-theme .mobile-menu-close {
     color: #ffffff !important;
 }
@@ -912,21 +907,19 @@ body.dark-theme .mobile-menu-close:hover {
     color: #7EB693 !important;
 }
 
-/* 4. Текст корзины Корзина(0) */
 body.dark-theme #mobileCartCount {
     color: #ffffff !important;
 }
 
-/* 5. Круглые кнопки в самом низу (li, ru, A+) */
 body.dark-theme .mobile-controls .control-btn {
-    background-color: var(--bg-tertiary) !important; /* Твой серый цвет инпутов (#2C2C2C) */
+    background-color: var(--bg-tertiary) !important; 
     color: #ffffff !important;
     border: 1px solid var(--border-color) !important;
 }
 
 body.dark-theme .mobile-controls .control-btn:hover {
     background-color: #7EB693 !important;
-    color: var(--bg-primary) !important; /* Текст становится тёмным на зелёном фоне */
+    color: var(--bg-primary) !important; 
     border-color: #7EB693 !important;
 }
 
@@ -942,4 +935,104 @@ body.dark-theme .mobile-controls .control-btn:hover {
         visibility: hidden !important;
         opacity: 0 !important;
     }
+}
+
+html body .testi-slider-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    transition: transform 0.5s ease-in-out !important; 
+    align-items: stretch !important;
+    transform-style: preserve-3d !important;
+}
+
+html body .testi-slide {
+    flex: 0 0 100% !important; /* Занимает ровно 100% ширины */
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-shrink: 0 !important; /*запрет на сплющивание */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    transform: none !important; 
+}
+
+html body .testi-avatar, 
+html body .testi-stars, 
+html body .testi-text, 
+html body .testi-name, 
+html body .testi-role {
+    position: relative !important;
+    transform: none !important;
+    margin-top: 0 !important;
+    left: auto !important;
+    top: auto !important;
+}
+
+html body .testi-avatar {
+    margin-bottom: 20px !important;
+}
+
+html body .testi-stars {
+    margin-bottom: 25px !important;
+}
+
+html body .testi-text {
+    margin-bottom: 20px !important;
+    white-space: normal !important; 
+    word-wrap: break-word !important;
+}
+
+html body .testi-dots {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-top: 30px !important; 
+    margin-bottom: 0 !important;
+    transform: none !important;
+}
+
+html body .testi-content {
+    transform: translateY(-160px) !important; 
+}
+
+html body .testi-subtitle-settings {
+    transform: translateY(0) !important; 
+    margin-bottom: 10px !important;
+}
+
+html body .testi-title-settings {
+    transform: translateY(0) !important;
+    margin-bottom: 60px !important; 
+}
+
+html body .testi-content {
+    transform: translateY(-130px) !important; 
+}
+
+html body .testi-slider-viewport {
+    margin-top: 0 !important; 
+    padding-top: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+html body .testi-dots {
+    transform: translateY(48px) !important; 
+    margin-top: 0 !important; 
+}
+
+html body .testi-subtitle-settings {
+    transform: translateY(45px) !important; 
+}
+
+html body .testi-title-settings {
+    transform: translateY(45px) translateX(2px) !important; 
 }
