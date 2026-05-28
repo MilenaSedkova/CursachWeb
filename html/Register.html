@@ -154,42 +154,40 @@
                 <input type="text" id="regLastName" class="form-input" placeholder="Your last name" required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="regPassword">Password*</label>
-                <div class="password-wrapper" style="position: relative; width: 100%;">
-                    <input type="password" id="regPassword" class="form-input" placeholder="your password" required style="padding-right: 45px;">
-                    <button type="button" class="toggle-password-btn" data-target="regPassword" style="position: absolute; right: 15px; top: 25px; background: none; border: none; font-size: 18px; cursor: pointer;">&#x1F648;</button>
-                </div>
-            </div>
+    <label class="form-label" for="regPassword">Password*</label>
+    <div class="password-wrapper">
+        <input type="password" id="regPassword" class="form-input password-input" placeholder="your password" required>
+        <button type="button" class="toggle-password-btn" data-target="regPassword">&#x1F648;</button>
+    </div>
+</div>
 
             <div class="form-group">
                 <label class="form-label" for="regNickname">nickname*</label>
                 <input type="text" id="regNickname" class="form-input" placeholder="Your last name" readonly required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="regConfirmPassword">Confirm Password*</label>
-                <div class="password-wrapper" style="position: relative; width: 100%;">
-                    <input type="password" id="regConfirmPassword" class="form-input" placeholder="your password" required style="padding-right: 45px;">
-                    <button type="button" class="toggle-password-btn" data-target="regConfirmPassword" style="position: absolute; right: 15px; top: 25px; background: none; border: none; font-size: 18px; cursor: pointer;">&#x1F648;</button>
-                </div>
-            </div>
+    <label class="form-label" for="regConfirmPassword">Confirm Password*</label>
+    <div class="password-wrapper">
+        <input type="password" id="regConfirmPassword" class="form-input password-input" placeholder="your password" required>
+        <button type="button" class="toggle-password-btn" data-target="regConfirmPassword">&#x1F648;</button>
+    </div>
+</div>
 
-            <div class="form-group align-left">
-                <button type="button" id="btnGenNickname" class="btn-send auth-generate-btn">Generate nickname</button>
-            </div>
-            <div class="form-group align-right">
-                <button type="button" id="btnGenPassword" class="btn-send auth-generate-btn">Generate password</button>
-            </div>
+<div class="generate-buttons-wrapper">
+    <button type="button" id="btnGenNickname" class="btn-send auth-generate-btn">Generate nickname</button>
+    <button type="button" id="btnGenPassword" class="btn-send auth-generate-btn">Generate password</button>
+</div>
 
-            <div class="auth-actions-container">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 30px;">
-                    <input type="checkbox" id="regAgreement" required style="width: 20px; height: 20px; cursor: pointer;">
-            <label for="regAgreement" style="font-family: 'Inter', sans-serif; font-size: 16px; color: #1F263E; cursor: pointer;">
-                 I have read and agree to the <a href="#" id="showAgreementLink" style="color: #669C61;">User Agreement</a>*
-            </label>
-                </div>
-                
-                <button type="submit" id="registerSubmitBtn" class="btn-send auth-submit-btn" disabled>Register</button>
-            </div>
+           <div class="auth-actions-container">
+    <div class="agreement-wrapper">
+        <input type="checkbox" id="regAgreement" class="agreement-checkbox" required>
+        <label for="regAgreement" class="agreement-label">
+             I have read and agree to the <a href="#" id="showAgreementLink" class="agreement-link">User Agreement</a>*
+        </label>
+    </div>
+    
+    <button type="submit" id="registerSubmitBtn" class="btn-send auth-submit-btn" disabled>Register</button>
+</div>
 
         </form>
     </div>

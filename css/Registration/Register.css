@@ -39,3 +39,57 @@
     border-color: #dc3545 !important;
     background-color: #FFF8F8 !important; /* Очень легкий красноватый фон для наглядности */
 }
+
+/* =======================================================
+   СТИЛИ ДЛЯ ФОРМЫ РЕГИСТРАЦИИ (Вынесено из HTML)
+   ======================================================= */
+
+/* Обертка для поля с паролем и глазиком */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Отступ в инпуте, чтобы текст не залезал под кнопку глазика */
+.form-input.password-input {
+    padding-right: 45px;
+}
+
+/* Кнопка показа/скрытия пароля (глазик) */
+.toggle-password-btn {
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Блок пользовательского соглашения с чекбоксом */
+.agreement-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Сам чекбокс */
+.agreement-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Текст лейбла соглашения */
+.agreement-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #1F263E;
+    cursor: pointer;
+}
+
+/* Ссылка на соглашение */
+.agreement-link {
+    color: #669C61;
+}

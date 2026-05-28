@@ -389,7 +389,7 @@
     }
   ],
   "testimonials": [
-   {
+    {
       "id": "1",
       "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
@@ -645,6 +645,20 @@
       "agreementAccepted": true,
       "createdAt": "2026-05-25T23:00:50.441Z",
       "id": "0liV0xsOEaw"
+    },
+    {
+      "email": "happy@gmail.com",
+      "firstName": "Анжела",
+      "lastName": "Хлопникова",
+      "middleName": "",
+      "dateOfBirth": "2000-02-01",
+      "phone": "375291656565",
+      "nickname": "АнХл411",
+      "password": "4qw=HmJ(Ld2C",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-28T16:46:11.203Z",
+      "id": "Eqq5z1Z2Hsk"
     }
   ],
   "feedbacks": [
@@ -938,6 +952,36 @@
       "date": "2026-05-27T21:53:35.733Z",
       "status": "Processing",
       "id": "ZmTT6tCrT50"
+    },
+    {
+      "userId": "Eqq5z1Z2Hsk",
+      "customerName": "Анжела",
+      "items": [
+        {
+          "productId": "30",
+          "userId": "Eqq5z1Z2Hsk",
+          "name": "Juicy Orange",
+          "price": 8,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/Orange.png",
+          "category": "Fruits",
+          "quantity": 2,
+          "id": "lUTL5fCR5i0"
+        },
+        {
+          "productId": "9",
+          "userId": "Eqq5z1Z2Hsk",
+          "name": "Mung Bean",
+          "price": 11,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/MungBeanBig.png",
+          "category": "Health",
+          "quantity": 1,
+          "id": "dMyfZWbUfYw"
+        }
+      ],
+      "totalPrice": 27,
+      "date": "2026-05-28T16:46:58.132Z",
+      "status": "Processing",
+      "id": "RhkL5tMQ1So"
     }
   ],
   "reviews": [
@@ -964,6 +1008,14 @@
       "rating": 5,
       "date": "27.05.2026",
       "id": "AxxEtfPNK4o"
+    },
+    {
+      "productId": "30",
+      "userId": "Eqq5z1Z2Hsk",
+      "text": "fantastic!",
+      "rating": 5,
+      "date": "28.05.2026",
+      "id": "x0vPlj_8r38"
     }
   ],
   "subscribers": [
