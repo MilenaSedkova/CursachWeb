@@ -37,10 +37,10 @@ function init() {
             const input = document.getElementById(e.currentTarget.dataset.target);
             if (input.type === 'password') {
                 input.type = 'text';
-                e.currentTarget.textContent = '🙈';
+                e.currentTarget.textContent = '\u{1F648}';
             } else {
                 input.type = 'password';
-                e.currentTarget.textContent = '👁️';
+                e.currentTarget.textContent = '\u{1F441}';
             }
         });
     });
@@ -123,6 +123,62 @@ function init() {
     }
 
     form.addEventListener('submit', handleRegister);
+
+    const agreementLink = document.getElementById('showAgreementLink');
+    if (agreementLink) {
+        agreementLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Отменяем стандартный переход по ссылке
+            
+            // Узнаем текущий язык сайта (один раз для всего окна!)
+            const savedSettings = JSON.parse(localStorage.getItem('appSettings')) || {};
+            const currentLang = savedSettings.lang || 'en';
+            
+            // Задаем правильный заголовок в именительном падеже
+            const modalTitle = currentLang === 'ru' ? 'Пользовательское соглашение' : 'User Agreement';
+            
+            // Текст на РУССКОМ
+            const textRu = `
+                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #5A6670; max-height: 400px; overflow-y: auto; padding-right: 10px; text-align: left;">
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">1. Общие положения</h4>
+                    <p style="margin-bottom: 15px;">Настоящее пользовательское соглашение регулирует отношения между магазином Organick и пользователем. Регистрируясь на сайте, вы соглашаетесь с данными условиями.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">2. Конфиденциальность</h4>
+                    <p style="margin-bottom: 15px;">Мы гарантируем сохранность ваших личных данных. Ваши email, телефон и адрес используются исключительно для обработки заказов и не передаются третьим лицам.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">3. Покупки и возврат</h4>
+                    <p style="margin-bottom: 15px;">Все продукты сертифицированы. В случае получения товара ненадлежащего качества, вы имеете право на замену или возврат средств в течение 14 дней.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">4. Обязанности пользователя</h4>
+                    <p style="margin-bottom: 15px;">Пользователь обязуется предоставлять достоверные данные при регистрации и не использовать сайт в мошеннических целях.</p>
+                </div>
+            `;
+
+            // Текст на АНГЛИЙСКОМ
+            const textEn = `
+                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #5A6670; max-height: 400px; overflow-y: auto; padding-right: 10px; text-align: left;">
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">1. General Provisions</h4>
+                    <p style="margin-bottom: 15px;">This user agreement regulates the relationship between the Organick store and the user. By registering on the site, you agree to these terms.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">2. Privacy</h4>
+                    <p style="margin-bottom: 15px;">We guarantee the safety of your personal data. Your email, phone, and address are used exclusively for order processing and are not shared with third parties.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">3. Purchases and Returns</h4>
+                    <p style="margin-bottom: 15px;">All products are certified. In case of receiving a product of inadequate quality, you have the right to a replacement or refund within 14 days.</p>
+                    
+                    <h4 style="color: #1F263E; margin-bottom: 10px;">4. User Responsibilities</h4>
+                    <p style="margin-bottom: 15px;">The user agrees to provide accurate data during registration and not to use the site for fraudulent purposes.</p>
+                </div>
+            `;
+
+            // Выбираем нужный текст в зависимости от языка
+            const agreementText = (currentLang === 'ru') ? textRu : textEn;
+
+            // Вызываем окно
+            if (window.AppUI) {
+                window.AppUI.showModal(modalTitle, agreementText);
+            }
+        });
+    }
 }
 
 // === ФУНКЦИИ ГЕНЕРАЦИИ (Вынесены на глобальный уровень) ===

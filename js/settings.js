@@ -76,9 +76,7 @@ function saveSettings() {
     localStorage.setItem('appSettings', JSON.stringify(appSettings));
 }
 
-// -----------------------------------------------------
-// 3. APPLY SETTINGS
-// -----------------------------------------------------
+
 function applyTheme() {
     if (appSettings.theme === 'dark') {
         document.body.classList.add('dark-theme');
@@ -160,9 +158,6 @@ function applyLanguage() {
     }
 }
 
-// -----------------------------------------------------
-// 4. A11Y MODAL
-// -----------------------------------------------------
 function openA11yModal() {
     const a11y = appSettings.a11y;
     const html = `
@@ -210,33 +205,26 @@ window.setA11yFont = (val) => { appSettings.a11y.fontScale = val; updateA11yAndR
 window.setA11yTheme = (val) => { appSettings.a11y.themeIndex = val; updateA11yAndReopen(); };
 window.setA11yImages = (val) => { appSettings.a11y.hideImages = val; updateA11yAndReopen(); };
 window.resetAllSettings = () => {
-    // 1. Возвращаем текущие настройки к эталонным (глубокое копирование)
+    // возвращаем текущие настройки к эталонным (глубокое копирование)
     appSettings = JSON.parse(JSON.stringify(defaultSettings));
     
-    // 2. Сохраняем "чистые" настройки в память
     saveSettings();
     
-    // 3. Моментально применяем их к сайту БЕЗ перезагрузки страницы
     applyTheme();
     applyA11y();
     applyLanguage();
     
-    // 4. Показываем красивое уведомление
     AppUI.showToast(appSettings.lang === 'ru' ? 'Все настройки сброшены' : 'All settings reset');
     
-    // 5. Закрываем модальное окно для слабовидящих, если оно было открыто
     AppUI.closeModal();
 };
 
 function updateA11yAndReopen() {
     saveSettings();
     applyA11y();
-    openA11yModal(); // re-render modal with new state
+    openA11yModal(); 
 }
 
-// -----------------------------------------------------
-// 5. ИСПРАВЛЕННЫЕ EVENT LISTENERS
-// -----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
     // Initial apply
     applyTheme();
@@ -260,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const globalResetBtn = document.getElementById('globalResetBtn');
     if (globalResetBtn) {
         globalResetBtn.addEventListener('click', () => {
-            window.resetAllSettings(); // Вызываем ту же самую умную функцию
+            window.resetAllSettings(); 
         });
     }
         
@@ -281,3 +269,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+document.addEventListener('click', (e) => {
+    // Ищем кнопки переключения языка (у них класс control-btn)
+    const langBtn = e.target.closest('.control-btn');
+    
+    if (langBtn) {
+        const btnText = langBtn.textContent.trim().toLowerCase();
+        
+        if (btnText === 'en' || btnText === 'ru') {
+            
+            // Даем браузеру миллисекунду, чтобы он успел сохранить новый язык в localStorage
+            setTimeout(() => {
+                if (typeof loadTestimonials === 'function') {
+                    // Заставляем слайдер заново подгрузить тексты из db.json!
+                    loadTestimonials(); 
+                }
+            }, 100);
+        }
+    }
+}); 

@@ -1036,3 +1036,8 @@ html body .testi-subtitle-settings {
 html body .testi-title-settings {
     transform: translateY(45px) translateX(2px) !important; 
 }
+
+html body .mobile-menu .mobile-search,
+html body .mobile-menu .search-bar {
+    display: none !important;
+}

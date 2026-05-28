@@ -173,7 +173,10 @@ document.addEventListener('click', async (e) => {
 });
 
 function getModalTxt(enText) {
-    const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+const savedSettings = JSON.parse(localStorage.getItem('appSettings')) || {};
+    const currentLang = savedSettings.lang || 'en';
+    
+    // 2. Ищем перевод в словаре
     const dict = window.AppI18n ? window.AppI18n.dictionary : undefined;
     if (currentLang === 'ru' && dict && dict[enText]) {
         return dict[enText];
