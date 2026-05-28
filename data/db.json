@@ -389,54 +389,71 @@
     }
   ],
   "testimonials": [
-    {
+   {
       "id": "1",
       "avatar": "pictures/HomepageImages/woman.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "The quality of the organic vegetables is outstanding. Delivery is always on time, and customer support is incredibly helpful!",
+      "textRu": "Качество органических овощей превосходное. Доставка всегда вовремя, а служба поддержки невероятно отзывчива!",
       "name": "Sara Taylor",
-      "role": "Consumer"
+      "nameRu": "Сара Тейлор",
+      "role": "Consumer",
+      "roleRu": "Покупатель"
     },
     {
       "id": "2",
       "avatar": "pictures/HomepageImages/man2.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "I've been buying here for a year. The fresh fruits are amazing. My family loves it, highly recommend to everyone who cares about health.",
+      "textRu": "Покупаю здесь уже год. Свежие фрукты просто восхитительны. Моей семье они очень нравятся, настоятельно рекомендую всем, кто заботится о здоровье.",
       "name": "John Anderson",
-      "role": "Food Blogger"
+      "nameRu": "Джон Андерсон",
+      "role": "Food Blogger",
+      "roleRu": "Фуд-блогер"
     },
     {
       "id": "3",
       "avatar": "pictures/HomepageImages/woman2.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Great service and top-notch products! The organic nuts and seeds are exactly what I need for my daily diet.",
+      "textRu": "Отличный сервис и первоклассные продукты! Органические орехи и семена — это именно то, что мне нужно для моего ежедневного рациона.",
       "name": "Emily Carter",
-      "role": "Consumer"
+      "nameRu": "Эмили Картер",
+      "role": "Consumer",
+      "roleRu": "Покупатель"
     },
     {
       "id": "4",
       "avatar": "pictures/HomepageImages/woman3.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Very convenient store. The interface is simple, the checkout is fast, and the quality of the products exceeds expectations.",
+      "textRu": "Очень удобный магазин. Интерфейс простой, оформление заказа быстрое, а качество продуктов превосходит все ожидания.",
       "name": "Emily Carter",
-      "role": "Consumer"
+      "nameRu": "Эмили Картер",
+      "role": "Consumer",
+      "roleRu": "Покупатель"
     },
-
     {
       "id": "5",
       "avatar": "/pictures/HomepageImages/woman2.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "Very convenient store. The interface is simple, the checkout is fast, and the quality of the products exceeds expectations.",
+      "textRu": "Очень удобный магазин. Интерфейс простой, оформление заказа быстрое, а качество продуктов превосходит все ожидания.",
       "name": "Anna Johnson",
-      "role": "Food Blogger"
+      "nameRu": "Анна Джонсон",
+      "role": "Food Blogger",
+      "roleRu": "Фуд-блогер"
     },
     {
       "id": "6",
       "avatar": "/pictures/HomepageImages/man3.png",
       "starsImage": "pictures/HomepageImages/Star.svg",
       "text": "I was skeptical at first, but now I only buy my groceries here. Best organic farm products on the market, hands down.",
+      "textRu": "Сначала я был настроен скептически, но теперь покупаю продукты только здесь. Безусловно, это лучшие фермерские эко-продукты на рынке.",
       "name": "Robert Fox",
-      "role": "Restaurant Chef"
+      "nameRu": "Роберт Фокс",
+      "role": "Restaurant Chef",
+      "roleRu": "Шеф-повар"
     }
   ],
   "stats": [

@@ -300,8 +300,17 @@ window.AppI18n = {
         "Fresh Garlic": "Свежий чеснок",
         "Organic Spinach": "Органический шпинат",
         "Juicy Orange": "Сочные апельсины",
-        "Shelled Walnuts": "Очищенный грецкий орех"
+        "Shelled Walnuts": "Очищенный грецкий орех",
 
+
+        "We are dedicated to bringing the freshest, 100% natural products directly from sustainable farms to your table. Your health and nature are our top priorities.":
+        "Мы стремимся доставлять самые свежие, 100% натуральные продукты прямо с экологичных ферм на ваш стол. Ваше здоровье и природа — наши главные приоритеты",
+
+        "Discover how easy it is to cultivate your own organic greens at home. We share expert tips and eco-friendly practices to help you start your sustainable garden.":
+        "Узнайте, как легко выращивать собственную органическую зелень дома. Мы делимся советами экспертов и экологичными практиками, чтобы помочь вам создать свой сад.",
+
+        "Our partner farmers utilize modern, sustainable agricultural methods that protect the soil and conserve water. We strictly avoid harmful chemicals to ensure a greener future.":
+        "Наши фермеры-партнеры используют современные, устойчивые методы ведения сельского хозяйства, которые защищают почву и экономят воду. Мы строго избегаем вредных химикатов ради зеленого будущего."
     },
 
     translate: function(lang) {

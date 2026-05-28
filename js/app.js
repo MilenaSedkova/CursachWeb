@@ -691,13 +691,21 @@ let testiTotalSlides = 0;
 let testiAutoPlay;
 
 function createTestiCard(item) {
+
+   const currentLang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+    
+    // Подставляем русский текст, если включен русский язык и перевод есть в базе. Иначе — английский.
+    const textToDisplay = (currentLang === 'ru' && item.textRu) ? item.textRu : item.text;
+    const roleToDisplay = (currentLang === 'ru' && item.roleRu) ? item.roleRu : item.role;
+    const nameToDisplay = (currentLang === 'ru' && item.nameRu) ? item.nameRu : item.name;
+
     return `
         <div class="testi-slide">
-            <div class="testi-avatar"><img src="${item.avatar}" alt="${item.name}"></div>
+            <div class="testi-avatar"><img src="${item.avatar}" alt="${nameToDisplay}"></div>
             <div class="testi-stars"><img src="${item.starsImage}" alt="5 stars"></div>
-            <p class="testi-text">${item.text}</p>
-            <h4 class="testi-name">${item.name}</h4>
-            <p class="testi-role">${item.role}</p>
+            <p class="testi-text">${textToDisplay}</p>
+            <h4 class="testi-name">${nameToDisplay}</h4>
+            <p class="testi-role">${roleToDisplay}</p>
         </div>
     `;
 }
