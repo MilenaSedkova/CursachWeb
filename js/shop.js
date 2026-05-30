@@ -1,4 +1,3 @@
-var activeCategory = window.activeCategory || 'all';
 
 function createProductCard(product, withCartBtn = true) {
     const oldPriceHtml = product.oldPrice 
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nextBtn = document.getElementById('nextBtn');
     const sortBtn = document.getElementById('sortPriceBtn');
     const resetBtn = document.getElementById('resetSortBtn');
-    const categorySelect = document.getElementById('shopCategorySelect'); // 👈 Перенесли сюда
+    const categorySelect = document.getElementById('shopCategorySelect'); 
     
     const itemsPerPage = 12;
     let currentPage = 1;
@@ -223,7 +222,6 @@ function openAuthModal() {
     setTimeout(() => modal.classList.add('active'), 10);
 }
 
-// Новая функция: ПРОСТО закрывает окно, никуда не перемещая пользователя
 function closeAuthModalOnly() {
     const modal = document.getElementById('authAlertModal');
     if (modal) {

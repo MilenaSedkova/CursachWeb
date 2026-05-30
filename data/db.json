@@ -591,20 +591,6 @@
       "id": "eAbRbFQHwJo"
     },
     {
-      "email": "anonimus@gmail.com",
-      "firstName": "iliya",
-      "lastName": "Kotov",
-      "middleName": "",
-      "dateOfBirth": "2005-10-05",
-      "phone": "375297854996",
-      "nickname": "iliK483",
-      "password": "Co&k6v&9Kqle",
-      "role": "customer",
-      "agreementAccepted": true,
-      "createdAt": "2026-05-24T16:41:35.329Z",
-      "id": "JhqmGWaztf0"
-    },
-    {
       "email": "sdfghjkl@gmail.com",
       "firstName": "anton",
       "lastName": "fghjk",
@@ -934,7 +920,7 @@
       "id": "7ngFuyqEVI0"
     },
     {
-      "userId": "JhqmGWaztf0",
+      "userId": null,
       "customerName": "iliya",
       "items": [
         {
@@ -982,17 +968,29 @@
       "date": "2026-05-28T16:46:58.132Z",
       "status": "Processing",
       "id": "RhkL5tMQ1So"
+    },
+    {
+      "userId": "1",
+      "customerName": "Mila",
+      "items": [
+        {
+          "productId": "1",
+          "userId": "1",
+          "name": "Calabrese Broccoli",
+          "price": 13,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/BroccoliPhoto.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "JMHPEN7r5bg"
+        }
+      ],
+      "totalPrice": 13,
+      "date": "2026-05-30T16:02:26.963Z",
+      "status": "Processing",
+      "id": "oHDX7_pccNA"
     }
   ],
   "reviews": [
-    {
-      "productId": null,
-      "userId": "0liV0xsOEaw",
-      "text": "очень понравилось!",
-      "rating": 5,
-      "date": "26.05.2026",
-      "id": "n4oiRTY-s5M"
-    },
     {
       "productId": null,
       "userId": "35GBjmjiqPA",

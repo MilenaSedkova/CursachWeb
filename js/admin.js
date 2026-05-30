@@ -325,20 +325,60 @@ if (loadReviewsBtn) {
     });
 }
 
-window.deleteReview = async function(id) {
-    // Перевод сообщения в окне подтверждения удаления (confirm)
-    if (!confirm(getTxt('Are you sure you want to delete this review?'))) return;
+window.deleteReview = function(id) {
+    // Переводим тексты
+    const title = getTxt('Delete Review') || 'Delete Review';
+    const message = getTxt('Are you sure you want to delete this review?');
+    const btnCancel = getTxt('Cancel') || 'Cancel';
+    const btnDelete = getTxt('Delete') || 'Delete';
+
+    // Формируем содержимое окна с двумя кнопками
+   const modalContent = `
+        <div style="text-align: center; padding: 10px 0;">
+            <p style="font-size: 16px; margin-bottom: 25px; color: #1F263E;">
+                ${message}
+            </p>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <button onclick="AppUI.closeModal()" style="background-color: #E0E4E8; color: #1F263E; border: none; padding: 12px 0; width: 130px; border-radius: 8px; font-weight: 600; font-size: 16px; font-family: 'Inter', sans-serif; cursor: pointer;">
+                    ${btnCancel}
+                </button>
+                <button onclick="executeDeleteReview('${id}')" style="background-color: #dc3545; color: white; border: none; padding: 12px 0; width: 130px; border-radius: 8px; font-weight: 600; font-size: 16px; font-family: 'Inter', sans-serif; cursor: pointer;">
+                    ${btnDelete}
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Вызываем готовую модалку из settings.js
+    if (window.AppUI) {
+        window.AppUI.showModal(title, modalContent);
+    }
+};
+
+// Функция, которая делает само удаление (вызывается из модалки)
+window.executeDeleteReview = async function(id) {
     try {
         const res = await fetch(`${API_URL}/reviews/${id}`, { method: 'DELETE' });
         if (res.ok) {
+            // Удаляем карточку со страницы
             document.querySelector(`.review-item[data-id="${id}"]`)?.remove();
             
-            // Если после удаления карточки список стал пустым, выводим заглушку "Отзывы не найдены"
+            // Если после удаления список стал пустым, выводим заглушку
             if (document.querySelectorAll('.review-item').length === 0) {
-                reviewsContainer.innerHTML = `<p class="reviews-placeholder">${getTxt("No reviews found.")}</p>`;
+                const reviewsContainer = document.getElementById('reviewsContainer');
+                if (reviewsContainer) {
+                    reviewsContainer.innerHTML = `<p class="reviews-placeholder">${getTxt("No reviews found.")}</p>`;
+                }
             }
+            
+            // Закрываем модальное окно
+            if (window.AppUI) window.AppUI.closeModal();
+            
+            // Опционально: показываем красивый тост об успехе
+            if (window.AppUI) window.AppUI.showToast(getTxt('Review deleted successfully!') || 'Review deleted successfully!');
         }
     } catch (e) {
         console.error(e);
+        if (window.AppUI) window.AppUI.showToast('Error deleting review', 3000);
     }
 };
