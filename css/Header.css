@@ -361,3 +361,9 @@
     object-fit: contain; /* Сохраняем пропорции иконки */
 
 }
+
+body.dark-theme header a,
+body.a11y-mode header a,
+body.dark-theme.a11y-mode header a {
+    color: #1F263E !important; /* Темный цвет текста, чтобы читалось на светлом фоне */
+}

@@ -29,6 +29,12 @@ body.dark-theme .eco-section {
     background-color: var(--bg-primary) !important;
 }
 
+body.dark-theme .add-to-cart-btn {
+    background-color: transparent !important;
+    border-color: transparent !important; 
+    box-shadow: none !important;
+}
+
 /* Все типы карточек (Магазин, Отзывы, Блог, Овощи в Offer) делаем объемными */
 body.dark-theme .prod-card,
 body.dark-theme .product-card,
@@ -1041,3 +1047,4 @@ html body .mobile-menu .mobile-search,
 html body .mobile-menu .search-bar {
     display: none !important;
 }
+

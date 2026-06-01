@@ -482,7 +482,58 @@
       "circleImage": "pictures/HomepageImages/circleBackground.svg"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "productId": "2",
+      "userId": "2",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "oR5PSrXNh0I"
+    },
+    {
+      "productId": "4",
+      "userId": "2",
+      "name": "Vegan Red Tomato",
+      "price": 17,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/tomato.png",
+      "category": "Vegetable",
+      "quantity": 1,
+      "id": "ZKRq4MQu1U4"
+    },
+    {
+      "productId": "18",
+      "userId": "2",
+      "name": "Organic Blueberries",
+      "price": 18,
+      "image": "http://127.0.0.1:5501/pictures/ShopImages/Blueberries.png",
+      "category": "Fruits",
+      "quantity": 1,
+      "id": "WIODLwhAYIo"
+    },
+    {
+      "productId": "1",
+      "userId": "35GBjmjiqPA",
+      "name": "Calabrese Broccoli",
+      "price": 13,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/BroccoliPhoto.png",
+      "category": "Vegetable",
+      "quantity": 2,
+      "id": "i4CBpP2vhDQ"
+    },
+    {
+      "productId": "2",
+      "userId": "35GBjmjiqPA",
+      "name": "Fresh Banana Fruites",
+      "price": 14,
+      "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+      "category": "Fresh",
+      "quantity": 1,
+      "id": "HTYzfGhhUtQ"
+    }
+  ],
   "users": [
     {
       "id": "1",
@@ -645,6 +696,48 @@
       "agreementAccepted": true,
       "createdAt": "2026-05-28T16:46:11.203Z",
       "id": "Eqq5z1Z2Hsk"
+    },
+    {
+      "email": "slavik@gmail.com",
+      "firstName": "Слава",
+      "lastName": "kuzmichev",
+      "middleName": "",
+      "dateOfBirth": "2000-03-03",
+      "phone": "375293256456",
+      "nickname": "Сku185",
+      "password": "2Bf*odf61a_3",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-30T23:41:08.924Z",
+      "id": "60BfwiP73es"
+    },
+    {
+      "email": "katya25@gmail.com",
+      "firstName": "katya",
+      "lastName": "Седькова",
+      "middleName": "",
+      "dateOfBirth": "2005-12-10",
+      "phone": "375291445007",
+      "nickname": "МиСед745",
+      "password": "ofLvCew7=x-7",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-31T11:41:08.549Z",
+      "id": "Nf-iDJpNv9c"
+    },
+    {
+      "email": "katysa45@gmail.com",
+      "firstName": "katya",
+      "lastName": "marusova",
+      "middleName": "",
+      "dateOfBirth": "2005-10-10",
+      "phone": "375254558525",
+      "nickname": "kmar54_VIP",
+      "password": "qJ$2z4h(tKPR",
+      "role": "customer",
+      "agreementAccepted": true,
+      "createdAt": "2026-05-31T11:41:52.738Z",
+      "id": "5bJ8MYOgQLo"
     }
   ],
   "feedbacks": [
@@ -988,6 +1081,156 @@
       "date": "2026-05-30T16:02:26.963Z",
       "status": "Processing",
       "id": "oHDX7_pccNA"
+    },
+    {
+      "userId": "1",
+      "customerName": "Mila",
+      "items": [
+        {
+          "productId": "2",
+          "userId": "1",
+          "name": "Fresh Banana Fruites",
+          "price": 14,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/banana.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "WsIlgXUHeT8"
+        },
+        {
+          "productId": "12",
+          "userId": "1",
+          "name": "Organic Almonds",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/OrganickAlmonds.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "QiEx7gd7Eps"
+        }
+      ],
+      "totalPrice": 29,
+      "date": "2026-05-30T18:18:04.903Z",
+      "status": "Processing",
+      "id": "77kR9DLD95M"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "1",
+          "userId": "1",
+          "name": "Calabrese Broccoli",
+          "price": 13,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/BroccoliPhoto.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "b29KLruJhqg"
+        },
+        {
+          "productId": "8",
+          "userId": "1",
+          "name": "Сухарики Zelco Suji с кардамоном",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/bread.png",
+          "category": "Свежее",
+          "quantity": 1,
+          "id": "VfPbaGWJmeA"
+        },
+        {
+          "productId": "31",
+          "userId": "1",
+          "name": "Очищенный грецкий орех",
+          "price": 22,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/Walnuts.png",
+          "category": "Орехи",
+          "quantity": 1,
+          "id": "s0HAkgGAkBA"
+        }
+      ],
+      "totalPrice": 50,
+      "date": "2026-05-31T01:00:24.452Z",
+      "status": "Processing",
+      "id": "oV8TSD9HVYw"
+    },
+    {
+      "userId": "2",
+      "customerName": "Ivan",
+      "items": [
+        {
+          "productId": "3",
+          "userId": "2",
+          "name": "White Nuts",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/nuts.png",
+          "category": "Millets",
+          "quantity": 1,
+          "id": "UK6E292MLSI"
+        }
+      ],
+      "totalPrice": 15,
+      "date": "2026-05-31T01:08:44.505Z",
+      "status": "Processing",
+      "id": "mITXIgOdfYE"
+    },
+    {
+      "userId": "5bJ8MYOgQLo",
+      "customerName": "katya",
+      "items": [
+        {
+          "productId": "12",
+          "userId": "5bJ8MYOgQLo",
+          "name": "Organic Almonds",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/OrganickAlmonds.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "LZkg2QSmum8"
+        },
+        {
+          "productId": "24",
+          "userId": "5bJ8MYOgQLo",
+          "name": "Fresh Strawberries",
+          "price": 16,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/Strawberries.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "bxPRQuzC68Y"
+        },
+        {
+          "productId": "19",
+          "userId": "5bJ8MYOgQLo",
+          "name": "Fresh Avocado",
+          "price": 15,
+          "image": "http://127.0.0.1:5501/pictures/ShopImages/Avocado.png",
+          "category": "Fresh",
+          "quantity": 1,
+          "id": "NZqGMMsazE4"
+        }
+      ],
+      "totalPrice": 46,
+      "date": "2026-05-31T11:52:23.925Z",
+      "status": "Processing",
+      "id": "OLGqu0hY0UI"
+    },
+    {
+      "userId": "5bJ8MYOgQLo",
+      "customerName": "katya",
+      "items": [
+        {
+          "productId": "1",
+          "userId": "2",
+          "name": "Calabrese Broccoli",
+          "price": 13,
+          "image": "http://127.0.0.1:5501/pictures/HomepageImages/BroccoliPhoto.png",
+          "category": "Vegetable",
+          "quantity": 1,
+          "id": "T1OB9nB_bxE"
+        }
+      ],
+      "totalPrice": 13,
+      "date": "2026-05-31T11:52:26.295Z",
+      "status": "Processing",
+      "id": "q0tKnGoIe7c"
     }
   ],
   "reviews": [
@@ -1014,77 +1257,47 @@
       "rating": 5,
       "date": "28.05.2026",
       "id": "x0vPlj_8r38"
+    },
+    {
+      "productId": "1",
+      "userId": "5bJ8MYOgQLo",
+      "text": "very yummy and fresh!",
+      "rating": 5,
+      "date": "31.05.2026",
+      "id": "EQlbO-byv-I"
     }
   ],
   "subscribers": [
     {
-      "email": "sedkovamilena80@gmail.com",
-      "subscribedAt": "2026-05-25T08:04:43.507Z",
-      "id": "sQKSogchkJA"
+      "email": "katysa45@gmail.com",
+      "subscribedAt": "2026-05-31T12:20:50.095Z",
+      "id": "XoglrVxYinY"
     },
     {
-      "email": "admin@organick.com",
-      "subscribedAt": "2026-05-27T07:44:26.296Z",
-      "id": "MBKon18HYWA"
-    },
-    {
-      "email": "customer@organick.com",
-      "subscribedAt": "2026-05-27T20:30:51.600Z",
-      "id": "HjGmFe1m8AU"
+      "email": "slavik@gmail.com",
+      "subscribedAt": "2026-06-01T14:55:15.996Z",
+      "id": "SuTjKZPco6Q"
     }
   ],
   "messages": [
     {
-      "name": "Anna",
-      "email": "anna88@gmail.com",
+      "name": "Марусова Екатерина",
+      "email": "katysa45@gmail.com",
       "company": "",
-      "subject": "delivery",
-      "message": "consider adding more point of issue please",
-      "date": "2026-05-26T12:46:34.357Z",
-      "id": "916AG_bTVZA"
-    },
-    {
-      "name": "fghjk",
-      "email": "admin@organick.com",
-      "company": "fghj",
-      "subject": "fgyu",
-      "message": "tgyui",
-      "date": "2026-05-27T07:44:59.275Z",
-      "id": "gp4rJnRmGgo"
+      "subject": "выращивание овощей",
+      "message": "совеременные техники выращивания",
+      "date": "2026-05-31T12:25:29.164Z",
+      "id": "qui1ZHGBOF0"
     }
   ],
   "bookings": [
     {
-      "userEmail": "anna88@gmail.com",
-      "date": "2026-05-28",
+      "userEmail": "katysa45@gmail.com",
+      "date": "2026-10-03",
       "time": "10:00 - 11:00",
-      "notes": "Grow strategies",
-      "createdAt": "2026-05-26T13:08:22.896Z",
-      "id": "MAomBVZWnHQ"
-    },
-    {
-      "userEmail": "anna88@gmail.com",
-      "date": "2026-05-28",
-      "time": "14:00 - 15:00",
-      "notes": "delivery times",
-      "createdAt": "2026-05-26T13:08:46.350Z",
-      "id": "UsADOiDgqt0"
-    },
-    {
-      "userEmail": "anna88@gmail.com",
-      "date": "2027-02-20",
-      "time": "14:00 - 15:00",
-      "notes": "food",
-      "createdAt": "2026-05-26T13:12:17.726Z",
-      "id": "ow8MhN3noLs"
-    },
-    {
-      "userEmail": "customer@organick.com",
-      "date": "2026-05-27",
-      "time": "10:00 - 11:00",
-      "notes": "food",
-      "createdAt": "2026-05-27T20:32:54.632Z",
-      "id": "8UWONc4hjRI"
+      "notes": "grow stratigies",
+      "createdAt": "2026-05-31T12:37:57.118Z",
+      "id": "gm2Lt3TnQYg"
     }
   ],
   "searchQuery": "",
